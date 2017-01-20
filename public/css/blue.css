@@ -1,0 +1,327 @@
+/* header color #8A4566
+menu color #FFEEF6 
+blue text #001E3D
+search #ded8cc
+myanet #A96585
+box headers #001E3D
+a general #143666
+
+header color #A.31E00
+menu color #E.BE7E0 
+blue text #0.01E3D
+search #d.ed8cc
+myanet #d.2c8b8
+box headers #3.30000
+a general #1.43666
+*/ 
+
+a {color:#1b74d0;}
+/* Ruskin page header */
+#pageheaderruskin, pgTitle { border-color: #ffffff; background:#8A4566; background-image: url('/anet/graphics/angliaruskinbg.gif'); }
+#pageheaderruskin h1{ background:url('/anet/graphics/square.gif') #ffffff no-repeat left ; color:#001E3D; }
+/* Ruskin left curve */
+#leftcurveruskin { background-image: url('/anet/graphics/right281005w3.gif'); }
+
+/* Page headings */
+#deptheadings {background: #8A4566;}
+#deptheadings h1 { /*color: #fff;*/ }
+#deptheadings h2 { /*color: #6799CC;*/ }
+
+
+
+#mainwrap {background: #fff;}
+/* The floating menu to the left */
+/* #mainmenupane{ background:#ffffff; }*/
+
+
+
+/* Main menu - FIRST LEVEL */ /* Remember that colours are defined in the style[colour].css file, selected by the CMS */ /* We have to be very specific in defining each nested ul ass CSS doesn't cascade too well (ironic, eh?) */
+#menu , #navColumn {background: /*url('http://web.anglia.ac.uk/anet/graphics/traygrayb1.gif')*/ no-repeat bottom; margin: 0 0 10px 0;}
+#menu ul , #navColumn ul {border-top: 5px solid #d6d6d6;}
+#menu ul li , #navColumn ul li {background: url(images/nav_arrow.gif) no-repeat top left; border-bottom: 1px solid #ccc;}
+#menu ul li a , #navColumn ul li a {color: #001E3D; }
+#menu ul li a:hover , #navColumn ul li a:hover { /*color: #000;*/ }
+
+/* Main menu - SECOND LEVEL */
+#menu ul ul , #navColumn ul ul {border-top: none;}
+#menu ul  ul li , #navColumn ul  ul li {border-bottom: none; background: url(images/nav_arrow.gif) no-repeat top left;}
+#menu ul ul li a , #navColumn ul ul li a { /*color: #19437D;*/ }
+#menu ul ul li a:hover , #navColumn ul ul li a:hover { /*color: #000;*/ }
+
+/* Main menu - THIRD LEVEL */
+#menu ul ul li ul , #navColumn ul ul li ul {}
+#menu ul ul li ul li , #navColumn ul ul li ul li {background: url(images/nav_arrow.gif) no-repeat top left;}
+
+/* Main menu - FOURTH LEVEL */
+#menu ul ul li ul li ul , #navColumn ul ul li ul li ul {}
+#menu ul ul li ul li ul li , #navColumn ul ul li ul li ul li {}
+
+/* submenu (pull-down block) */ /* Default background colour is overwritten by style[colour].css */ .submenu { /*background: #F0F7FA;*/ }
+
+/* Menu divider */
+#menudivider { /*background: #fff;*/ }
+#menudivider hr { /*color: #CEDAEA;*/ }
+
+/* To highlight the selected menu item */
+#menu .menuselected { /*color: #BE3E30;*/ }
+
+/* Shortcuts menu ul  - setup for the coloured bars on the left */
+#scmenu {}
+#scmenu ul {}
+#scmenu ul li { /*border-top: 1px solid #fff;*/ }
+#scmenu ul li a { /*color: #19437D;*/ }
+#scmenu ul li a:hover { /*color: #000;*/ }
+
+/* Coloured bars for the left-hand menu */ /*
+.m-blue		{ background: #6799CC; }
+.m-dblue	{ background: #2F4F90; }
+.m-green	{ background: #97C660; }
+.m-dgreen	{ background: #559A4C; }
+.m-yellow	{ background: #EDC447; }
+.m-brown	{ background: #AD975F; }
+.m-pink		{ background: #E28F1E; }
+.m-plum		{ background: #AE558E; }
+.m-purple	{ background: #84365B; }
+.m-red		{ background: #C0564B; }
+.m-lblue	{ background: #CEDAEA; }
+.m-orange	{ background: #D09924; }
+.m-lorange	{ background: #F0B94F; }
+.m-dept		{ background: #6799CC; }
+.m-selected	{ background: #444; }
+*/ 
+/* Content/central pane */
+#contentpane{}
+#centralpane {}
+#contentstart{}
+
+/* Main content - DEPARTMENT */
+#maincontentblockdept {}
+#centercolumn, #centercolumnnoright{}
+#centerpadding{}
+#centralpane a, #centercolumn a {}
+
+/* Crumbs */ /* Default background colour is overwritten by style[colour].css */
+#crumbsbar {border-color: #d6d6d6; color: #333333; }
+#crumbsbar a { color: #333333; }
+#crumbsbar a:hover { /*color: #000;*/ }
+
+/* Sub navigation (floats to the right */ /* Default background colour is overwritten by style[colour].css */ 
+
+#subnav { color: #FFEEF6; /*background:url("/anet/graphics/trayrhsb.gif") #FFEEF6  no-repeat bottom; */}
+
+#subnav h2 { /*color: #fff; background: url('/anet/graphics/arrow.gif');*/ background:transparent; }
+#subnav h3 { /*color: #fff;*/ }
+#subnav h4 { /*	color: #fff; background: url('/anet/graphics/arrow2.gif');*/background:transparent; }
+
+#subnav ul { /*background: #FFEEF6;*/ }
+#subnav ul li { /*border-color: #fff; background: #FFEEF6;*/ }
+#subnav ul li a { /*color: #001E3D;*/ }
+#subnav ul li a:hover { /*color: #000;*/ }
+#subnav * a:visited { color: #AB6565 ; }
+
+.subnavInt {}
+.subnavInt a { /*color: #545452;*/ }
+.subnavInt a:hover	{ /*color: #000;*/ }
+.subnavInt ul {}
+.subnavInt li { /*color: #fff;*/ }
+
+/* Callout bar */
+#calloutbar {}
+#calloutbardept	{}
+#calloutbardept a {}
+#calloutcontent {}
+#calloutcontent p { /*color: #888;*/ }
+#calloutcontent img	{ /*border-color: #2F4F90;*/ }
+#calloutcontent table img {}
+
+/* Footer */
+#footer-container, #footer-container p, #footer-container a, #footer-container h4, #footer-legal-statements-container, #footer-legal-statements-container a { color: #ffffff !important;/*	 border-top: 1px solid #ddd; background: #eee;*/ }
+
+#footer img {}
+#footer a:hover {}
+#footertext {}
+
+/* Temporary links for the development version */
+#templinks {}
+
+
+/* Special HTML styles */ 
+pre {}
+
+/* Incidental styles */ 
+.grey { /*color: #888;*/ }
+
+/* Article quotes - similar to featureText */ 
+.quoteText { /*background: #F0F7FA; border: 1px solid #ddd;*/ }
+.quoteText h4 {}
+
+/* Footnote - similar to featureText */ 
+.footnote { /*background: #eee; border: 1px solid #ddd;*/ }
+.footnote img {}
+.footnote h4 {}
+
+/* Staff profile */ 
+.profileImage { /*background-color: #F0F7FA; border:1px solid #aaa;*/ }
+.profileHR {}
+/* Styled bullet lists */ 
+.specialUL ul { /*list-style: circle; color: #666;*/ }
+.specialUL ul li {}
+
+.featureUL ul { /*list-style: square; color: #666;*/ }
+.featureUL ul li {}
+
+/* CQ images */ 
+.tiImageLeft {}
+.tiImageRight {}
+
+/* Download paragraph type */ 
+.fileDownload { /*	background: #F0F7FA; border: 1px solid #ddd;*/ }
+.fileIcon {}
+.fileText {}
+.fileFile { /*color: #999;*/ }
+
+/* Table styling */
+#maincontentblock table.tab { /*background: #F0F7FA; border-color: #ddd;*/ }
+#maincontentblock table.tab td {}
+.hlrow { /*background: #E4F1F7;*/ }
+
+/* Form layout */ 
+.formFormat fieldset { /*border:1px solid #ddd;*/ }
+.formFormat label {}
+.formFormat legend { /*color: #265A73;*/ }
+.formFormat input, textarea {}
+.formFormat submit {}
+.hideme {}
+
+/* Dropdowns */ 
+optgroup {}
+.subjectTitle { /*color: #003C74;*/ }
+
+/* styleblue */ 
+/* Alters only colours for existing page elements */ 
+.featureText { /*background: #F0F7FA;*/ }
+h1 { color: #001E3D; }
+h2 { color: #001E3D; }
+h3 {color : #001E3D;}
+h4 {color : #001E3D;}
+h5 {color : #001E3D;}
+h3 a {color : #001E3D;}
+.newsarticle h3 { color: #FFEEF6; }
+
+.smallnews { /*background: #F0F7FA;*/ }
+.smallnews h3 { background: #FFEEF6; }
+
+/* anet */
+#anetH1 { background: #8A4566; }
+#anetlogid, #anetlogid a {color:#ffffff;}
+#anettabs { /*background-color:blue; */}
+#anettabs ul {/*background-color:green;*/}
+#anettabs li { /*background:url("/anet/graphics/right_tab.gif") no-repeat right top;*/background: #8A4566; background:url("/anet/graphics/left_tab.gif") #8A4566 no-repeat left top; }
+#anettabs a {  color:#ffffff;  border-color:#ffffff; }
+#anettabs #sel { background:url("/anet/graphics/left_tab_sel.gif") #FFEEF6 no-repeat left top; /*background-image:url("/anet/graphics/right_tab_sel.gif");*/ }
+#anettabs #sel a {  /*background: #FFEEF6;*/ background: #FFEEF6; color:#8A4566; border-color:#896e42;}
+#anettabs a:hover {  }
+	
+/* anetnav */ /* anet nav styles */ 
+/* fast */ 
+#fast { background-color:#f7fbf7; border-color:#ffffff; }
+#fast fieldset {}
+#fast form {}
+
+#fast label { background-color:#8A4566; color:#ffffff; border-color:#ffffff; } 
+
+/* .subbut { background-color:#cccccc; color:#000000; } */
+#fast input {}
+#fast input[type="submit"] { background-color:#ffffcc; color:#5c0083; }
+#fasttrack  {} 
+/* navsearch - searchbox in left hand menu*/ 
+#navsearch { background:url("/anet/graphics/traysch1t.gif") #ded8cc  no-repeat bottom; color:#000000;  }
+#navsearch form  { }
+#navsearch fieldset  {}
+#navsearch h2 {background:url("/anet/graphics/anet_search_gsa.gif") #ded8cc no-repeat top;border-color:#ff0000;}
+#navsearch legend {  color: #001E3D;}
+#navsearch input{}
+#navsearch input[type="radio"]{}
+#navsearch input[type="submit"]{background-color:#cccccc;border-color:#000000;}
+#navsearch label{  color:#001E3D; border-color:#ffffff; }
+
+
+/**/ 
+#anetnav p {/*color:#001E3D;*/}
+#anetnav h2 {/*background:url("/anet/graphics/traymy1b.gif") #A96585 no-repeat top;border-color:#ff0000;*/}
+#anetnav h2 a {/*color:#001E3D;*/}
+#anetnav h2 a:hover {}
+#anetnav h3 {}
+#anetnav .anetp { color:#001E3D; border-color:#000000; }
+#anetnav .anetp a { color:#001E3D; border-color:#000000; }
+#anetnav hr {border-color:#8A4566;}
+	
+/* RHS */	
+	
+#rightpadding{color:#001E3D;}
+
+
+
+/* anet forms */
+#centralpane form { border-color:#000; background-color:#fbffee; }
+#centralpane fieldset { border-color:#ddd; /*background-color:#ffffcc;*/ }
+
+/* anet boxes */ 
+.boxes, .boxesfw {background: #ffffff;}
+.boxes h3, .boxesfw h3  {background: #FFEEF6 ; border-bottom:0px solid #8A4566; color : #001E3D;}
+
+.boxes h3, .boxesfw h3 a{ /*background-color : #FFEEF6;*/ color : #001E3D; }
+.updown {}
+.updown img {} 
+#cert {}
+img {}
+
+/* ANET table styles */ 
+
+table {border-color: black;}
+table.test {border-color:black;}
+table.left {border-color:#669999;}
+table.small {border-color:black;}
+table.vsmall {border-color:black;}
+table.noborder {}
+table.yellow {background-color:#FFFFBB;border-color:black;}
+table.grey2 {background-color: #eee;}
+table.leftnoborder {}
+table.leftnoborder2 {}
+table.yellowleft {background-color:#FFFFBB;}
+th {color:#ffffff;background-color:#8A4566;border-color:#000;}
+th.left {color:#ffffff;background-color:#8A4566;border-color: black;}
+th.noborderleft {color:#ffffff;background-color:#8A4566;}
+th.nobordercenter {color:#ffffff;background-color:#8A4566;}
+th a {color:#ffffff;}
+th a:hover {color:#ffffcc;}
+th a:visited {color:#ffffcc;}
+td {border-color:  black ;}
+th.thickleft, td.thickleft {border-color: black;}
+td.grey2 {border-color: black ;background-color: #dcdcdc;color: #000;}
+td.noborderleft {}
+th.noborderleft2, td.noborderleft2 {}
+th.noborderleft3, td.noborderleft3 {}
+tr.greybackground, td.greybackground {color: #000;background-color: #dcdcdc;}
+td.nobordercgi {background-color: #E5EAF5;color: #000;}
+td.leftborder {border-color: black;}
+td.nobordercentre {}
+tr.noborder, td.noborder {}
+tr.noborderblue, td.noborderblue {background-color:#99ffff;}
+tr.left, td.left {}
+th.right, tr.right, td.right {}
+tr.center40, td.center40 {}
+td.directory {color:#001E3D;}
+td.whitebg {background-color:#FFFFFF;}
+td.beigebg {background-color:#FFEEF6;}
+
+/* othe ANET styles from common.css */ 
+#footnote { background-color: #fff;}
+#footnote img {}
+a.left {}
+a.right {}
+
+/* voicemail / mimessage styles for anet */
+.tdbl{background-color:#ffffff; padding:0;margin:0;}
+.td_topl{background-color:#fff; padding:0;margin:0;}
+.tda_topl2{background-color:#8A4566; color:#ffffff; padding:0;margin:0;}

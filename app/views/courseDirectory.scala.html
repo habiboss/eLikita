@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+@head("Activités")
+
+<body class="fixed-left">
+
+
+	<table
+		class="campl-table-bordered campl-table campl-vertical-stacking-table campl-table-striped dataTable no-footer"
+		id="course_table" role="grid" aria-describedby="course_table_info"
+		style="width: 1135px;">
+		<thead>
+			<tr class="role">
+			<tr role="row">
+				<th class="sorting_disabled" rowspan="1" colspan="1"
+					style="width: 423px;">Filter Courses</th>
+				<th class="sorting_disabled" rowspan="1" colspan="1"
+					style="width: 196px;">Course Level</th>
+				<th class="sorting_disabled" rowspan="1" colspan="1"
+					style="width: 196px;">Taught/Research</th>
+				<th class="sorting_disabled" rowspan="1" colspan="1"
+					style="width: 196px;">Course Length</th>
+				<th class="sorting_disabled" rowspan="1" colspan="1"
+					style="width: 196px;">University/College/School</th>
+			</tr>
+			<tr>
+				<td style="position: relative;"><span
+					style="color: grey; display: inline; position: absolute; right: 20px; top: 17px;"
+					class="fa fa-spinner fa-lg fa-spin pull-right ajax_monitor hidden"></span><input
+					name="course_search" placeholder="Enter Keywords" type="text"
+					class="campl-input-block-level"><label
+					class="campl-checkbox"><input name="hide_closed"
+						type="checkbox" value="hide_closed">Hide closed courses</label></td>
+				<td><label class="campl-checkbox"><input
+						type="checkbox" value="1" name="qualification_type_filter">Doctoral</label><label
+					class="campl-checkbox"><input type="checkbox" value="2"
+						name="qualification_type_filter">Masters</label><label
+					class="campl-checkbox"><input type="checkbox" value="3"
+						name="qualification_type_filter">Diploma</label><label
+					class="campl-checkbox"><input type="checkbox" value="4"
+						name="qualification_type_filter">Certificate/Award</label></td>
+				<td><label class="campl-radio"><input type="radio"
+						value="all" name="taught_research_filter" checked="">All</label><label
+					class="campl-radio"><input type="radio" value="research"
+						name="taught_research_filter">Research</label><label
+					class="campl-radio"><input type="radio" value="taught"
+						name="taught_research_filter">Taught</label></td>
+				<td><label class="campl-radio"><input type="radio"
+						value="all" name="study_mode_filter" checked="">All</label><label
+					class="campl-radio"><input type="radio" value="full_time"
+						name="study_mode_filter">Full-time</label><label
+					class="campl-radio"><input type="radio" value="part_time"
+						name="study_mode_filter">Part-time</label></td>
+			</tr>
+
+
+		</thead>
+
+
+	</table>
+
+	<footer class="footer text-right"> 2016 © ADVINTECK </footer>
+
+
+</body>
+</html>

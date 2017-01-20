@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+@head("Activités")
+	<link href="@routes.Assets.versioned("css/studentRegistration.css")" rel="stylesheet">
+
+<body class="fixed-left">
+<div class="col-lg-12">
+   
+<!--     <div class="pull-left">
+ 
+        <div class="navbar-btn navbar-left">
+            <button class="btn null">
+            <span class="glyphicon glyphicon-align-justify"></span>
+            <span class="label-icon null">Menu</span>
+            </button>
+        </div>
+        
+        <div class="navbar-btn navbar-left">
+            <button class="btn null">
+        		<span class="glyphicon glyphicon-dashboard"></span>
+				<span class="label-icon null">Dashboard</span>
+			</button>
+        </div>
+
+    </div>  -->
+    
+<!--     <div class="pull-left">
+ 
+        <form class="navbar-form" role="search">
+ 
+            <div class="input-group">
+                
+                <span class="input-group-btn">
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                       <span class="glyphicon glyphicon-search"></span>
+                        <span class="label-icon null">Search</span>
+                         <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu pull-left" role="menu">
+					   <li>
+							<a href="#">
+								<span class="fa fa-user"></span>
+								<span class="label-icon null">Search By User</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+							<span class="glyphicon glyphicon-book"></span>
+							<span class="label-icon null">Search By Organization</span>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<span class="glyphicon glyphicon-search"></span>
+								<span class="label-icon null">Search</span>
+							</a>
+						</li>
+					</ul>
+                </span>
+                
+                <input type="text" style="width:350px;" class="form-control">
+                
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Go</button>
+                </span>
+                
+            </div>/input-group
+            
+        </form> 
+   
+    </div> -->
+        
+ 
+    <div class="pull-right">
+     
+        <div class="navbar-nav navbar-btn navbar-right">
+			<div class="dropdown open">
+				<button class="btn null" data-toggle="dropdown">
+					<span class="glyphicon glyphicon-cog"></span>
+					<span class="label-icon null">Preferences</span>
+				</button>
+                 <ul class="dropdown-menu" style="width:300px; padding:0px;">
+            						
+										<li>
+										
+										    <form class="form-horizontal" id="preferences" action="" method="post" accept-charset="utf-8">
+											
+												<hidden input="" value="netdna.bootstrapcdn.com/bootswatch/3.1.0/" name="theme_url">
+
+												<div class="panel panel-default" id="preferences" style="margin:0px;">
+												
+													<div class="panel-heading">
+														<span class="panel-label">User Preferences</span>
+													</div>
+											   
+													<div class="panel-body">
+                                                    
+                                                        		<div class="form-group">
+																	<label for="nav_theme" class="col-lg-6 control-label">
+																	Navbar
+																	</label>
+																	<div class="col-lg-6">
+    																	<select class="form-control" id="nav_theme" name="nav_theme">
+    																		<option value="navbar-default">Basic</option>
+    																		<option value="navbar-default">Default</option>
+    																		<option value="navbar-default">Inverse</option>
+    																		<option value="navbar-default">Outline</option>
+    																	</select>
+																	</div>
+																</div>
+                                                                
+                                                                 <div class="form-group">
+																	<label for="btn_theme" class="col-lg-6 control-label">
+																	Button Theme
+																	</label>
+																	<div class="col-lg-6">
+    																	<select class="form-control" id="btn_theme" name="btn_theme">
+    																		<option value="btn-primary">Primary</option>
+    																		<option value="btn-default">Default</option>
+    																		<option value="btn-success">Success</option>
+    																		<option value="btn-info">Info</option>
+                                                                            <option value="btn-warning">Warning</option>
+                                                                             <option value="btn-danger">Danger</option>
+                                                                             <option value="btn-inverse">Inverse</option>
+    																	</select>
+																	</div>
+																</div>
+													
+																<div class="form-group">
+																	<label for="theme_name" class="col-lg-6 control-label">
+																	Theme
+																	</label>
+																	<div class="col-lg-6">
+																		<select class="form-control" id="theme_name" name="theme_name">
+																			<option value="amelia"> Amelia </option>
+																			<option value="bootstrap"> Default </option>
+																			<option value="cerulean"> Cerulean </option>
+																			<option value="cosmo"> Cosmo </option>
+																			<option value="cyborg"> Cyborg </option>
+																			<option value="flatly"> Flatly </option>
+																			<option value="journal"> Journal </option>
+																			<option value="lumen"> Lumen </option>
+																			<option value="readable"> Readable </option>
+																			<option value="simplex"> Simplex </option>
+																			<option value="slate"> Slate </option>
+																			<option value="spacelab"> Spacelab </option>
+																			<option value="superhero"> Superhero </option>
+																			<option value="united"> United </option>
+																			<option value="yeti"> Yeti </option>
+																			<option value="whiteplum"> WhitePlum </option>
+																		</select>
+																	</div>
+																</div>
+  
+																<div class="form-group">
+																	<label for="text_size" class="col-lg-6 control-label">
+																	Display Label
+																	</label>
+																	<div class="col-lg-6">
+																		<div class="btn-group" data-toggle="buttons" style="margin:0px padding:0px;">
+																			<label class="btn btn-default toggle-button" style="pull-left margin:0px padding:0px; width:50%">
+																				<input id="inlineradio1" name="display_label" type="radio" value="">
+																				Show
+																			</label>
+																			<label class="btn btn-default toggle-button" style="pull-right margin:0px padding:0px; width:50%">
+																				<input id="inlineradio2" name="display_label" type="radio" value="hide">
+																				Hide
+																			</label>
+																		</div>
+																	</div>
+																</div>
+													
+													</div>
+													
+															<div class="panel-footer">
+																<div class="form-group">
+    																	  <button type="submit" class="btn null">Update</button> 
+																</div>
+															</div>
+											
+										</div></hidden></form></li>
+					</ul>
+			 </div>
+         </div>
+        
+		<div class="navbar-btn navbar-right">
+			<div class="dropdown">
+				<button class="btn null" data-toggle="dropdown">
+					<span class="glyphicon glyphicon-bell"></span>
+					<span class="label-icon null">Alerts</span>
+				</button>
+			</div>
+		</div>
+ 
+     </div> 
+    
+   
+    
+    </div>
+<section class="main-body">
+            <div class="main-body-inner">
+
+                <h1>PG Cert Networking</h1>
+
+                <ul id="course-details">
+                    <li>Course Reference <i class="fa fa-long-arrow-right"></i><span>P0277FCHE01D</span></li>
+                    <li>Application Number <i class="fa fa-long-arrow-right"></i><span>1635474</span></li>
+                    <li>Start Date <i class="fa fa-long-arrow-right"></i><span>18/Sep/2017</span></li>
+                </ul>
+            </div>
+ </section>
+<div class="container">
+	<div class="row">
+        <div class="col-lg-20 col-md-30 col-sm-26 col-xs-16 bhoechie-tab-container">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 bhoechie-tab-menu">
+              <div class="list-group">
+                <a href="#" class="list-group-item active text-center">
+                  <h4 class="glyphicon glyphicon-plane"></h4><br/>Personal Detail
+                </a>
+                <a href="#" class="list-group-item text-center">
+                  <h4 class="glyphicon glyphicon-road"></h4><br/>Education
+                </a>
+                <a href="#" class="list-group-item text-center">
+                  <h4 class="glyphicon glyphicon-home"></h4><br/>Experience
+                </a>
+                <a href="#" class="list-group-item text-center">
+                  <h4 class="glyphicon glyphicon-cutlery"></h4><br/>Personal Statement
+                </a>
+                <a href="#" class="list-group-item text-center">
+                  <h4 class="glyphicon glyphicon-credit-card"></h4><br/>Additional Details
+                </a>
+                <a href="#" class="list-group-item text-center">
+                  <h4 class="glyphicon glyphicon-credit-card"></h4><br/>Referees  
+                </a>
+                <a href="#" class="list-group-item text-center">
+                  <h4 class="glyphicon glyphicon-credit-card"></h4><br/>Declarations  
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
+                <!-- flight section -->
+                <div class="bhoechie-tab-content active">
+                    <!-- <center>
+                      <h1 class="glyphicon glyphicon-plane" style="font-size:14em;color:#55518a"></h1>
+                      <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
+                      <h3 style="margin-top: 0;color:#55518a">Flight Reservation</h3>
+                    </center> -->
+                    @personalDetail()
+                </div>
+                <!-- train section -->
+                <div class="bhoechie-tab-content">
+                    <!-- <center>
+                      <h1 class="glyphicon glyphicon-road" style="font-size:12em;color:#55518a"></h1>
+                      <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
+                      <h3 style="margin-top: 0;color:#55518a">Train Reservation</h3>
+                    </center> -->
+                    @educationDetail()
+                </div>
+    
+                <!-- hotel search -->
+                <div class="bhoechie-tab-content">
+                   <!--  <center>
+                      <h1 class="glyphicon glyphicon-home" style="font-size:12em;color:#55518a"></h1>
+                      <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
+                      <h3 style="margin-top: 0;color:#55518a">Hotel Directory</h3>
+                    </center> -->
+                    @experienceDetail()
+                </div>
+                <div class="bhoechie-tab-content">
+                    <!-- <center>
+                      <h1 class="glyphicon glyphicon-cutlery" style="font-size:12em;color:#55518a"></h1>
+                      <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
+                      <h3 style="margin-top: 0;color:#55518a">Restaurant Diirectory</h3>
+                    </center> -->
+                    @personalStatementDetail()
+                </div>
+                <div class="bhoechie-tab-content">
+                    <!-- <center>
+                      <h1 class="glyphicon glyphicon-credit-card" style="font-size:12em;color:#55518a"></h1>
+                      <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
+                      <h3 style="margin-top: 0;color:#55518a">Credit Card</h3>
+                    </center> -->
+                    @additionalDetail()
+                </div>
+                <div class="bhoechie-tab-content">
+                    <!-- <center>
+                      <h1 class="glyphicon glyphicon-credit-card" style="font-size:12em;color:#55518a"></h1>
+                      <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
+                      <h3 style="margin-top: 0;color:#55518a">  Card</h3>
+                    </center> -->
+                    @refereeDetail()
+                </div>
+                <div class="bhoechie-tab-content">
+                   <!--  <center>
+                      <h1 class="glyphicon glyphicon-credit-card" style="font-size:12em;color:#55518a"></h1>
+                      <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
+                      <h3 style="margin-top: 0;color:#55518a">  Card</h3>
+                    </center> -->
+                    @declarationDetail()
+                </div>
+            </div>
+        </div>
+  </div>
+</div>
+<!-- <section class="main-body">
+            <div class="main-body-inner">
+
+                <h1>PG Cert Networking</h1>
+
+                <ul id="course-details">
+                    <li>Course Reference <i class="fa fa-long-arrow-right"></i><span>P0277FCHE01D</span></li>
+                    <li>Application Number <i class="fa fa-long-arrow-right"></i><span>1635474</span></li>
+                    <li>Start Date <i class="fa fa-long-arrow-right"></i><span>18/Sep/2017</span></li>
+                </ul>
+            </div>
+ </section> -->
+<!-- <section id="progress-wrapper">
+            <ul id="progress-list">
+                 
+                <li>
+                    <a href="#" id="pw_pDets">
+                        Personal Details
+                        <i class="fa fa-clock-o status-in-progress"><span>inProgress</span></i>
+                    </a>
+                </li>
+                
+                 
+                <li>
+                    <a href="#" id="pw_ed">
+                        Education
+                        <i class="fa fa-clock-o status-in-progress"><span>inProgress</span></i>
+                    </a>
+                </li>
+                
+                 
+                <li>
+                    <a href="#" id="pw_exp">
+                        Experience
+                        <i class="fa fa-clock-o status-in-progress"><span>inProgress</span></i>
+                    </a>
+                </li>
+                
+                 
+                <li>
+                    <a href="#" id="pw_pStmt">
+                        Personal Statement
+                        <i class="fa fa-clock-o status-in-progress"><span>inProgress</span></i>
+                    </a>
+                </li>
+                
+                
+                 
+                <li>
+                    <a href="#" id="pw_adDets">
+                        Additional Details
+                        <i class="fa fa-clock-o status-in-progress"><span>inProgress</span></i>
+                    </a>
+                </li>
+                
+                 
+                <li>
+                    <a href="#" id="pw_ref">
+                        Referees
+                        <i class="fa fa-clock-o status-in-progress"><span>inProgress</span></i>
+                    </a>
+                </li>
+                
+                 
+                <li>
+                    <strong id="pw_dec" class="current-step">
+                        Declarations
+                        <i class="fa fa-circle-o status-pending"><span></span></i>
+                    </strong>
+                </li>
+                
+            </ul>
+            <div class="f-a-m-outer hide">
+                	<div class="form-alert-message">
+						<h3>Missing Information</h3>
+						<div class="f-a-m-inner"></div>
+					</div>
+            </div>
+        </section> -->
+        
+        
+
+
+	<footer class="footer text-right"> </footer>
+
+
+	@foot()
+	<script src="@routes.Assets.versioned("js/studentRegistration.js")"></script>
+	
+</body>
+</html>

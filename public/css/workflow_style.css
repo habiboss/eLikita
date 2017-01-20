@@ -1,0 +1,484 @@
+		#wrapper {
+			max-width: 1280px;
+			margin: 0px auto;
+		}
+		
+		header {
+			height: 55px;
+			width: 100%;
+			background-color: #004596;
+		}
+		
+		#fixed_top {
+			position: fixed;
+			top: 0px;
+			right: 0px;
+			left: 0px;
+			z-index: 100;
+			heigth: 100px;
+		}
+		
+		tr.hrtop td:not(:first-child){
+			border-top:gray solid 1px;
+		}
+		
+		header #header_center {
+			margin: 0px auto;
+			max-width: 1280px;
+			height:55px;
+		}
+		
+		#right_header {
+			margin: 0px;
+			padding: 0px;
+			width: 50%;
+			display: inline-block;
+			text-align: right;
+			height:55px;
+			position:absolute;
+			right:20px;
+		}
+		
+		input[type=radio] {
+			width: 15px;
+			height: 15px;
+			background: white !important;
+		}
+		
+		#left_header {
+			margin: 0px;
+			padding: 0px;
+			width: 50%;
+			display: inline-block;
+			text-align: left;
+			height:55px;
+		}
+		
+		nav {
+			border-bottom: 2px solid #004596;
+			background-color: #fff;
+			-moz-box-shadow: 0 4px 5px rgba(204,204,204,.8);
+			-webkit-box-shadow: 0 4px 5px rgba(204,204,204,.8);
+			box-shadow: 0 4px 5px rgba(204,204,204,.8);
+			margin-bottom: 1px;
+		}
+		div#content {
+			/*border-radius: 5px;*/
+			/*border: 1px solid #ccc;*/
+			font-family: Arial,sans-serif;
+			font-size: 12px;
+			text-transform: none;
+			background-color: #fff;
+			/*margin: 10px auto;*/
+			/*max-width: 1280px;*/
+			/*min-height: 300px;*/
+			/*-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.1);*/
+			/*-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.1);*/
+			/*box-shadow: 0 1px 2px rgba(0,0,0,0.1);*/
+		}
+		
+		nav #menu {
+			text-align: left;
+			vertical-align: middle;
+			height: 100%;
+			max-width: 1280px;
+			margin: 0px auto;
+		}
+		nav ul {
+			display: inline;
+			text-align: left;
+			margin: 0px;
+			height: 100%;
+			padding: 0px;
+			width: 100%;
+		}
+		
+		nav ul li {
+			height: 100%;
+			vertical-align: top;
+			line-height: 39px;
+			position: relative;
+			display: inline-block;
+			list-style: none;
+		}
+		
+		nav ul li a:hover {
+			color:#004596;
+		}
+		
+		nav>div>ul>li:last-child a {
+			border-right: 1px solid lightgray;
+		}
+		
+		nav ul li a {
+			border-left: 1px solid lightgrey;
+			text-decoration: none;
+			color: #707070;
+			float: none;
+			width: auto;
+			text-align: center;
+			cursor: pointer;
+			height: 39px;
+			padding: 10px 11px 11px 11px;
+			line-height: 25px;
+			font-family: Arial,sans-serif;
+			font-size: 14px;
+			text-transform: none;
+		}
+		
+		nav ul li a:hover, nav>div#menu>ul>li#active>a {
+			color:#004596;
+			background-color: #eee;
+			background-repeat: repeat-x;
+		}
+		
+		footer {
+			max-width: 1280px;
+			margin: 0px auto;
+			color: gray;
+			text-align: center;
+		}
+		
+		fieldset.help {
+			position: relative;
+			font-weight: normal;
+			font-size: 12px;
+			margin: 7px 0px;
+			border: 1px solid #BBB;
+			font-family: sans-serif;
+			word-break: break-word;
+			white-space: normal;
+			/* transparency isn't possible, if color behind of background color isn't white...so color mixed
+			background-color: rgba(255,221,0,0.3);
+			*/
+			background-color: #FFFFCC;
+			padding: 10px;
+			-webkit-border-radius: 5px;
+			-moz-border-radius: 5px;
+			border-radius: 5px;
+		}
+		
+		fieldset.help legend {
+			position: absolute\9;
+			top: -.7em\9;
+			left: .5em\9;
+			background-color: rgba(255,255,255,0.5)\9;
+		}
+		
+		fieldset.subgroup
+		{
+			position: relative;
+			font-weight: normal;
+			font-size: 12px;
+			margin: 0px 0px;
+			margin-top: 5px;
+			border: 1px solid #BBB;
+			font-family: sans-serif;
+			background-color: rgba(255,221,0,0.3) !important;/*<!--rgba(0, 69, 150,0.1)-->*/
+			padding: 10px;
+			-webkit-border-radius: 5px;
+			-moz-border-radius: 5px;
+			border-radius: 5px;
+		}
+
+		
+		fieldset.subgroup legend {
+			position: absolute\9;
+			top: -.7em\9;
+			left: .5em\9;
+			background-color: rgba(255,255,255,0.5)\9;
+			color: black;
+		}
+		
+		@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+   		/* spezifische CSS-Klassen für den IE10 stehen innerhalb dieser media queries */
+   		
+	   		fieldset.help legend {
+				position: absolute;
+				top: -.7em;
+				left: .5em;
+				background-color: rgba(255,255,255,0.5);
+			}
+			
+			form div.formElements span {
+				display: inline-block;
+				vertical-align: top;
+				position: relative;
+				padding-top: 2px;
+				padding-left: 0px
+			}
+		}
+		
+		fieldset.message {
+			position: relative;
+			font-weight: normal;
+			font-size: 12px;
+			margin: 7px 0px;
+			border: 1px solid #BBB;
+			font-family: sans-serif;
+			background-color: rgba(255,221,0,0.3);
+			padding: 10px;
+			-webkit-border-radius: 5px;
+			-moz-border-radius: 5px;
+			border-radius: 5px;
+		}
+		fieldset legend {
+			font-weight: bold;
+		}
+		
+		fieldset {
+			border: 1px solid gray;
+			padding: 10px;
+			-webkit-border-radius: 5px;
+			-moz-border-radius: 5px;
+			border-radius: 5px;
+		}
+		
+		label.dispLabelBold {
+			text-align: right;
+			width: 300px;
+			padding-right: 10px;
+			display:inline-block;
+			font-weight: bold;
+		}
+		fieldset.info>label {
+			line-height: 18px;
+			vertical-align: bottom;
+			padding-left: 5px;
+		}
+		
+		table.datatable th{
+			text-align: left;
+			padding-bottom: 5px;
+		}
+		
+		table.datatable td {
+			vertical-align: top;
+		}
+		
+		.progTitle {
+			border-radius: 5px;
+		}
+		table#progHeaderLine{
+			padding-left: 5px;
+			padding-right: 15px;
+		}
+		
+		div#linkBox {
+			color: #000;
+			line-height: 24px;
+			margin-top: 10px;
+			margin-left: 315px;
+		}
+		
+		div#linkBox a {
+			color: #000;
+		}
+		
+		input.button {
+			background-color: rgba(0, 69, 150,0.1);
+			padding: 2px, 5px;
+			border-radius: 5px;
+			border: 1px solid gray;
+			cursor: pointer;
+		}
+		
+		input.button:hover {
+			background-color: #004596;
+			color: white;
+		}
+		
+		table.datatable {
+			/*max-width: 1280px;*/
+			border-collapse: collapse;
+		}
+		
+		table.datatable td {
+			word-break:break-word;
+			color: #000;
+			padding: 2px;
+		}
+		
+		table.datatable td.hr {
+			 background-color: transparent !important;
+		}
+				
+		tr.doku:hover td {
+			 background-color: transparent !important;
+		}
+		
+		table.datatable a{
+			color: #000;
+			text-decoration: underline;
+		}
+		
+		form {
+			padding:0px 0px;
+		}
+		
+		form label {
+			line-height: 28px;
+			vertical-align: top;
+			width: 200px;
+			display: inline-block;
+		}
+		form select, form input[type=text] {
+			padding-right: 3px;
+			border-width: 1px;
+			border-style: solid;
+			border-radius: 5px;
+			border-color: #999;
+			padding-left: 3px;
+			min-width: 40px;
+			padding-top: 2px;
+			padding-bottom: 2px;
+			margin-left: 0px;
+			max-width:300px;
+		}
+		
+		form select option {
+		    background: #fff; /* style the dropdown bg color */
+		}
+		
+		form div.formElements {
+			display: inline-block;
+			line-height: 28px;
+		}
+		
+		form div.formRadioBlock {
+			line-height: 23px !important;
+		}
+		
+		form div.formElements input[type=radio] {
+			vertical-align: middle; margin: 0px;
+		}
+		
+		form div.formElements span {
+			display: inline-block;
+			vertical-align: top;
+			position: relative;
+			padding-top: 0px;
+			padding-top: 2px\9;
+			padding-left: 0px\9;
+			padding-left: 5px;
+		}
+		
+		fieldset.infobox {
+			background-color: #E6EDF5 !important;
+		}
+		
+		fieldset#labelDescription>a{
+			line-height: 25px;
+			color: #000;
+			display: inline-block;
+			vertical-align: top;
+			width: 300px;
+			text-align: right;
+		}
+		
+		fieldset#labelDescription>span{
+			line-height: 25px;
+			display: inline-block;
+			vertical-align: top;
+			width: 690px;
+			padding-left: 10px;
+		}
+		
+		h3 {
+			margin-left: 3px;
+			border-bottom: 1px solid #004596;
+			padding-bottom: 1px;
+			font-weight: normal;
+			color: #222;
+		}
+		
+		fieldset {
+			border: 1px solid #666;
+		}
+		
+		span#count {
+			font-style: italic;
+		}
+		
+		div#world-map {
+			margin-top: 15px;
+			padding: 10px 0px;
+			border: 1px solid #aaa;
+			height: 500px;
+			max-width: 995px;
+			width: 100%;
+			text-align: center;
+		}
+		div#world-map svg{
+			max-width: 995px !important; 
+			width: 100% !important; 
+		}
+		circle {
+			cursor: pointer;
+		}
+		
+		a {
+			color: #000;
+		}
+		
+		div#languageBox {
+			width: 100%;
+			text-align: right;
+		}
+
+		select.error {
+			border: 1px solid red;
+		}
+		
+		input[type=radio].error {
+			outline: 1px solid red;
+		}
+		
+		
+		div#loading_image {
+			background: transparent;
+			display: none;
+		}
+		
+		table.roundedEdgeWithBorder,tr.roundedEdgeWithBorder,td.roundedEdgeWithBorder{
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+			-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+			box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+		}
+		
+		table.datatable.roundedEdgeWithBorder{
+			border: none;
+		}
+		
+		table.formTable{
+			overflow: auto;
+		}
+		
+		td.drag_row{
+			cursor:	move;
+		}
+		
+		tr.roundedEdge,td.roundedEdge {
+			border-radius: 5px;
+			text-transform: none;
+			-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+			-moz-box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+			box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+			/*padding-left: 3px;*/
+			padding-top: 2px;
+			padding-left: 4px;
+		}
+img[src$="online_help.png"] {
+	background-color: #004993;
+    border-radius: 16px !important;
+    padding: 1px;
+}
+ img[src$="noHelp.png"] { 
+	background-color: #676767;
+    border-radius: 16px !important;
+    padding: 1px;
+}
+		
+		a:hover,a:link,a:active,a:visited{text-decoration:none;}

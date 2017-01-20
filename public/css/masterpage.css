@@ -1,0 +1,864 @@
+/*############################################################################################
+Copyright © Anglia Ruskin University 2009
+Text and layout styles for ARU Master page.
+############################################################################################*/
+
+
+/*############################################################################################
+
+    Global page styles
+
+############################################################################################*/
+
+body
+{
+    font-family: Arial,Verdana,Helvetica,sans-serif;
+    font-size: 75%;
+	line-height: 18px;
+    margin: 0px auto;
+}
+
+h1, h2, h3, h4, h5 {
+		margin: 0;
+		padding: 0;
+}
+
+h1
+{
+    font-size: 1.5em; /* (16px*75%)*1.5=18px */    
+}
+
+h2
+{
+    font-size: 14px; /* (16px*75%)*1.25=15px */  
+}
+
+h3
+{
+    font-size: 1em; /* (16px*75%)*1=12px */
+}
+
+h4
+{
+    font-size: 1em; /* (16px*75%)*1=12px */
+}
+
+a
+{	
+	text-decoration:underline;
+}
+
+a:hover
+{
+	text-decoration:none;
+}
+
+a:active
+{
+	text-decoration:underline;
+}
+
+p
+{
+    font-size: 1em; /* (16px*75%)*1=12px */
+	line-height:1.5em;
+	margin: 1.5em 0;    
+}
+
+.nowrap
+{
+    white-space: nowrap;
+}
+
+.hidden
+{
+    display: none;
+}
+
+#ajaxloader-animation
+{
+    width:100%;
+    text-align:center;    
+}
+/*RESET*/
+fieldset
+{
+    border:0 none;
+	margin: 0;
+	padding: 0;
+}
+
+fieldset legend
+{
+   display:none;
+}
+
+ul, ol
+{
+	margin:0;
+	padding:0;
+}
+
+fieldset
+{
+	margin:0 15px;
+}
+
+form
+{
+	margin:0px;
+	padding:0px;
+}
+
+/* Added 10/10/2011 */
+.feature
+{
+	width: 50%;
+	background: #ebe7e0;
+	margin: 30px 0;
+	padding: 10px 20px 10px 20px;
+}
+
+.newfeature
+{
+	/*width: 25%;*/
+	background-color: #d6fad8;
+	color: #000;
+	margin: 30px 0;
+	padding: 10px 20px 10px 20px;
+	font-weight: bold;
+	/*margin: 1em auto;*/
+	text-align: center;
+}
+
+/*############################################################################################
+
+	Page header
+
+############################################################################################*/
+
+#header-container
+{
+    width: 100%;
+    clear: both;
+    background: #ffffff url(/templates/portal/images/header_background.gif) repeat-x scroll;
+    overflow: hidden;
+}
+
+#header-content
+{
+    margin: 0 auto;
+    min-width: 960px;
+    width: 960px;
+}
+
+#logo
+{
+    float: left;
+}
+
+#logo h1
+{
+    margin: 0em;
+    padding: 0em;
+    text-indent: -9999px;
+}
+
+@media print
+{
+    #logo h1
+    {
+        text-indent: 0px;
+    }
+}
+
+#logo h1 a
+{
+    background: transparent url(/templates/portal/images/anglia_ruskin_logo.gif) no-repeat scroll top;
+    float: left;
+    height: 146px;
+    width: 226px;
+}
+
+
+#shortlinks
+{
+    background: #ffeef6 no-repeat scroll left bottom;
+    border-top: 5px solid #722d4d;
+    float: right;
+    margin: 0;
+}
+
+#shortlinks ul
+{
+    background: transparent no-repeat scroll right bottom;
+    margin: 0;
+    padding: 10px 1em;
+}
+
+#shortlinks ul li
+{
+    background: transparent url(/templates/portal/images/shortlink_pipe.gif) no-repeat scroll right center;
+    display: inline;
+    height: 0.1em;
+    line-height: 1.2em;
+    padding: 2px;
+}
+
+#shortlinks ul li.none
+{
+    background: transparent none repeat scroll 0;
+    border: medium none;
+}
+
+#shortlinks ul li.none form
+{
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+#shortlinks a:hover
+{
+    text-decoration: underline;
+}
+
+#shortlinks ul li a
+{
+    color: #000000;
+    font-size: 0.9166em;
+    font-weight: bold;
+    margin: 0;
+    padding: 0 0.4em 0 0.4em;
+    text-decoration: none;
+}
+
+#shortlinks
+{
+    background: #ffeef6 no-repeat scroll left bottom;
+    border-top: 5px solid #722d4d;
+    float: right;
+    margin: 0;
+}
+
+#shortlinks ul
+{
+    background: transparent no-repeat scroll right bottom;
+    margin: 0;
+    padding: 10px 1em;
+}
+
+#shortlinks ul li
+{
+    background: transparent url(/templates/portal/images/shortlink_pipe.gif) no-repeat scroll right center;
+    display: inline;
+    height: 0.1em;
+    line-height: 1.2em;
+    padding: 2px;
+}
+
+#shortlinks ul li.none
+{
+    background: transparent none repeat scroll 0;
+    border: medium none;
+}
+
+#shortlinks ul li.none form
+{
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+#shortlinks a:hover
+{
+    text-decoration: underline;
+}
+
+#shortlinks ul li a
+{
+    color: #000000;
+    font-size: 0.9166em;
+    font-weight: bold;
+    margin: 0;
+    padding: 0 0.4em 0 0.4em;
+    text-decoration: none;
+}
+
+#header-secondary-content
+{
+	line-height: 58px;
+	clear:right;
+	text-align:right;
+	font-size: 24px;
+	padding:30px 20px 0 0;
+	color:white;
+}
+
+/*############################################################################################
+
+	Directory search header controls
+
+############################################################################################*/
+
+#keymain label
+{
+    color:#ffffff;
+}
+
+#dirsearch
+{
+    font-size:1.0833em;
+    padding:2px;
+}
+
+/*############################################################################################
+
+	Sharepoint header controls
+
+############################################################################################*/
+
+#control-toolbar-container
+{
+    background: #d6d6d6;
+    width: 100%;
+    clear: both;
+    overflow: hidden;
+}
+
+#control-toolbar
+{
+    padding: 2px 0px;
+    width: 960px;
+    margin: 0px auto;
+}
+
+#view-all-content
+{
+    width: 220px;
+    float: left;
+    margin: 0px;
+    clear: none;
+}
+
+#view-all-content a
+{
+    background-image: url(/templates/portal/images/siteactionsmenugrad.gif);
+    border: 1px solid #6593CF;
+    color: #ffffff;
+    display: block;
+    line-height: 1.1666em;
+    height: auto;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 2px;
+}
+
+#view-all-content a:hover
+{
+    background-image: url(/templates/portal/images/siteactionsmenuhovergrad.gif);
+}
+
+#sp-controls
+{
+    width: 700px;
+    float: left;
+    margin: 0px;
+}
+
+#sign-out
+{
+    float: right;
+    clear: none;
+}
+
+#site-menu
+{
+    float: right;
+    clear: none;
+}
+
+#page-edit-bar
+{
+    width: 960px;
+    margin: 0px auto;
+    clear: both;
+}
+/*############################################################################################
+
+	Navigation menu
+
+############################################################################################*/
+
+/*
+#############################################################
+  FIRST LEVEL (Four sets of links)
+#############################################################
+*/
+
+#sp-top-navigation-menu
+{
+	font-family: Arial, Helvetica, sans-serif;
+	width: 960px;
+	margin: 0px auto;
+	overflow: visible;
+	border-top: 1px solid #a74f78;
+}
+
+#main-navigation-menu-container p, 
+#main-navigation-menu-container li, 
+#main-navigation-menu-container ul, 
+#main-navigation-menu-container a
+{
+	margin:0;
+	padding:0;
+
+}
+
+#main-navigation-menu-container
+{
+	font-family: Arial, Helvetica, sans-serif; 
+	width: 100%;
+    background: #ffeef6;
+    overflow: auto;
+}
+
+#main-navigation-menu
+{
+	border-top: 1px solid #b07490;
+	background-color: #672544;
+	overflow: hidden;		
+}
+
+#main-navigation-menu ul
+{
+	font-weight: bold;
+	color: #ffffff;
+	width: 960px;
+	margin: 0px auto;
+}
+
+#main-navigation-menu ul li
+{
+    float: left;
+    list-style: none;
+}
+
+#main-navigation-menu ul li a
+{
+	color: #ffffff;
+	display: block;
+	float:left;
+	padding: 10px 10px 9px 10px;
+	margin:0;
+	text-decoration:none;
+}
+
+#main-navigation-menu ul li a.navigation-menu-controller
+{
+
+	float:left;
+	padding: 10px 0px 9px 0px;
+	margin:0;
+}
+
+#main-navigation-menu ul li a span
+{
+	padding: 0;
+	margin: 0;
+}
+
+#main-navigation-menu ul li a:hover
+{
+	background: #8a4566;
+	color: #ffffff;
+}
+
+#main-navigation-menu ul li a.active
+{
+	color: #fff;
+	background: #49102b;
+}
+
+#main-navigation-menu ul li a:hover.active
+{
+	background: #49102b;
+}
+
+
+/* menu closed */
+#main-navigation-menu ul li em
+{
+	background: #672544 url(../images/icons/main-navigation-submenu-em-arrow.gif) no-repeat scroll left ;
+	padding: 12px;
+	margin: 0px
+}
+
+/* menu closed / hover */
+#main-navigation-menu ul li a em.navigation-menu-controller-jump-link-hover
+{
+	background: #8a4566 url(../images/icons/main-navigation-submenu-a-hover-arrow.gif) no-repeat scroll left;
+}
+
+#main-navigation-menu ul li a.jump-link-hover
+{
+	background: #8a4566;
+}
+
+#main-navigation-menu ul li a em.navigation-menu-controller-hover
+{
+	background: #8a4566 url(../images/icons/main-navigation-submenu-em-hover-arrow.gif) no-repeat scroll left;
+}
+
+/* menu open */
+#main-navigation-menu ul li em.active
+{		
+	background: #49102b url(../images/icons/main-navigation-submenu-em-arrow-active.gif) no-repeat scroll left;
+}
+
+/* menu open hover - not supported by IE6 */
+#main-navigation-menu ul li a:hover em.active
+{
+	background: #49102b url(../images/icons/main-navigation-submenu-em-arrow-active-hover.gif) no-repeat scroll left;
+}
+
+.active-nav-link
+{
+    background: #ccff33;
+}
+
+.navmenu-dropdown-link-text
+{
+	display:none;
+}
+
+/*
+#############################################################
+  SECOND LEVEL (Four sets of links)
+#############################################################
+*/
+
+
+#main-navigation-submenu
+{
+	font-family: Arial, Helvetica, sans-serif;   	
+	width: 100%;
+	background: #49102b;
+	display: none;   
+	margin: 0;
+	padding: 0;
+	clear: both;
+	overflow: auto;
+}
+
+#main-navigation-submenu-container
+{
+	width: 960px;
+	margin: 0px auto;
+	padding: 15px 0;
+	overflow:auto;
+}
+
+#main-navigation-submenu-container .list-block 
+{
+	float: left;
+	width: 220px;
+}
+
+#main-navigation-submenu-container .list-block li
+{
+
+	list-style: none;		
+	line-height:16px;
+	margin: 4px 10px; 
+}
+
+#main-navigation-submenu-container .list-block li a
+{
+	display: block;
+	text-decoration: none;
+	padding: 4px 8px 4px 8px;
+	background: #551936;
+}
+
+#main-navigation-submenu-container .list-block li a, 
+#main-navigation-submenu-container .list-block li a:visited
+{
+	color: #faf4f7;
+}
+
+#main-navigation-submenu-container .list-block li a:hover 
+{
+	background: #6d2c4b;
+}
+
+/*
+#############################################################
+  STAFF SEARCH (HTML form)
+#############################################################
+*/
+
+#staff-directory-links ol 
+{
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+#staff-directory-links fieldset 
+{
+	overflow: auto;
+	width: 755px;
+	background: #551936;
+	-moz-border-radius: 4px;
+	padding: 15px 0 12px 15px;
+}
+
+#staff-directory-links label
+{
+	color: #faf4f7;
+}
+
+#staff-directory-links .label-title 
+{
+	display: block;
+	overflow: auto;
+	float: left;
+	width: 150px;
+}
+
+#name-field label 
+{
+	font-weight: bold;
+} 
+
+#name-field input, #dept-field select, #job-field input, #location-field input 
+{
+	padding: 2px;
+	margin: 0 0 8px 0;
+}
+
+#staff-directory-links p
+{
+	width: 200px;
+	float: left;
+	margin: 0 20px 0 0;
+	padding: 0 20px 0 0;
+	color: #faf4f7;
+	border-right: 1px dotted #fff;
+}
+
+input#dirsearch 
+{
+	padding: 3px 5px 3px 5px;
+}
+
+/*
+#############################################################
+  END: STAFF SEARCH (HTML form)
+#############################################################
+*/
+
+/*############################################################################################
+
+	Page components and content container layout 
+
+############################################################################################*/
+
+#browser-check-flash-information, 
+#browser-check-javascript-information
+{
+	margin: 2px auto;
+	width: 960px;
+	min-width: 960px;
+	background-color: #FAF8CC;
+	border: 1px solid #C8B560;
+	color: #000000;
+	font-size: 1.0833em;
+	font-weight: bold;
+	text-align: center;
+	padding: 5px;
+}
+
+#browser-check-flash-information
+{
+    display: none;
+}
+
+#welcome-container
+{
+	overflow:auto;	
+	padding:10px 0px 6px 0px;
+	margin: 0px auto;
+	width: 960px;	
+}
+
+#welcome-name
+{  
+	font-size: 2em;	
+	font-weight:bold;
+	text-align:left;
+	line-height: 24px;
+}
+
+#welcome-date
+{
+	font-size: 2em;	
+	text-align:right;
+	line-height: 24px;
+}
+
+#information-container
+{
+	width: 100%;
+	clear: both;
+	background: #ffffff;
+	overflow: hidden;
+}
+
+#content-container
+{
+	width: 100%;
+	clear: both;
+	padding-top: 20px;
+	background: #f3f3f3;
+	border-top: 1px solid #d6d6d6;
+	/*background: #ffeef6;*/
+	/* background: #ffff00; */
+}
+
+#page-content
+{
+	margin: 0px auto;
+	width: 960px;
+	min-width: 960px;
+	overflow: auto;
+	/* background: #33ff00; */
+}
+/*############################################################################################
+
+	search components - google, directory search
+
+############################################################################################*/
+
+
+#google-search fieldset
+{
+    border: 0 none;
+}
+
+#google-search legend
+{
+    display: none;
+}
+
+#google-search-field
+{
+    border: 2px solid #d2d2d2;
+}
+
+#google-search-button
+{
+    font-size: 1.0833em;
+    padding: 2px;
+}
+
+
+#google-search
+{
+	background-color: #ffffff;
+	border: solid 1px #cbadbb;
+	margin-bottom: 10px;
+}
+
+#google-search h3
+{
+	border-bottom: solid 4px #ebebeb;
+	padding: 0.75em 0px;
+	margin: 0.5em 0.75em;
+}
+
+/*############################################################################################
+
+	footer content
+
+############################################################################################*/
+
+#footer-container
+{
+	width: 100%;
+	clear: both;
+	margin: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #531733;
+	font-size: 0.9166em;
+	padding: 15px 0px;
+	overflow: auto;
+}
+
+#footer-content
+{
+	width: 960px;
+	margin: 0px auto;
+	padding: 0px;
+	background-color: #531733;
+	color: #ffffff;
+}
+
+#footer-content .container-220 
+{
+	margin: 0 10px;
+}
+
+#footer-content h4 
+{
+	padding-bottom: 3px;
+	border-bottom: 1px dotted #fff;
+}
+
+#footer-content a:link, #footer-content a:visited 
+{
+	color: #fff;
+}
+
+#footer-legal-statements-container
+{
+	width: 100%;
+	background: #3d0b22;
+	clear: both;
+	margin: 0px;
+	padding: 12px 0px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 0.9166em;
+	overflow: auto;
+	border-top: 1px solid #884363;
+}
+
+#footer-legal-statements-content
+{
+	width: 960px;
+	margin: 0px auto;
+	padding: 0px;
+	color: #ffffff;
+}
+
+#copyright-information
+{
+	width: 700px;
+	float: left;
+	padding: 0px;
+	margin: 0px 20px 0px 10px;
+}
+
+#legal-information
+{
+	width: 220px;
+	float: left;
+	padding: 0px;
+	margin: 0px 10px 0px 0px;
+}
+
+#legal-information a:link, #legal-information a:visited
+{
+	color:#fff;
+}

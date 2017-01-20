@@ -1,0 +1,25 @@
+# Home
+GET         /index                                                                           controllers.Application.index()
+GET         /loginAdmin                                                                      controllers.Application.loginAdmin()
+GET         /logout                                                                          controllers.Application.logout()
+GET         /authentification                                                                controllers.Application.authentification()
+
+
+GET         /index1                                                                           controllers.Application.index()
+GET         /index2                                                                          controllers.Application.index2()
+GET         /index3                                                                          controllers.Application.index3()
+GET         /courseManagement                                                                controllers.Application.courseManagement()
+GET         /studentRegistration                                                             controllers.Application.studentRegistration()
+GET         /login                                                                           controllers.Application.login()
+GET         /loginX                                                                          controllers.Application.loginX()
+GET         /staffRegistration                                                               controllers.Application.staffRegistration()
+GET         /courseInformation                                                               controllers.Application.courseInformation()
+GET         /businessRegistration                                                            controllers.Application.businessRegistration()
+GET         /registration                                                                    controllers.Application.registration()
+
+
+POST         /save                                                            controllers.businessRegistrationCtrl.save()
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/*file                                                               controllers.Assets.versioned(path="/public", file: Asset)

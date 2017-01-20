@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+@registrationHeader()
+<link href="@routes.Assets.versioned("css/sv.css")" rel="stylesheet">
+<link href="@routes.Assets.versioned("css/sits.css")" rel="stylesheet">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div class="sv-page-content sv-container">
+
+<noscript>
+Your browser appears to have Javascript disabled. This web application requires Javascript to be enabled in order for it to function correctly. If you continue without using browser scripting then, unfortunately, we cannot support any issues that arise. Please contact customer support for more help. Thank you.
+&lt;br&gt;We only use cookies in e:Vision that are essential for authentication and security. By continuing, you are agreeing to us placing cookies outlined in our privacy policy on your device. If you wish to opt out then you will not be able to use e:Vision, do  not log in and close your web browser. Please contact your faculty or service representative.
+</noscript>
+    
+<input type="hidden" name="%.WEB_HEAD.MENSYS.1">
+<!-- body-start.hts page header include ends here -->
+
+<!-- Start Of Extra Javascripts -->
+<script type="text/javascript" src="../javascript/siw_lgn.js"></script>
+<!-- End Of Extra Javascripts -->
+<script>
+    sits_attach_event(window, "load", load);
+</script>
+
+<!-- there was a body javascript need to attach to load using sits_Attach_Event ??? -->
+<form method="POST" action="SIW_LGN" name="f" autocomplete="off" onsubmit="show()" class="siw_lgn--aru">
+
+  <div class="sv-row">
+<!--    <div class="sv-col-md-12">	-->
+      
+        
+          
+        
+      
+  </div>
+  
+  <!-- title section  -->
+  <div class="sv-row">
+      <div class="sv-page-header sv-col-md-12">
+        
+          
+            <h1 class="sv-col-md-12">
+              e:Vision login
+	          </h1>
+            
+			<!-- Unused boilerplate. df11 <p>
+              <x-subst type="html" name="BP003.DUMMY_B.MENSYS">
+                This page is the SITS e:Vision Portal login screen. Please use the form below to supply your login details and click the 'login' button to access the system.
+              </x-subst>
+            </p> -->
+          
+        
+    </div>
+  </div>
+
+  <!-- data section  -->
+  <div class="sv-row">
+<!--	2014-04-01	Rob P	Removed Tribal Default		-->
+   <div class="sv-col-md-12">		
+	<div id="sitspagedatasection">
+      
+        
+          
+<input type="hidden" name="SCREEN_WIDTH.DUMMY.MENSYS.1" id="sits_screen_width" value="1920">
+<input type="hidden" name="SCREEN_HEIGHT.DUMMY.MENSYS.1" id="sits_screen_height" value="1080">
+<script type="text/javascript">
+  var inp = null;
+  if(inp=document.getElementById("sits_screen_width")) {
+    inp.value = screen.width;
+  }
+  if(inp=document.getElementById("sits_screen_height")) {
+    inp.value = screen.height;
+  }
+</script>
+        
+      <input type="hidden" name="%.DUMMY.MENSYS.1">
+    </div>
+</div>
+  </div>
+
+  
+    
+      <input type="hidden" name="RUNTIME.DUMMY.MENSYS.1" value="2016112314240847%1B326B0D2C0AF337A72371C46B43C5DCBE5D86F956EDB8AD74ACE26DB5BF16481E4E4A950E1D4174CE6D49E045B070F4FEC3F924FF539C631C85F3B549B72386E1%1B721F402F56354ACCA6DA63538F0E014B%1Bhttps://e-vision.anglia.ac.uk/urd/sits.urd/run/siw_portal.url?C935D8F0BC604E99IKWhIqCbDrYhNugQGXARRCdOQzDKjhi817hZq3fprzdzzfGmcr_UU-IfxT8GOlYqb3ZNhYQ_cBiSLA3PM_v3Iw">
+      <input type="hidden" name="PARS.DUMMY.MENSYS.1" value="">
+      
+        
+          <div class="sv-row">
+            <div class="sv-col-md-12">
+              <div class="sv-panel sv-panel-primary">
+                <div class="sv-panel-heading">
+                  <h2 class="sv-panel-title">
+                    Please enter your username and password here:
+                  </h2>
+                </div>
+                <div class="sv-panel-body">
+                  <div class="sv-form-horizontal">
+                     <!--<legend>
+                        <x-subst type="html" name="BP005.DUMMY_B.MENSYS">Please enter your username and password here</x-subst>
+                      </legend>-->
+                      <div class="sv-form-group">
+                        <label for="MUA_CODE.DUMMY.MENSYS" class="sv-col-sm-2">
+                          Username:
+                        </label>
+						<div class="sv-col-sm-5">
+                        <input type="text" name="MUA_CODE.DUMMY.MENSYS.1" value="" id="MUA_CODE.DUMMY.MENSYS" class="sv-form-control">
+						</div>
+                      </div>
+                      <div class="sv-form-group">
+                        <label for="PASSWORD.DUMMY.MENSYS" class="sv-col-sm-2">
+                          Password:
+                        </label>
+						<div class="sv-col-sm-5">
+                        <input type="password" name="PASSWORD.DUMMY.MENSYS.1" value="" id="PASSWORD.DUMMY.MENSYS" class="sv-form-control"> 
+						</div>
+                      </div>
+                      <div class="sv-row">
+                       <div class="sv-col-sm-2 sv-col-sm-offset-2">
+                           <input type="submit" name="BP101.DUMMY_B.MENSYS.1" value="Login" class="sv-btn sv-btn-block sv-btn-primary">
+                        </div>
+                        <div class="sv-col-sm-6">
+                            <a href="../run/siw_pqs.forgot?" class="sv-btn sv-btn-block sv-btn-default">Forgotten your password?</a>
+                        </div>
+                      </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+      
+    
+  
+</form>
+<!--	2016-04-01	Rob P	Added Cookie Awareness	-->
+<script type="text/javascript" src="../javascript/cookie-awareness.js"></script> 
+<!-- body-end.hts page header include starts here -->
+
+        </div>
+@registrationFooter()
+
+</body>
+</html>

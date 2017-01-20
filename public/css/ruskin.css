@@ -1,0 +1,1710 @@
+/* header color 432018
+menu color 92383F 
+
+*/
+html {background-color    : #fff;}
+body{margin:0px;}
+/* Skiplinks */
+#skiplinks, .skiplink {display: none;}
+
+
+/* Wrap */
+#htmlwrap, #wrapper1, #wrapper2, #centercolumn, #centercolumnnoright, #centerpadding, #contentstart, #contentpane, #centralpane, #contentstart, #mainwrap {margin:0;padding:0;}
+
+#mainwrap {clear: both; overflow: auto; padding: 0 0 40px 0;}
+#centercolumn {
+margin-right: 180px;
+margin-left : 00px;
+}
+
+/* Page header */
+#pageheader {}
+
+/* ----------------------------------------------------*/
+
+/* Global styles added for reskin */
+h1 {font-size: 25px; letter-spacing: -1px; line-height: 28px;}
+h2, h3, h4, h5 {margin: 20px 0 0 0}
+h2 {font-size: 20px}
+.news-events-links h2 {font-size: 16px; margin: 15px 0 10px 0; color: #333;}
+.portlet h2 {font-weight: bold}
+h3 {font-size: 16px}
+.links-list h3 {margin: 15px 0 10px 0; color: #333;}
+h4 {font-size: 14px}
+h5 {font-size: 12px}
+p {line-height: 18px; margin: 10px 0;}
+ul {margin: 8px 0 0 35px}
+ol {margin: 8px 0 0 45px}
+ul li, ol li {margin: 0 0 4px 0}
+a:hover {text-decoration: none;}
+.links-list ul {margin: 0 0 0 15px; list-style: square;}
+.links-list 
+{
+	border-top: 3px solid #d6d6d6; 
+	margin: 0 0 20px 0;
+	padding: 0;
+}
+.news-events-links 
+{
+	border-top: 3px solid #d6d6d6;
+	margin: 0 0 20px 0;
+	padding: 0;
+}
+a:link, a:visited {color: #144C86}
+.bluebox p {margin: 0 0 4px 0}
+#my-anglia-home h2 {font-size: 16px; margin-bottom: 10px;}
+#my-anglia-home #maincontentblockdept {padding: 20px 20px 0 20px;}
+#my-anglia-home .boxes {margin:0; padding: 0 0 15px 0; border-bottom: 3px solid #D6D6D6;}
+
+/* ----------------------------------------------------*/
+
+/* Logo */
+#logo {
+	/*float: left;
+	width: 200px;
+	height: 84px;
+	background: #003C74;*/
+}
+#logo img {
+	/*border: 0;*/
+}
+
+/* Ruskin page header */
+#pageheaderruskin {
+	/* background: #fff;
+    background-repeat: repeat-x;
+	min-height: 102px;*/
+	border-bottom:1px solid #ffffff;
+	margin:11px 0 0px 0;
+	padding:0 0 0px 0;
+	height: 93px;
+	min-height: 93px;
+	
+}
+* html div#pageheaderruskin {height: 93px;}
+#pageheaderruskin h1{
+	height: 43px;
+	margin:0px 0 0 17px;
+	padding:0px 0 0 0px;
+	text-indent:17px;
+}
+/* Ruskin logo */
+#logoruskin {
+	/*float: right;
+	
+	height: 102px;*/
+	height: 93px;
+	margin:0;
+	padding:0;
+	width: 250px;
+}
+#logoruskin img {/*border: 0;*/}
+
+/* Ruskin left curve */
+#leftcurveruskin {
+	/*float: left;
+    background-repeat: no-repeat;
+	width: 14px;
+	height: 102px;*/
+	height: 93px;
+	margin:0;
+	padding:0;
+}
+
+/* Top Toolbar */
+#tblinks {
+	/*float: right;
+	width: 270px;
+	background: #CEDAEA;
+	padding-top: 5px;
+	padding-bottom: 5px;*/
+}
+#tblinks ul {
+	/*border: 0px;
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	text-align: center;*/
+}
+#tblinks ul li {
+	/*display: block;
+	float: left;
+	margin: 0px;
+	text-align: left;*/
+}
+#tblinks ul li a {
+	/*font-weight: bold;
+	padding: 0px 10px 0px 5px;*/
+}
+
+/* Ruskin Top Toolbar */
+#tblinksruskin {
+	/*min-height: 46px;*/
+}
+* html div#tblinksruskin {height: 46px;}
+
+#tblinksruskin ul {
+	/*border: 0px;
+	list-style-type: none;
+	margin: 0px;
+	padding: 6px 0 0 0;
+	text-align: center;*/
+}
+#tblinksruskin ul li {
+	/*display: block;
+	float: left;
+	margin: 0px;
+	text-align: left;*/
+}
+#tblinksruskin ul li a {
+	/*font-weight: bold;
+	padding: 0 1.5em 0 0;
+	text-decoration: underline;*/
+}
+#tblinksruskin ul li a:hover {
+	/*text-decoration: none;*/
+}
+
+/* Page headings */
+#deptheadings {
+	/*height:93px;margin: 0;*/
+	padding: 0px  0px  0px  0px;
+	
+	/*vertical-align:baseline;*/
+	
+}
+#deptheadings h1 {
+	/*color: #fff;
+	margin: 0;
+	padding: 0;*/
+}
+#deptheadings h2 {
+	/*color: #6799CC;
+	margin: 0;
+	padding: 0;
+	font-size: 120%;*/
+}
+
+/* The floating menu to the left */
+#mainmenupane {
+	float: left;
+	clear: both;
+	width: 220px;
+	margin-bottom: 24px;
+	padding: 0px;
+	border: 0px;
+	background: #fff;
+}
+/* fixes 3px jog bug in IE win, Hides from IE5-mac */
+* html div#mainmenu {margin-right: -3px;}
+/* End hide from IE5-mac */
+
+/* Main menu - FIRST LEVEL */
+/* Remember that colours are defined in the style[colour].css file, selected by the CMS */
+/* We have to be very specific in defining each nested ul ass CSS doesn't cascade too well (ironic, eh?) */
+#menu, #navColumn {
+/* padding-top:21px;
+padding-bottom:13px; */
+}
+#menu ul, #navColumn ul {
+	/*
+	padding: 0;
+	margin: 0;*/
+	margin: 0 0 0 15px; 
+	list-style: none;
+	/* background: #92383F; */
+	font: 100%/180% arial, times, sans-serif;
+	padding-top:0px;
+
+}
+#menu ul li, #navColumn ul li {
+	/*padding: 0;*/
+	line-height: 16px;
+	padding: 6px 10px 7px 15px;
+	/* border-top: 1px solid #fff; */
+	margin: 0;
+}
+#menu ul li a, #navColumn ul li a {
+	/*color: #fff;
+	margin-left: 5px;
+	
+	outline: none;display:block;*/
+	font-weight: normal;
+	text-decoration: none;
+	margin: 0;
+	padding: 0;
+	
+}
+#menu ul li a:hover {
+	/*color: #000;*/
+	text-decoration: underline;
+}
+
+/* Main menu - SECOND LEVEL */
+#menu ul ul {
+	/*font: small/100% verdana, arial, times, serif;
+	padding: 5px;
+	background: #F7F7FF; */
+	list-style: none;
+	margin: 8px 0 0 0;
+}
+#menu ul  ul li,#navColumn ul  ul li {
+	/*border: 0;
+	margin-left: 4px;
+	padding-left: 6px;
+	margin-top: 8px;
+	
+	background-repeat: no-repeat;
+	background-position: 0px 5px;*/
+	padding: 4px 10px 4px 15px;
+	background-image: url('/anet/graphics/bullet.gif');
+}
+#menu ul ul li a, #navColumn ul ul li a {
+	/*color: #19437D;
+	margin: 0 0 0 2px;
+	padding: 0;
+	
+	outline: none;
+	font-weight: normal;*/
+	text-decoration: none;
+}
+#menu ul ul li a:hover {
+	/*color: #000;*/
+	text-decoration: underline;
+}
+
+/* Main menu - THIRD LEVEL */
+#menu ul ul li ul {
+}
+#menu ul ul li ul li {
+	padding: 4px 10px 4px 15px;
+	/*border:0;
+	margin-left: 4px;
+	font-size: 90%;*/
+}
+
+/* Main menu - FOURTH LEVEL */
+#menu ul ul li ul li ul {
+}
+#menu ul ul li ul li ul li {
+	/*border:0;
+	margin-left: 4px;
+	font-size: 90%;*/
+}
+
+
+/* submenu (pull-down block) */
+/* Default background colour is overwritten by style[colour].css */
+.submenu {
+	/*background: #F0F7FA;*/
+}
+
+/* Menu divider */
+#menudivider {
+	/*height: 1px;
+	padding: 0;
+	background: #fff;*/
+}
+#menudivider hr {
+	/*width: 100%;
+	height: 1px;
+	padding: 0;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	color: #CEDAEA;*/
+}
+
+/* To highlight the selected menu item */
+#menu .menuselected {
+	/*color: #BE3E30;*/
+}
+
+/* Shortcuts menu ul  - setup for the coloured bars on the left */
+#scmenu {
+}
+#scmenu ul {
+	/*font: small/160% verdana, arial, times, serif;
+	padding: 0;
+	margin: 0;
+	list-style: none;*/
+}
+#scmenu ul li {
+	/*margin: 0;
+	border-top: 1px solid #fff;*/
+}
+#scmenu ul li a {
+	/*color: #19437D;
+	margin: 5px;
+	text-decoration: none;
+	outline: none;
+	font-weight: bold;*/
+}
+#scmenu ul li a:hover {
+	/*color: #000;
+	text-decoration: underline;*/
+}
+
+/* Coloured bars for the left-hand menu */
+/*
+.m-blue		{ background: #6799CC; }
+.m-dblue	{ background: #2F4F90; }
+.m-green	{ background: #97C660; }
+.m-dgreen	{ background: #559A4C; }
+.m-yellow	{ background: #EDC447; }
+.m-brown	{ background: #AD975F; }
+.m-pink		{ background: #E28F1E; }
+.m-plum		{ background: #AE558E; }
+.m-purple	{ background: #84365B; }
+.m-red		{ background: #C0564B; }
+.m-lblue	{ background: #CEDAEA; }
+.m-orange	{ background: #D09924; }
+.m-lorange	{ background: #F0B94F; }
+.m-dept		{ background: #6799CC; }
+.m-selected	{ background: #444; }
+*/
+
+/* Content/central pane */
+
+
+/* Main content */
+#maincontentblock {
+	margin: 0px 172px 0px 330px;
+	padding: 12px;
+}
+/* fixes 3px jog bug in IE win, Hides from IE5-mac */
+/* 129px, which is 3 fewer than the menu width, becauseof the IE6 3px jog */
+* html div#maincontentblock {height: 1%;margin:0px 12px 0px 333px;}
+/* End hide from IE5-mac */
+
+/* Main content - DEPARTMENT */
+
+/* fixes 3px jog bug in IE win, Hides from IE5-mac */
+/* 129px, which is 3 fewer than the menu width, becauseof the IE6 3px jog */
+* html div#maincontentblockdept {height: 1%;margin:0px 12px 0px 12px;}
+/* End hide from IE5-mac */
+
+#maincontentblockdept {
+	margin-left:230px;
+	margin-right: 20px;
+	padding: 25px 0 10px 25px;
+	/*background: green;*/
+}
+/* fixes 3px jog bug in IE win, Hides from IE5-mac */
+/* 129px, which is 3 fewer than the menu width, becauseof the IE6 3px jog */
+* html div#maincontentblockdept {/*height: 1%;margin:0px 0px 0px 0px;*/ }
+/* End hide from IE5-mac */
+* html div#maincontentblockdept h1{/*margin:0px 0px 10px 0px;*/}
+/* #maincontentblockdept h2{margin:0px 0px 10px 0px;} */
+
+/* Content/central pane */
+#centralpane {
+	border-top: 1px solid #fff;
+	background: #fff;
+}
+/* #centralpane a {
+	text-decoration: underline;
+} 
+#centralpane a,  #centercolumn a {
+	text-decoration: underline;
+} */
+/* #centercolumnnoright ul, #centercolumn ul {margin:10px;padding:10px;} */
+
+/* Crumbs */
+/* Default background colour is overwritten by style[colour].css */
+#crumbsbar {
+	/* font: small/160% verdana, arial, times, sans-serif; */
+	color: #333;
+	margin:0 0 0 240px;
+	padding:  5px 10px 5px 15px;
+	font: 90%/175% arial, times, sans-serif;
+	border-top: 5px solid #d6d6d6;
+	background: #efefef;
+	color: #6799CC;
+}
+#crumbsbar a {
+	color: #fff;
+	text-decoration: none;
+	outline: none;
+}
+#crumbsbar a:hover {
+	color: #000;
+	text-decoration: underline;
+}
+
+
+
+/* Sub navigation (floats to the right */
+/* Default background colour is overwritten by style[colour].css */
+#subnav {
+	float: right;
+	background-color: #f6f6f6;
+	width: 172px;
+	margin: 15px 0 15px 15px;
+	color: #fff;
+	width: 157px;
+	padding:15px 0px 0px 0px;
+	list-style: none;
+}
+* html div#subnav {/*margin-top:-65px;*/}
+empty{}
+/* #subnav a {text-decoration:none;} */
+#subnav h2 {
+	/*color: #fff; background: url('/anet/graphics/arrow.gif'); background-repeat: no-repeat; background-position: 0px 0; margin: 0; padding-bottom: 4px; line-height: 100%;*/
+	text-align: left;
+	padding: 5px 10px 5px 10px;
+	font-size: 140%;
+}
+#subnav h3 {
+	/*color: #fff; line-height: 100%; margin:0; padding:0;*/
+	text-align: left;
+	/* font-size: 120%; */
+	margin: 5px 15px 5px 15px;
+}
+#subnav h4 {
+	/* color: #fff; background: url('/anet/graphics/arrow2.gif'); background-repeat: no-repeat; background-position: 0px 3px; margin: 1em 0 0 0; padding-bottom: 4px; line-height: 100%;*/
+	text-align: left;
+	font-size: 110%;
+	padding: 5px 15px 5px 15px;
+}
+#subnav ul {
+	/* font: 90%/180% arial, times, sans-serif; */
+	padding-top:0px;
+	margin: 15px;
+	list-style: none;
+}
+#subnav p {
+	padding: 0 0px 0 0px;
+	margin: 0;
+	padding: 5px 5px 5px 10px;
+}
+#subnav ul li a {
+	margin: 0;
+	padding: 0;
+}
+#subnav ul li a:hover {}
+.subnavInt {
+	/*padding: 12px;*/
+}
+.subnavInt a {
+	/*color: #545452;*/
+}
+.subnavInt a:hover	{
+	/*color: #000;*/
+}
+.subnavInt ul {
+	/*margin: -12px 4px 4px 4px;
+	padding: 12px;*/
+}
+.subnavInt li {
+	/*margin-bottom: 8px;
+	color: #fff;*/
+}
+
+
+
+/* Callout bar */
+#calloutbar {
+	/*float: left;
+	width: 132px;*/
+}
+/* fixes 3px jog bug in IE win, Hides from IE5-mac */
+* html div#calloutbar {margin-right: -3px;}
+/* End hide from IE5-mac */
+
+#calloutbardept	{
+	/*float: right;
+	width: 132px;
+	margin: 0px 12px 0px 0px;*/
+}
+/* fixes 3px jog bug in IE win, Hides from IE5-mac */
+* html div#calloutbardept {margin: 0px 0px 0px 0px;}
+/* End hide from IE5-mac */
+
+#calloutbardept a {
+	/*text-decoration: underline;*/
+}
+#calloutcontent {
+	/*font-size: 80%;
+	padding: 12px 0px 12px 12px;*/
+}
+#calloutcontent p {
+	/*color: #888;*/
+}
+/* Default background colour is overwritten by style[colour].css */
+#calloutcontent img	{
+	/*border: 3px solid #6799CC;*/
+}
+/* Remove the borders on images in CQ Author */
+#calloutcontent table img {
+	/*border: 0;*/
+}
+
+/* Main content */
+#maincontentblock {
+	/*margin: 0px 172px 0px 330px;
+	padding: 12px;*/
+}
+/* fixes 3px jog bug in IE win, Hides from IE5-mac */
+/* 129px, which is 3 fewer than the menu width, becauseof the IE6 3px jog */
+* html div#maincontentblock {height: 1%;margin:0px 12px 0px 333px;}
+/* End hide from IE5-mac */
+
+
+
+/* Footer */
+#footer {
+	/*clear: both;
+	margin: 24px 0px 0px 0px;
+	padding: 12px;
+	font-size: 80%;
+	color: #777;
+	border-top: 1px solid #ddd;
+	background: #eee;*/
+}
+#footer img {
+	/*border: 0;*/
+}
+#footer a:hover {
+	/*text-decoration: underline;*/
+}
+#footertext {
+	/*margin-left: 200px;*/
+}
+
+/* Temporary links for the development version */
+#templinks {
+	/*margin-top: 300px;*/
+}
+
+
+/* Special HTML styles */
+pre {
+	/*font-size: 100%;*/
+}
+
+/* Communiqué styles */
+.featureText {
+	padding: 20px;
+	margin: 1em 0 1em 0;
+	background: #F0F7FA;
+	border: 1px solid #ddd;
+}
+.featureText h4 {
+	margin: 0px 0px 1em 0px;
+}
+.featureText ul {
+	margin-bottom: 0px;
+}
+.featureText pre {
+	margin: 0;
+}
+.featureText form {
+	margin: 0 0 0.5em 0;
+}
+
+.emboldenate {
+}
+.featureText h4 {
+	/*margin: 0px 0px 1em 0px;*/
+}
+.featureText ul {
+	/*margin-bottom: 0px;*/
+}
+.featureText pre {
+	/*margin: 0;*/
+}
+.featureText form {
+	/*margin: 0 0 0.5em 0;*/
+}
+
+/* Pertinent Date */
+.pertDate {
+	/*font-weight: bold;*/
+}
+
+/* Incidental styles */
+.grey {
+	/*color: #888;*/
+}
+
+/* Author spacer */
+#authorspacer {
+	/*height: 41px;
+	background-color: #B3B6C5;*/
+}
+
+/* Article quotes - similar to featureText */
+.quoteText {
+	/*padding: 20px;
+	margin: 1em 0 1em 0;
+	background: #F0F7FA;
+	border: 1px solid #ddd;*/
+}
+.quoteText h4 {
+	/*margin: 0px 0px 1em 0px;*/
+}
+
+/* Footnote - similar to featureText */
+.footnote {
+	/*padding: 20px;
+	margin: 1em 0 0 0;
+	background: #eee;
+	border: 1px solid #ddd;
+	font-size: 80%;*/
+}
+.footnote img {
+	/*float:left;
+	margin-right: 1em;
+	margin-bottom: 1em;*/
+}
+.footnote h4 {
+	/*margin: 0px 0px 1em 0px;
+	font-size: 120%;*/
+}
+
+/* Staff profile */
+.profileImage {
+	/*float: left;
+	width: 140px;
+	text-align: center;
+	padding: 8px;
+	margin: 8px;
+	background-color: #F0F7FA;
+	border:1px solid #aaa;
+	height:180px;
+	clear:none;
+	position:static;*/
+}
+.profileHR {
+	/*width: 100%;
+	display: block;
+	float: none;
+	height: 220px;*/
+}
+/* fixes 3px jog bug in IE win, Hides from IE5-mac */
+/** html .profileHR {height: 20px;}*/
+/* End hide from IE5-mac */
+
+/* Styled bullet lists */
+.specialUL ul {
+	/*list-style: circle;
+	color: #666;*/
+}
+.specialUL ul li {
+	/*padding: 0.2em;*/
+}
+
+.featureUL ul {
+	/*list-style: square;
+	color: #666;*/
+}
+.featureUL ul li {
+	/*padding: 0.2em;
+	margin-bottom: 1em;*/
+}
+
+/* CQ images */
+.tiImageLeft {
+	/*float: left;
+	margin: 1em 1em 1em 0;*/
+	
+}
+.tiImageRight {
+	/*float: right;
+	margin: 1em 0 1em 1em;*/
+	
+}
+
+/* Download paragraph type */
+.fileDownload {
+	/*padding: 20px;
+	margin: 1em 0 0 0;
+	background: #F0F7FA;
+	border: 1px solid #ddd;*/
+}
+.fileIcon {
+}
+.fileText {
+}
+.fileFile {
+	/*font-size: 80%;
+	color: #999;*/
+}
+
+
+
+/* Table styling */
+#maincontentblock table.tab {
+	/*margin: 1em 0 0 0;
+	background: #F0F7FA;
+	border: 1px solid #ddd;
+	border-collapse: collapse */
+}
+#maincontentblock table.tab td {
+	/*margin: 4px; 	
+	padding: 4px;*/
+}
+.hlrow {
+	/*background: #E4F1F7;*/
+}
+
+
+
+/* Form layout */ 
+.formFormat fieldset { 
+	/*padding: 1em; 
+	border:1px solid #ddd;*/
+}
+.formFormat label { 
+	/*float:left; 
+	width:25%; 
+	margin-right:0.5em; 
+	padding-top:0.2em; 
+	text-align:right; 
+	font-weight:bold; */
+}
+.formFormat legend { 
+	/*padding: 0.1em 0.5em; 
+	text-align:right; 
+	color: #265A73; 
+	font-weight: bold;
+	font-size: 120%;*/
+}
+.formFormat input, textarea {
+	/*margin-bottom: 1em;*/
+}
+.formFormat submit {
+	/*margin-top: 1em;*/
+}
+.hideme {
+	/*visibility: hidden;*/
+}
+
+/* Dropdowns */
+optgroup {
+}
+.subjectTitle {
+	/*color: #003C74;*/
+}
+
+#maincontentblockdept h1 
+{
+	font-size: 25px;
+	letter-spacing: -1px;
+	margin: 0 0 20px 0;	
+}
+
+h2 {
+	line-height:110%;
+}
+h3 {
+line-height:110%;
+
+}
+h4 {
+}
+h5 {
+}
+
+/* anet */
+#anetH1 {
+	padding-right:0px;
+	margin-top:0px;
+	padding-top:10px;
+	background: #F0F7FA;
+	
+}
+
+#anetlogid {
+	padding:3px 0 0 0;
+	margin:0;
+	display:block;
+	font-size:small;
+	line-height:15px;
+}
+#anetlogid a {
+	font-size:80%;
+}
+#anetlogid a:hover {
+	text-decoration:underline;
+}
+#anettabs {
+	margin:0px 0px 0px 0;
+    padding:0px 0 0px 0;
+	float:left;
+	/*background:url("/anet/graphics/tab_bg.gif")  repeat-x bottom;*//*line-height:110%;border-top:1px dashed #5B5B67;*/
+	font-size:80%;
+	/*height:35px;border-bottom:1px solid lime;*/
+	
+}
+#anettabs ul {
+    margin:11px 0 0 0;
+    padding:0;
+	float:left;
+    list-style:none;
+	/*height:50px;*/
+    }
+* html div#anettabs ul {margin:10px 0 0 0;}
+#anettabs li {
+    float:left;
+    margin:0 4px 0 0px;
+     padding:0 0px 3px 0px;
+	/*height:50px;vertical-align:baseline;*//*background:url("/anet/graphics/right_tab.gif") no-repeat right top;*/
+    }
+#anettabs a {
+    display:block;
+	/*background:url("/anet/graphics/left_tab.gif") no-repeat left top;vertical-align:baseline;*/
+	padding:2px 6px 0px 2px;
+	margin: 0px 0px 0 4px ;
+	border-top:1px #9C9A9C solid;
+	font-weight:bold;
+    }
+#anettabs a:hover { font-weight:bold;}
+#anettabs #sel {
+    /*background-image:url("/anet/graphics/right_tab_sel.gif");*/
+	 margin:0px 4px 0px 0px;
+     padding:0 0px 3px 0px;
+    }
+  #anettabs #sel a {
+   /* background-image:url("/anet/graphics/left_tab_sel.gif");*/
+	background:#432018;
+	padding:2px 6px 0px 2px;
+	margin: 0px 0px 0 4px ;
+	color:#ffffff;
+	font-weight:bold;
+	border-top:1px #896e42 solid;
+	
+    }
+	
+	
+	/* anetnav */
+	
+	
+	
+	
+/* anet nav styles */
+
+/* fast */
+
+#fast {
+z-index:10;
+display : block;
+background-color:#f7fbf7;
+/*background: #2F4F90;*/
+font: small/160% verdana, arial, times, sans-serif;
+border-style : solid; 
+border-width : 0px 0px 1px 0px; 
+border-color:#ffffff;
+margin : 0px 0px 0px 0px; 
+padding : 0px 0px 5px 0px; 
+}
+#fast fieldset {
+display : inline; 
+margin : 0px 0px 0px 0px; 
+padding : 0px 0px 0px 0px;  
+border : 0 ; 
+
+}
+#fast form {
+margin : 0px 0px 0px 0px; 
+padding : 0 0px 0px 0px; 
+/*font-size : 80%; */
+}
+
+#fast label {
+text-align : left; 
+
+margin : 0 0px 0 0; 
+text-decoration : none; 
+background-color:#97C660;
+color:#ffffff;
+
+border-width:1px 0 1px 0;
+border-style:solid;
+border-color:#ffffff;
+display:block;
+padding : 0px 5px 0px 5px; 
+/*width:100%;*/
+} 
+
+/* .subbut {
+font-size : 90%; 
+border-style : solid; 
+border-width : 1px; 
+margin : 0px 0px 0px 5px; 
+padding:3px;
+
+} */
+#fast input {
+margin : 5px 0px 5px 5px; 
+
+}
+#fast input[type="submit"] {
+font-size : 90%; 
+border-style : solid; 
+border-width : 1px; 
+margin : 0px 0px 0px 5px; 
+background-color:#ffffcc;
+color:#5c0083;
+}
+#fasttrack  {
+
+
+margin : 0px 175px 0px 0px;  
+
+} 
+/* navsearch - searchbox in left hand menu*/
+
+#navsearch {
+
+	/*font: small/160% verdana, arial, times, serif;*/
+	border-style : solid; 
+	border-width : 0px 0px 0px 0px; 
+	margin : 0px 0px 0px 0px; 
+	padding : 0px 10px 15px 10px; 
+	
+	/*width: 200px;height:185px;*/
+}
+#navsearch form  {
+	margin: 2px 0px 8px 0px;
+	padding: 0px 0px 0px 0px;
+	border-width: 0;
+	/*font-size:90%*/
+}
+#navsearch fieldset  {
+	margin: 0px 0 0px 0px;;
+	padding: 0;
+	border-width: 0;
+	/*font-size:90%*/
+}
+#navsearch legend { 
+	font-size:120%;
+margin:  0px 0px 0px 0px;
+padding:  2px 0px 5px 0px;
+	display:block;
+	font-weight: bold; 
+	}
+#navsearch input{
+	padding : 0px 0px 0px 0px; 
+	margin: 0px 0px 0px 0px;
+	/*border-style: solid;
+	border-width: 1px 1px 1px 1px;float:left;display:block;*/
+}
+
+#navsearch input[type="radio"]{
+	padding : 0px 0px 0px 0px; 
+	margin: 0px 0px 0px 0px;
+}
+
+#navsearch input[type="submit"]{
+display:block;
+margin: 5px 10px 0px 0px;
+float:right;
+
+}
+#navsearch label{
+	padding : 0px 0px 0px 0px; 
+	margin : 0 0px 0 0; 
+	font-size:80%;
+	
+	/*border-width : 0px 0px 0px 0px; text-align : left;display:block;float:left;display:none;text-decoration : none; border-style : solid; */
+}
+
+#navsearch h2 {
+font-size:130%;
+margin:  0px -10px 0px -10px;
+padding:  2px 5px 5px 35px;
+font-weight: bold; 
+}
+#navsearch p{
+clear:both;
+	padding : 5px 0px 0px 0px; 
+	margin : 0 0px 5px 0px; 
+}
+#navsearch a{
+	font-size:90%;
+}
+
+#anetnav 
+{
+	background: #f3f3f3;
+	color: #333;
+	border: 1px solid #d6d6d6;
+	padding: 0 0 5px 0;
+	margin: 30px 0 15px 15px
+}
+#anetnav .login-field-label {font-weight: bold;}
+#anetnav h2 
+{
+	font-size: 14px;
+	margin: 15px 15px 10px 15px; 
+	padding: 0 0 10px 0;
+	border-bottom: 2px solid #c9c9c9;
+}
+#anetnav p {margin: 0 15px 15px 15px;}
+#anetnav ol {list-style: none; margin: 0; padding: 0;}
+#anetnav li {padding-left: 15px;}
+#anetnav fieldset, #anetnav form {margin: 0; padding: 0;}
+#anetnav form {padding-bottom: 10px;}
+#anetnav .login-field input 
+{
+	padding: 3px 2px 3px 2px; 
+	margin: 3px 0 5px 0;
+}
+.anetsubbut {margin: 5px 0 0 0; padding: 5px;}
+a.subbut 
+{
+	font-weight: bold;
+	padding: 8px 10px 8px 10px;
+	margin: 5px 0 0 0;
+	border: 1px solid #999;
+	background: #efefef;
+}
+a:hover.subbut {background: #c2c2c2; color: #000;}
+
+/* RHS */	
+	
+/*#rightpadding{
+	margin:0;
+    padding:5px 5px 0px 5px;
+	color:#ffffff;
+	font-size:90%;
+	
+}*/
+
+/* anet forms */
+#centralpane form { 
+	padding: 1em; 
+	border:1px solid #000;
+	background-color:#fbffee;
+}
+#centralpane fieldset { 
+	padding: 1em; 
+	border:0px solid #ddd;
+	/*background-color:#ffffcc;*/
+}
+#centralpane legend{display:inline;font-weight:bold;}
+/* anet boxes */
+.boxes {
+	/* margin: 0px 0px 10px 0px; */
+	font-size : 100%;
+	font-family : "\"}\"";
+	font-family : inherit;
+	/* margin: 0px 0px 20px 0px; */
+}
+.boxes ul {
+	padding:0px 0px 0 20px;
+	margin:0px 0px 20px 0px ;
+}
+.boxes ul li {
+	padding:2px 0px 2px 0;
+	background-image: url(/templates/portal/images/external_app.gif);
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position: left top;
+	padding-left: 20px;
+	list-style-type: none;
+}
+* html .boxes, .boxesfw {margin: 0px 0px 10px 0px;}
+
+.boxesfw {
+	padding:0px 0px 0 0 ;
+	margin: 0px 0px 10px 0px;
+	font-size : 100%;
+	font-family : "\"}\"";
+	font-family : inherit;
+	margin: 0px 0px 10px 0px;
+}
+
+.boxes h3, .boxesfw h3{
+	font-size:16px;
+	padding : 4px 4px 4px 4px; 
+	margin : 0 0px 5px 0; 
+	font-weight:900;
+}
+.boxes p, .boxesfw p{
+	padding:0px;
+	margin: 4px;
+}
+.boxes li {line-height:120%;padding-bottom:3px;} 
+
+.updown {
+font-size : 110%; 
+padding : 1px 5px 2px 4px; 
+margin : 0% 0px 0% -5px; 
+position : relative; 
+border-style : solid;
+border-width : 0px 0px 0px 0px;
+display:block;
+z-index:10;
+float : right;
+}
+
+.updown img {
+margin : 0px 2px 0px 0px; 
+padding : 0;
+} 
+
+/* #subnav ul {
+	margin : 0px 2px 0px 0px; 
+	padding : 0px 2px 0px 0px; 
+	
+}
+#subnav ul li{
+	margin : 0px 0px 10px 0px; 
+} */
+#subnav h5 {
+	font-size:100%;
+}
+
+
+#cert {
+text-align : center;
+margin: 0px 0px 0px 0px;
+padding:0px;
+display:inline;
+}
+
+img {
+border:0;
+}
+
+/* ANET table styles */
+
+
+table {
+border-collapse: collapse;
+border-spacing: 0px;
+border: 2px black solid;
+margin:0px auto;
+padding: 7px;
+font-family : inherit;
+text-align: center;
+/*position:relative;*/
+width: 100%;
+height: 1%;
+}
+table.test {
+border-collapse: collapse;
+border-spacing: 0px;
+border: 1px black solid;
+margin:0;
+padding: 7px;
+font-family : inherit;
+text-align: center;
+width: 50%;
+height: 100%;
+}
+table.left {
+border-collapse: collapse;
+border-spacing: 0px;
+border: 1px #669999 solid;
+margin:0px auto;
+padding: 7px;
+font-family : inherit;
+text-align: left;
+position:relative;
+}
+table.small {
+border-collapse: collapse;
+width: 70%;
+border-spacing: 0px;
+border: 2px black solid;
+font-family : inherit;
+text-align: center;
+position:relative;
+}
+table.vsmall {
+border-collapse: collapse;
+width: 40%;
+border-spacing: 0px;
+border: 2px black solid;
+font-family : inherit;
+text-align: center;
+position:relative;
+height: 100%;
+}
+table.noborder {
+border-collapse: collapse;
+border-spacing: 0px;
+border: none;
+/*font-family : inherit;*/
+text-align: center;
+position:relative;
+width: 80%;
+}
+table.yellow {
+background-color:#FFFFBB;
+border-collapse: collapse;
+border-spacing: 0px;
+border: 1px black solid;
+margin:0px auto;
+padding: 7px;
+font-family : inherit;
+text-align: center;
+position:relative;
+}
+table.grey2 {
+background-color: #eee;
+/*border-collapse: collapse;*/
+border-spacing: 3px;
+border: 0;
+margin:0px auto;
+padding: 7px;
+font-family : inherit;
+text-align: left;
+position:relative;
+width/**/:/**/90%;
+voice-family: "\"}\"";
+voice-family: inherit;
+width: 90%;
+}
+* html table.yellowleft { /*This is the Tan hack*/
+width: 91%;
+w\idth:  90%;
+}
+table.leftnoborder {
+/*border-collapse: collapse;*/
+height: 1%;
+border-spacing: 3px;
+border: 1px solid;
+padding: 2px;
+font-family : inherit;
+text-align: left;
+margin-left: 0;
+width/**/:/**/90%;
+voice-family: "\"}\"";
+voice-family: inherit;
+width: 90%;
+}
+table.leftnoborder2 {
+/*border-collapse: collapse;*/
+height: 1%;
+border-spacing: 3px;
+border: 0;
+padding: 2px;
+font-family : inherit;
+text-align: left;
+margin-left: 0;
+width/**/:/**/90%;
+voice-family: "\"}\"";
+voice-family: inherit;
+width: 90%;
+}
+* html table.leftnoborder { /*This is the Tan hack*/
+width: 91%;
+w\idth:  90%;
+}
+empty{}
+table.yellowleft {
+background-color:#FFFFBB;
+/*border-collapse: collapse;*/
+border-spacing: 3px;
+border: 0;
+margin:0px auto;
+padding: 7px;
+font-family : inherit;
+text-align: left;
+position:relative;
+width/**/:/**/90%;
+voice-family: "\"}\"";
+voice-family: inherit;
+width: 90%;
+}
+* html table.yellowleft { /*This is the Tan hack*/
+width: 91%;
+w\idth:  90%;
+}
+
+th {
+text-align: center;
+font-weight: normal;
+color:#ffffff;
+background-color:#003399;
+border: 1px solid #000;
+height: 1%;
+text-align: left;
+padding: 4px 5px;
+vertical-align: top;
+font-family : inherit;
+margin-left: 5px;
+margin-bottom: 9px;
+margin-top: 9px;
+}
+th.left {
+text-align: left;
+padding-left: 6px;
+font-weight: normal;
+vertical-align: baseline;
+color:#ffffff;
+background-color:#003399;
+border-width: 1px;
+border-style: solid;
+border-color: black;
+}
+th.noborderleft {
+text-align: left;
+font-weight: normal;
+vertical-align: baseline;
+color:#ffffff;
+background-color:#003399;
+border: none;
+}
+th.nobordercenter {
+text-align: center;
+font-weight: normal;
+vertical-align: baseline;
+color:#ffffff;
+background-color:#003399;
+border: none;
+}
+th a {
+color:#ffffff;
+text-decoration:none;
+}
+th a:hover {
+color:#ffffcc;
+text-decoration:underline;
+}
+th a:visited {
+color:#ffffcc;
+text-decoration:none;
+}
+td {
+border: 1px black solid;
+vertical-align: middle;
+font-family : inherit;
+}
+th.thickleft, td.thickleft {
+border: 1px black solid;
+vertical-align: middle;
+font-family : inherit;
+border-left-width: 2px;
+}
+td.grey2 {
+border: 1px black solid;
+vertical-align: middle;
+font-family : inherit;
+background-color: #dcdcdc;
+color: #000;
+}
+td.noborderleft {
+/*width: 50%;*/
+height: 1%;
+text-align: left;
+padding-left: 3px;
+border: none;
+vertical-align: top;
+font-family : inherit;
+}
+th.noborderleft2, td.noborderleft2 {
+width: 50%;
+height: 1%;
+border: none;
+vertical-align: top;
+font-family : inherit;
+padding-left: 5px;
+padding-right: 5px;
+}
+th.noborderleft3, td.noborderleft3 {
+/*width: 50%;*/
+height: 1%;
+text-align: left;
+padding-left: 3px;
+padding-top: 4px;
+padding-bottom: 4px;
+border: none;
+vertical-align: top;
+font-family : inherit;
+margin-left: 5px;
+margin-bottom: 9px;
+margin-top: 9px;
+}
+tr.greybackground, td.greybackground {
+/*width: 50%;*/
+height: 1%;
+text-align: left;
+padding-left: 3px;
+padding-top: 4px;
+padding-bottom: 4px;
+border: none;
+vertical-align: top;
+font-family : inherit;
+margin-left: 5px;
+margin-bottom: 9px;
+margin-top: 9px;
+color: #000;
+background-color: #dcdcdc;
+}
+td.nobordercgi {  
+/*width: 50%;*/
+height: 1%;
+padding-top: 20px;
+margin-right: 20px;
+border-width: 1px 1px 1px 0px;
+border-style:solid;
+vertical-align: top;
+font-family : inherit;
+background-color: #E5EAF5;
+color: #000;
+}
+td.leftborder {
+/*width: 50%;*/
+height: 1%;
+border-left: thin solid black;
+border-bottom: none;
+border-top: none;
+border-right: none;
+vertical-align: top;
+font-family : inherit;
+margin-left: 5px;
+margin-bottom: 9px;
+margin-top: 9px;
+padding-left: 3px;
+padding-top: 4px;
+padding-bottom: 4px;
+}
+td.nobordercentre {
+height: 1%;
+width: 80%;
+border: none;
+vertical-align: top;
+font-family : inherit;
+text-align: center;
+}
+tr.noborder, td.noborder {
+border: none;
+vertical-align: middle;
+font-family : inherit;
+padding:2px;
+}
+tr.noborderblue, td.noborderblue {
+border: none;
+vertical-align: middle;
+font-family : inherit;
+padding:2px;
+background-color:#99ffff;
+margin-bottom: 2px;
+}
+tr.left, td.left {
+text-align: left;
+width: 50%;
+border: 1px solid;
+vertical-align: middle;
+font-family : inherit;
+padding-left:10px;
+padding-right:5px;
+}
+th.right, tr.right, td.right {
+text-align: right;
+border: 1px solid;
+vertical-align: middle;
+font-family : inherit;
+padding-left:10px;
+padding-right:5px;
+}
+tr.center40, td.center40 {
+text-align: center;
+width: 40%;
+border: 1px solid;
+vertical-align: middle;
+font-family : inherit;
+padding:2px;
+}
+tr.dk td {
+background:#eee; 
+color:#000; 
+border:1px solid #000;
+}
+/* directory classes */
+td.directory {text-align:left; padding:5px 2px 5px 2px; vertical-align:top;}
+
+/* othe ANET styles from common.css */
+
+#footnote {
+ width: 90%;
+ border: none;
+ background-color: #fff;
+}
+#footnote img {
+ width: 90%;
+ height: 0px;
+}
+a.left {
+ display: block;
+ float: left;
+}
+a.right {
+ display: block;
+ float: right;
+}
+
+
+/* national student survey banner */
+#nssurveybanner {
+text-align:center; padding-right:182px; margin:0 0px 20px 0;
+}
+
+* html div#nssurveybanner {
+text-align:center; padding-right:0px; margin:0 0px 20px 0;;
+}
+
+
+/* css for survey software */
+form#phpesp_response .headerGraphic, form#phpesp_response .image{border:0px solid #000000}
+form#phpesp_response legend{font-weight:bold;}
+form#phpesp_response p label {padding-left:2%; padding-bottom: 2%;}
+form#phpesp_response td {padding:2px}
+form#phpesp_response fieldset label {padding-bottom: 2%;}
+
+
+/* css for resmon (fior showing individual result(form) */
+
+.datadiv{float:left;width:100%;background-color:#E5EAF5;}
+.datafield{font-weight:bold; padding:4px; margin:0px; border:0px solid #003399;}
+.datadata{padding:10px; margin:10px; border:1px solid #003399;background-color:#ffffff;}
+
+
+.ldaperror{
+border:2px red solid; padding:5px;margin-bottom:20px;
+}
+.ldaperror h3 {
+padding-bottom:7px;margin:0px;
+}
+
+/*styles for scrolling tables - from http://www.cssplay.co.uk/menu/tablescroll.html*/
+#info {clear:right; padding-bottom:15px; } /*containing div*/
+
+.tableone {width:520px;  margin:0 auto;}
+.tabletwo {width:495px; }
+.th1 {width:99px;}
+.th2 {width:125px;}
+.th3 {width:150px;}
+.th4 {width:99px;}
+
+.td1 {width:99px;}
+.td2 {width:125px;}
+.td3 {width:150px;}
+.td4 {width:79px;}
+
+.tableone {background:#a51c00; border:1px solid #fff; color:#fff;  padding: 7px;}
+.tableone td {border:1px solid #fff; color:#fff;}
+.tableone tbody {background:#eee; color:#000;}
+.tableone caption {background:#fff; color:#404040; font-size:1.2em; margin:0 auto; display: table-caption; caption-side: top; padding-top: 1.3em; padding-bottom: .7em;}
+.tabletwo td {background:#fff; color:#000; padding: 7px; border:1px solid #fff;}
+.tableone th, .tabletwo th {text-align:center; background-color: #efe7e7; color: #000; font-weight: bold;}
+.tabletwo tr.dk td {background:#eee; color:#000; border:1px solid #000;}
+.tabletwo tr td {background:#fff; color:#000; border:1px solid #000;}
+
+.innerb {height:15em; overflow:auto;}
+
+
+/* styles for response messages. e.g. 'database sucessfully updated' etc */
+/* used in filestore*/
+
+
+#centralpane .responseok {
+background-color:#00cc33;
+padding:5px;
+border:1px solid #000000;
+color:#000000;
+font-size:120%;
+font-weight:normal;
+}
+#centralpane .responseerror {
+background-color:red;
+padding:5px;
+border:1px solid #000000;
+color:#ffffff;
+font-size:120%;
+font-weight:normal;
+}
+#centralpane .responseamber {
+background-color:#FF7A0F;
+padding:5px;
+border:1px solid #000000;
+color:#ffffff;
+font-size:120%;
+font-weight:normal;
+}
+
+#centralpane a.edit, #centralpane a.delete, #centralpane a.noedit, #centralpane a.nodelete, #centralpane a.link, a.edit:visited, a.delete:visited, a.link:visited {
+padding:2px;
+font-size:100%;
+margin-left:5px;
+border:1px solid #000000;
+color:#ffffff;
+text-decoration:none;
+}
+.edit {
+background:green;
+}
+.delete{
+background:red;
+}
+.noedit {
+background:#CCFFCC;
+}
+.nodelete{
+background:#FFCCCC;
+}
+.link {
+background:blue;
+}
+
+#centralpane .adminpanel  {
+padding:5px;
+font-size:80%;
+border:1px solid #000000;
+color:#000000;
+text-decoration:none;
+background:#FFEEF6;
+margin:0px 0px 10px 0px;
+
+}
+#centralpane .adminpanel li {
+display:inline;
+padding:5px;
+margin:5px;
+list-style-type:none;
+}
+
+#centralpane .adminpanel a {
+padding:3px;
+border:1px solid #000000;
+color:#ffffff;
+text-decoration:none;
+background:#8A4566;
+}
+#centralpane .adminpanel a:hover {
+color:#ffffff;
+background:#002856;
+}
+
+#filestore{
+margin:0px 0px 0px 0px;
+padding:0px 0px 0px 0px;
+}
+
+#filestore dt{
+margin:0px 0px 0px 0px;
+padding:0px 0px 0px 0px;
+}
+#filestore dd{
+margin:0px 0px 4px 0px;
+padding:3px 5px 5px 40px;
+font-size:80%;
+color:#444444;
+}
+#filestore img{
+vertical-align:middle;
+}
+
+/* arm annual research monitoring */
+
+.armsection {margin:20px 0;float:left; font-size:180%; font-weight:normal;}
+
+/* countering masterpage.css */
+
+#keymain label {color: #000000;}
+/* ol {margin:10px; padding:20px;} */
