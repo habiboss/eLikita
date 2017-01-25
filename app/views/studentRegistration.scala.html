@@ -1,395 +1,997 @@
 <!DOCTYPE html>
 <html>
 @head("Activités")
-	<link href="@routes.Assets.versioned("css/studentRegistration.css")" rel="stylesheet">
 
 <body class="fixed-left">
-<div class="col-lg-12">
-   
-<!--     <div class="pull-left">
- 
-        <div class="navbar-btn navbar-left">
-            <button class="btn null">
-            <span class="glyphicon glyphicon-align-justify"></span>
-            <span class="label-icon null">Menu</span>
-            </button>
-        </div>
-        
-        <div class="navbar-btn navbar-left">
-            <button class="btn null">
-        		<span class="glyphicon glyphicon-dashboard"></span>
-				<span class="label-icon null">Dashboard</span>
-			</button>
-        </div>
 
-    </div>  -->
-    
-<!--     <div class="pull-left">
- 
-        <form class="navbar-form" role="search">
- 
-            <div class="input-group">
-                
-                <span class="input-group-btn">
-                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-                       <span class="glyphicon glyphicon-search"></span>
-                        <span class="label-icon null">Search</span>
-                         <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu pull-left" role="menu">
-					   <li>
-							<a href="#">
-								<span class="fa fa-user"></span>
-								<span class="label-icon null">Search By User</span>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-							<span class="glyphicon glyphicon-book"></span>
-							<span class="label-icon null">Search By Organization</span>
-							</a>
-						</li>
-						<li>
-							<a href="#">
-								<span class="glyphicon glyphicon-search"></span>
-								<span class="label-icon null">Search</span>
-							</a>
-						</li>
-					</ul>
-                </span>
-                
-                <input type="text" style="width:350px;" class="form-control">
-                
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">Go</button>
-                </span>
-                
-            </div>/input-group
-            
-        </form> 
-   
-    </div> -->
-        
- 
-    <div class="pull-right">
-     
-        <div class="navbar-nav navbar-btn navbar-right">
-			<div class="dropdown open">
-				<button class="btn null" data-toggle="dropdown">
-					<span class="glyphicon glyphicon-cog"></span>
-					<span class="label-icon null">Preferences</span>
-				</button>
-                 <ul class="dropdown-menu" style="width:300px; padding:0px;">
-            						
-										<li>
-										
-										    <form class="form-horizontal" id="preferences" action="" method="post" accept-charset="utf-8">
-											
-												<hidden input="" value="netdna.bootstrapcdn.com/bootswatch/3.1.0/" name="theme_url">
-
-												<div class="panel panel-default" id="preferences" style="margin:0px;">
-												
-													<div class="panel-heading">
-														<span class="panel-label">User Preferences</span>
-													</div>
-											   
-													<div class="panel-body">
-                                                    
-                                                        		<div class="form-group">
-																	<label for="nav_theme" class="col-lg-6 control-label">
-																	Navbar
-																	</label>
-																	<div class="col-lg-6">
-    																	<select class="form-control" id="nav_theme" name="nav_theme">
-    																		<option value="navbar-default">Basic</option>
-    																		<option value="navbar-default">Default</option>
-    																		<option value="navbar-default">Inverse</option>
-    																		<option value="navbar-default">Outline</option>
-    																	</select>
-																	</div>
-																</div>
-                                                                
-                                                                 <div class="form-group">
-																	<label for="btn_theme" class="col-lg-6 control-label">
-																	Button Theme
-																	</label>
-																	<div class="col-lg-6">
-    																	<select class="form-control" id="btn_theme" name="btn_theme">
-    																		<option value="btn-primary">Primary</option>
-    																		<option value="btn-default">Default</option>
-    																		<option value="btn-success">Success</option>
-    																		<option value="btn-info">Info</option>
-                                                                            <option value="btn-warning">Warning</option>
-                                                                             <option value="btn-danger">Danger</option>
-                                                                             <option value="btn-inverse">Inverse</option>
-    																	</select>
-																	</div>
-																</div>
-													
-																<div class="form-group">
-																	<label for="theme_name" class="col-lg-6 control-label">
-																	Theme
-																	</label>
-																	<div class="col-lg-6">
-																		<select class="form-control" id="theme_name" name="theme_name">
-																			<option value="amelia"> Amelia </option>
-																			<option value="bootstrap"> Default </option>
-																			<option value="cerulean"> Cerulean </option>
-																			<option value="cosmo"> Cosmo </option>
-																			<option value="cyborg"> Cyborg </option>
-																			<option value="flatly"> Flatly </option>
-																			<option value="journal"> Journal </option>
-																			<option value="lumen"> Lumen </option>
-																			<option value="readable"> Readable </option>
-																			<option value="simplex"> Simplex </option>
-																			<option value="slate"> Slate </option>
-																			<option value="spacelab"> Spacelab </option>
-																			<option value="superhero"> Superhero </option>
-																			<option value="united"> United </option>
-																			<option value="yeti"> Yeti </option>
-																			<option value="whiteplum"> WhitePlum </option>
-																		</select>
-																	</div>
-																</div>
-  
-																<div class="form-group">
-																	<label for="text_size" class="col-lg-6 control-label">
-																	Display Label
-																	</label>
-																	<div class="col-lg-6">
-																		<div class="btn-group" data-toggle="buttons" style="margin:0px padding:0px;">
-																			<label class="btn btn-default toggle-button" style="pull-left margin:0px padding:0px; width:50%">
-																				<input id="inlineradio1" name="display_label" type="radio" value="">
-																				Show
-																			</label>
-																			<label class="btn btn-default toggle-button" style="pull-right margin:0px padding:0px; width:50%">
-																				<input id="inlineradio2" name="display_label" type="radio" value="hide">
-																				Hide
-																			</label>
-																		</div>
-																	</div>
-																</div>
-													
-													</div>
-													
-															<div class="panel-footer">
-																<div class="form-group">
-    																	  <button type="submit" class="btn null">Update</button> 
-																</div>
-															</div>
-											
-										</div></hidden></form></li>
-					</ul>
-			 </div>
-         </div>
-        
-		<div class="navbar-btn navbar-right">
-			<div class="dropdown">
-				<button class="btn null" data-toggle="dropdown">
-					<span class="glyphicon glyphicon-bell"></span>
-					<span class="label-icon null">Alerts</span>
-				</button>
-			</div>
+	@universityDirectoryTopbar() 
+	<div id="welcome-container">
+		<div id="welcome-name" class="container-460">
+			<span id="ctl00_PortalWelcomeBar_LabelUserName"> &nbsp;</span>
 		</div>
- 
-     </div> 
-    
-   
-    
-    </div>
-<section class="main-body">
-            <div class="main-body-inner">
+		<div id="welcome-date" class="container-460">
+			<span id="ctl00_PortalWelcomeBar_LabelDateToday">Tuesday 22
+				November</span>
+		</div>
+	</div>
+	<div class="mainwrap">
+@mainMenuPane()
 
-                <h1>PG Cert Networking</h1>
+		<div id="contentpane">
 
-                <ul id="course-details">
-                    <li>Course Reference <i class="fa fa-long-arrow-right"></i><span>P0277FCHE01D</span></li>
-                    <li>Application Number <i class="fa fa-long-arrow-right"></i><span>1635474</span></li>
-                    <li>Start Date <i class="fa fa-long-arrow-right"></i><span>18/Sep/2017</span></li>
-                </ul>
-            </div>
- </section>
-<div class="container">
-	<div class="row">
-        <div class="col-lg-20 col-md-30 col-sm-26 col-xs-16 bhoechie-tab-container">
-            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 bhoechie-tab-menu">
-              <div class="list-group">
-                <a href="#" class="list-group-item active text-center">
-                  <h4 class="glyphicon glyphicon-plane"></h4><br/>Personal Detail
-                </a>
-                <a href="#" class="list-group-item text-center">
-                  <h4 class="glyphicon glyphicon-road"></h4><br/>Education
-                </a>
-                <a href="#" class="list-group-item text-center">
-                  <h4 class="glyphicon glyphicon-home"></h4><br/>Experience
-                </a>
-                <a href="#" class="list-group-item text-center">
-                  <h4 class="glyphicon glyphicon-cutlery"></h4><br/>Personal Statement
-                </a>
-                <a href="#" class="list-group-item text-center">
-                  <h4 class="glyphicon glyphicon-credit-card"></h4><br/>Additional Details
-                </a>
-                <a href="#" class="list-group-item text-center">
-                  <h4 class="glyphicon glyphicon-credit-card"></h4><br/>Referees  
-                </a>
-                <a href="#" class="list-group-item text-center">
-                  <h4 class="glyphicon glyphicon-credit-card"></h4><br/>Declarations  
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 bhoechie-tab">
-                <!-- flight section -->
-                <div class="bhoechie-tab-content active">
-                    <!-- <center>
-                      <h1 class="glyphicon glyphicon-plane" style="font-size:14em;color:#55518a"></h1>
-                      <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
-                      <h3 style="margin-top: 0;color:#55518a">Flight Reservation</h3>
-                    </center> -->
-                    @personalDetail()
-                </div>
-                <!-- train section -->
-                <div class="bhoechie-tab-content">
-                    <!-- <center>
-                      <h1 class="glyphicon glyphicon-road" style="font-size:12em;color:#55518a"></h1>
-                      <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
-                      <h3 style="margin-top: 0;color:#55518a">Train Reservation</h3>
-                    </center> -->
-                    @educationDetail()
-                </div>
-    
-                <!-- hotel search -->
-                <div class="bhoechie-tab-content">
-                   <!--  <center>
-                      <h1 class="glyphicon glyphicon-home" style="font-size:12em;color:#55518a"></h1>
-                      <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
-                      <h3 style="margin-top: 0;color:#55518a">Hotel Directory</h3>
-                    </center> -->
-                    @experienceDetail()
-                </div>
-                <div class="bhoechie-tab-content">
-                    <!-- <center>
-                      <h1 class="glyphicon glyphicon-cutlery" style="font-size:12em;color:#55518a"></h1>
-                      <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
-                      <h3 style="margin-top: 0;color:#55518a">Restaurant Diirectory</h3>
-                    </center> -->
-                    @personalStatementDetail()
-                </div>
-                <div class="bhoechie-tab-content">
-                    <!-- <center>
-                      <h1 class="glyphicon glyphicon-credit-card" style="font-size:12em;color:#55518a"></h1>
-                      <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
-                      <h3 style="margin-top: 0;color:#55518a">Credit Card</h3>
-                    </center> -->
-                    @additionalDetail()
-                </div>
-                <div class="bhoechie-tab-content">
-                    <!-- <center>
-                      <h1 class="glyphicon glyphicon-credit-card" style="font-size:12em;color:#55518a"></h1>
-                      <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
-                      <h3 style="margin-top: 0;color:#55518a">  Card</h3>
-                    </center> -->
-                    @refereeDetail()
-                </div>
-                <div class="bhoechie-tab-content">
-                   <!--  <center>
-                      <h1 class="glyphicon glyphicon-credit-card" style="font-size:12em;color:#55518a"></h1>
-                      <h2 style="margin-top: 0;color:#55518a">Cooming Soon</h2>
-                      <h3 style="margin-top: 0;color:#55518a">  Card</h3>
-                    </center> -->
-                    @declarationDetail()
-                </div>
-            </div>
-        </div>
-  </div>
-</div>
-<!-- <section class="main-body">
-            <div class="main-body-inner">
+			<div id="crumbsbar">
+				<a href="https://my.anglia.ac.uk/">My.Anglia</a> &gt; My.Anglia
+				login
+			</div>
+			
+			<div id="centralpane">
+				<div id="contentstart">
+					<div id="maincontentblockdept">
+						<!-- <h1>My.Anglia login page</h1>
+						<a id="startcontent"></a>
+						<h4>Anglia Ruskin University One Stop login</h4> -->
 
-                <h1>PG Cert Networking</h1>
+						<form method="post" action="">
+<div class="row">
+		<div class="col-md-12">
+			<h3>Default Tab</h3>
 
-                <ul id="course-details">
-                    <li>Course Reference <i class="fa fa-long-arrow-right"></i><span>P0277FCHE01D</span></li>
-                    <li>Application Number <i class="fa fa-long-arrow-right"></i><span>1635474</span></li>
-                    <li>Start Date <i class="fa fa-long-arrow-right"></i><span>18/Sep/2017</span></li>
-                </ul>
-            </div>
- </section> -->
-<!-- <section id="progress-wrapper">
-            <ul id="progress-list">
-                 
-                <li>
-                    <a href="#" id="pw_pDets">
-                        Personal Details
-                        <i class="fa fa-clock-o status-in-progress"><span>inProgress</span></i>
-                    </a>
-                </li>
-                
-                 
-                <li>
-                    <a href="#" id="pw_ed">
-                        Education
-                        <i class="fa fa-clock-o status-in-progress"><span>inProgress</span></i>
-                    </a>
-                </li>
-                
-                 
-                <li>
-                    <a href="#" id="pw_exp">
-                        Experience
-                        <i class="fa fa-clock-o status-in-progress"><span>inProgress</span></i>
-                    </a>
-                </li>
-                
-                 
-                <li>
-                    <a href="#" id="pw_pStmt">
-                        Personal Statement
-                        <i class="fa fa-clock-o status-in-progress"><span>inProgress</span></i>
-                    </a>
-                </li>
-                
-                
-                 
-                <li>
-                    <a href="#" id="pw_adDets">
-                        Additional Details
-                        <i class="fa fa-clock-o status-in-progress"><span>inProgress</span></i>
-                    </a>
-                </li>
-                
-                 
-                <li>
-                    <a href="#" id="pw_ref">
-                        Referees
-                        <i class="fa fa-clock-o status-in-progress"><span>inProgress</span></i>
-                    </a>
-                </li>
-                
-                 
-                <li>
-                    <strong id="pw_dec" class="current-step">
-                        Declarations
-                        <i class="fa fa-circle-o status-pending"><span></span></i>
-                    </strong>
-                </li>
-                
-            </ul>
-            <div class="f-a-m-outer hide">
-                	<div class="form-alert-message">
-						<h3>Missing Information</h3>
-						<div class="f-a-m-inner"></div>
+			<div class="tabbable-panel">
+				<div class="tabbable-line">
+					<ul class="nav nav-tabs ">
+						<li class="active">
+							<a href="#tab_default_1" data-toggle="tab">
+							Personal Detail </a>
+						</li>
+						<li>
+							<a href="#tab_default_2" data-toggle="tab">
+							Home Address </a>
+						</li>
+						<li>
+							<a href="#tab_default_3" data-toggle="tab">
+							Contact Address </a>
+						</li>
+						<li>
+							<a href="#tab_default_4" data-toggle="tab">
+							Additional Info </a>
+						</li>
+						<li>
+							<a href="#tab_default_5" data-toggle="tab">
+							Previous Study </a>
+						</li>
+						<li>
+							<a href="#tab_default_5" data-toggle="tab">
+							Nationality </a>
+						</li>
+						<li>
+							<a href="#tab_default_5" data-toggle="tab">
+							Passport Detail </a>
+						</li>
+						<li>
+							<a href="#tab_default_5" data-toggle="tab">
+							Visa Detail </a>
+						</li>
+
+						<li>
+							<a href="#tab_default_5" data-toggle="tab">
+							Nationality </a>
+						</li>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane active" id="tab_default_1">
+							<fieldset id="personal_details">
+
+				<legend class="positionHide">Personal Details</legend>
+				<p>Please enter your name with the same spelling and order as it
+					appears on your official identity document e.g. birth certificate
+					or passport.</p>
+
+				<!-- ########################## Title ############################# -->
+
+				<div>
+					<label for="title">Title *</label> <select id="title"
+						name="title" required="" data-parsley-required="true"
+						data-parsley-trigger="change" data-parsley-id="1086">
+						<option value="">Please select</option>
+						<option value="MISS">Miss</option>
+						<option value="MR" selected="selected">Mr</option>
+						<option value="MRS">Mrs</option>
+						<option value="MS">Ms</option>
+						<option value="MX">Mx</option>
+						<option value="CANON">Canon</option>
+						<option value="DR">Dr</option>
+						<option value="LADY">Lady</option>
+						<option value="LORD">Lord</option>
+						<option value="PASTOR">Pastor</option>
+						<option value="PRINCE">Prince</option>
+						<option value="PROFESSOR">Professor</option>
+						<option value="REVEREND">Reverend</option>
+						<option value="SISTER">Sister</option>
+						<!--Dropdown menu populated from TTL table BT6 27/05/2014-->
+					</select>
+					<ul class="parsley-errors-list" id="parsley-id-1086"></ul>
+				</div>
+
+				<!-- ########################## SURNAME AND PREVIOUS NAME(S) ############################# -->
+				<div>
+					<label for="familyName" class="displayedHelp">Surname(s)/Family
+						name(s) *</label> <input type="text" id="familyName"
+						class="compulsoryFieldBg" name="familyName"
+						value="" maxlength="40"
+						data-parsley-maxlength="40" required=""
+						data-parsley-required="true" data-parsley-trigger="focusout"
+						data-parsley-id="0476">
+					<ul class="parsley-errors-list" id="parsley-id-0476"></ul>
+					<em class="displayedHelp">If you don't have a family name just
+						enter a full stop into this field.</em>
+				</div>
+
+				<!-- ########################## GIVEN NAME(S) ############################# -->
+
+				<div>
+					<label for="firstName">First Name(s)/Given name(s) *</label> <input
+						type="text" id="firstName" name="firstName" value=""
+						maxlength="30" data-parsley-maxlength="30" required=""
+						data-parsley-required="true" data-parsley-trigger="focusout"
+						data-parsley-id="0125">
+					<ul class="parsley-errors-list" id="parsley-id-0125"></ul>
+				</div>
+
+				<div>
+					<label for="IPR_FNM2">Middle name</label> <input type="text"
+						id="IPR_FNM2" name="IPR_FNM2" value="" maxlength="30"
+						data-parsley-maxlength="30" data-parsley-trigger="focusout"
+						data-parsley-id="0906">
+					<ul class="parsley-errors-list" id="parsley-id-0906"></ul>
+				</div>
+
+
+				<!-- ######################### PREFERRED NAME ###################### -->
+
+				<div>
+					<label for="preferedName">Preferred Name<a href="#"
+						class="hiddenHelpIcon fa fa-question-circle"><span
+							class="positionHide">Field help.</span></a></label> <input type="text"
+						id="preferedName" name="preferedName" value=""
+						maxlength="30" data-parsley-maxlength="30"
+						data-parsley-trigger="focusout" data-parsley-id="2148">
+					<ul class="parsley-errors-list" id="parsley-id-2148"></ul>
+					<em class="hiddenHelpText hide">The name you prefer to be
+						called (if different to your forename). </em>
+				</div>
+
+
+				<!-- ######################### DATE OF BIRTH AND GENDER ###################### -->
+                <div>
+					<label for="gender">Gender *</label> <select id="gender"
+						class="compulsoryFieldBg" name="gender" required=""
+						data-parsley-required="true" data-parsley-trigger="change"
+						data-parsley-id="8720">
+						<option value="" selected="selected">Please select</option>
+						<option value="M">Male</option>
+						<option value="F">Female</option>
+						<option value="N">Other</option>
+						<option value="X">Prefer not to say</option>
+						<!--Dropdown menu populated from all in use records in GEN table BT6 27/05/2014-->
+					</select>
+					<ul class="parsley-errors-list" id="parsley-id-8720"></ul>
+				</div>
+
+				<div>
+					<label for="dateOfBirth">Date of birth (dd/mm/yyyy) *<a
+						href="#" class="hiddenHelpIcon fa fa-question-circle"><span
+							class="positionHide">Field help.</span></a></label> <input type="text"
+						id="dateOfBirth" name="dateOfBirth" value="20/Aug/1990" required=""
+						data-parsley-required="true" data-parsley-datepkr="IPR_DOB"
+						data-parsley-trigger="change" class="hasDatepicker"
+						data-parsley-id="6524">
+					<ul class="parsley-errors-list" id="parsley-id-6524"></ul>
+					<img class="ui-datepicker-trigger" src="../images/si_calendar.gif"
+						alt="..." title="..." role="button" tabindex="0"> <em
+						class="hiddenHelpText hide">You can change your date of birth
+						here if it's incorrect. </em>
+				</div>
+
+				
+
+			</fieldset>
+						</div>
+						<div class="tab-pane" id="tab_default_2">
+						<fieldset id="home-address">
+				<legend>Home Address</legend>
+				<div>
+					<p>
+						Please enter your Home address details below.<a href="#"
+							class="hiddenHelpIcon fa fa-question-circle"><span
+							class="positionHide">Field help.</span></a>
+					</p>
+					<em class="hiddenHelpText hide">Your home address is your
+						permanent address. If you're an International Agent you should
+						complete the home address with the details of the person who is
+						applying. </em>
+				</div>
+
+
+				<!-- #################### POSTCODE ######################## -->
+
+				<div>
+					<label for="postcode">Post/Zip code</label> <input type="text"
+						id="postcode" name="postcode" value="" maxlength="12"
+						data-parsley-maxlength="12" data-parsley-trigger="focusout"
+						data-parsley-id="2876">
+					<ul class="parsley-errors-list" id="parsley-id-2876"></ul>
+					<input type="button" id="PCOD_HA" name="PCOD_HA"
+						value="Find my address" class="fieldButton"> <em
+						class="displayedHelp">Please note the postcode finder only
+						works for UK addresses. </em>
+				</div>
+
+
+				<!-- #################### HOME ADDRESS LINES 1 - 4 ######################## -->
+
+				<div>
+					<label for="address">Address Line 1 *</label> <input type="text"
+						id="address" name="address" value="" maxlength="50"
+						data-parsley-maxlength="50" required=""
+						data-parsley-required="true" data-parsley-trigger="focusout"
+						data-parsley-id="2562">
+					<ul class="parsley-errors-list" id="parsley-id-2562"></ul>
+				</div>
+
+				<div>
+					<label for="address_2">Address Line 2</label> <input type="text"
+						id="address_2" name="address_2" value="" maxlength="50"
+						data-parsley-maxlength="50" data-parsley-trigger="focusout"
+						data-parsley-id="2301">
+					<ul class="parsley-errors-list" id="parsley-id-2301"></ul>
+				</div>
+
+				<!-- #################### COUNTRY ######################## -->
+
+				<div>
+					<label for="country">Country</label> <select id="country"
+						name="country" data-parsley-id="0729">
+						<option value="" selected="selected">Please select</option>
+						<option value="5826">England</option>
+						<option value="8826">Northern Ireland</option>
+						<option value="7826">Scotland</option>
+						<option value="6826">Wales</option>
+						<option value="602">Afghanistan</option>
+						<option value="853">Aland Islands</option>
+						<option value="603">Albania</option>
+						<option value="604">Algeria</option>
+						<option value="854">American Samoa</option>
+						<option value="605">Andorra</option>
+						<option value="606">Angola</option>
+						<option value="824">Anguilla</option>
+						<option value="607">Antigua and Barbuda</option>
+						<option value="608">Argentina</option>
+						<option value="836">Armenia</option>
+						<option value="855">Aruba</option>
+						<option value="609">Australia</option>
+						<option value="610">Austria</option>
+						<option value="837">Azerbaijan</option>
+						<option value="611">Bahamas</option>
+						<option value="612">Bahrain</option>
+						<option value="787">Bangladesh</option>
+						<option value="613">Barbados</option>
+						<option value="838">Belarus</option>
+						<option value="614">Belgium</option>
+						<option value="668">Belize</option>
+						<option value="640">Benin</option>
+						<option value="615">Bermuda</option>
+						<option value="616">Bhutan</option>
+						<option value="617">Bolivia</option>
+						<option value="887">Bonaire, Sint Eustatius and Saba</option>
+						<option value="848">Bosnia and Herzegovina</option>
+						<option value="618">Botswana</option>
+						<option value="619">Brazil</option>
+						<option value="801">British Antarctic Territory</option>
+						<option value="829">British Indian Ocean Territory</option>
+						<option value="776">British Virgin Islands</option>
+						<option value="620">Brunei</option>
+						<option value="621">Bulgaria</option>
+						<option value="769">Burkina Faso</option>
+						<option value="623">Burundi</option>
+						<option value="624">Cambodia</option>
+						<option value="625">Cameroon</option>
+						<option value="626">Canada</option>
+						<option value="856">Canary Islands</option>
+						<option value="788">Cape Verde</option>
+						<option value="789">Cayman Islands</option>
+						<option value="627">Central African Republic</option>
+						<option value="629">Chad</option>
+						<option value="630">Chile</option>
+						<option value="631">China</option>
+						<option value="857">Christmas Island</option>
+						<option value="858">Cocos (Keeling) Islands</option>
+						<option value="632">Colombia</option>
+						<option value="804">Comoros</option>
+						<option value="633">Congo (Democratic Republic)</option>
+						<option value="634">Congo (Peoples Republic)</option>
+						<option value="859">Cook Islands</option>
+						<option value="635">Costa Rica</option>
+						<option value="834">Croatia</option>
+						<option value="636">Cuba</option>
+						<option value="885">Curacao</option>
+						<option value="882">Cyprus (European Union)</option>
+						<option value="883">Cyprus (Non-European Union)</option>
+						<option value="638">Cyprus (not otherwise specified)</option>
+						<option value="849">Czech Republic</option>
+						<option value="641">Denmark</option>
+						<option value="749">Djibouti</option>
+						<option value="642">Dominica</option>
+						<option value="643">Dominican Republic</option>
+						<option value="786">East Timor (Timor-Leste)</option>
+						<option value="645">Ecuador</option>
+						<option value="768">Egypt</option>
+						<option value="646">El Salvador</option>
+						<option value="790">Equatorial Guinea</option>
+						<option value="851">Eritrea</option>
+						<option value="831">Estonia</option>
+						<option value="648">Ethiopia</option>
+						<option value="649">Falkland Islands</option>
+						<option value="865">Faroe Islands</option>
+						<option value="650">Fiji</option>
+						<option value="651">Finland</option>
+						<option value="653">France</option>
+						<option value="791">French Guiana</option>
+						<option value="822">French Polynesia</option>
+						<option value="792">French West Indies</option>
+						<option value="654">Gabon</option>
+						<option value="655">Gambia</option>
+						<option value="847">Georgia</option>
+						<option value="656">Germany</option>
+						<option value="658">Ghana</option>
+						<option value="659">Gibraltar</option>
+						<option value="661">Greece</option>
+						<option value="828">Greenland</option>
+						<option value="662">Grenada</option>
+						<option value="867">Guadeloupe</option>
+						<option value="796">Guam (US Trust Territories)</option>
+						<option value="663">Guatemala</option>
+						<option value="593">Guernsey</option>
+						<option value="664">Guinea</option>
+						<option value="802">Guinea Bissau</option>
+						<option value="665">Guyana</option>
+						<option value="666">Haiti</option>
+						<option value="667">Honduras</option>
+						<option value="669">Hong Kong</option>
+						<option value="670">Hungary</option>
+						<option value="671">Iceland</option>
+						<option value="672">India</option>
+						<option value="673">Indonesia</option>
+						<option value="674">Iran</option>
+						<option value="675">Iraq</option>
+						<option value="676">Ireland</option>
+						<option value="595">Isle of Man</option>
+						<option value="677">Israel</option>
+						<option value="678">Italy</option>
+						<option value="679">Ivory Coast</option>
+						<option value="680">Jamaica</option>
+						<option value="681">Japan</option>
+						<option value="594">Jersey</option>
+						<option value="682">Jordan</option>
+						<option value="839">Kazakhstan</option>
+						<option value="683">Kenya</option>
+						<option value="660">Kiribati</option>
+						<option value="684">Korea (South)</option>
+						<option value="685">Korea DYR (North)</option>
+						<option value="881">Kosovo</option>
+						<option value="686">Kuwait</option>
+						<option value="840">Kyrgyzstan</option>
+						<option value="687">Lao PDR</option>
+						<option value="832">Latvia</option>
+						<option value="688">Lebanon</option>
+						<option value="690">Lesotho</option>
+						<option value="691">Liberia</option>
+						<option value="692">Libyan AR</option>
+						<option value="827">Liechtenstein</option>
+						<option value="833">Lithuania</option>
+						<option value="693">Luxembourg</option>
+						<option value="694">Macao</option>
+						<option value="852">Macedonia</option>
+						<option value="695">Madagascar</option>
+						<option value="696">Malawi</option>
+						<option value="698">Malaysia</option>
+						<option value="793">Maldive Islands</option>
+						<option value="699">Mali</option>
+						<option value="700">Malta</option>
+						<option value="861">Marshall Islands</option>
+						<option value="869">Martinique</option>
+						<option value="701">Mauritania</option>
+						<option value="702">Mauritius</option>
+						<option value="821">Mayotte</option>
+						<option value="703">Mexico</option>
+						<option value="862">Micronesia</option>
+						<option value="841">Moldova</option>
+						<option value="825">Monaco</option>
+						<option value="704">Mongolia</option>
+						<option value="864">Montenegro</option>
+						<option value="705">Montserrat</option>
+						<option value="706">Morocco</option>
+						<option value="707">Mozambique</option>
+						<option value="622">Myanmar</option>
+						<option value="798">Namibia</option>
+						<option value="805">Nauru</option>
+						<option value="709">Nepal</option>
+						<option value="710">Netherlands</option>
+						<option value="711">New Caledonia</option>
+						<option value="712">New Guinea</option>
+						<option value="714">New Zealand</option>
+						<option value="715">Nicaragua</option>
+						<option value="716">Niger</option>
+						<option value="717">Nigeria</option>
+						<option value="871">Niue</option>
+						<option value="872">Norfolk Island</option>
+						<option value="873">Northern Mariana Islands</option>
+						<option value="718">Norway</option>
+						<option value="708">Oman</option>
+						<option value="721">Pakistan</option>
+						<option value="874">Palau</option>
+						<option value="870">Palestine</option>
+						<option value="722">Panama</option>
+						<option value="723">Papua New Guinea</option>
+						<option value="724">Paraguay</option>
+						<option value="725">Peru</option>
+						<option value="726">Philippines</option>
+						<option value="823">Pitcairn Islands</option>
+						<option value="727">Poland</option>
+						<option value="728">Portugal</option>
+						<option value="730">Puerto Rico</option>
+						<option value="731">Qatar</option>
+						<option value="795">Reunion</option>
+						<option value="733">Romania</option>
+						<option value="842">Russia</option>
+						<option value="734">Rwanda</option>
+						<option value="741">Samoa</option>
+						<option value="826">San Marino</option>
+						<option value="803">Sao Tome and Principe</option>
+						<option value="743">Saudi Arabia</option>
+						<option value="785">Senegal</option>
+						<option value="780">Serbia</option>
+						<option value="744">Seychelles</option>
+						<option value="745">Sierra Leone</option>
+						<option value="746">Singapore</option>
+						<option value="886">Sint Maarten (Dutch Part)</option>
+						<option value="850">Slovakia</option>
+						<option value="835">Slovenia</option>
+						<option value="747">Solomon Islands</option>
+						<option value="748">Somalia</option>
+						<option value="750">South Africa</option>
+						<option value="830">South Georgia and South Sandwich
+							Islands</option>
+						<option value="884">South Sudan</option>
+						<option value="751">Spain</option>
+						<option value="628">Sri Lanka</option>
+						<option value="735">St Helena, Ascension and Tristan da
+							Cunha</option>
+						<option value="736">St Kitts and Nevis</option>
+						<option value="737">St Lucia</option>
+						<option value="875">St Pierre and Miquelon</option>
+						<option value="738">St Vincent</option>
+						<option value="783">Stateless</option>
+						<option value="752">Sudan</option>
+						<option value="753">Surinam</option>
+						<option value="876">Svalbard And Jan Mayen</option>
+						<option value="754">Swaziland</option>
+						<option value="755">Sweden</option>
+						<option value="756">Switzerland</option>
+						<option value="757">Syria</option>
+						<option value="652">Taiwan</option>
+						<option value="843">Tajikistan</option>
+						<option value="759">Tanzania</option>
+						<option value="760">Thailand</option>
+						<option value="762">Togo</option>
+						<option value="877">Tokelau</option>
+						<option value="784">Tonga</option>
+						<option value="763">Trinidad and Tobago</option>
+						<option value="765">Tunisia</option>
+						<option value="766">Turkey</option>
+						<option value="844">Turkmenistan</option>
+						<option value="799">Turks and Caicos Islands</option>
+						<option value="647">Tuvalu</option>
+						<option value="767">Uganda</option>
+						<option value="845">Ukraine</option>
+						<option value="764">United Arab Emirates</option>
+						<option value="771">United States of America</option>
+						<option value="770">Uruguay</option>
+						<option value="772">USSR (not otherwise specified)</option>
+						<option value="846">Uzbekistan</option>
+						<option value="713">Vanuatu</option>
+						<option value="878">Vatican City</option>
+						<option value="773">Venezuela</option>
+						<option value="774">Vietnam</option>
+						<option value="800">Virgin Islands (US)</option>
+						<option value="879">Wallis and Futuna</option>
+						<option value="880">Western Sahara</option>
+						<option value="601">Yemen</option>
+						<option value="781">Zambia</option>
+						<option value="732">Zimbabwe</option>
+						<!--A drop down list populated from COD table, all in use records with a code and HESA ID ordered by UDFG BT6 27/05/2014-->
+					</select>
+					<ul class="parsley-errors-list" id="parsley-id-0729"></ul>
+				</div>
+				<!-- #################### CITY AND REGION ######################## -->
+
+				<div>
+					<label for="city">City *</label> <input type="text" id="city" name="city" value=""
+						maxlength="35" data-parsley-maxlength="35" required=""
+						data-parsley-required="true" data-parsley-trigger="focusout"
+						data-parsley-id="9084">
+					<ul class="parsley-errors-list" id="parsley-id-9084"></ul>
+					<em class="displayedHelp">If this isn't a UK number please
+						include your country dialling code.</em>
+				</div>
+
+				<div>
+					<label for="region">Region</label> <input
+						type="text" id="region" name="region" maxlength="35"
+						data-parsley-maxlength="35" data-parsley-trigger="focusout"
+						value="" data-parsley-id="1281">
+					<ul class="parsley-errors-list" id="parsley-id-1281"></ul>
+					<em class="displayedHelp">If this is not a UK number please
+						include your country dialling code.</em>
+				</div>
+
+
+				<!-- #################### TELEPHONE NUMBERS AND EMAIL ADDRESS ######################## -->
+
+				<div>
+					<label for="primaryPhoneNo">Primary contact number (i.e. Mobile
+						Phone) *</label> <input type="text" id="primaryPhoneNo" name="primaryPhoneNo" value=""
+						maxlength="35" data-parsley-maxlength="35" required=""
+						data-parsley-required="true" data-parsley-trigger="focusout"
+						data-parsley-id="9084">
+					<ul class="parsley-errors-list" id="parsley-id-9084"></ul>
+					<em class="displayedHelp">If this isn't a UK number please
+						include your country dialling code.</em>
+				</div>
+
+				<div>
+					<label for="secondaryPhoneNo">Home telephone number</label> <input
+						type="text" id="secondaryPhoneNo" name="secondaryPhoneNo" maxlength="35"
+						data-parsley-maxlength="35" data-parsley-trigger="focusout"
+						value="" data-parsley-id="1281">
+					<ul class="parsley-errors-list" id="parsley-id-1281"></ul>
+					<em class="displayedHelp">If this is not a UK number please
+						include your country dialling code.</em>
+				</div>
+				<div>
+					<label for="skypeAddress">Home telephone number</label> <input
+						type="text" id="skypeAddress" name="skypeAddress" maxlength="35"
+						data-parsley-maxlength="35" data-parsley-trigger="focusout"
+						value="" data-parsley-id="1281">
+					<ul class="parsley-errors-list" id="parsley-id-1281"></ul>
+					<em class="displayedHelp">If this is not a UK number please
+						include your country dialling code.</em>
+				</div>
+
+				<div>
+					<label for="email">Email address *<a href="#"
+						class="hiddenHelpIcon fa fa-question-circle"><span
+							class="positionHide">Field help.</span></a></label> <input type="text"
+						id="email" name="email" value="" maxlength="255"
+						data-parsley-maxlength="255" data-parsley-type="email" required=""
+						data-parsley-required="true" data-parsley-trigger="focusout"
+						data-parsley-id="6306">
+					<ul class="parsley-errors-list" id="parsley-id-6306"></ul>
+					<em class="hiddenHelpText hide">This is the email address you
+						used to register with the online application. If you'd prefer us
+						to contact you at a different email address, please enter it here.
+						Our communications will be sent to you at this email address so
+						please ensure you check your emails regularly for all
+						communications from Anglia Ruskin University.</em>
+				</div>
+
+
+
+				<!-- #################### COPY CONTACT ADDRESS TO  HOME ADDRESS######################## -->
+
+				<div>
+					<label for="IPQ_ADAPF01ADS01">Would you like to add an
+						alternative contact address? *<a href="#"
+						class="hiddenHelpIcon fa fa-question-circle"><span
+							class="positionHide">Field help.</span></a>
+					</label> <select id="IPQ_ADAPF01ADS01" class="determineShowNextFieldset"
+						name="IPQ_ADAPF01ADS01" required="" data-parsley-required="true"
+						data-parsley-trigger="change" data-parsley-id="7766">
+						<option value="" selected="selected">Please select</option>
+						<option value="N">No</option>
+						<option value="Y">Yes</option>
+						<!--Yes/No dropdown build from UDV, 'Yes' shows fields for applicant to fill in, 'No' populates contact with same information as home BT6 27/05/2014-->
+					</select>
+					<ul class="parsley-errors-list" id="parsley-id-7766"></ul>
+					<em class="hiddenHelpText hide">Your contact address would
+						normally be considered to be your correspondence address. If
+						you're being represented by an agent please provide your agent's
+						details, or you should put your temporary UK address if
+						applicable.</em>
+				</div>
+
+			</fieldset>
+						</div>
+						<div class="tab-pane" id="tab_default_3">
+							<fieldset id="ContactAddress" class="hide" style="display: none;">
+				<legend>Contact Address</legend>
+				<div>
+					<p>Please enter your contact address below.</p>
+				</div>
+
+
+				<!-- #################### POSTCODE ######################## -->
+
+				<div>
+					<label for="IPR_CAPC">Post/Zip code</label> <input type="text"
+						id="IPR_CAPC" name="IPR_CAPC" value="" maxlength="12"
+						data-parsley-maxlength="12" data-parsley-trigger="focusout"
+						data-initvalueundefined="" data-parsley-id="1447">
+					<ul class="parsley-errors-list" id="parsley-id-1447"></ul>
+					<input type="button" id="PCOD_CA" name="PCOD_CA"
+						value="Find my address" class="fieldButton"> <em
+						class="displayedHelp">Please note the postcode finder will
+						only work for UK addresses.</em>
+				</div>
+
+
+				<!-- #################### HOME ADDRESS LINES 1 - 4 ######################## -->
+
+				<div>
+					<label for="IPR_CAD1">Address Line 1 *</label> <input type="text"
+						id="IPR_CAD1" name="IPR_CAD1" value="" maxlength="50"
+						data-parsley-maxlength="50" required=""
+						data-parsley-required="true" data-parsley-group="contactAddress"
+						data-parsley-trigger="focusout" data-initvalueundefined=""
+						data-parsley-id="8478">
+					<ul class="parsley-errors-list" id="parsley-id-8478"></ul>
+				</div>
+
+				<div>
+					<label for="IPR_CAD2">Address Line 2</label> <input type="text"
+						id="IPR_CAD2" name="IPR_CAD2" value="" maxlength="50"
+						data-parsley-maxlength="50" data-parsley-group="contactAddress"
+						data-parsley-trigger="focusout" data-initvalueundefined=""
+						data-parsley-id="6433">
+					<ul class="parsley-errors-list" id="parsley-id-6433"></ul>
+				</div>
+
+				<div>
+					<label for="IPR_CAD3">Address Line 3</label> <input type="text"
+						id="IPR_CAD3" name="IPR_CAD3" value="" maxlength="50"
+						data-parsley-maxlength="50" data-parsley-trigger="focusout"
+						data-initvalueundefined="" data-parsley-id="5240">
+					<ul class="parsley-errors-list" id="parsley-id-5240"></ul>
+				</div>
+
+				<div>
+					<label for="IPR_CAD4">Address Line 4</label> <input type="text"
+						id="IPR_CAD4" name="IPR_CAD4" value="" maxlength="50"
+						data-parsley-maxlength="50" data-parsley-trigger="focusout"
+						data-initvalueundefined="" data-parsley-id="5426">
+					<ul class="parsley-errors-list" id="parsley-id-5426"></ul>
+				</div>
+
+
+				<!-- #################### COUNTRY ######################## -->
+
+				<div>
+					<label for="IPR_COD2">Country</label> <select id="IPR_COD2"
+						name="IPR_COD2" data-initvalueundefined="" data-parsley-id="0790">
+						<option value="" selected="selected">Please select</option>
+						<option value="5826">England</option>
+						<option value="8826">Northern Ireland</option>
+						<option value="7826">Scotland</option>
+						<option value="6826">Wales</option>
+						<option value="602">Afghanistan</option>
+						<option value="853">Aland Islands</option>
+						<option value="603">Albania</option>
+						<option value="604">Algeria</option>
+						<option value="854">American Samoa</option>
+						<option value="605">Andorra</option>
+						<option value="606">Angola</option>
+						<option value="824">Anguilla</option>
+						<option value="607">Antigua and Barbuda</option>
+						<option value="608">Argentina</option>
+						<option value="836">Armenia</option>
+						<option value="855">Aruba</option>
+						<option value="609">Australia</option>
+						<option value="610">Austria</option>
+						<option value="837">Azerbaijan</option>
+						<option value="611">Bahamas</option>
+						<option value="612">Bahrain</option>
+						<option value="787">Bangladesh</option>
+						<option value="613">Barbados</option>
+						<option value="838">Belarus</option>
+						<option value="614">Belgium</option>
+						<option value="668">Belize</option>
+						<option value="640">Benin</option>
+						<option value="615">Bermuda</option>
+						<option value="616">Bhutan</option>
+						<option value="617">Bolivia</option>
+						<option value="887">Bonaire, Sint Eustatius and Saba</option>
+						<option value="848">Bosnia and Herzegovina</option>
+						<option value="618">Botswana</option>
+						<option value="619">Brazil</option>
+						<option value="801">British Antarctic Territory</option>
+						<option value="829">British Indian Ocean Territory</option>
+						<option value="776">British Virgin Islands</option>
+						<option value="620">Brunei</option>
+						<option value="621">Bulgaria</option>
+						<option value="769">Burkina Faso</option>
+						<option value="623">Burundi</option>
+						<option value="624">Cambodia</option>
+						<option value="625">Cameroon</option>
+						<option value="626">Canada</option>
+						<option value="856">Canary Islands</option>
+						<option value="788">Cape Verde</option>
+						<option value="789">Cayman Islands</option>
+						<option value="627">Central African Republic</option>
+						<option value="629">Chad</option>
+						<option value="630">Chile</option>
+						<option value="631">China</option>
+						<option value="857">Christmas Island</option>
+						<option value="858">Cocos (Keeling) Islands</option>
+						<option value="632">Colombia</option>
+						<option value="804">Comoros</option>
+						<option value="633">Congo (Democratic Republic)</option>
+						<option value="634">Congo (Peoples Republic)</option>
+						<option value="859">Cook Islands</option>
+						<option value="635">Costa Rica</option>
+						<option value="834">Croatia</option>
+						<option value="636">Cuba</option>
+						<option value="885">Curacao</option>
+						<option value="882">Cyprus (European Union)</option>
+						<option value="883">Cyprus (Non-European Union)</option>
+						<option value="638">Cyprus (not otherwise specified)</option>
+						<option value="849">Czech Republic</option>
+						<option value="641">Denmark</option>
+						<option value="749">Djibouti</option>
+						<option value="642">Dominica</option>
+						<option value="643">Dominican Republic</option>
+						<option value="786">East Timor (Timor-Leste)</option>
+						<option value="645">Ecuador</option>
+						<option value="768">Egypt</option>
+						<option value="646">El Salvador</option>
+						<option value="790">Equatorial Guinea</option>
+						<option value="851">Eritrea</option>
+						<option value="831">Estonia</option>
+						<option value="648">Ethiopia</option>
+						<option value="649">Falkland Islands</option>
+						<option value="865">Faroe Islands</option>
+						<option value="650">Fiji</option>
+						<option value="651">Finland</option>
+						<option value="653">France</option>
+						<option value="791">French Guiana</option>
+						<option value="822">French Polynesia</option>
+						<option value="792">French West Indies</option>
+						<option value="654">Gabon</option>
+						<option value="655">Gambia</option>
+						<option value="847">Georgia</option>
+						<option value="656">Germany</option>
+						<option value="658">Ghana</option>
+						<option value="659">Gibraltar</option>
+						<option value="661">Greece</option>
+						<option value="828">Greenland</option>
+						<option value="662">Grenada</option>
+						<option value="867">Guadeloupe</option>
+						<option value="796">Guam (US Trust Territories)</option>
+						<option value="663">Guatemala</option>
+						<option value="593">Guernsey</option>
+						<option value="664">Guinea</option>
+						<option value="802">Guinea Bissau</option>
+						<option value="665">Guyana</option>
+						<option value="666">Haiti</option>
+						<option value="667">Honduras</option>
+						<option value="669">Hong Kong</option>
+						<option value="670">Hungary</option>
+						<option value="671">Iceland</option>
+						<option value="672">India</option>
+						<option value="673">Indonesia</option>
+						<option value="674">Iran</option>
+						<option value="675">Iraq</option>
+						<option value="676">Ireland</option>
+						<option value="595">Isle of Man</option>
+						<option value="677">Israel</option>
+						<option value="678">Italy</option>
+						<option value="679">Ivory Coast</option>
+						<option value="680">Jamaica</option>
+						<option value="681">Japan</option>
+						<option value="594">Jersey</option>
+						<option value="682">Jordan</option>
+						<option value="839">Kazakhstan</option>
+						<option value="683">Kenya</option>
+						<option value="660">Kiribati</option>
+						<option value="684">Korea (South)</option>
+						<option value="685">Korea DYR (North)</option>
+						<option value="881">Kosovo</option>
+						<option value="686">Kuwait</option>
+						<option value="840">Kyrgyzstan</option>
+						<option value="687">Lao PDR</option>
+						<option value="832">Latvia</option>
+						<option value="688">Lebanon</option>
+						<option value="690">Lesotho</option>
+						<option value="691">Liberia</option>
+						<option value="692">Libyan AR</option>
+						<option value="827">Liechtenstein</option>
+						<option value="833">Lithuania</option>
+						<option value="693">Luxembourg</option>
+						<option value="694">Macao</option>
+						<option value="852">Macedonia</option>
+						<option value="695">Madagascar</option>
+						<option value="696">Malawi</option>
+						<option value="698">Malaysia</option>
+						<option value="793">Maldive Islands</option>
+						<option value="699">Mali</option>
+						<option value="700">Malta</option>
+						<option value="861">Marshall Islands</option>
+						<option value="869">Martinique</option>
+						<option value="701">Mauritania</option>
+						<option value="702">Mauritius</option>
+						<option value="821">Mayotte</option>
+						<option value="703">Mexico</option>
+						<option value="862">Micronesia</option>
+						<option value="841">Moldova</option>
+						<option value="825">Monaco</option>
+						<option value="704">Mongolia</option>
+						<option value="864">Montenegro</option>
+						<option value="705">Montserrat</option>
+						<option value="706">Morocco</option>
+						<option value="707">Mozambique</option>
+						<option value="622">Myanmar</option>
+						<option value="798">Namibia</option>
+						<option value="805">Nauru</option>
+						<option value="709">Nepal</option>
+						<option value="710">Netherlands</option>
+						<option value="711">New Caledonia</option>
+						<option value="712">New Guinea</option>
+						<option value="714">New Zealand</option>
+						<option value="715">Nicaragua</option>
+						<option value="716">Niger</option>
+						<option value="717">Nigeria</option>
+						<option value="871">Niue</option>
+						<option value="872">Norfolk Island</option>
+						<option value="873">Northern Mariana Islands</option>
+						<option value="718">Norway</option>
+						<option value="708">Oman</option>
+						<option value="721">Pakistan</option>
+						<option value="874">Palau</option>
+						<option value="870">Palestine</option>
+						<option value="722">Panama</option>
+						<option value="723">Papua New Guinea</option>
+						<option value="724">Paraguay</option>
+						<option value="725">Peru</option>
+						<option value="726">Philippines</option>
+						<option value="823">Pitcairn Islands</option>
+						<option value="727">Poland</option>
+						<option value="728">Portugal</option>
+						<option value="730">Puerto Rico</option>
+						<option value="731">Qatar</option>
+						<option value="795">Reunion</option>
+						<option value="733">Romania</option>
+						<option value="842">Russia</option>
+						<option value="734">Rwanda</option>
+						<option value="741">Samoa</option>
+						<option value="826">San Marino</option>
+						<option value="803">Sao Tome and Principe</option>
+						<option value="743">Saudi Arabia</option>
+						<option value="785">Senegal</option>
+						<option value="780">Serbia</option>
+						<option value="744">Seychelles</option>
+						<option value="745">Sierra Leone</option>
+						<option value="746">Singapore</option>
+						<option value="886">Sint Maarten (Dutch Part)</option>
+						<option value="850">Slovakia</option>
+						<option value="835">Slovenia</option>
+						<option value="747">Solomon Islands</option>
+						<option value="748">Somalia</option>
+						<option value="750">South Africa</option>
+						<option value="830">South Georgia and South Sandwich
+							Islands</option>
+						<option value="884">South Sudan</option>
+						<option value="751">Spain</option>
+						<option value="628">Sri Lanka</option>
+						<option value="735">St Helena, Ascension and Tristan da
+							Cunha</option>
+						<option value="736">St Kitts and Nevis</option>
+						<option value="737">St Lucia</option>
+						<option value="875">St Pierre and Miquelon</option>
+						<option value="738">St Vincent</option>
+						<option value="783">Stateless</option>
+						<option value="752">Sudan</option>
+						<option value="753">Surinam</option>
+						<option value="876">Svalbard And Jan Mayen</option>
+						<option value="754">Swaziland</option>
+						<option value="755">Sweden</option>
+						<option value="756">Switzerland</option>
+						<option value="757">Syria</option>
+						<option value="652">Taiwan</option>
+						<option value="843">Tajikistan</option>
+						<option value="759">Tanzania</option>
+						<option value="760">Thailand</option>
+						<option value="762">Togo</option>
+						<option value="877">Tokelau</option>
+						<option value="784">Tonga</option>
+						<option value="763">Trinidad and Tobago</option>
+						<option value="765">Tunisia</option>
+						<option value="766">Turkey</option>
+						<option value="844">Turkmenistan</option>
+						<option value="799">Turks and Caicos Islands</option>
+						<option value="647">Tuvalu</option>
+						<option value="767">Uganda</option>
+						<option value="845">Ukraine</option>
+						<option value="764">United Arab Emirates</option>
+						<option value="771">United States of America</option>
+						<option value="770">Uruguay</option>
+						<option value="772">USSR (not otherwise specified)</option>
+						<option value="846">Uzbekistan</option>
+						<option value="713">Vanuatu</option>
+						<option value="878">Vatican City</option>
+						<option value="773">Venezuela</option>
+						<option value="774">Vietnam</option>
+						<option value="800">Virgin Islands (US)</option>
+						<option value="879">Wallis and Futuna</option>
+						<option value="880">Western Sahara</option>
+						<option value="601">Yemen</option>
+						<option value="781">Zambia</option>
+						<option value="732">Zimbabwe</option>
+						<!--A drop down list populated from COD table, all in use records with a code and HESA ID ordered by UDFG BT6 27/05/2014-->
+					</select>
+					<ul class="parsley-errors-list" id="parsley-id-0790"></ul>
+				</div>
+
+
+				<!-- #################### TELEPHONE NUMBER AND EMAIL ADDRESS ######################## -->
+
+				<div>
+					<label for="IPR_CAT1">(Contact) telephone number</label> <input
+						type="text" id="IPR_CAT1" name="IPR_CAT1" value="" maxlength="35"
+						data-parsley-maxlength="35" data-parsley-trigger="focusout"
+						data-initvalueundefined="" data-parsley-id="0297">
+					<ul class="parsley-errors-list" id="parsley-id-0297"></ul>
+					<em class="displayedHelp">If this is not a UK number please
+						include your country dialling code.</em>
+				</div>
+
+				<div>
+					<label for="IPQ_ADAPF01ACE01">(Contact) email address</label> <input
+						type="text" id="IPQ_ADAPF01ACE01" name="IPQ_ADAPF01ACE01" value=""
+						maxlength="255" data-parsley-maxlength="255"
+						data-parsley-trigger="focusout" data-initvalueundefined=""
+						data-parsley-id="8414">
+					<ul class="parsley-errors-list" id="parsley-id-8414"></ul>
+				</div>
+
+				<div>
+					<!--(Contact) Email address hidden-->
+					<input type="hidden" id="IPR_CAEM" name="IPR_CAEM" value=""
+						data-parsley-maxlength="255" data-parsley-trigger="focusout"
+						data-initvalueundefined="">
+				</div>
+
+			</fieldset>
+						</div>
+					    <div class="tab-pane" id="tab_default_4"></div>
+					    <div class="tab-pane" id="tab_default_5"></div>
 					</div>
-            </div>
-        </section> -->
-        
-        
+				</div>
+			</div>			
+		</div>
+	</div>
+							
+						</form>
+						<a class="skiplink" href="#rhs">Go to right hand side links</a> <a
+							class="skiplink" href="#localmenu">go to local menu</a> <a
+							class="skiplink" href="#menu">Go to main menu</a>
 
+					</div>
+					<!--maincontentblockdept-->
 
-	<footer class="footer text-right"> </footer>
-
-
+				</div>
+				<!--contentstart-->
+			</div>
+			<!--centralpane-->
+		</div>
+	</div>
 	@foot()
-	<script src="@routes.Assets.versioned("js/studentRegistration.js")"></script>
-	
 </body>
 </html>

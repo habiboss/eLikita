@@ -19,6 +19,10 @@ public class EmergencyContactDetail {
 	private String coontactNumber;
 	@Column(name = "address")
 	private String address;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="student_fk")
+	public Student student;
 
 	public Long getId() {
 		return id;

@@ -15,20 +15,28 @@ public class AddressDetail {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	@Column(name = "postcode")
+	private String postcode;
+	@Column(name = "house_name_number")
+	private String houseNameNumber;
 	@Column(name = "address")
 	private String address;
 	@Column(name = "address_2")
 	private String address_2;
+	@Column(name = "address_3")
+	private String address_3;
 	@Column(name = "country")
 	private String country;
 	@Column(name = "city")
 	private String city;
 	@Column(name = "region")
 	private String region;
-	@Column(name = "postcode")
-	private String postcode;
 	@Column(name = "valid_until")
 	private Date validUntil;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="student_fk")
+	public Student student;
 
 	public Long getId() {
 		return id;

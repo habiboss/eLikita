@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "contact_detail")
-public class ContactDetail {
+public class Contact {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,6 +24,10 @@ public class ContactDetail {
 	private String skypeAddress;
 	@Column(name = "email")
 	private String email;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="student_fk")
+	public Student student;
 
 	public Long getId() {
 		return id;

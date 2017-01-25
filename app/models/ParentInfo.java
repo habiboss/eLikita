@@ -19,9 +19,6 @@ public class ParentInfo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@OneToOne
-	@JoinColumn(name = "student_fk")
-	private StudentDetail studentDetail;
 	@Column(name = "first_name")
 	private String firstName;
 	@Column(name = "last_name")
@@ -32,6 +29,11 @@ public class ParentInfo {
 	private Date date_of_birth;
 	@Column(name = "other_info")
 	private Date otherInfo;
+	//Foreign Key
+	@OneToOne
+	@JoinColumn(name = "student_fk")
+	private Student student;
+	
 	public Long getId() {
 		return id;
 	}

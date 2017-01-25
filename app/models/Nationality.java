@@ -13,7 +13,7 @@ public class Nationality {
     public Long id;
 	@OneToOne
 	@JoinColumn(name = "student_fk")
-	private StudentDetail studentDetail;
+	private Student studentDetail;
 	@Column(name = "nationality")
 	private String nationality;
 	@Column(name = "second_nationality")

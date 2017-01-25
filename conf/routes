@@ -5,7 +5,7 @@ GET         /logout                                                             
 GET         /authentification                                                                controllers.Application.authentification()
 
 
-GET         /index1                                                                           controllers.Application.index()
+GET         /index1                                                                          controllers.Application.index()
 GET         /index2                                                                          controllers.Application.index2()
 GET         /index3                                                                          controllers.Application.index3()
 GET         /courseManagement                                                                controllers.Application.courseManagement()
@@ -16,7 +16,11 @@ GET         /staffRegistration                                                  
 GET         /courseInformation                                                               controllers.Application.courseInformation()
 GET         /businessRegistration                                                            controllers.Application.businessRegistration()
 GET         /registration                                                                    controllers.Application.registration()
-
+GET         /personalDetail                                                                  controllers.Application.personalDetail()
+GET         /courseRegistration                                                              controllers.Application.courseRegistration()
+GET         /newEvent                                                                        controllers.Application.newEvent()
+GET         /newSubject                                                                      controllers.Application.newSubject()
+GET         /profileManagement                                                               controllers.Application.profileManagement()
 
 POST         /save                                                            controllers.businessRegistrationCtrl.save()
 

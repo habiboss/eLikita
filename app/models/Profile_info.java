@@ -18,7 +18,7 @@ public class Profile_info {
 	private Long id;
 	@OneToOne
 	@JoinColumn(name = "student_fk")
-	private StudentDetail studentDetail;
+	private Student studentDetail;
 	@Column(name = "favorite_quran_reciter")
 	private String favoriteQuranReciter;
 	@Column(name = "favorite_game")
