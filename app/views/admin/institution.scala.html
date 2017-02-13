@@ -1,0 +1,151 @@
+@import java.util
+<!DOCTYPE html>
+<html>
+@head("Activités")
+
+<body class="fixed-left">
+
+	@universityDirectoryTopbar()
+	<div id="welcome-container">
+		<div id="welcome-name" class="container-460">
+			<span id="ctl00_PortalWelcomeBar_LabelUserName"> &nbsp;</span>
+		</div>
+		<div id="welcome-date" class="container-460">
+			<span id="ctl00_PortalWelcomeBar_LabelDateToday">Tuesday 22
+				November</span>
+		</div>
+	</div>
+	<div class="mainwrap">
+		@mainMenuPane()
+
+		<div id="contentpane">
+
+			<div id="crumbsbar">
+				<a href="https://my.anglia.ac.uk/">My.Anglia</a> &gt; My.Anglia
+				login
+			</div>
+
+			<!-- <div id="centralpane"> -->
+			<div id="contentstart">
+				<div id="maincontentblockdept">
+					<form method="post" action="@routes.BatchCtrl.save()"
+						accept-charset="ISO-8859-1">
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">Add Batch</h4>
+									</div>
+									<div class="row">
+                            <div class="col-lg-12 temporaire">
+                                @if(flash.containsKey("error")) {
+                                    <strong class="align-center alert-danger"> @flash.get("error")</strong>
+                                }
+
+                                @if(flash.containsKey("success")) {
+                                    <strong class="align-center alert-success">@flash.get("success")</strong>
+                                }
+                            </div>
+                        </div>
+									<div class="panel-body">
+										<div class="panel-body">
+										<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label for="" class="control-label">Course *</label> 
+														<select name="codeCourse" id="codeCourse" class="form-control">
+														
+														</select>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label for="" class="control-label">Batch Name</label> 
+                                                        <input type="text" name="batchName" id="batchName" class="form-control">
+													</div>
+												</div>
+
+											</div>
+
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label for="" class="">Start Date</label> 
+														<input type="text" name="startDate" id="startDate" class="form-control">
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label for="" class="">End Date</label> 
+                                                        <input type="text" name="endDate" id="endDate" class="form-control">
+													</div>
+												</div>
+
+											</div>
+											<div class="row">
+											<div class="col-md-6">
+													<div class="form-group">
+														<label for="" class="">Maximum Number of Students *</label>
+														<input type="text" name="maxStudent" id="maxStudent" class="form-control"> 
+													</div>
+												</div>
+                                            </div>
+											<div class="row">
+												<div class="col-sm-5">
+													<div class="form_sep">
+														<input class="btn btn-info" name="" id="" type="submit"
+															value="Save">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="grid-view table-responsive" id="item-grid">
+									<table class="items">
+										<thead>
+											<tr>
+												<th id="item-grid_c0">Sl.No.</th>
+												<th id="item-grid_c1">Course</th>
+												<th id="item-grid_c2">Batch</th>
+												<th id="item-grid_c3">Max. No of Students</th>
+												<th id="item-grid_c4">Start Date</th>
+												<th id="item-grid_c4">End Date</th>
+												<th class="button-column" id="item-grid_c5">Manage</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+														<td></td>
+														<td></td>
+														<td></td>
+														
+
+											</tr>
+										
+										</tbody>
+									</table>
+									<div class="keys" style="display: none"
+										title=""></div>
+								</div>
+							</div>
+						</div>
+					</form>
+					<a class="skiplink" href="#rhs">Go to right hand side links</a> <a
+						class="skiplink" href="#localmenu">go to local menu</a> <a
+						class="skiplink" href="#menu">Go to main menu</a>
+
+				</div>
+				<!--maincontentblockdept-->
+
+			</div>
+			<!--contentstart-->
+		</div>
+		<!--centralpane-->
+	</div>
+	</div>
+	@foot()
+</body>
+</html>

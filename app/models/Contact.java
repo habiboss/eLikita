@@ -25,6 +25,15 @@ public class Contact {
 	@Column(name = "email")
 	private String email;
 	
+	@Column(name = "ermergency_name")
+	private String ermergencyName;
+	@Column(name = "ermergency_relation")
+	private String ermergencyRelation;
+	@Column(name = "ermergency_number")
+	private String ermergencytNumber;
+	@Column(name = "ermergency_address")
+	private String ermergencyAddress;
+	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="student_fk")
 	public Student student;
@@ -67,6 +76,46 @@ public class Contact {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getErmergencyName() {
+		return ermergencyName;
+	}
+
+	public void setErmergencyName(String ermergencyName) {
+		this.ermergencyName = ermergencyName;
+	}
+
+	public String getErmergencyRelation() {
+		return ermergencyRelation;
+	}
+
+	public void setErmergencyRelation(String ermergencyRelation) {
+		this.ermergencyRelation = ermergencyRelation;
+	}
+
+	public String getErmergencytNumber() {
+		return ermergencytNumber;
+	}
+
+	public void setErmergencytNumber(String ermergencytNumber) {
+		this.ermergencytNumber = ermergencytNumber;
+	}
+
+	public String getErmergencyAddress() {
+		return ermergencyAddress;
+	}
+
+	public void setErmergencyAddress(String ermergencyAddress) {
+		this.ermergencyAddress = ermergencyAddress;
+	}
+
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 
 }

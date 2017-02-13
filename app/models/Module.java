@@ -1,9 +1,6 @@
 package models;
 
-import play.db.jpa.JPA;
-
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "module")
@@ -12,16 +9,16 @@ public class Module {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	@Column(name = "title")
+	private String moduleTitle;
 	@Column(name = "code")
-	private String code;
-	@Column(name = "name")
-	private String name;
+	private String moduleCode;
 	@Column(name = "year")
-	private String year;
+	private String moduleYear;
 	@Column(name = "period")
-	private String period;
+	private String modulePeriod;
 	@Column(name = "description")
-	private Long description;
+	private Long moduleDescription;
 
 	public Long getId() {
 		return id;
@@ -31,44 +28,44 @@ public class Module {
 		this.id = id;
 	}
 
-	public String getCode() {
-		return code;
+	public String getModuleTitle() {
+		return moduleTitle;
 	}
 
-	public void setCode(String code) {
-		this.code = code;
+	public void setModuleTitle(String moduleTitle) {
+		this.moduleTitle = moduleTitle;
 	}
 
-	public String getName() {
-		return name;
+	public String getModuleCode() {
+		return moduleCode;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setModuleCode(String moduleCode) {
+		this.moduleCode = moduleCode;
 	}
 
-	public String getYear() {
-		return year;
+	public String getModuleYear() {
+		return moduleYear;
 	}
 
-	public void setYear(String year) {
-		this.year = year;
+	public void setModuleYear(String moduleYear) {
+		this.moduleYear = moduleYear;
 	}
 
-	public String getPeriod() {
-		return period;
+	public String getModulePeriod() {
+		return modulePeriod;
 	}
 
-	public void setPeriod(String period) {
-		this.period = period;
+	public void setModulePeriod(String modulePeriod) {
+		this.modulePeriod = modulePeriod;
 	}
 
-	public Long getDescription() {
-		return description;
+	public Long getModuleDescription() {
+		return moduleDescription;
 	}
 
-	public void setDescription(Long description) {
-		this.description = description;
+	public void setModuleDescription(Long moduleDescription) {
+		this.moduleDescription = moduleDescription;
 	}
 
 }

@@ -1,13 +1,13 @@
 package interfaces;
 
-import models.Institution;
+import models.InstitutionDetail;
 
 public interface IbusinessRegistration {
 	
-	public String save(Institution institution);
+	public String save(InstitutionDetail institution);
 	
-	public String update(Institution institution);
+	public String update(InstitutionDetail institution);
 	
-	public String delete(Institution institution);
+	public String delete(InstitutionDetail institution);
 
 }

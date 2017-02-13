@@ -3,6 +3,7 @@ package controllers;
 import play.db.jpa.Transactional;
 import play.mvc.Controller;
 import play.mvc.Result;
+import services.EventService;
 import views.html.*;
 import views.html.admin.*;
 public class Application extends Controller {
@@ -72,9 +73,11 @@ public class Application extends Controller {
 		return ok(courseRegistration.render());
 	}
 	
+	@Transactional
 	public Result newEvent() {
+		EventService x = new EventService();
 
-		return ok(newEvent.render());
+		return ok(event.render(x.findList()));
 	}
 	
 	public Result newSubject() {
@@ -94,7 +97,7 @@ public class Application extends Controller {
 	 */
 	@Transactional
 	public Result index() {
-		return null;
+		return TODO;
 
 	}
 

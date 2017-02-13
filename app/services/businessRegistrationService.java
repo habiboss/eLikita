@@ -1,13 +1,13 @@
 package services;
 
 import interfaces.IbusinessRegistration;
-import models.Institution;
+import models.InstitutionDetail;
 import play.db.jpa.JPA;
 
 
 public class businessRegistrationService implements IbusinessRegistration{
 
-	public String save(Institution institution) {
+	public String save(InstitutionDetail institution) {
 		
 		try {
 			JPA.em().persist(institution);
@@ -18,8 +18,8 @@ public class businessRegistrationService implements IbusinessRegistration{
 	}
 
 	@Override
-	public String update(Institution institution) {
-		Institution institutionNew = new Institution().findById(institution.getId());
+	public String update(InstitutionDetail institution) {
+		InstitutionDetail institutionNew = new InstitutionDetail().findById(institution.getId());
 		institutionNew.setAddress(institution.getABN());
 		institutionNew.setAddress(institution.getAddress());
 		institutionNew.setAddress(institution.getBusinessEmail());
@@ -49,7 +49,7 @@ public class businessRegistrationService implements IbusinessRegistration{
 	}
 
 	@Override
-	public String delete(Institution institution) {
+	public String delete(InstitutionDetail institution) {
 		return null;
 	}
 

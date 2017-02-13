@@ -1,14 +1,11 @@
 package models;
 
-import play.data.format.Formats;
-import play.db.jpa.JPA;
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
-@Table(name = "course_detail")
-public class CourseDetails {
+@Table(name = "course")
+public class Course {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

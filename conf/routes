@@ -22,7 +22,35 @@ GET         /newEvent                                                           
 GET         /newSubject                                                                      controllers.Application.newSubject()
 GET         /profileManagement                                                               controllers.Application.profileManagement()
 
-POST         /save                                                            controllers.businessRegistrationCtrl.save()
+#Event
+POST         /save                                                                           controllers.BusinessCtrl.save()
+POST         /saveEvent                                                                      controllers.EventCtrl.save()
+GET /display																				 controllers.EventCtrl.display()
+
+#Course
+GET          /readCourse                                                                     controllers.CourseCtrl.read()
+POST        /saveCourse                                                                      controllers.CourseCtrl.save()
+
+
+#Batch
+GET          /readBatch                                                                           controllers.BatchCtrl.read()
+POST        /saveBatch                                                                            controllers.BatchCtrl.save()
+
+#Department
+GET         /readDepartment                                                                    controllers.DepartmentCtrl.read()
+POST        /saveDepartment                                                                           controllers.DepartmentCtrl.save()
+
+#Note
+GET         /readNote                                                                        controllers.NoteCtrl.read()
+POST        /saveNote                                                                        controllers.NoteCtrl.save()
+
+#Module
+GET         /readModule                                                                        controllers.ModuleCtrl.read()
+POST        /saveModule                                                                        controllers.ModuleCtrl.save()
+
+#Student
+GET         /readModule                                                                        controllers.ModuleCtrl.read()
+POST        /saveModule                                                                        controllers.ModuleCtrl.save()
 
 
 # Map static resources from the /public folder to the /assets URL path
