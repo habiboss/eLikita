@@ -27,7 +27,7 @@
 
 			<div id="contentstart">
 				<div id="maincontentblockdept">
-					<form method="post" action="">
+					
 						<div class="row">
 							<div class="col-sm-12">
 								<div class="panel panel-default">
@@ -60,6 +60,7 @@
 															</ul>
 															<div class="tab-content">
 																<div class="tab-pane active" id="tab_default_1">
+																<form method="post" action="@routes.StudentCtrl.save()">
 																	<fieldset id="personal_details">
 
 																		<legend class="positionHide">Personal Details</legend>
@@ -70,7 +71,7 @@
 																			<div class="col-md-3">
 																				<div class="form-group">
 																					<label for="title">Title *</label> <select
-																						id="title" name="title" required=""
+																						id="title" name="title" required="required"
 																						data-parsley-required="true"
 																						data-parsley-trigger="change"
 																						data-parsley-id="1086">
@@ -141,7 +142,7 @@
 																			<div class="col-md-3">
 																				<div class="form-group">
 																					<label for="IPR_FNM2">Middle name</label> <input
-																						type="text" id="IPR_FNM2" name="IPR_FNM2" value=""
+																						type="text" id="middleName" name="middleName" value=""
 																						maxlength="30" data-parsley-maxlength="30"
 																						data-parsley-trigger="focusout"
 																						data-parsley-id="0906">
@@ -180,16 +181,16 @@
 																				<div class="form-group">
 																					<label for="gender">Gender *</label> <select
 																						id="gender" class="compulsoryFieldBg"
-																						name="gender" required=""
+																						name="gender" required="required"
 																						data-parsley-required="true"
 																						data-parsley-trigger="change"
 																						data-parsley-id="8720">
 																						<option value="" selected="selected">Please
 																							select</option>
-																						<option value="M">Male</option>
-																						<option value="F">Female</option>
-																						<option value="N">Other</option>
-																						<option value="X">Prefer not to say</option>
+																						<option value="male">Male</option>
+																						<option value="female">Female</option>
+																						<option value="other">Other</option>
+																						<option value="prefer_not_to_say">Prefer not to say</option>
 																						<!--Dropdown menu populated from all in use records in GEN table BT6 27/05/2014-->
 																					</select>
 																					<ul class="parsley-errors-list"
@@ -204,7 +205,7 @@
 																						class="hiddenHelpIcon fa fa-question-circle"><span
 																							class="positionHide">Field help.</span></a>
 																					</label> <input type="text" id="dateOfBirth"
-																						name="dateOfBirth" value="20/Aug/1990" required=""
+																						name="dateOfBirth" value="20/08/1990" required=""
 																						data-parsley-required="true"
 																						data-parsley-datepkr="IPR_DOB"
 																						data-parsley-trigger="change"
@@ -269,6 +270,8 @@
 
 
 																	</fieldset>
+																<button type="submit" class="btn btn-primary waves-effect waves-light m-b-5" title="Sauvegarder les informations">Ajouter</button>
+																</form>
 																</div>
 																<div class="tab-pane" id="tab_default_2">
 																	<fieldset id="home-address">
@@ -2781,9 +2784,9 @@
 																		<div class="f-a-m-outer hide">
 																			<span class="form-alert-message"></span>
 																		</div>
-																		<input type="button" value="Next page Education"
+																		<input type="submit" value="Next page Education"
 																			name="nextbutton" id="nextTabButton">
-
+<button type="submit" class="btn btn-primary waves-effect waves-light m-b-5" title="Sauvegarder les informations">Ajouter</button>
 
 
 																	</fieldset>
@@ -4091,7 +4094,6 @@
 								</div>
 							</div>
 						</div>
-					</form>
 					<a class="skiplink" href="#rhs">Go to right hand side links</a> <a
 						class="skiplink" href="#localmenu">go to local menu</a> <a
 						class="skiplink" href="#menu">Go to main menu</a>

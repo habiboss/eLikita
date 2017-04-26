@@ -20,7 +20,8 @@ public class Application extends Controller {
 	}
 
 	public Result index3() {
-		return ok(courseDirectory.render());
+		//return ok(courseDirectory.render());
+		return null;
 	}
 
 	public Result courseManagement() {

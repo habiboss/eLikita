@@ -15,19 +15,19 @@ public class CourseCtrl extends Controller{
 	
 	@Inject
 	FormFactory formFactory;
+	@Inject
+	CourseSvr courseSvr;
 	
 	@Transactional
 	public Result read() {
-		CourseSvr x = new CourseSvr();
-		return ok(course.render(x.findList()));
+		return ok(course.render(courseSvr.findList()));
 	}
 	
 	@Transactional
 	public Result save() {
 		Form<Course> form = formFactory.form(Course.class).bindFromRequest();
 		Course course = form.get();
-		CourseSvr x = new CourseSvr();
-		x.save(course);
+		courseSvr.save(course);
 		return redirect(routes.CourseCtrl.read());
 		
 	}

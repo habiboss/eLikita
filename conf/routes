@@ -7,7 +7,7 @@ GET         /authentification                                                   
 
 GET         /index1                                                                          controllers.Application.index()
 GET         /index2                                                                          controllers.Application.index2()
-GET         /index3                                                                          controllers.Application.index3()
+GET         /readCourseDirectory                                                             controllers.CourseDirectoryCtrl.read()
 GET         /courseManagement                                                                controllers.Application.courseManagement()
 GET         /studentRegistration                                                             controllers.Application.studentRegistration()
 GET         /login                                                                           controllers.Application.login()
@@ -33,25 +33,31 @@ POST        /saveCourse                                                         
 
 
 #Batch
-GET          /readBatch                                                                           controllers.BatchCtrl.read()
-POST        /saveBatch                                                                            controllers.BatchCtrl.save()
+GET          /readBatch                                                                      controllers.BatchCtrl.read()
+POST        /saveBatch                                                                       controllers.BatchCtrl.save()
 
 #Department
-GET         /readDepartment                                                                    controllers.DepartmentCtrl.read()
-POST        /saveDepartment                                                                           controllers.DepartmentCtrl.save()
+GET         /readDepartment                                                                  controllers.DepartmentCtrl.read()
+POST        /saveDepartment                                                                  controllers.DepartmentCtrl.save()
 
 #Note
 GET         /readNote                                                                        controllers.NoteCtrl.read()
 POST        /saveNote                                                                        controllers.NoteCtrl.save()
 
 #Module
-GET         /readModule                                                                        controllers.ModuleCtrl.read()
-POST        /saveModule                                                                        controllers.ModuleCtrl.save()
+GET         /readModule                                                                      controllers.ModuleCtrl.read()
+POST        /saveModule                                                                      controllers.ModuleCtrl.save()
 
 #Student
-GET         /readModule                                                                        controllers.ModuleCtrl.read()
-POST        /saveModule                                                                        controllers.ModuleCtrl.save()
+POST        /saveStudent                                                                     controllers.StudentCtrl.save()
 
+#AboutInstitution
+GET         /readAboutInstitution                                                            controllers.AboutInstitutionCtrl.read()
+POST        /saveAboutInstitution                                                            controllers.AboutInstitutionCtrl.create()
+
+#Profile
+GET         /readProfil                                                                      controllers.referentiels.ProfilCtrl.read()
+POST        /saveProfil                                                                      controllers.referentiels.ProfilCtrl.create()
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                                                               controllers.Assets.versioned(path="/public", file: Asset)

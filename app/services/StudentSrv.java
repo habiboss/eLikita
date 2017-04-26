@@ -2,21 +2,26 @@ package services;
 
 import java.util.List;
 
+import com.google.inject.Inject;
+
 import interfaces.IStudent;
 import models.Student;
 import play.db.jpa.JPA;
 
 public class StudentSrv implements IStudent{
+	@Inject
+	Student students;
 
 	@Override
 	public String save(Student student) {
 		// TODO Auto-generated method stub
+		System.out.print("Student First name" + student.getFirstName());
 		try {
 			JPA.em().persist(student);
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		return null;
+		return "Success";
 	}
 
 	@Override
