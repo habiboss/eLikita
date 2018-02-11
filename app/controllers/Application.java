@@ -1,5 +1,8 @@
 package controllers;
 
+import com.google.inject.Inject;
+
+//import models.Dimensions;
 import play.db.jpa.Transactional;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -7,6 +10,9 @@ import services.EventService;
 import views.html.*;
 import views.html.admin.*;
 public class Application extends Controller {
+	
+	//@Inject
+	//Dimensions dimensions;
 
 	@Transactional
 	public Result index1() {
@@ -29,10 +35,10 @@ public class Application extends Controller {
 		return ok(courseManagement.render());
 	}
 
-	public Result studentRegistration() {
+/*	public Result studentRegistration() {
 
 		return ok(studentRegistration.render());
-	}
+	}*/
 
 	public Result login() {
 
@@ -96,6 +102,14 @@ public class Application extends Controller {
 	 *
 	 * @return
 	 */
+	
+	@Transactional
+	public Result chargement() {
+		//loading.save();
+		//sdimensions.save();
+		return TODO;
+	}
+	
 	@Transactional
 	public Result index() {
 		return TODO;
@@ -132,5 +146,7 @@ public class Application extends Controller {
 		return null;
 
 	}
+	
+	
 
 }

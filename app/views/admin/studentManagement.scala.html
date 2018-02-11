@@ -1,8 +1,24 @@
-@import java.util
-@(batch: List[Batch], course: List[Course])
+@(currentPage: models.util.Page[schemas.public_.tables.pojos.StudentDetail], currentFilter: String, viewMode: String)
+
+@link(newPage:Int) = @{
+    // Generate the link
+   routes.StudentCtrl.list(newPage,currentFilter)
+}
+@quote(s: String) = @{
+    "" + s + ""
+}
+@isDisabled(fieldName: String) = @{
+    fieldName match {
+        case "studentDetail" => if(null == "")
+            "name=" + quote(fieldName) else "name=" + quote(fieldName) + " disabled=" + quote("disabled")
+        case _ => if((viewMode != "VIEW") && (viewMode != "DELETE"))
+            "name=" + quote(fieldName) else "name=" + quote(fieldName) + " disabled=" + quote("disabled")
+
+    }
+}
 <!DOCTYPE html>
 <html>
-@head("Activités")
+@head("")
 
 <body class="fixed-left">
 
@@ -26,119 +42,82 @@
 				login
 			</div>
 
-			<!-- <div id="centralpane"> -->
+
 			<div id="contentstart">
 				<div id="maincontentblockdept">
-					<form method="post" action="@routes.BatchCtrl.save()"
-						accept-charset="ISO-8859-1">
-						<div class="row">
-							<div class="col-sm-6">
-								<div class="panel panel-default">
-									<div class="panel-heading">
-										<h4 class="panel-title">Add Batch</h4>
-									</div>
-									<div class="row">
-                            <div class="col-lg-12 temporaire">
-                                @if(flash.containsKey("error")) {
-                                    <strong class="align-center alert-danger"> @flash.get("error")</strong>
-                                }
 
-                                @if(flash.containsKey("success")) {
-                                    <strong class="align-center alert-success">@flash.get("success")</strong>
-                                }
-                            </div>
-                        </div>
-									<div class="panel-body">
-										<div class="panel-body">
-										<div class="row">
-												<div class="col-md-6">
-													<div class="form-group">
-														<label for="" class="control-label">Course *</label> 
-														<select name="codeCourse" id="codeCourse" class="form-control">
-														@for(courses <- course){
-														<option value="@courses.getId">@courses.getCourseTitle</option>
-														}
-														</select>
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-														<label for="" class="control-label">Batch Name</label> 
-                                                        <input type="text" name="batchName" id="batchName" class="form-control">
-													</div>
-												</div>
-
-											</div>
-
-											<div class="row">
-												<div class="col-md-6">
-													<div class="form-group">
-														<label for="" class="">Start Date</label> 
-														<input type="text" name="startDate" id="startDate" class="form-control">
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-														<label for="" class="">End Date</label> 
-                                                        <input type="text" name="endDate" id="endDate" class="form-control">
-													</div>
-												</div>
-
-											</div>
-											<div class="row">
-											<div class="col-md-6">
-													<div class="form-group">
-														<label for="" class="">Maximum Number of Students *</label>
-														<input type="text" name="maxStudent" id="maxStudent" class="form-control"> 
-													</div>
-												</div>
-                                            </div>
-											<div class="row">
-												<div class="col-sm-5">
-													<div class="form_sep">
-														<input class="btn btn-info" name="" id="" type="submit"
-															value="Save">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">Add Note</h4>
 								</div>
-							</div>
-							<div class="col-sm-6">
+								<form method="post" action="  ">
+								<div class="panel-body">
+									<div class="panel-body">
+										<div class="col-sm-12">
 								<div class="grid-view table-responsive" id="item-grid">
 									<table class="items">
 										<thead>
 											<tr>
 												<th id="item-grid_c0">Sl.No.</th>
 												<th id="item-grid_c1">Course</th>
-												<th id="item-grid_c2">Batch</th>
-												<th id="item-grid_c3">Max. No of Students</th>
-												<th id="item-grid_c4">Start Date</th>
-												<th id="item-grid_c4">End Date</th>
 												<th class="button-column" id="item-grid_c5">Manage</th>
 											</tr>
 										</thead>
 										<tbody>
-										@for(batchs <- batch){
-											<tr>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td>@batchs.getMaxStudent</td>
-														<td>@batchs.getStartDate</td>
-														<td>@batchs.getEndDate</td>
+										@for(student <- currentPage.getList){
+											<tr @if(student.getStatus() == "UNAPPROVED"){class="bg-info"} @if(student.getStatus() == "APPROVED"){class="bg-success"}>
+												<td></td>
+												<td>@student.getFirstName</td>
+												<td><a href="@routes.StudentCtrl.show("EDIT", student.getId(), "")" class="btn btn-primary"
+													data-toggle="tooltip" title="Modifier"> <i
+														class="glyphicon glyphicon-pencil"></i>
+												</a> <a href="@routes.StudentCtrl.show("VIEW", student.getId(), "")" class="btn btn-default bg-info" title="Afficher"> <i
+														class="glyphicon glyphicon-info-sign"></i>
+												</a> <a href="@routes.StudentCtrl.imprimerStudentInfo(student.getId())" class="btn btn-danger" data-toggle="tooltip"
+													title="Supprimer"> <i class="glyphicon glyphicon-trash"></i>
+												</a></td>
 
 											</tr>
-										}
+											}
 										</tbody>
 									</table>
+									<!-- pagination -->
+								<div id="pagination" class="pagination">
+									<ul class="pagination">
+										@if(currentPage.hasPrev) {
+										<li class="precedent"><a
+											href="@link(currentPage.getPageIndex - 1)">&larr;
+												Precedent</a></li> } else {
+										<li class="precedent desactive"><a>&larr; Precedent</a></li> }
+										<li class="current"><a>
+												@currentPage.getDisplayXtoYofZ</a></li> @if(currentPage.hasNext) {
+										<li class="suivant"><a
+											href="@link(currentPage.getPageIndex + 1)">Suivant &rarr;</a>
+										</li> } else {
+										<li class="suivant desactive"><a>Suivant &rarr;</a></li> }
+
+									</ul>
+								</div>
 									<div class="keys" style="display: none"
 										title=""></div>
 								</div>
 							</div>
-						</div>
-					</form>
+																		</div>
+																	</div>
+																	</form>
+																<div class="tab-pane" id="tab_default_8"></div>
+																<div class="tab-pane" id="tab_default_9"></div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+									</div>
+								
 					<a class="skiplink" href="#rhs">Go to right hand side links</a> <a
 						class="skiplink" href="#localmenu">go to local menu</a> <a
 						class="skiplink" href="#menu">Go to main menu</a>
@@ -148,10 +127,6 @@
 
 			</div>
 			<!--contentstart-->
-		</div>
-		<!--centralpane-->
-	</div>
-	</div>
 	@foot()
 </body>
 </html>

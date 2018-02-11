@@ -1,0 +1,162 @@
+@(currentPage: models.util.Page[schemas.public_.tables.pojos.AboutInstitution],currentFilter: String)
+@link(newPage:Int) = @{
+    // Generate the link
+   routes.AboutInstitutionCtrl.list(newPage,currentFilter)
+}
+<!DOCTYPE html>
+<html>
+@head("Activités")
+
+<body class="fixed-left">
+
+	@universityDirectoryTopbar()
+	<div id="welcome-container">
+		<div id="welcome-name" class="container-460">
+			<span id="ctl00_PortalWelcomeBar_LabelUserName"> &nbsp;</span>
+		</div>
+		<div id="welcome-date" class="container-460">
+			<span id="ctl00_PortalWelcomeBar_LabelDateToday">Tuesday 22
+				November</span>
+		</div>
+	</div>
+	<div class="mainwrap">
+		@mainMenuPane()
+
+		<div id="contentpane">
+
+			<div id="crumbsbar">
+				<a href=" ">My.Anglia</a> &gt; My.Anglia
+				login
+			</div>
+
+			<!-- <div id="centralpane"> -->
+			<div id="contentstart">
+				<div id="maincontentblockdept">
+<div class=>
+												<div class="col-lg-12 temporaire">
+													@if(flash.containsKey("error")) { <strong
+														class="align-center alert-danger">
+														@flash.get("error")</strong> } @if(flash.containsKey("SUCCESS")) {
+													<strong class="align-center alert-success">@flash.get("SUCCESS")</strong>
+													}
+												</div>
+											</div>
+										<div class="panel panel-default">
+											<div class="panel-heading">
+												<h4 class="panel-title">Now let's get the details of
+													your business</h4>
+											</div>
+											<div align="right">
+				<!-- <a href="routes.VersementChequeTier.show("CREATE", 0L)" class="btn btn-dark"> <i class="fa fa-plus"></i>
+					
+				</a>  -->
+				<br>
+				<form action="@link(0)" method="GET" class="form-inline">
+					<div class="form-group">
+						<input type="search" name="filter"
+							value="@currentFilter" placeholder="No "
+							class="form-control">
+<button style="margin-bottom: -1px" type="submit" title="Recherche"
+						class="btn btn-dark">
+						<span class="glyphicon glyphicon-search"></span>
+					</button>					</div>
+					
+				</form>
+			</div>
+											<div class="panel-body">
+												<div class="panel-body">
+
+													<table class="table table-bordered table-striped table-condensed "
+									id="">
+									<caption>
+										<!-- <h4>Liste des Engagements</h4> -->
+									</caption>
+									<thead>
+										<tr class="breadcrumb">
+											<th>Name
+											<th style="width: 30px;">Afficher
+									</thead>
+									<tbody>
+
+										@for(institution <- currentPage.getList){
+										<tr>
+											<td>@institution.getInstitutionName()</td>
+											<td><a class="btn btn-primary waves-effect waves-light" data-toggle="modal" data-target="#sideModalTR">Top Right</a></td>
+										</tr>
+										}
+									</tbody>
+								</table>
+								<!-- pagination -->
+								<div id="pagination" class="pagination">
+									<ul class="pagination">
+										@if(currentPage.hasPrev) {
+										<li class="precedent"><a
+											href="@link(currentPage.getPageIndex - 1)">&larr;
+												Precedent</a></li> } else {
+										<li class="precedent desactive"><a>&larr; Precedent</a></li> }
+										<li class="current"><a>Cheque
+												@currentPage.getDisplayXtoYofZ</a></li> @if(currentPage.hasNext) {
+										<li class="suivant"><a
+											href="@link(currentPage.getPageIndex + 1)">Suivant &rarr;</a>
+										</li> } else {
+										<li class="suivant desactive"><a>Suivant &rarr;</a></li> }
+
+									</ul>
+								</div>
+													<div class="row">
+														<div class="col-sm-5">
+															<div class="form_sep">
+																<input class="btn btn-info" name="" id="" type="submit"
+																	value="Save">
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+							
+<div class="modal fade" id="sideModalTR" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+						</div>
+
+
+					<a class="skiplink" href="#rhs">Go to right hand side links</a> <a
+						class="skiplink" href="#localmenu">go to local menu</a> <a
+						class="skiplink" href="#menu">Go to main menu</a>
+
+				</div>
+				<!--maincontentblockdept-->
+				<div id="maincontentblockdept">
+
+					<a class="skiplink" href="#rhs">Go to right hand side links</a> <a
+						class="skiplink" href="#localmenu">go to local menu</a> <a
+						class="skiplink" href="#menu">Go to main menu</a>
+
+				</div>
+				<!--maincontentblockdept-->
+			</div>
+			<!--contentstart-->
+		</div>
+		<!--centralpane-->
+
+	@foot()
+</body>
+</html>

@@ -20,101 +20,144 @@
 		<div id="contentpane">
 
 			<div id="crumbsbar">
-				<a href="https://my.anglia.ac.uk/">My.Anglia</a> &gt; My.Anglia
+				<a href=" ">My.Anglia</a> &gt; My.Anglia
 				login
 			</div>
 
 			<!-- <div id="centralpane"> -->
 			<div id="contentstart">
 				<div id="maincontentblockdept">
-					<form method="post" action="@routes.AboutInstitutionCtrl.create()"
-						accept-charset="ISO-8859-1">
-						<div class="row">
-							<div class="col-sm-6">
-								<div class="panel panel-default">
-									<div class="panel-heading">
-										<h4 class="panel-title">Addddddd</h4>
-									</div>
-									<div class="row">
-                            <div class="col-lg-12 temporaire">
-                                @if(flash.containsKey("error")) {
-                                    <strong class="align-center alert-danger"> @flash.get("error")</strong>
-                                }
+					<form method="post" action="@routes.AboutInstitutionCtrl.create()" accept-charset="ISO-8859-1">
 
-                                @if(flash.containsKey("success")) {
-                                    <strong class="align-center alert-success">@flash.get("success")</strong>
-                                }
-                            </div>
-                        </div>
-									<div class="panel-body">
-										<div class="panel-body">
-										<div class="row">
-												<div class="col-md-6">
-													<div class="form-group">
-														<label for="" class="control-label">Institution Name *</label> 
-														<input type="text" name="InstitutionName" id="InstitutionName" class="form-control">
-								
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-														<label for="" class="control-label">Code ID</label> 
-                                                        <input type="text" name="codeId" id="codeId" class="form-control">
-													</div>
-												</div>
-
-											</div>
-
-											<div class="row">
-												<div class="col-md-6">
-													<div class="form-group">
-														<label for="" class="">xx</label> 
-														<input type="text" name="" id="" class="form-control">
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-														<label for="" class="">xx</label> 
-                                                        <input type="text" name="" id="" class="form-control">
-													</div>
-												</div>
-
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="panel panel-default">
+											<div class="panel-heading">
+												<h4 class="panel-title">Now let's get the details of
+													your business</h4>
 											</div>
 											<div class="row">
-											<div class="col-md-6">
-													<div class="form-group">
-														<label for="" class="">Maximum Number of Students *</label>
-														<input type="text" name="maxStudent" id="maxStudent" class="form-control"> 
-													</div>
+												<div class="col-lg-12 temporaire">
+													@if(flash.containsKey("error")) { <strong
+														class="align-center alert-danger">
+														@flash.get("error")</strong> } @if(flash.containsKey("SUCCESS")) {
+													<strong class="align-center alert-success">@flash.get("SUCCESS")</strong>
+													}
 												</div>
-                                            </div>
-											<div class="row">
-												<div class="col-sm-5">
-													<div class="form_sep">
-														<input class="btn btn-info" name="" id="" type="submit"
-															value="Save">
+											</div>
+											<div class="panel-body">
+												<div class="panel-body">
+
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label for="" class="control-label">Institution
+																	Name *</label> <input type="text" name="InstitutionName"
+																	id="InstitutionName" class="form-control">
+
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="form-group">
+																<label for="" class="control-label">Phone Number</label>
+																<input type="text" name="codeId" id="codeId"
+																	class="form-control">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="form-group">
+																<label for="" class="control-label">Country</label> <input
+																	type="text" name="country" id="country"
+																	class="form-control">
+															</div>
+														</div>
+
+													</div>
+
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label for="" class="">Business Email</label> <input
+																	type="text" name="email" id="email" class="form-control">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="form-group">
+																<label for="" class="">Web Site</label> <input
+																	type="text" name="website" id="website" class="form-control">
+															</div>
+														</div>
+
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label for="" class="">Address*</label> <input
+																	type="text" name="address" id="address"
+																	class="form-control">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="form-group">
+																<label for="" class="">City*</label> <input type="text"
+																	name="city" id="city" class="form-control">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<div class="form-group">
+																<label for="" class="">Region*</label> <input
+																	type="text" name="region" id="region"
+																	class="form-control">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="form-group">
+																<label for="" class="">Post-Code*</label> <input
+																	type="text" name="postcode" id="postcode"
+																	class="form-control">
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-sm-5">
+															<div class="form_sep">
+																<input class="btn btn-info" name="" id="" type="submit"
+																	value="Save">
+															</div>
+														</div>
 													</div>
 												</div>
 											</div>
+
 										</div>
 									</div>
 								</div>
-							</div>
+							</form>
+
 						</div>
-					</form>
+
+
 					<a class="skiplink" href="#rhs">Go to right hand side links</a> <a
 						class="skiplink" href="#localmenu">go to local menu</a> <a
 						class="skiplink" href="#menu">Go to main menu</a>
 
 				</div>
 				<!--maincontentblockdept-->
+				<div id="maincontentblockdept">
 
+					<a class="skiplink" href="#rhs">Go to right hand side links</a> <a
+						class="skiplink" href="#localmenu">go to local menu</a> <a
+						class="skiplink" href="#menu">Go to main menu</a>
+
+				</div>
+				<!--maincontentblockdept-->
 			</div>
 			<!--contentstart-->
 		</div>
 		<!--centralpane-->
-	</div>
-	</div>
+
 	@foot()
 </body>
 </html>

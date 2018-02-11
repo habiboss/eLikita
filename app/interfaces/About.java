@@ -1,7 +1,7 @@
 package interfaces;
 
-import models.AboutInstitution;
 import play.data.Form;
+import schemas.public_.tables.pojos.AboutInstitution;
 
 public interface About {
 	

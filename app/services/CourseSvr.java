@@ -1,61 +1,85 @@
 package services;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import javax.inject.Inject;
+import org.jooq.DSLContext;
+import schemas.public_.tables.pojos.Course;
+import schemas.public_.tables.records.CourseRecord;
+import schemas.public_.tables.daos.CourseDao;
 
-import interfaces.ICourse;
-import models.Batch;
-import models.Course;
-import play.db.jpa.JPA;
+public class CourseSvr extends CourseDao {
+	
+	@Inject
+	DSLContext sqlContext;
+	
+	@Inject
+	public CourseSvr(DSLContext sqlContext) {
+		super();
+		this.setConfiguration(sqlContext.configuration());
+	}
+	
+	public List<Course> findByCourse(String q) {
+		// TODO Auto-generated method stub
+		List<Course> courseLst = new ArrayList<Course>();
+		org.jooq.Result<CourseRecord> courseRecord = sqlContext
+				.selectFrom(schemas.public_.tables.Course.COURSE).where(schemas.public_.tables.Course.COURSE.TITLE.like(q + "%"))
+				.fetch();
+		for (CourseRecord courseRecords : courseRecord) {
+			Course course = new Course();
+			course.setId(courseRecords.getId());
+			course.setTitle(courseRecords.getTitle());
+			courseLst.add(course);
+		}
+		return courseLst;
+	}
+	
+	
+	public void save(Course course) {
+		// TODO Auto-generated method stub
+		if (findByTitle(course.getId())) {
+			super.update(course);
+		} else {
+			super.insert(course);
+		}
+	}
 
-public class CourseSvr implements ICourse{
-
-	@Override
-	public String save(Course course) {
+	
+	public void delete(Course course) {
 		// TODO Auto-generated method stub
 		try {
-			JPA.em().persist(course);
+			this.deleteById(course.getId());
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		return null;
 	}
 
-	@Override
-	public String update(Course course) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String delete(Course course) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
+	
 	public List<Course> findList() {
 		// TODO Auto-generated method stub
-		String Querry_findList = "SELECT course FROM Course course ORDER BY course.id";
 		try {
-			return JPA.em().createQuery(Querry_findList).getResultList();
+			return findAll();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		return null;
 	}
-
-	@Override
-	public Course findById(Long id) {
-		// TODO Auto-generated method stub
-				String Querry_findbyId = "SELECT course FROM Course course WHERE course.id = :id ORDER BY course.id";
-				try {
-					return (Course) JPA.em().createQuery(Querry_findbyId).setParameter("id", id).getSingleResult();
-				} catch (Exception e) {
-					// TODO: handle exception
-				}
-				return null;
-			}
 	
+	public Boolean findByTitle(Long title) {
+		return !fetchById(title).isEmpty();
+	}
+
+	public models.util.Page<Course> pageCourse(int page, int pageSize, String value) {
+		int from_index = (page < 1 ? 0 : page - 1) * pageSize;
+		final List<Course> course = findAll().stream()
+				.filter(c -> c.getId().toString().contains(value) || c.getTitle().contains(value))
+				.collect(Collectors.toList());
+		course.sort((o1, o2) -> (o1.getId().compareTo(o2.getId())));
+		final List<Course> result = course.stream().skip(from_index).limit(pageSize)
+				.collect(Collectors.toList());
+		return new models.util.Page<Course>(result, course.size(), page, pageSize);
+	}
 	
 
 }

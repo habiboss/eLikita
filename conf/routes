@@ -3,13 +3,13 @@ GET         /index                                                              
 GET         /loginAdmin                                                                      controllers.Application.loginAdmin()
 GET         /logout                                                                          controllers.Application.logout()
 GET         /authentification                                                                controllers.Application.authentification()
-
+GET         /Chargement                                                                      controllers.Application.chargement()
 
 GET         /index1                                                                          controllers.Application.index()
 GET         /index2                                                                          controllers.Application.index2()
 GET         /readCourseDirectory                                                             controllers.CourseDirectoryCtrl.read()
 GET         /courseManagement                                                                controllers.Application.courseManagement()
-GET         /studentRegistration                                                             controllers.Application.studentRegistration()
+#GET         /studentRegistration                                                             controllers.Application.studentRegistration()
 GET         /login                                                                           controllers.Application.login()
 GET         /loginX                                                                          controllers.Application.loginX()
 GET         /staffRegistration                                                               controllers.Application.staffRegistration()
@@ -28,8 +28,16 @@ POST         /saveEvent                                                         
 GET /display																				 controllers.EventCtrl.display()
 
 #Course
-GET          /readCourse                                                                     controllers.CourseCtrl.read()
-POST        /saveCourse                                                                      controllers.CourseCtrl.save()
+GET         /course/:page/             controllers.CourseCtrl.list(page: Int, filter: String ?="")                                                                    
+POST        /saveCourse                controllers.CourseCtrl.save()
+GET         /deleteCourse              controllers.CourseCtrl.delete(coursePK: Long)
+GET         /Course/show/:subaction/   controllers.CourseCtrl.show(subaction: String, coursePK: Long)
+
+#Classe
+GET         /classe/:page/             controllers.ClasseCtrl.list(page: Int, filter: String ?="")                                                                    
+POST        /saveClasse                controllers.ClasseCtrl.save()
+GET         /deleteClasse              controllers.ClasseCtrl.delete(classePK: Long)
+GET         /Classe/show/:subaction/   controllers.ClasseCtrl.show(subaction: String, classePK: Long)
 
 
 #Batch
@@ -49,15 +57,113 @@ GET         /readModule                                                         
 POST        /saveModule                                                                      controllers.ModuleCtrl.save()
 
 #Student
-POST        /saveStudent                                                                     controllers.StudentCtrl.save()
+POST        /saveStudent                controllers.StudentCtrl.save()
+GET         /Student/:page/             controllers.StudentCtrl.list(page: Int, filter: String ?="")                                                                    
+GET         /deleteStudent              controllers.StudentCtrl.delete(studentPK: Long)
+GET         /Student/show/:subaction/   controllers.StudentCtrl.show(subaction: String, studentPK: Long, uicode: String ?="")
+GET         /apercuStudent              controllers.StudentCtrl.imprimerStudentInfo(studentId: Long)
+
+#Address
+POST        /createAddress                                                                   controllers.AddressCtrl.save()
+
+#Contact
+POST        /saveContact                                                                     controllers.ContactCtrl.save()
 
 #AboutInstitution
 GET         /readAboutInstitution                                                            controllers.AboutInstitutionCtrl.read()
 POST        /saveAboutInstitution                                                            controllers.AboutInstitutionCtrl.create()
+GET         /institutionLst/:page/              controllers.AboutInstitutionCtrl.list(page: Int, filter: String ?="")
+GET         /institution/                       controllers.AboutInstitutionCtrl.getInstitutionJson(q: String)
+GET         /institutionDetail/:instDetail      controllers.AboutInstitutionCtrl.getInstitutionDetail(instDetail: String)
 
-#Profile
-GET         /readProfil                                                                      controllers.referentiels.ProfilCtrl.read()
-POST        /saveProfil                                                                      controllers.referentiels.ProfilCtrl.create()
+########################################REFERENTIAL#########################################
+
+#RLevel
+GET         /RLevel/:page/             controllers.referentiels.RLevelCtrl.list(page: Int, filter: String ?="")                                                                    
+POST        /saveRLevel                controllers.referentiels.RLevelCtrl.save()
+GET         /deleteRLevel              controllers.referentiels.RLevelCtrl.delete(rLevelPK: Long)
+GET         /RLevel/show/:subaction/   controllers.referentiels.RLevelCtrl.show(subaction: String, rLevelPK: Long)
+
+#RClassType
+GET         /RClassType/:page/             controllers.referentiels.RClassTypeCtrl.list(page: Int, filter: String ?="")                                                                    
+POST        /saveRClassType                controllers.referentiels.RClassTypeCtrl.save()
+GET         /deleteRClassType              controllers.referentiels.RClassTypeCtrl.delete(rClassTypePK: Long)
+GET         /RClassType/show/:subaction/   controllers.referentiels.RClassTypeCtrl.show(subaction: String, rClassTypePK: Long)
+
+#RAttendanceOutcome
+GET         /RAttendanceOutcome/:page/             controllers.referentiels.RAttendanceOutcomeCtrl.list(page: Int, filter: String ?="")                                                                    
+POST        /saveRAttendanceOutcome                controllers.referentiels.RAttendanceOutcomeCtrl.save()
+GET         /deleteRAttendanceOutcome              controllers.referentiels.RAttendanceOutcomeCtrl.delete(rAttendanceOutcomePK: Long)
+GET         /RAttendanceOutcome/show/:subaction/   controllers.referentiels.RAttendanceOutcomeCtrl.show(subaction: String, rAttendanceOutcomePK: Long)
+
+#RCategory
+GET         /RCategory/:page/             controllers.referentiels.RCategoryCtrl.list(page: Int, filter: String ?="")                                                                    
+POST        /saveRCategory                controllers.referentiels.RCategoryCtrl.save()
+GET         /deleteRCategory              controllers.referentiels.RCategoryCtrl.delete(rCategoryPK: Long)
+GET         /RCategory/show/:subaction/   controllers.referentiels.RCategoryCtrl.show(subaction: String, rCategoryPK: Long)
+
+#RClassType
+GET         /RClassType/:page/             controllers.referentiels.RClassTypeCtrl.list(page: Int, filter: String ?="")                                                                    
+POST        /saveRClassType                controllers.referentiels.RClassTypeCtrl.save()
+GET         /deleteRClassType              controllers.referentiels.RClassTypeCtrl.delete(rClassTypePK: Long)
+GET         /RClassType/show/:subaction/   controllers.referentiels.RClassTypeCtrl.show(subaction: String, rClassTypePK: Long)
+
+#RContactPersonType
+GET         /RContactPersonType/:page/             controllers.referentiels.RContactPersonTypeCtrl.list(page: Int, filter: String ?="")                                                                    
+POST        /saveRContactPersonType                controllers.referentiels.RContactPersonTypeCtrl.save()
+GET         /deleteRContactPersonType              controllers.referentiels.RContactPersonTypeCtrl.delete(rContactPersonTypePK: Long)
+GET         /RContactPersonType/show/:subaction/   controllers.referentiels.RContactPersonTypeCtrl.show(subaction: String, rContactPersonTypePK: Long)
+GET         /RContactPersonType/                   controllers.referentiels.RContactPersonTypeCtrl.getRContactPersonTypeJson(q: String)
+
+#RDropAttendanceReason
+GET         /course/:page/             controllers.referentiels.RDropAttendanceReasonCtrl.list(page: Int, filter: String ?="")                                                                    
+POST        /saveCourse                controllers.referentiels.RDropAttendanceReasonCtrl.save()
+GET         /deleteCourse              controllers.referentiels.RDropAttendanceReasonCtrl.delete(coursePK: Long)
+GET         /Course/show/:subaction/   controllers.referentiels.RDropAttendanceReasonCtrl.show(subaction: String, coursePK: Long)
+
+#RDropTeachReason
+GET         /RDropTeachReason/:page/             controllers.referentiels.RDropTeachReasonCtrl.list(page: Int, filter: String ?="")                                                                    
+POST        /saveRDropTeachReason                controllers.referentiels.RDropTeachReasonCtrl.save()
+GET         /deleteRDropTeachReason              controllers.referentiels.RDropTeachReasonCtrl.delete(rDropTeachReasonPK: Long)
+GET         /RDropTeachReason/show/:subaction/   controllers.referentiels.RDropTeachReasonCtrl.show(subaction: String, rDropTeachReasonPK: Long)
+
+#RFee
+GET         /RFee/:page/             controllers.referentiels.RFeeCtrl.list(page: Int, filter: String ?="")                                                                    
+POST        /saveRFee                controllers.referentiels.RFeeCtrl.save()
+GET         /deleteRFee              controllers.referentiels.RFeeCtrl.delete(rFeePK: Long)
+GET         /RFee/show/:subaction/   controllers.referentiels.RFeeCtrl.show(subaction: String, rFeePK: Long)
+
+#RProfil
+GET         /RProfil/:page/             controllers.referentiels.RProfilCtrl.list(page: Int, filter: String ?="")                                                                    
+POST        /saveRProfil                controllers.referentiels.RProfilCtrl.save()
+GET         /deleteRProfil              controllers.referentiels.RProfilCtrl.delete(rProfilPK: Long)
+GET         /RProfil/show/:subaction/   controllers.referentiels.RProfilCtrl.show(subaction: String, rProfilPK: Long)
+
+#RCountry
+GET         /RCountry/:page/             controllers.referentiels.RCountryCtrl.list(page: Int, filter: String ?="")                                                                    
+POST        /saveRCountry                controllers.referentiels.RCountryCtrl.save()
+GET         /deleteRCountry              controllers.referentiels.RCountryCtrl.delete(rCountryPK: Long)
+GET         /RCountry/show/:subaction/   controllers.referentiels.RCountryCtrl.show(subaction: String, rCountryPK: Long)
+GET         /RCountry/                   controllers.referentiels.RCountryCtrl.getRCountryJson(q: String)
+
+#RProfile
+GET         /Profile/:page/             controllers.referentiels.RProfilCtrl.list(page: Int, filter: String ?="")                                                                    
+POST        /saveProfile                controllers.referentiels.RProfilCtrl.save()
+GET         /deleteProfile              controllers.referentiels.RProfilCtrl.delete(profilePK: Long)
+GET         /Profile/show/:subaction/   controllers.referentiels.RProfilCtrl.show(subaction: String, profilePK: Long)
+
+#RUser
+GET         /RUser/:page/             controllers.referentiels.RUserCtrl.list(page: Int, filter: String ?="")                                                                    
+POST        /saveRUser                controllers.referentiels.RUserCtrl.save()
+GET         /deleteRUser              controllers.referentiels.RUserCtrl.delete(rUserPK: Long)
+GET         /RUser/show/:subaction/   controllers.referentiels.RUserCtrl.show(subaction: String, rUserPK: Long)
+
+#RTeachOutcome
+GET         /RTeachOutcome/:page/             controllers.referentiels.RTeachOutcomeCtrl.list(page: Int, filter: String ?="")                                                                    
+POST        /saveRTeachOutcome                controllers.referentiels.RTeachOutcomeCtrl.save()
+GET         /deleteRTeachOutcome              controllers.referentiels.RTeachOutcomeCtrl.delete(rTeachOutcomePK: Long)
+GET         /RTeachOutcome/show/:subaction/   controllers.referentiels.RTeachOutcomeCtrl.show(subaction: String, rTeachOutcomePK: Long)
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                                                               controllers.Assets.versioned(path="/public", file: Asset)

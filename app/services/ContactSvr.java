@@ -1,40 +1,28 @@
 package services;
 
-import java.util.List;
+import org.jooq.DSLContext;
+import com.google.inject.Inject;
+import schemas.public_.tables.daos.ContactDetailDao;
+import schemas.public_.tables.pojos.ContactDetail;
 
-import interfaces.IContact;
-import models.Contact;
-
-public class ContactSvr implements IContact{
-
-	@Override
-	public String save(Contact contact) {
+public class ContactSvr extends ContactDetailDao{
+	@Inject
+	DSLContext sqlContext;
+	
+	@Inject
+	public ContactSvr(DSLContext sqlContext) {
+		super();
+		this.setConfiguration(sqlContext.configuration());
+	}
+	 
+	public void save(ContactDetail contact) {
 		// TODO Auto-generated method stub
-		return null;
+		
+		super.insert(contact);
 	}
 
-	@Override
-	public String delete(Contact contact) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public String update(Contact contact) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public List<Contact> findList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
-	@Override
-	public Contact findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

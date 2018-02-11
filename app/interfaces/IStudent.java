@@ -3,10 +3,11 @@ package interfaces;
 import java.util.List;
 
 import models.Student;
+import play.data.Form;
 
 public interface IStudent {
 	
-	public String save(Student student);
+	public String save(Form<Student> form, Student student);
 	
 	public String update(Student student);
 	

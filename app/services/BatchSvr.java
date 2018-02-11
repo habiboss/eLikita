@@ -1,61 +1,56 @@
 package services;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import javax.inject.Inject;
+import org.jooq.DSLContext;
+import schemas.public_.tables.daos.BatchDao;
+import schemas.public_.tables.pojos.Batch;
 
-import interfaces.IBatch;
-import models.Batch;
-import models.Course;
-import play.db.jpa.JPA;
+public class BatchSvr extends BatchDao{
 
-public class BatchSvr implements IBatch{
-
+	@Inject
+	DSLContext sqlContext;
+	
+	@Inject
+	public BatchSvr(DSLContext sqlContext) {
+		super();
+		this.setConfiguration(sqlContext.configuration());
+	}
+	
 	//@Override
-	public String save(Batch batch, Long courseId) {
+	public void save(Batch batch) {
 		// TODO Auto-generated method stub
-		batch.course = new CourseSvr().findById(courseId);
-		try {
-			JPA.em().persist(batch);
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.toString();
+		if (!fetchById(batch.getId()).isEmpty()) {
+			super.update(batch);
+		} else {
+			super.insert(batch);
 		}
-		return "sucess";
-	}
-
-	@Override
-	public String update(Batch batch) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String delete(Batch batch) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	//@Override
-	public List<Batch> findList() {
+	public void delete(Batch batch) {
 		// TODO Auto-generated method stub
-		String Querry_findList = "SELECT batch FROM Batch batch ORDER BY batch.id";
 		try {
-			return JPA.em().createQuery(Querry_findList).getResultList();
+			this.deleteById(batch.getId());
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		return null;
+	}
+	
+	public Boolean findByTitle(Long title) {
+		return !fetchById(title).isEmpty();
 	}
 
-	//@Override
-	public Batch findById(Long id) {
-		// TODO Auto-generated method stub
-				String Querry_findbyId = "SELECT batch FROM Batch batch WHERE batch.id = :id ORDER BY batch.id";
-				try {
-					return (Batch) JPA.em().createQuery(Querry_findbyId).setParameter("id", id).getSingleResult();
-				} catch (Exception e) {
-					// TODO: handle exception
-				}
-				return null;
-			}
+	public models.util.Page<Batch> pageBatch(int page, int pageSize, String value) {
+		int from_index = (page < 1 ? 0 : page - 1) * pageSize;
+		final List<Batch> batch = findAll().stream()
+				.filter(c -> c.getId().toString().contains(value) || c.getBatchName().contains(value))
+				.collect(Collectors.toList());
+		batch.sort((o1, o2) -> (o1.getId().compareTo(o2.getId())));
+		final List<Batch> result = batch.stream().skip(from_index).limit(pageSize)
+				.collect(Collectors.toList());
+		return new models.util.Page<Batch>(result, batch.size(), page, pageSize);
+	}
 
 }

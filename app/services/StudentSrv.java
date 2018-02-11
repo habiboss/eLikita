@@ -1,63 +1,74 @@
 package services;
 
 import java.util.List;
-
+import java.util.stream.Collectors;
+import org.jooq.DSLContext;
 import com.google.inject.Inject;
+import schemas.public_.*;
+import schemas.public_.tables.pojos.StudentDetail;
+import schemas.public_.tables.records.StudentDetailRecord;
 
-import interfaces.IStudent;
-import models.Student;
-import play.db.jpa.JPA;
-
-public class StudentSrv implements IStudent{
+public class StudentSrv extends schemas.public_.tables.daos.StudentDetailDao {
 	@Inject
-	Student students;
+	DSLContext sqlContext;
 
-	@Override
-	public String save(Student student) {
+	@Inject
+	public StudentSrv(DSLContext sqlContext) {
+		super();
+		this.setConfiguration(sqlContext.configuration());
+	}
+
+	// @Override
+	public Long save(StudentDetail studentDetail) {
 		// TODO Auto-generated method stub
-		System.out.print("Student First name" + student.getFirstName());
+		if (findByTitle(studentDetail.getId())) {
+			super.update(studentDetail);
+		} else {
+			studentDetail.setCodeUi("xxxxxx");
+			studentDetail.setStatus("UNAPPROVED");
+			super.insert(studentDetail);
+		}
+		// return studentDetail.getId();
+		return null;
+	}
+
+	// @Override
+	public void delete(StudentDetail studentDetail) {
+		// TODO Auto-generated method stub
 		try {
-			JPA.em().persist(student);
+			this.deleteById(studentDetail.getId());
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		return "Success";
 	}
 
-	@Override
-	public String update(Student student) {
+	// @Override
+	public List<StudentDetail> findList() {
 		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String delete(Student student) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Student> findList() {
-		// TODO Auto-generated method stub
-		String Querry_findList = "SELECT student FROM Student student ORDER BY student.id";
 		try {
-			return JPA.em().createQuery(Querry_findList).getResultList();
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		return null;
-	}
-
-	@Override
-	public Student findById(Long id) {
-		// TODO Auto-generated method stub
-		String Querry_findById = "SELECT student FROM Student student WHERE student.id =:id ORDER BY student.id";
-		try {
-			return (Student) JPA.em().createQuery(Querry_findById).setParameter("id", id).getSingleResult();
+			return findAll();
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		return null;
 	}
 
+	public Boolean findByTitle(Long title) {
+		return !fetchById(title).isEmpty();
+	}
+
+	public models.util.Page<StudentDetail> pageStudentDetail(int page, int pageSize, String value) {
+		int from_index = (page < 1 ? 0 : page - 1) * pageSize;
+		final List<StudentDetail> studentDetail = findAll().stream()
+				.filter(c -> c.getId().toString().contains(value) || c.getFirstName().contains(value))
+				.collect(Collectors.toList());
+		studentDetail.sort((o1, o2) -> (o1.getId().compareTo(o2.getId())));
+		final List<StudentDetail> result = studentDetail.stream().skip(from_index).limit(pageSize)
+				.collect(Collectors.toList());
+		return new models.util.Page<StudentDetail>(result, studentDetail.size(), page, pageSize);
+	}
+
+	public StudentDetailRecord findByCodeUI(String codeUI) {
+		return sqlContext.fetchOne(Tables.STUDENT_DETAIL, Tables.STUDENT_DETAIL.CODE_UI.equal(codeUI));
+	}
 }

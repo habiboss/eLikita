@@ -1,0 +1,157 @@
+@(currentPage: models.util.Page[schemas.referential.tables.pojos.RFee], currentFilter: String, rFee: schemas.referential.tables.pojos.RFee, viewMode: String)
+
+@link(newPage:Int) = @{
+    // Generate the link
+   controllers.referentiels.routes.RFeeCtrl.list(newPage,currentFilter)
+}
+@quote(s: String) = @{
+    "" + s + ""
+}
+@isDisabled(fieldName: String) = @{
+    fieldName match {
+        case "course" => if(null == rFee.getId())
+            "name=" + quote(fieldName) else "name=" + quote(fieldName) + " disabled=" + quote("disabled")
+        case _ => if((viewMode != "VIEW") && (viewMode != "DELETE"))
+            "name=" + quote(fieldName) else "name=" + quote(fieldName) + " disabled=" + quote("disabled")
+
+    }
+}
+<!DOCTYPE html>
+<html>
+@head("Activités")
+
+<body class="fixed-left">
+
+	@universityDirectoryTopbar()
+	<div id="welcome-container">
+		<div id="welcome-name" class="container-460">
+			<span id="ctl00_PortalWelcomeBar_LabelUserName"> &nbsp;</span>
+		</div>
+		<div id="welcome-date" class="container-460">
+			<span id="ctl00_PortalWelcomeBar_LabelDateToday">Tuesday 
+				November</span>
+		</div>
+	</div>
+	<div class="mainwrap">
+		@mainMenuPane()
+
+		<div id="contentpane">
+
+			<div id="crumbsbar">
+				<a href="https://my.anglia.ac.uk/">My.Anglia</a> &gt; My.Anglia
+				login
+			</div>
+
+			<!-- <div id="centralpane"> -->
+			<div id="contentstart">
+				<div id="maincontentblockdept">
+					<form method="post" action=" @controllers.referentiels.routes.RFeeCtrl.save()"
+						accept-charset="ISO-8859-1">
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">Add honoraires</h4>
+									</div>
+									<div class="panel-body">
+										<div class="panel-body">
+											<input type="hidden" name="viewMode" value="@viewMode"> <input
+												type="hidden" name="rFeePK-key"
+												value="@rFee.getId()"> 
+											<div class="row">
+ 
+												<div class="col-md-6">
+													<div class="form-group">
+														<label for="" class="control-label">type de frais
+</label> 
+                                                        <input type="text" name="feeType" id="feeType" class="form-control" value="@rFee.getFeeType" @isDisabled("feeType")>
+													</div>
+												</div>
+
+											</div>
+											<div class="form-group">
+												<label for="" class="control-label">Description *</label>
+											    <textarea class="form-control" rows="3" placeholder="" name="description" id="description" @isDisabled("description")></textarea>
+											</div>
+
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label for="" class="control-label">honoraires *</label>
+														<input type="text" name="fees" id="fees" class="form-control" value="@rFee.getFees" @isDisabled("fees")> 
+													</div>
+												</div>
+												 
+
+											</div>
+	
+											<div class="ln_solid"></div>
+											@if(viewMode == "EDIT" || viewMode == "CREATE" ) {
+											<div class="form-group" align="">
+												<button type="submit" class='btn btn-success'
+													title="Enregistrer">
+													<i class="fa fa-save" style="color: white"></i> Enregistrer
+												</button>
+											</div>
+											} else { @if(viewMode == "DELETE"){
+
+											<div class="form-group" align="">
+												 <a
+													href=" @controllers.referentiels.routes.RFeeCtrl.delete(rFee.getId())"
+													title="Supprimer" class="btn btn-danger"> <i
+													class="fa fa-times-circle"></i> Supprimer
+												</a>
+											</div>
+											}}
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="grid-view table-responsive" id="item-grid">
+									<table class="items">
+										<thead>
+											<tr>
+ 												<th id="item-grid_c1">Type</th>
+												<th class="button-column" id="item-grid_c5">Manage</th>
+											</tr>
+										</thead>
+										<tbody>
+										 @for(rFees <- currentPage.getList){
+											<tr>
+ 												<td>@rFees.getFeeType</td>
+												<td><a href=" @controllers.referentiels.routes.RFeeCtrl.show("EDIT", rFees.getId())" class="btn btn-primary"
+													data-toggle="tooltip" title="Modifier"> <i
+														class="glyphicon glyphicon-pencil"></i>
+												</a> <a href=" @controllers.referentiels.routes.RFeeCtrl.show("VIEW", rFees.getId())" class="btn btn-default" title="Afficher"> <i
+														class="glyphicon glyphicon-info-sign"></i>
+												</a> <a href=" @controllers.referentiels.routes.RFeeCtrl.show("DELETE", rFees.getId())" class="btn btn-danger" data-toggle="tooltip"
+													title="Supprimer"> <i class="glyphicon glyphicon-trash"></i>
+												</a></td>
+
+											</tr>
+											}
+										</tbody>
+									</table>
+									<div class="keys" style="display: none"
+										title=""></div>
+								</div>
+							</div>
+						</div>
+					</form>
+					<a class="skiplink" href="#rhs">Go to right hand side links</a> <a
+						class="skiplink" href="#localmenu">go to local menu</a> <a
+						class="skiplink" href="#menu">Go to main menu</a>
+
+				</div>
+				<!--maincontentblockdept-->
+
+			</div>
+			<!--contentstart-->
+		</div>
+		<!--centralpane-->
+	</div>
+	</div>
+	@foot()
+</body>
+</html>

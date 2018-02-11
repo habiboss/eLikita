@@ -2,11 +2,8 @@ package models;
 
 import play.data.format.Formats;
 import play.data.validation.Constraints;
-import play.db.jpa.JPA;
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "address_detail")
@@ -17,20 +14,17 @@ public class AddressDetail {
 	private Long id;
 	@Column(name = "postcode")
 	private String postcode;
-	@Column(name = "house_name_number")
-	private String houseNameNumber;
-	@Column(name = "address")
-	private String address;
-	@Column(name = "address_2")
-	private String address_2;
-	@Column(name = "address_3")
-	private String address_3;
+	@Column(name = "present_address")
+	private String presentAddress;
+	@Column(name = "permanent_address")
+	private String permanentAddress;
 	@Column(name = "country")
 	private String country;
 	@Column(name = "city")
 	private String city;
 	@Column(name = "region")
 	private String region;
+	@Formats.DateTime(pattern = "dd/MM/yyyy")
 	@Column(name = "valid_until")
 	private Date validUntil;
 	
@@ -44,22 +38,6 @@ public class AddressDetail {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	
-	public String getAddress_2() {
-		return address;
-	}
-
-	public void setAddress_2(String address) {
-		this.address = address;
 	}
 
 	public String getCountry() {
@@ -100,6 +78,30 @@ public class AddressDetail {
 
 	public void setValidUntil(Date validUntil) {
 		this.validUntil = validUntil;
+	}
+
+	public String getPresentAddress() {
+		return presentAddress;
+	}
+
+	public void setPresentAddress(String presentAddress) {
+		this.presentAddress = presentAddress;
+	}
+
+	public String getPermanentAddress() {
+		return permanentAddress;
+	}
+
+	public void setPermanentAddress(String permanentAddress) {
+		this.permanentAddress = permanentAddress;
+	}
+
+	public Student getStudent() {
+		return student;
+	}
+
+	public void setStudent(Student student) {
+		this.student = student;
 	}
 
 }

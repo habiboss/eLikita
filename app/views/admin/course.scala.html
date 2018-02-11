@@ -1,5 +1,21 @@
-@import java.util
-@(course: List[Course])
+@(currentPage: models.util.Page[schemas.public_.tables.pojos.Course], currentFilter: String, course: schemas.public_.tables.pojos.Course, viewMode: String)
+
+@link(newPage:Int) = @{
+    // Generate the link
+   routes.CourseCtrl.list(newPage,currentFilter)
+}
+@quote(s: String) = @{
+    "" + s + ""
+}
+@isDisabled(fieldName: String) = @{
+    fieldName match {
+        case "course" => if(null == course.getCode())
+            "name=" + quote(fieldName) else "name=" + quote(fieldName) + " disabled=" + quote("disabled")
+        case _ => if((viewMode != "VIEW") && (viewMode != "DELETE"))
+            "name=" + quote(fieldName) else "name=" + quote(fieldName) + " disabled=" + quote("disabled")
+
+    }
+}
 <!DOCTYPE html>
 <html>
 @head("Activités")
@@ -12,7 +28,7 @@
 			<span id="ctl00_PortalWelcomeBar_LabelUserName"> &nbsp;</span>
 		</div>
 		<div id="welcome-date" class="container-460">
-			<span id="ctl00_PortalWelcomeBar_LabelDateToday">Tuesday 22
+			<span id="ctl00_PortalWelcomeBar_LabelDateToday">Tuesday 
 				November</span>
 		</div>
 	</div>
@@ -29,7 +45,7 @@
 			<!-- <div id="centralpane"> -->
 			<div id="contentstart">
 				<div id="maincontentblockdept">
-					<form method="post" action="@routes.CourseCtrl.save()"
+					<form method="post" action=" routes.CourseCtrl.save()"
 						accept-charset="ISO-8859-1">
 						<div class="row">
 							<div class="col-sm-6">
@@ -39,38 +55,44 @@
 									</div>
 									<div class="panel-body">
 										<div class="panel-body">
-
+											<input type="hidden" name="viewMode" value="@viewMode"> <input
+												type="hidden" name="coursePK-key"
+												value="@course.getId()"> <input type="hidden"
+												name="coursePK-code"
+												value="@course.getCode()"> <input
+												type="hidden" class="form-control"
+												value="@course.getId()" id="" autocomplete="off">
 											<div class="row">
 												<div class="col-md-6">
 													<div class="form-group">
 														<label for="" class="control-label">Course Title</label> 
-														<input type="text" name="courseTitle" id="courseTitle" class="form-control">
+														<input type="text" name="title" id="title" class="form-control" value="@course.getTitle()" @isDisabled("title")>
 													</div>
 												</div>
 												<div class="col-md-6">
 													<div class="form-group">
 														<label for="" class="control-label">Code</label> 
-                                                        <input type="text" name="courseCode" id="courseCode" class="form-control">
+                                                        <input type="text" name="code" id="code" class="form-control" value="@course.getCode()" @isDisabled("code")>
 													</div>
 												</div>
 
 											</div>
 											<div class="form-group">
 												<label for="" class="control-label">Description *</label>
-											    <textarea class="form-control" rows="3" placeholder="" name="description" id="description"></textarea>
+											    <textarea class="form-control" rows="3" placeholder="" name="description" id="description" value="@course.getDescription()" @isDisabled("description")></textarea>
 											</div>
 
 											<div class="row">
 												<div class="col-md-6">
 													<div class="form-group">
 														<label for="" class="control-label">Attendance Type *</label>
-														<input type="text" name="modeAttendance" id="modeAttendance" class="form-control"> 
+														<input type="text" name="attendanceTypeFk" id="attendanceTypeFk" class="form-control" value="@course.getAttendanceTypeFk()" @isDisabled("attendanceTypeFk")> 
 													</div>
 												</div>
 												<div class="col-md-6">
 													<div class="form-group">
 														<label for="" class="control-label">Minimum attendance Percentage</label> 
-                                                        <input type="text" name="" id="" class="form-control">
+                                                        <input type="text" name="minAttendancePercentage" id="minAttendancePercentage" class="form-control" value="@course.getMinAttendancePercentage()" @isDisabled("minAttendancePercentage")>
 													</div>
 												</div>
 
@@ -79,25 +101,36 @@
 												<div class="col-md-6">
 													<div class="form-group">
 														<label for="" class="control-label">Total Working Days</label>
-														<input type="text" name="" id="" class="form-control"> 
+														<input type="text" name="totalWorkingDays" id="totalWorkingDays" class="form-control" value="@course.getTotalWorkingDays()" @isDisabled("totalWorkingDays")> 
 													</div>
 												</div>
 												<div class="col-md-6">
 													<div class="form-group">
 														<label for="" class="control-label">Syllabus Name</label>
-														<input type="text" name="" id="" class="form-control"> 
+														<input type="text" name="syllabusFk" id="syllabusFk" class="form-control" value="@course.getSyllabusFk()" @isDisabled("syllabusFk")> 
 													</div>
 												</div>
 												</div>
 
-											<div class="row">
-												<div class="col-sm-5">
-													<div class="form_sep">
-														<input class="btn btn-info" name="" id="" type="submit"
-															value="Save">
-													</div>
-												</div>
+											
+											<div class="ln_solid"></div>
+											@if(viewMode == "EDIT" || viewMode == "CREATE" ) {
+											<div class="form-group" align="">
+												<button type="submit" class='btn btn-success'
+													title="Enregistrer">
+													<i class="fa fa-save" style="color: white"></i> Enregistrer
+												</button>
 											</div>
+											} else { @if(viewMode == "DELETE"){
+
+											<div class="form-group" align="">
+												 <a
+													href=" routes.CourseCtrl.delete(course.getId())"
+													title="Supprimer" class="btn btn-danger"> <i
+													class="fa fa-times-circle"></i> Supprimer
+												</a>
+											</div>
+											}}
 										</div>
 									</div>
 								</div>
@@ -109,21 +142,22 @@
 											<tr>
 												<th id="item-grid_c0">Sl.No.</th>
 												<th id="item-grid_c1">Course</th>
-												<th id="item-grid_c2">Attendance Type</th>
-												<th id="item-grid_c3">Min. Attendance(%)</th>
-												<th id="item-grid_c4">Total Working Days</th>
 												<th class="button-column" id="item-grid_c5">Manage</th>
 											</tr>
 										</thead>
 										<tbody>
-										@for(courses <- course){
+										 for(courses <- currentPage.getList){
 											<tr>
-														<td></td>
-														<td>@courses.getCourseTitle</td>
-														<td>@courses.getModeAttendance</td>
-														<td></td>
-														<td></td>
-														<td></td>
+												<td></td>
+												<td> courses.getTitle</td>
+												<td><a href=" routes.CourseCtrl.show("EDIT", courses.getId())" class="btn btn-primary"
+													data-toggle="tooltip" title="Modifier"> <i
+														class="glyphicon glyphicon-pencil"></i>
+												</a> <a href=" routes.CourseCtrl.show("VIEW", courses.getId())" class="btn btn-default" title="Afficher"> <i
+														class="glyphicon glyphicon-info-sign"></i>
+												</a> <a href=" routes.CourseCtrl.show("DELETE", courses.getId())" class="btn btn-danger" data-toggle="tooltip"
+													title="Supprimer"> <i class="glyphicon glyphicon-trash"></i>
+												</a></td>
 
 											</tr>
 											}

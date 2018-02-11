@@ -24,14 +24,14 @@ public class BatchCtrl extends Controller{
 	
 	@Transactional
 	public Result read() {
-		BatchSvr x = new BatchSvr();
-		CourseSvr c = new CourseSvr(); 
-		return ok(batch.render(x.findList(), c.findList()));
+		//BatchSvr x = new BatchSvr();
+		//CourseSvr c = new CourseSvr(); 
+		return null;//ok(batch.render(x.findList(), c.findList()));
 	}
 	
 	@Transactional
 	public Result save() {
-		BatchSvr x = new BatchSvr();
+		/*BatchSvr x = new BatchSvr(null);
 		Form<Batch> form = formFactory.form(Batch.class).bindFromRequest();
 		if(form.hasErrors()) {
 			flash("error");
@@ -45,7 +45,7 @@ public class BatchCtrl extends Controller{
                 flash("success-secteur", "Le secteur est désormais accessible par l'utilisateur");
             }
 		}
-		
+		*/
 		
 		return redirect(routes.BatchCtrl.read());
 		

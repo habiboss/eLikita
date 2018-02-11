@@ -1,12 +1,6 @@
 package models;
 
-import play.data.format.Formats;
-import play.db.jpa.JPA;
 import javax.persistence.*;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "contact_detail")

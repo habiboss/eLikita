@@ -14,12 +14,26 @@ public class AboutInstitution {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	@Column(name = "description")
-	private String description;
 	@Column(name = "institution_name")
 	private String InstitutionName;
 	@Column(name = "codeId")
 	private String codeId;
+	@Column(name = "email")
+	private String email;
+	@Column(name = "website")
+	private String website;
+	@Column(name = "country")
+	private String country;
+	@Column(name = "city")
+	private String city;
+	@Column(name = "region")
+	private String region;
+	@Column(name = "address")
+	private String address;
+	@Column(name = "postcode")
+	private String postCode;
+	@Column(name = "description")
+	private String description;
 	
 	public Long getId() {
 		return id;
@@ -45,4 +59,47 @@ public class AboutInstitution {
 	public void setCodeId(String codeId) {
 		this.codeId = codeId;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getWebsite() {
+		return website;
+	}
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getRegion() {
+		return region;
+	}
+	public void setRegion(String region) {
+		this.region = region;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getPostCode() {
+		return postCode;
+	}
+	public void setPostCode(String postCode) {
+		this.postCode = postCode;
+	}
+	
 }

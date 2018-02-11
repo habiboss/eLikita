@@ -3,10 +3,11 @@ package interfaces;
 import java.util.List;
 
 import models.Contact;
+import play.data.Form;
 
 public interface IContact {
 	
-	public String save(Contact contact);
+	public String save(Form<Contact> form, Contact contact);
 	
 	public String delete(Contact contact);
 	
