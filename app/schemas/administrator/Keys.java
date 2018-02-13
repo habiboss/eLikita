@@ -10,6 +10,7 @@ import org.jooq.Identity;
 import org.jooq.UniqueKey;
 import org.jooq.impl.AbstractKeys;
 
+import schemas.administrator.tables.AcademicYear;
 import schemas.administrator.tables.Attendance;
 import schemas.administrator.tables.ClassSchedule;
 import schemas.administrator.tables.ContactPersonStudent;
@@ -19,6 +20,7 @@ import schemas.administrator.tables.InstructorPresence;
 import schemas.administrator.tables.StudentPresence;
 import schemas.administrator.tables.Teach;
 import schemas.administrator.tables.Transaction;
+import schemas.administrator.tables.records.AcademicYearRecord;
 import schemas.administrator.tables.records.AttendanceRecord;
 import schemas.administrator.tables.records.ClassScheduleRecord;
 import schemas.administrator.tables.records.ContactPersonStudentRecord;
@@ -48,6 +50,7 @@ public class Keys {
     // IDENTITY definitions
     // -------------------------------------------------------------------------
 
+    public static final Identity<AcademicYearRecord, Long> IDENTITY_ACADEMIC_YEAR = Identities0.IDENTITY_ACADEMIC_YEAR;
     public static final Identity<AttendanceRecord, Long> IDENTITY_ATTENDANCE = Identities0.IDENTITY_ATTENDANCE;
     public static final Identity<ClassScheduleRecord, Long> IDENTITY_CLASS_SCHEDULE = Identities0.IDENTITY_CLASS_SCHEDULE;
     public static final Identity<ContactPersonStudentRecord, Long> IDENTITY_CONTACT_PERSON_STUDENT = Identities0.IDENTITY_CONTACT_PERSON_STUDENT;
@@ -62,6 +65,7 @@ public class Keys {
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
+    public static final UniqueKey<AcademicYearRecord> ACADEMIC_YEAR_PK = UniqueKeys0.ACADEMIC_YEAR_PK;
     public static final UniqueKey<AttendanceRecord> ATTENDANCE_PK = UniqueKeys0.ATTENDANCE_PK;
     public static final UniqueKey<ClassScheduleRecord> CLASS_SCHEDULE_PK = UniqueKeys0.CLASS_SCHEDULE_PK;
     public static final UniqueKey<ContactPersonStudentRecord> CONTACT_PERSON_STUDENT_PK = UniqueKeys0.CONTACT_PERSON_STUDENT_PK;
@@ -82,6 +86,7 @@ public class Keys {
     // -------------------------------------------------------------------------
 
     private static class Identities0 extends AbstractKeys {
+        public static Identity<AcademicYearRecord, Long> IDENTITY_ACADEMIC_YEAR = createIdentity(AcademicYear.ACADEMIC_YEAR, AcademicYear.ACADEMIC_YEAR.ID);
         public static Identity<AttendanceRecord, Long> IDENTITY_ATTENDANCE = createIdentity(Attendance.ATTENDANCE, Attendance.ATTENDANCE.ID);
         public static Identity<ClassScheduleRecord, Long> IDENTITY_CLASS_SCHEDULE = createIdentity(ClassSchedule.CLASS_SCHEDULE, ClassSchedule.CLASS_SCHEDULE.ID);
         public static Identity<ContactPersonStudentRecord, Long> IDENTITY_CONTACT_PERSON_STUDENT = createIdentity(ContactPersonStudent.CONTACT_PERSON_STUDENT, ContactPersonStudent.CONTACT_PERSON_STUDENT.ID);
@@ -94,6 +99,7 @@ public class Keys {
     }
 
     private static class UniqueKeys0 extends AbstractKeys {
+        public static final UniqueKey<AcademicYearRecord> ACADEMIC_YEAR_PK = createUniqueKey(AcademicYear.ACADEMIC_YEAR, "academic_year_pk", AcademicYear.ACADEMIC_YEAR.ID);
         public static final UniqueKey<AttendanceRecord> ATTENDANCE_PK = createUniqueKey(Attendance.ATTENDANCE, "attendance_pk", Attendance.ATTENDANCE.ID);
         public static final UniqueKey<ClassScheduleRecord> CLASS_SCHEDULE_PK = createUniqueKey(ClassSchedule.CLASS_SCHEDULE, "class_schedule_pk", ClassSchedule.CLASS_SCHEDULE.ID);
         public static final UniqueKey<ContactPersonStudentRecord> CONTACT_PERSON_STUDENT_PK = createUniqueKey(ContactPersonStudent.CONTACT_PERSON_STUDENT, "contact_person_student_pk", ContactPersonStudent.CONTACT_PERSON_STUDENT.ID);

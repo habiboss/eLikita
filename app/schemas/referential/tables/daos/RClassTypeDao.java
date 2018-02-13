@@ -112,4 +112,11 @@ public class RClassTypeDao extends DAOImpl<RClassTypeRecord, schemas.referential
     public List<schemas.referential.tables.pojos.RClassType> fetchByTotalWorkingDays(Long... values) {
         return fetch(RClassType.R_CLASS_TYPE.TOTAL_WORKING_DAYS, values);
     }
+
+    /**
+     * Fetch records that have <code>code IN (values)</code>
+     */
+    public List<schemas.referential.tables.pojos.RClassType> fetchByCode(String... values) {
+        return fetch(RClassType.R_CLASS_TYPE.CODE, values);
+    }
 }

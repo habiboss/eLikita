@@ -6,6 +6,7 @@ package schemas.administrator;
 
 import javax.annotation.Generated;
 
+import schemas.administrator.tables.AcademicYear;
 import schemas.administrator.tables.Attendance;
 import schemas.administrator.tables.ClassSchedule;
 import schemas.administrator.tables.ContactPersonStudent;
@@ -29,6 +30,11 @@ import schemas.administrator.tables.Transaction;
 )
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Tables {
+
+    /**
+     * The table <code>administrator.academic_year</code>.
+     */
+    public static final AcademicYear ACADEMIC_YEAR = schemas.administrator.tables.AcademicYear.ACADEMIC_YEAR;
 
     /**
      * The table <code>administrator.attendance</code>.

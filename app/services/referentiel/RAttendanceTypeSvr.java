@@ -1,10 +1,13 @@
 package services.referentiel;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.inject.Inject;
 import org.jooq.DSLContext;
 import schemas.referential.tables.daos.RAttendanceTypeDao;
+import schemas.referential.tables.pojos.RAttendanceType;
+import schemas.referential.tables.records.RAttendanceTypeRecord;
 
 public class RAttendanceTypeSvr extends RAttendanceTypeDao{
 	@Inject
@@ -14,6 +17,21 @@ public class RAttendanceTypeSvr extends RAttendanceTypeDao{
 	public RAttendanceTypeSvr(DSLContext sqlContext) {
 		super();
 		this.setConfiguration(sqlContext.configuration());
+	}
+	
+	public List<RAttendanceType> findByRAttendanceType(String q) {
+		// TODO Auto-generated method stub
+		List<RAttendanceType> rAttendanceTypeLst = new ArrayList<RAttendanceType>();
+		org.jooq.Result<RAttendanceTypeRecord> rAttendanceTypeRecord = sqlContext
+				.selectFrom(schemas.referential.tables.RAttendanceType.R_ATTENDANCE_TYPE).where(schemas.referential.tables.RAttendanceType.R_ATTENDANCE_TYPE.NAME_.like(q + "%"))
+				.fetch();
+		for (RAttendanceTypeRecord rAttendanceTypeRecords : rAttendanceTypeRecord) {
+			RAttendanceType rAttendanceType = new RAttendanceType();
+			rAttendanceType.setId(rAttendanceTypeRecords.getId());
+			rAttendanceType.setName_(rAttendanceTypeRecords.getName_());
+			rAttendanceTypeLst.add(rAttendanceType);
+		}
+		return rAttendanceTypeLst;
 	}
 	
 	

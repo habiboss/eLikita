@@ -1,20 +1,37 @@
 package services.referentiel;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.inject.Inject;
 import org.jooq.DSLContext;
 import schemas.referential.tables.daos.RSyllabusDao;
 import schemas.referential.tables.pojos.RSyllabus;
+import schemas.referential.tables.records.RSyllabusRecord;
 
-public class RSyllabusNameSvr extends RSyllabusDao{
+public class RSyllabusSvr extends RSyllabusDao{
 	@Inject
 	DSLContext sqlContext;
 	
 	@Inject
-	public RSyllabusNameSvr(DSLContext sqlContext) {
+	public RSyllabusSvr(DSLContext sqlContext) {
 		super();
 		this.setConfiguration(sqlContext.configuration());
+	}
+	
+	public List<RSyllabus> findByRSyllabus(String q) {
+		// TODO Auto-generated method stub
+		List<RSyllabus> rSyllabusLst = new ArrayList<RSyllabus>();
+		org.jooq.Result<RSyllabusRecord> rSyllabusRecord = sqlContext
+				.selectFrom(schemas.referential.tables.RSyllabus.R_SYLLABUS).where(schemas.referential.tables.RSyllabus.R_SYLLABUS.NAME_.like(q + "%"))
+				.fetch();
+		for (RSyllabusRecord rSyllabusRecords : rSyllabusRecord) {
+			RSyllabus rSyllabus = new RSyllabus();
+			rSyllabus.setId(rSyllabusRecords.getId());
+			rSyllabus.setName_(rSyllabusRecords.getName_());
+			rSyllabusLst.add(rSyllabus);
+		}
+		return rSyllabusLst;
 	}
 	
 	

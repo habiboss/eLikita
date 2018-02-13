@@ -4,6 +4,7 @@
 package schemas.public_.tables;
 
 
+import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.List;
 
@@ -35,7 +36,7 @@ import schemas.public_.tables.records.CourseRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Course extends TableImpl<CourseRecord> {
 
-    private static final long serialVersionUID = -505806251;
+    private static final long serialVersionUID = -1478932961;
 
     /**
      * The reference instance of <code>public.course</code>
@@ -99,6 +100,41 @@ public class Course extends TableImpl<CourseRecord> {
      * The column <code>public.course.total_working_days</code>.
      */
     public final TableField<CourseRecord, Long> TOTAL_WORKING_DAYS = createField("total_working_days", org.jooq.impl.SQLDataType.BIGINT, this, "");
+
+    /**
+     * The column <code>public.course.academic_year</code>.
+     */
+    public final TableField<CourseRecord, String> ACADEMIC_YEAR = createField("academic_year", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
+
+    /**
+     * The column <code>public.course.faculty</code>.
+     */
+    public final TableField<CourseRecord, String> FACULTY = createField("faculty", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
+
+    /**
+     * The column <code>public.course.location</code>.
+     */
+    public final TableField<CourseRecord, String> LOCATION = createField("location", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
+
+    /**
+     * The column <code>public.course.mode_of_attendance</code>.
+     */
+    public final TableField<CourseRecord, String> MODE_OF_ATTENDANCE = createField("mode_of_attendance", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
+
+    /**
+     * The column <code>public.course.start_date</code>.
+     */
+    public final TableField<CourseRecord, Timestamp> START_DATE = createField("start_date", org.jooq.impl.SQLDataType.TIMESTAMP, this, "");
+
+    /**
+     * The column <code>public.course.tutor</code>.
+     */
+    public final TableField<CourseRecord, String> TUTOR = createField("tutor", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
+
+    /**
+     * The column <code>public.course.year_of_study</code>.
+     */
+    public final TableField<CourseRecord, String> YEAR_OF_STUDY = createField("year_of_study", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
 
     /**
      * Create a <code>public.course</code> table reference

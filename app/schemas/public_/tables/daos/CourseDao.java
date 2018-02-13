@@ -4,6 +4,7 @@
 package schemas.public_.tables.daos;
 
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.annotation.Generated;
@@ -125,5 +126,54 @@ public class CourseDao extends DAOImpl<CourseRecord, schemas.public_.tables.pojo
      */
     public List<schemas.public_.tables.pojos.Course> fetchByTotalWorkingDays(Long... values) {
         return fetch(Course.COURSE.TOTAL_WORKING_DAYS, values);
+    }
+
+    /**
+     * Fetch records that have <code>academic_year IN (values)</code>
+     */
+    public List<schemas.public_.tables.pojos.Course> fetchByAcademicYear(String... values) {
+        return fetch(Course.COURSE.ACADEMIC_YEAR, values);
+    }
+
+    /**
+     * Fetch records that have <code>faculty IN (values)</code>
+     */
+    public List<schemas.public_.tables.pojos.Course> fetchByFaculty(String... values) {
+        return fetch(Course.COURSE.FACULTY, values);
+    }
+
+    /**
+     * Fetch records that have <code>location IN (values)</code>
+     */
+    public List<schemas.public_.tables.pojos.Course> fetchByLocation(String... values) {
+        return fetch(Course.COURSE.LOCATION, values);
+    }
+
+    /**
+     * Fetch records that have <code>mode_of_attendance IN (values)</code>
+     */
+    public List<schemas.public_.tables.pojos.Course> fetchByModeOfAttendance(String... values) {
+        return fetch(Course.COURSE.MODE_OF_ATTENDANCE, values);
+    }
+
+    /**
+     * Fetch records that have <code>start_date IN (values)</code>
+     */
+    public List<schemas.public_.tables.pojos.Course> fetchByStartDate(Timestamp... values) {
+        return fetch(Course.COURSE.START_DATE, values);
+    }
+
+    /**
+     * Fetch records that have <code>tutor IN (values)</code>
+     */
+    public List<schemas.public_.tables.pojos.Course> fetchByTutor(String... values) {
+        return fetch(Course.COURSE.TUTOR, values);
+    }
+
+    /**
+     * Fetch records that have <code>year_of_study IN (values)</code>
+     */
+    public List<schemas.public_.tables.pojos.Course> fetchByYearOfStudy(String... values) {
+        return fetch(Course.COURSE.YEAR_OF_STUDY, values);
     }
 }

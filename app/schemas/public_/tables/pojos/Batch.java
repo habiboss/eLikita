@@ -8,7 +8,6 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 import javax.annotation.Generated;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
@@ -25,48 +24,39 @@ import javax.validation.constraints.Size;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Batch implements Serializable {
 
-    private static final long serialVersionUID = 10119344;
+    private static final long serialVersionUID = -70981247;
 
-    private Long      id;
     private String    batchName;
     private Timestamp endDate;
     private Long      maxStudent;
     private Timestamp startDate;
-    private Long      courseId;
+    private Long      courseFk;
+    private Long      id;
 
     public Batch() {}
 
     public Batch(Batch value) {
-        this.id = value.id;
         this.batchName = value.batchName;
         this.endDate = value.endDate;
         this.maxStudent = value.maxStudent;
         this.startDate = value.startDate;
-        this.courseId = value.courseId;
+        this.courseFk = value.courseFk;
+        this.id = value.id;
     }
 
     public Batch(
-        Long      id,
         String    batchName,
         Timestamp endDate,
         Long      maxStudent,
         Timestamp startDate,
-        Long      courseId
+        Long      courseFk,
+        Long      id
     ) {
-        this.id = id;
         this.batchName = batchName;
         this.endDate = endDate;
         this.maxStudent = maxStudent;
         this.startDate = startDate;
-        this.courseId = courseId;
-    }
-
-    @NotNull
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id) {
+        this.courseFk = courseFk;
         this.id = id;
     }
 
@@ -103,24 +93,32 @@ public class Batch implements Serializable {
         this.startDate = startDate;
     }
 
-    public Long getCourseId() {
-        return this.courseId;
+    public Long getCourseFk() {
+        return this.courseFk;
     }
 
-    public void setCourseId(Long courseId) {
-        this.courseId = courseId;
+    public void setCourseFk(Long courseFk) {
+        this.courseFk = courseFk;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("Batch (");
 
-        sb.append(id);
-        sb.append(", ").append(batchName);
+        sb.append(batchName);
         sb.append(", ").append(endDate);
         sb.append(", ").append(maxStudent);
         sb.append(", ").append(startDate);
-        sb.append(", ").append(courseId);
+        sb.append(", ").append(courseFk);
+        sb.append(", ").append(id);
 
         sb.append(")");
         return sb.toString();

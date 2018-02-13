@@ -35,7 +35,7 @@ import schemas.referential.tables.records.RClassTypeRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class RClassType extends TableImpl<RClassTypeRecord> {
 
-    private static final long serialVersionUID = 1979707680;
+    private static final long serialVersionUID = -1542269780;
 
     /**
      * The reference instance of <code>referential.r_class_type</code>
@@ -89,6 +89,11 @@ public class RClassType extends TableImpl<RClassTypeRecord> {
      * The column <code>referential.r_class_type.total_working_days</code>.
      */
     public final TableField<RClassTypeRecord, Long> TOTAL_WORKING_DAYS = createField("total_working_days", org.jooq.impl.SQLDataType.BIGINT, this, "");
+
+    /**
+     * The column <code>referential.r_class_type.code</code>.
+     */
+    public final TableField<RClassTypeRecord, String> CODE = createField("code", org.jooq.impl.SQLDataType.VARCHAR.length(10), this, "");
 
     /**
      * Create a <code>referential.r_class_type</code> table reference

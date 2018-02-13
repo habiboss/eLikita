@@ -39,6 +39,16 @@ public class Sequences {
     public static final Sequence<Long> ADDRESS_DETAIL_ID_SEQ = new SequenceImpl<Long>("address_detail_id_seq", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
 
     /**
+     * The sequence <code>public.assignment_id_seq</code>
+     */
+    public static final Sequence<Long> ASSIGNMENT_ID_SEQ = new SequenceImpl<Long>("assignment_id_seq", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+
+    /**
+     * The sequence <code>public.batch_id_seq</code>
+     */
+    public static final Sequence<Long> BATCH_ID_SEQ = new SequenceImpl<Long>("batch_id_seq", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+
+    /**
      * The sequence <code>public.classe_id_seq</code>
      */
     public static final Sequence<Long> CLASSE_ID_SEQ = new SequenceImpl<Long>("classe_id_seq", Public.PUBLIC, org.jooq.impl.SQLDataType.BIGINT.nullable(false));

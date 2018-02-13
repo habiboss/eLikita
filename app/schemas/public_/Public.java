@@ -24,6 +24,7 @@ import schemas.public_.tables.AddressDetail;
 import schemas.public_.tables.Annoucement;
 import schemas.public_.tables.Application;
 import schemas.public_.tables.ApplicationDetail;
+import schemas.public_.tables.Assignment;
 import schemas.public_.tables.BankAccount;
 import schemas.public_.tables.Batch;
 import schemas.public_.tables.Classe;
@@ -70,7 +71,7 @@ import schemas.public_.tables.VisaDetail;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Public extends SchemaImpl {
 
-    private static final long serialVersionUID = 339850957;
+    private static final long serialVersionUID = 1710278816;
 
     /**
      * The reference instance of <code>public</code>
@@ -116,6 +117,11 @@ public class Public extends SchemaImpl {
      * The table <code>public.application_detail</code>.
      */
     public final ApplicationDetail APPLICATION_DETAIL = schemas.public_.tables.ApplicationDetail.APPLICATION_DETAIL;
+
+    /**
+     * The table <code>public.assignment</code>.
+     */
+    public final Assignment ASSIGNMENT = schemas.public_.tables.Assignment.ASSIGNMENT;
 
     /**
      * The table <code>public.bank_account</code>.
@@ -300,6 +306,8 @@ public class Public extends SchemaImpl {
             Sequences.ABOUT_INSTITUTION_ID_SEQ,
             Sequences.ADDITIONAL_INFO_ID_SEQ,
             Sequences.ADDRESS_DETAIL_ID_SEQ,
+            Sequences.ASSIGNMENT_ID_SEQ,
+            Sequences.BATCH_ID_SEQ,
             Sequences.CLASSE_ID_SEQ,
             Sequences.CONTACT_DETAIL_ID_SEQ,
             Sequences.COURSE_ID_SEQ,
@@ -329,6 +337,7 @@ public class Public extends SchemaImpl {
             Annoucement.ANNOUCEMENT,
             Application.APPLICATION,
             ApplicationDetail.APPLICATION_DETAIL,
+            Assignment.ASSIGNMENT,
             BankAccount.BANK_ACCOUNT,
             Batch.BATCH,
             Classe.CLASSE,

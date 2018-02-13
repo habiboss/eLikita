@@ -5,14 +5,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 import javax.inject.Inject;
 import org.jooq.DSLContext;
+import models.dto.CourseDTO;
 import schemas.public_.tables.pojos.Course;
 import schemas.public_.tables.records.CourseRecord;
+import schemas.public_.Tables;
 import schemas.public_.tables.daos.CourseDao;
 
 public class CourseSvr extends CourseDao {
 	
 	@Inject
 	DSLContext sqlContext;
+	@Inject
+	CourseDTOSvr courseDTOSvr;
 	
 	@Inject
 	public CourseSvr(DSLContext sqlContext) {
@@ -70,15 +74,15 @@ public class CourseSvr extends CourseDao {
 		return !fetchById(title).isEmpty();
 	}
 
-	public models.util.Page<Course> pageCourse(int page, int pageSize, String value) {
+	public models.util.Page<CourseDTO> pageCourse(int page, int pageSize, String value) {
 		int from_index = (page < 1 ? 0 : page - 1) * pageSize;
-		final List<Course> course = findAll().stream()
+		final List<CourseDTO> course = courseDTOSvr.courseDTOList().stream()
 				.filter(c -> c.getId().toString().contains(value) || c.getTitle().contains(value))
 				.collect(Collectors.toList());
 		course.sort((o1, o2) -> (o1.getId().compareTo(o2.getId())));
-		final List<Course> result = course.stream().skip(from_index).limit(pageSize)
+		final List<CourseDTO> result = course.stream().skip(from_index).limit(pageSize)
 				.collect(Collectors.toList());
-		return new models.util.Page<Course>(result, course.size(), page, pageSize);
+		return new models.util.Page<CourseDTO>(result, course.size(), page, pageSize);
 	}
 	
 

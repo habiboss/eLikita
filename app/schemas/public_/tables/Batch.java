@@ -11,7 +11,7 @@ import java.util.List;
 import javax.annotation.Generated;
 
 import org.jooq.Field;
-import org.jooq.ForeignKey;
+import org.jooq.Identity;
 import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
@@ -36,7 +36,7 @@ import schemas.public_.tables.records.BatchRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Batch extends TableImpl<BatchRecord> {
 
-    private static final long serialVersionUID = -902109604;
+    private static final long serialVersionUID = -54710428;
 
     /**
      * The reference instance of <code>public.batch</code>
@@ -50,11 +50,6 @@ public class Batch extends TableImpl<BatchRecord> {
     public Class<BatchRecord> getRecordType() {
         return BatchRecord.class;
     }
-
-    /**
-     * The column <code>public.batch.id</code>.
-     */
-    public final TableField<BatchRecord, Long> ID = createField("id", org.jooq.impl.SQLDataType.BIGINT.nullable(false), this, "");
 
     /**
      * The column <code>public.batch.batch_name</code>.
@@ -77,9 +72,14 @@ public class Batch extends TableImpl<BatchRecord> {
     public final TableField<BatchRecord, Timestamp> START_DATE = createField("start_date", org.jooq.impl.SQLDataType.TIMESTAMP, this, "");
 
     /**
-     * The column <code>public.batch.course_id</code>.
+     * The column <code>public.batch.course_fk</code>.
      */
-    public final TableField<BatchRecord, Long> COURSE_ID = createField("course_id", org.jooq.impl.SQLDataType.BIGINT, this, "");
+    public final TableField<BatchRecord, Long> COURSE_FK = createField("course_fk", org.jooq.impl.SQLDataType.BIGINT, this, "");
+
+    /**
+     * The column <code>public.batch.id</code>.
+     */
+    public final TableField<BatchRecord, Long> ID = createField("id", org.jooq.impl.SQLDataType.BIGINT.nullable(false).defaultValue(org.jooq.impl.DSL.field("nextval('batch_id_seq'::regclass)", org.jooq.impl.SQLDataType.BIGINT)), this, "");
 
     /**
      * Create a <code>public.batch</code> table reference
@@ -115,8 +115,16 @@ public class Batch extends TableImpl<BatchRecord> {
      * {@inheritDoc}
      */
     @Override
+    public Identity<BatchRecord, Long> getIdentity() {
+        return Keys.IDENTITY_BATCH;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public UniqueKey<BatchRecord> getPrimaryKey() {
-        return Keys.BATCH_PKEY;
+        return Keys.BATCH_PK;
     }
 
     /**
@@ -124,15 +132,7 @@ public class Batch extends TableImpl<BatchRecord> {
      */
     @Override
     public List<UniqueKey<BatchRecord>> getKeys() {
-        return Arrays.<UniqueKey<BatchRecord>>asList(Keys.BATCH_PKEY);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public List<ForeignKey<BatchRecord, ?>> getReferences() {
-        return Arrays.<ForeignKey<BatchRecord, ?>>asList(Keys.BATCH__FKLYO26RVG0HS090CWQXGXRW0XN);
+        return Arrays.<UniqueKey<BatchRecord>>asList(Keys.BATCH_PK);
     }
 
     /**

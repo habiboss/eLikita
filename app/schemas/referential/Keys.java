@@ -20,10 +20,13 @@ import schemas.referential.tables.RDropAttendanceReason;
 import schemas.referential.tables.RDropTeachReason;
 import schemas.referential.tables.RFee;
 import schemas.referential.tables.RLevel;
+import schemas.referential.tables.RMonth;
 import schemas.referential.tables.RProfil;
+import schemas.referential.tables.RStatus;
 import schemas.referential.tables.RSyllabus;
 import schemas.referential.tables.RTeachOutcome;
 import schemas.referential.tables.RUser;
+import schemas.referential.tables.RYear;
 import schemas.referential.tables.records.RAttendanceOutcomeRecord;
 import schemas.referential.tables.records.RAttendanceTypeRecord;
 import schemas.referential.tables.records.RCategoryRecord;
@@ -34,10 +37,13 @@ import schemas.referential.tables.records.RDropAttendanceReasonRecord;
 import schemas.referential.tables.records.RDropTeachReasonRecord;
 import schemas.referential.tables.records.RFeeRecord;
 import schemas.referential.tables.records.RLevelRecord;
+import schemas.referential.tables.records.RMonthRecord;
 import schemas.referential.tables.records.RProfilRecord;
+import schemas.referential.tables.records.RStatusRecord;
 import schemas.referential.tables.records.RSyllabusRecord;
 import schemas.referential.tables.records.RTeachOutcomeRecord;
 import schemas.referential.tables.records.RUserRecord;
+import schemas.referential.tables.records.RYearRecord;
 
 
 /**
@@ -68,10 +74,13 @@ public class Keys {
     public static final Identity<RDropTeachReasonRecord, Long> IDENTITY_R_DROP_TEACH_REASON = Identities0.IDENTITY_R_DROP_TEACH_REASON;
     public static final Identity<RFeeRecord, Long> IDENTITY_R_FEE = Identities0.IDENTITY_R_FEE;
     public static final Identity<RLevelRecord, Long> IDENTITY_R_LEVEL = Identities0.IDENTITY_R_LEVEL;
+    public static final Identity<RMonthRecord, Long> IDENTITY_R_MONTH = Identities0.IDENTITY_R_MONTH;
     public static final Identity<RProfilRecord, Long> IDENTITY_R_PROFIL = Identities0.IDENTITY_R_PROFIL;
+    public static final Identity<RStatusRecord, Long> IDENTITY_R_STATUS = Identities0.IDENTITY_R_STATUS;
     public static final Identity<RSyllabusRecord, Long> IDENTITY_R_SYLLABUS = Identities0.IDENTITY_R_SYLLABUS;
     public static final Identity<RTeachOutcomeRecord, Long> IDENTITY_R_TEACH_OUTCOME = Identities0.IDENTITY_R_TEACH_OUTCOME;
     public static final Identity<RUserRecord, Long> IDENTITY_R_USER = Identities0.IDENTITY_R_USER;
+    public static final Identity<RYearRecord, Long> IDENTITY_R_YEAR = Identities0.IDENTITY_R_YEAR;
 
     // -------------------------------------------------------------------------
     // UNIQUE and PRIMARY KEY definitions
@@ -87,10 +96,13 @@ public class Keys {
     public static final UniqueKey<RDropTeachReasonRecord> R_DROP_TEACH_REASON_PK = UniqueKeys0.R_DROP_TEACH_REASON_PK;
     public static final UniqueKey<RFeeRecord> R_FEE_PK = UniqueKeys0.R_FEE_PK;
     public static final UniqueKey<RLevelRecord> R_LEVEL_PK = UniqueKeys0.R_LEVEL_PK;
+    public static final UniqueKey<RMonthRecord> MONTH_PK = UniqueKeys0.MONTH_PK;
     public static final UniqueKey<RProfilRecord> R_PROFIL_PKEY = UniqueKeys0.R_PROFIL_PKEY;
+    public static final UniqueKey<RStatusRecord> STATUS_PK = UniqueKeys0.STATUS_PK;
     public static final UniqueKey<RSyllabusRecord> R_SYLLABUS_NAME_PK = UniqueKeys0.R_SYLLABUS_NAME_PK;
     public static final UniqueKey<RTeachOutcomeRecord> R_TEACH_OUTCOME_PK = UniqueKeys0.R_TEACH_OUTCOME_PK;
     public static final UniqueKey<RUserRecord> R_USER_FK = UniqueKeys0.R_USER_FK;
+    public static final UniqueKey<RYearRecord> YEAR_PK = UniqueKeys0.YEAR_PK;
 
     // -------------------------------------------------------------------------
     // FOREIGN KEY definitions
@@ -112,10 +124,13 @@ public class Keys {
         public static Identity<RDropTeachReasonRecord, Long> IDENTITY_R_DROP_TEACH_REASON = createIdentity(RDropTeachReason.R_DROP_TEACH_REASON, RDropTeachReason.R_DROP_TEACH_REASON.ID);
         public static Identity<RFeeRecord, Long> IDENTITY_R_FEE = createIdentity(RFee.R_FEE, RFee.R_FEE.ID);
         public static Identity<RLevelRecord, Long> IDENTITY_R_LEVEL = createIdentity(RLevel.R_LEVEL, RLevel.R_LEVEL.ID);
+        public static Identity<RMonthRecord, Long> IDENTITY_R_MONTH = createIdentity(RMonth.R_MONTH, RMonth.R_MONTH.ID);
         public static Identity<RProfilRecord, Long> IDENTITY_R_PROFIL = createIdentity(RProfil.R_PROFIL, RProfil.R_PROFIL.ID);
+        public static Identity<RStatusRecord, Long> IDENTITY_R_STATUS = createIdentity(RStatus.R_STATUS, RStatus.R_STATUS.ID);
         public static Identity<RSyllabusRecord, Long> IDENTITY_R_SYLLABUS = createIdentity(RSyllabus.R_SYLLABUS, RSyllabus.R_SYLLABUS.ID);
         public static Identity<RTeachOutcomeRecord, Long> IDENTITY_R_TEACH_OUTCOME = createIdentity(RTeachOutcome.R_TEACH_OUTCOME, RTeachOutcome.R_TEACH_OUTCOME.ID);
         public static Identity<RUserRecord, Long> IDENTITY_R_USER = createIdentity(RUser.R_USER, RUser.R_USER.ID);
+        public static Identity<RYearRecord, Long> IDENTITY_R_YEAR = createIdentity(RYear.R_YEAR, RYear.R_YEAR.ID);
     }
 
     private static class UniqueKeys0 extends AbstractKeys {
@@ -129,9 +144,12 @@ public class Keys {
         public static final UniqueKey<RDropTeachReasonRecord> R_DROP_TEACH_REASON_PK = createUniqueKey(RDropTeachReason.R_DROP_TEACH_REASON, "r_drop_teach_reason_pk", RDropTeachReason.R_DROP_TEACH_REASON.ID);
         public static final UniqueKey<RFeeRecord> R_FEE_PK = createUniqueKey(RFee.R_FEE, "r_fee_pk", RFee.R_FEE.ID);
         public static final UniqueKey<RLevelRecord> R_LEVEL_PK = createUniqueKey(RLevel.R_LEVEL, "r_level_pk", RLevel.R_LEVEL.ID);
+        public static final UniqueKey<RMonthRecord> MONTH_PK = createUniqueKey(RMonth.R_MONTH, "month_pk", RMonth.R_MONTH.ID);
         public static final UniqueKey<RProfilRecord> R_PROFIL_PKEY = createUniqueKey(RProfil.R_PROFIL, "r_profil_pkey", RProfil.R_PROFIL.ID);
+        public static final UniqueKey<RStatusRecord> STATUS_PK = createUniqueKey(RStatus.R_STATUS, "status_pk", RStatus.R_STATUS.ID);
         public static final UniqueKey<RSyllabusRecord> R_SYLLABUS_NAME_PK = createUniqueKey(RSyllabus.R_SYLLABUS, "r_syllabus_name_pk", RSyllabus.R_SYLLABUS.ID);
         public static final UniqueKey<RTeachOutcomeRecord> R_TEACH_OUTCOME_PK = createUniqueKey(RTeachOutcome.R_TEACH_OUTCOME, "r_teach_outcome_pk", RTeachOutcome.R_TEACH_OUTCOME.ID);
         public static final UniqueKey<RUserRecord> R_USER_FK = createUniqueKey(RUser.R_USER, "r_user_fk", RUser.R_USER.ID);
+        public static final UniqueKey<RYearRecord> YEAR_PK = createUniqueKey(RYear.R_YEAR, "year_pk", RYear.R_YEAR.ID);
     }
 }

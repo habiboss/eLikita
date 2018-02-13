@@ -26,10 +26,13 @@ import schemas.referential.tables.RDropAttendanceReason;
 import schemas.referential.tables.RDropTeachReason;
 import schemas.referential.tables.RFee;
 import schemas.referential.tables.RLevel;
+import schemas.referential.tables.RMonth;
 import schemas.referential.tables.RProfil;
+import schemas.referential.tables.RStatus;
 import schemas.referential.tables.RSyllabus;
 import schemas.referential.tables.RTeachOutcome;
 import schemas.referential.tables.RUser;
+import schemas.referential.tables.RYear;
 
 
 /**
@@ -45,7 +48,7 @@ import schemas.referential.tables.RUser;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Referential extends SchemaImpl {
 
-    private static final long serialVersionUID = 1426413937;
+    private static final long serialVersionUID = -445924309;
 
     /**
      * The reference instance of <code>referential</code>
@@ -103,9 +106,19 @@ public class Referential extends SchemaImpl {
     public final RLevel R_LEVEL = schemas.referential.tables.RLevel.R_LEVEL;
 
     /**
+     * The table <code>referential.r_month</code>.
+     */
+    public final RMonth R_MONTH = schemas.referential.tables.RMonth.R_MONTH;
+
+    /**
      * The table <code>referential.r_profil</code>.
      */
     public final RProfil R_PROFIL = schemas.referential.tables.RProfil.R_PROFIL;
+
+    /**
+     * The table <code>referential.r_status</code>.
+     */
+    public final RStatus R_STATUS = schemas.referential.tables.RStatus.R_STATUS;
 
     /**
      * The table <code>referential.r_syllabus</code>.
@@ -121,6 +134,11 @@ public class Referential extends SchemaImpl {
      * The table <code>referential.r_user</code>.
      */
     public final RUser R_USER = schemas.referential.tables.RUser.R_USER;
+
+    /**
+     * The table <code>referential.r_year</code>.
+     */
+    public final RYear R_YEAR = schemas.referential.tables.RYear.R_YEAR;
 
     /**
      * No further instances allowed
@@ -157,10 +175,13 @@ public class Referential extends SchemaImpl {
             Sequences.R_DROP_TEACH_REASON_ID_SEQ,
             Sequences.R_FEE_ID_SEQ,
             Sequences.R_LEVEL_ID_SEQ,
+            Sequences.R_MONTH_ID_SEQ,
             Sequences.R_PROFIL_ID_SEQ,
+            Sequences.R_STATUS_ID_SEQ,
             Sequences.R_SYLLABUS_NAME_ID_SEQ,
             Sequences.R_TEACH_OUTCOME_ID_SEQ,
-            Sequences.R_USER_ID_SEQ);
+            Sequences.R_USER_ID_SEQ,
+            Sequences.R_YEAR_ID_SEQ);
     }
 
     @Override
@@ -182,9 +203,12 @@ public class Referential extends SchemaImpl {
             RDropTeachReason.R_DROP_TEACH_REASON,
             RFee.R_FEE,
             RLevel.R_LEVEL,
+            RMonth.R_MONTH,
             RProfil.R_PROFIL,
+            RStatus.R_STATUS,
             RSyllabus.R_SYLLABUS,
             RTeachOutcome.R_TEACH_OUTCOME,
-            RUser.R_USER);
+            RUser.R_USER,
+            RYear.R_YEAR);
     }
 }

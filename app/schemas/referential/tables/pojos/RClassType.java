@@ -23,7 +23,7 @@ import javax.validation.constraints.Size;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class RClassType implements Serializable {
 
-    private static final long serialVersionUID = 1754531630;
+    private static final long serialVersionUID = -544676809;
 
     private Long    id;
     private String  name;
@@ -33,6 +33,7 @@ public class RClassType implements Serializable {
     private Long    minimumAttendancePercentage;
     private Long    attendanceTypeFk;
     private Long    totalWorkingDays;
+    private String  code;
 
     public RClassType() {}
 
@@ -45,6 +46,7 @@ public class RClassType implements Serializable {
         this.minimumAttendancePercentage = value.minimumAttendancePercentage;
         this.attendanceTypeFk = value.attendanceTypeFk;
         this.totalWorkingDays = value.totalWorkingDays;
+        this.code = value.code;
     }
 
     public RClassType(
@@ -55,7 +57,8 @@ public class RClassType implements Serializable {
         Boolean exam,
         Long    minimumAttendancePercentage,
         Long    attendanceTypeFk,
-        Long    totalWorkingDays
+        Long    totalWorkingDays,
+        String  code
     ) {
         this.id = id;
         this.name = name;
@@ -65,6 +68,7 @@ public class RClassType implements Serializable {
         this.minimumAttendancePercentage = minimumAttendancePercentage;
         this.attendanceTypeFk = attendanceTypeFk;
         this.totalWorkingDays = totalWorkingDays;
+        this.code = code;
     }
 
     public Long getId() {
@@ -133,6 +137,15 @@ public class RClassType implements Serializable {
         this.totalWorkingDays = totalWorkingDays;
     }
 
+    @Size(max = 10)
+    public String getCode() {
+        return this.code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("RClassType (");
@@ -145,6 +158,7 @@ public class RClassType implements Serializable {
         sb.append(", ").append(minimumAttendancePercentage);
         sb.append(", ").append(attendanceTypeFk);
         sb.append(", ").append(totalWorkingDays);
+        sb.append(", ").append(code);
 
         sb.append(")");
         return sb.toString();

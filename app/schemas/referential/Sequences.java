@@ -74,9 +74,19 @@ public class Sequences {
     public static final Sequence<Long> R_LEVEL_ID_SEQ = new SequenceImpl<Long>("r_level_id_seq", Referential.REFERENTIAL, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
 
     /**
+     * The sequence <code>referential.r_month_id_seq</code>
+     */
+    public static final Sequence<Long> R_MONTH_ID_SEQ = new SequenceImpl<Long>("r_month_id_seq", Referential.REFERENTIAL, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+
+    /**
      * The sequence <code>referential.r_profil_id_seq</code>
      */
     public static final Sequence<Long> R_PROFIL_ID_SEQ = new SequenceImpl<Long>("r_profil_id_seq", Referential.REFERENTIAL, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+
+    /**
+     * The sequence <code>referential.r_status_id_seq</code>
+     */
+    public static final Sequence<Long> R_STATUS_ID_SEQ = new SequenceImpl<Long>("r_status_id_seq", Referential.REFERENTIAL, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
 
     /**
      * The sequence <code>referential.r_syllabus_name_id_seq</code>
@@ -92,4 +102,9 @@ public class Sequences {
      * The sequence <code>referential.r_user_id_seq</code>
      */
     public static final Sequence<Long> R_USER_ID_SEQ = new SequenceImpl<Long>("r_user_id_seq", Referential.REFERENTIAL, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+
+    /**
+     * The sequence <code>referential.r_year_id_seq</code>
+     */
+    public static final Sequence<Long> R_YEAR_ID_SEQ = new SequenceImpl<Long>("r_year_id_seq", Referential.REFERENTIAL, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
 }

@@ -19,6 +19,7 @@ import schemas.public_.tables.AddressDetail;
 import schemas.public_.tables.Annoucement;
 import schemas.public_.tables.Application;
 import schemas.public_.tables.ApplicationDetail;
+import schemas.public_.tables.Assignment;
 import schemas.public_.tables.BankAccount;
 import schemas.public_.tables.Batch;
 import schemas.public_.tables.Classe;
@@ -57,6 +58,7 @@ import schemas.public_.tables.records.AddressDetailRecord;
 import schemas.public_.tables.records.AnnoucementRecord;
 import schemas.public_.tables.records.ApplicationDetailRecord;
 import schemas.public_.tables.records.ApplicationRecord;
+import schemas.public_.tables.records.AssignmentRecord;
 import schemas.public_.tables.records.BankAccountRecord;
 import schemas.public_.tables.records.BatchRecord;
 import schemas.public_.tables.records.ClasseRecord;
@@ -110,6 +112,8 @@ public class Keys {
     public static final Identity<AboutInstitutionRecord, Long> IDENTITY_ABOUT_INSTITUTION = Identities0.IDENTITY_ABOUT_INSTITUTION;
     public static final Identity<AdditionalInfoRecord, Long> IDENTITY_ADDITIONAL_INFO = Identities0.IDENTITY_ADDITIONAL_INFO;
     public static final Identity<AddressDetailRecord, Long> IDENTITY_ADDRESS_DETAIL = Identities0.IDENTITY_ADDRESS_DETAIL;
+    public static final Identity<AssignmentRecord, Long> IDENTITY_ASSIGNMENT = Identities0.IDENTITY_ASSIGNMENT;
+    public static final Identity<BatchRecord, Long> IDENTITY_BATCH = Identities0.IDENTITY_BATCH;
     public static final Identity<ClasseRecord, Long> IDENTITY_CLASSE = Identities0.IDENTITY_CLASSE;
     public static final Identity<ContactDetailRecord, Long> IDENTITY_CONTACT_DETAIL = Identities0.IDENTITY_CONTACT_DETAIL;
     public static final Identity<CourseRecord, Long> IDENTITY_COURSE = Identities0.IDENTITY_COURSE;
@@ -131,8 +135,9 @@ public class Keys {
     public static final UniqueKey<AnnoucementRecord> ANNOUCEMENT_PKEY = UniqueKeys0.ANNOUCEMENT_PKEY;
     public static final UniqueKey<ApplicationRecord> APPLICATION_PKEY = UniqueKeys0.APPLICATION_PKEY;
     public static final UniqueKey<ApplicationDetailRecord> APPLICATION_DETAIL_PKEY = UniqueKeys0.APPLICATION_DETAIL_PKEY;
+    public static final UniqueKey<AssignmentRecord> ASSIGNMENT_PK = UniqueKeys0.ASSIGNMENT_PK;
     public static final UniqueKey<BankAccountRecord> BANK_ACCOUNT_PKEY = UniqueKeys0.BANK_ACCOUNT_PKEY;
-    public static final UniqueKey<BatchRecord> BATCH_PKEY = UniqueKeys0.BATCH_PKEY;
+    public static final UniqueKey<BatchRecord> BATCH_PK = UniqueKeys0.BATCH_PK;
     public static final UniqueKey<ClasseRecord> CLASSE_PK = UniqueKeys0.CLASSE_PK;
     public static final UniqueKey<ContactDetailRecord> CONTACT_DETAIL_PK = UniqueKeys0.CONTACT_DETAIL_PK;
     public static final UniqueKey<CourseRecord> COURSE_PK = UniqueKeys0.COURSE_PK;
@@ -169,7 +174,6 @@ public class Keys {
     public static final ForeignKey<ApplicationRecord, CourseRecord> APPLICATION__FKRK3CWVBYTQ5JOFLCGGYWT626H = ForeignKeys0.APPLICATION__FKRK3CWVBYTQ5JOFLCGGYWT626H;
     public static final ForeignKey<ApplicationRecord, StudentDetailRecord> APPLICATION__FKCVV4YY9T46FTI1B0QVP70OD0H = ForeignKeys0.APPLICATION__FKCVV4YY9T46FTI1B0QVP70OD0H;
     public static final ForeignKey<BankAccountRecord, StudentDetailRecord> BANK_ACCOUNT__FK70TBNLF24EOLTV2UGSWCOAYDF = ForeignKeys0.BANK_ACCOUNT__FK70TBNLF24EOLTV2UGSWCOAYDF;
-    public static final ForeignKey<BatchRecord, CourseRecord> BATCH__FKLYO26RVG0HS090CWQXGXRW0XN = ForeignKeys0.BATCH__FKLYO26RVG0HS090CWQXGXRW0XN;
     public static final ForeignKey<ParentInfoRecord, StudentDetailRecord> PARENT_INFO__FK30EM3QY0X7NF6AFKDTJGGO0JT = ForeignKeys0.PARENT_INFO__FK30EM3QY0X7NF6AFKDTJGGO0JT;
     public static final ForeignKey<ProfileInfoRecord, StudentDetailRecord> PROFILE_INFO__FKQA2S3NWBQ3LLRF3GFQ328IAIQ = ForeignKeys0.PROFILE_INFO__FKQA2S3NWBQ3LLRF3GFQ328IAIQ;
 
@@ -181,6 +185,8 @@ public class Keys {
         public static Identity<AboutInstitutionRecord, Long> IDENTITY_ABOUT_INSTITUTION = createIdentity(AboutInstitution.ABOUT_INSTITUTION, AboutInstitution.ABOUT_INSTITUTION.ID);
         public static Identity<AdditionalInfoRecord, Long> IDENTITY_ADDITIONAL_INFO = createIdentity(AdditionalInfo.ADDITIONAL_INFO, AdditionalInfo.ADDITIONAL_INFO.ID);
         public static Identity<AddressDetailRecord, Long> IDENTITY_ADDRESS_DETAIL = createIdentity(AddressDetail.ADDRESS_DETAIL, AddressDetail.ADDRESS_DETAIL.ID);
+        public static Identity<AssignmentRecord, Long> IDENTITY_ASSIGNMENT = createIdentity(Assignment.ASSIGNMENT, Assignment.ASSIGNMENT.ID);
+        public static Identity<BatchRecord, Long> IDENTITY_BATCH = createIdentity(Batch.BATCH, Batch.BATCH.ID);
         public static Identity<ClasseRecord, Long> IDENTITY_CLASSE = createIdentity(Classe.CLASSE, Classe.CLASSE.ID);
         public static Identity<ContactDetailRecord, Long> IDENTITY_CONTACT_DETAIL = createIdentity(ContactDetail.CONTACT_DETAIL, ContactDetail.CONTACT_DETAIL.ID);
         public static Identity<CourseRecord, Long> IDENTITY_COURSE = createIdentity(Course.COURSE, Course.COURSE.ID);
@@ -200,8 +206,9 @@ public class Keys {
         public static final UniqueKey<AnnoucementRecord> ANNOUCEMENT_PKEY = createUniqueKey(Annoucement.ANNOUCEMENT, "annoucement_pkey", Annoucement.ANNOUCEMENT.ID);
         public static final UniqueKey<ApplicationRecord> APPLICATION_PKEY = createUniqueKey(Application.APPLICATION, "application_pkey", Application.APPLICATION.ID);
         public static final UniqueKey<ApplicationDetailRecord> APPLICATION_DETAIL_PKEY = createUniqueKey(ApplicationDetail.APPLICATION_DETAIL, "application_detail_pkey", ApplicationDetail.APPLICATION_DETAIL.ID);
+        public static final UniqueKey<AssignmentRecord> ASSIGNMENT_PK = createUniqueKey(Assignment.ASSIGNMENT, "assignment_pk", Assignment.ASSIGNMENT.ID);
         public static final UniqueKey<BankAccountRecord> BANK_ACCOUNT_PKEY = createUniqueKey(BankAccount.BANK_ACCOUNT, "bank_account_pkey", BankAccount.BANK_ACCOUNT.ID);
-        public static final UniqueKey<BatchRecord> BATCH_PKEY = createUniqueKey(Batch.BATCH, "batch_pkey", Batch.BATCH.ID);
+        public static final UniqueKey<BatchRecord> BATCH_PK = createUniqueKey(Batch.BATCH, "batch_pk", Batch.BATCH.ID);
         public static final UniqueKey<ClasseRecord> CLASSE_PK = createUniqueKey(Classe.CLASSE, "classe_pk", Classe.CLASSE.ID);
         public static final UniqueKey<ContactDetailRecord> CONTACT_DETAIL_PK = createUniqueKey(ContactDetail.CONTACT_DETAIL, "contact_detail_pk", ContactDetail.CONTACT_DETAIL.ID);
         public static final UniqueKey<CourseRecord> COURSE_PK = createUniqueKey(Course.COURSE, "course_pk", Course.COURSE.ID);
@@ -236,7 +243,6 @@ public class Keys {
         public static final ForeignKey<ApplicationRecord, CourseRecord> APPLICATION__FKRK3CWVBYTQ5JOFLCGGYWT626H = createForeignKey(schemas.public_.Keys.COURSE_PK, Application.APPLICATION, "application__fkrk3cwvbytq5joflcggywt626h", Application.APPLICATION.COURSE_FK);
         public static final ForeignKey<ApplicationRecord, StudentDetailRecord> APPLICATION__FKCVV4YY9T46FTI1B0QVP70OD0H = createForeignKey(schemas.public_.Keys.STUDENT_PK, Application.APPLICATION, "application__fkcvv4yy9t46fti1b0qvp70od0h", Application.APPLICATION.STUDENT_FK);
         public static final ForeignKey<BankAccountRecord, StudentDetailRecord> BANK_ACCOUNT__FK70TBNLF24EOLTV2UGSWCOAYDF = createForeignKey(schemas.public_.Keys.STUDENT_PK, BankAccount.BANK_ACCOUNT, "bank_account__fk70tbnlf24eoltv2ugswcoaydf", BankAccount.BANK_ACCOUNT.STUDENT_ID);
-        public static final ForeignKey<BatchRecord, CourseRecord> BATCH__FKLYO26RVG0HS090CWQXGXRW0XN = createForeignKey(schemas.public_.Keys.COURSE_PK, Batch.BATCH, "batch__fklyo26rvg0hs090cwqxgxrw0xn", Batch.BATCH.COURSE_ID);
         public static final ForeignKey<ParentInfoRecord, StudentDetailRecord> PARENT_INFO__FK30EM3QY0X7NF6AFKDTJGGO0JT = createForeignKey(schemas.public_.Keys.STUDENT_PK, ParentInfo.PARENT_INFO, "parent_info__fk30em3qy0x7nf6afkdtjggo0jt", ParentInfo.PARENT_INFO.STUDENT_FK);
         public static final ForeignKey<ProfileInfoRecord, StudentDetailRecord> PROFILE_INFO__FKQA2S3NWBQ3LLRF3GFQ328IAIQ = createForeignKey(schemas.public_.Keys.STUDENT_PK, ProfileInfo.PROFILE_INFO, "profile_info__fkqa2s3nwbq3llrf3gfq328iaiq", ProfileInfo.PROFILE_INFO.STUDENT_FK);
     }

@@ -8,6 +8,7 @@ import play.data.FormFactory;
 import play.db.jpa.Transactional;
 import play.mvc.Controller;
 import play.mvc.Result;
+import services.CourseDTOSvr;
 import services.CourseSvr;
 import views.html.admin.*;
 
@@ -17,6 +18,13 @@ public class CourseCtrl extends Controller{
 	FormFactory formFactory;
 	@Inject
 	CourseSvr courseSvr;
+	@Inject
+	CourseDTOSvr courseDTOSvr;
+	
+	public Result getCourseJson(String q) {
+		// TODO Auto-generated method stub
+		return ok(play.libs.Json.toJson(courseSvr.findByCourse(q)));
+	}
 	
 	public Result show(String subAction, Long coursePK) {
 		Course courses = new Course();

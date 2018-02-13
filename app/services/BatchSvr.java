@@ -1,21 +1,41 @@
 package services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.inject.Inject;
 import org.jooq.DSLContext;
+import models.dto.BatchDTO;
 import schemas.public_.tables.daos.BatchDao;
 import schemas.public_.tables.pojos.Batch;
+import schemas.public_.tables.records.BatchRecord;
 
 public class BatchSvr extends BatchDao{
 
 	@Inject
 	DSLContext sqlContext;
+	@Inject
+	BatchDTOSvr batchDTOSvr;
 	
 	@Inject
 	public BatchSvr(DSLContext sqlContext) {
 		super();
 		this.setConfiguration(sqlContext.configuration());
+	}
+	
+	public List<Batch> findByBatch(String q) {
+		// TODO Auto-generated method stub
+		List<Batch> batchLst = new ArrayList<Batch>();
+		org.jooq.Result<BatchRecord> batchRecord = sqlContext
+				.selectFrom(schemas.public_.tables.Batch.BATCH).where(schemas.public_.tables.Batch.BATCH.BATCH_NAME.like(q + "%"))
+				.fetch();
+		for (BatchRecord batchRecords : batchRecord) {
+			Batch batch = new Batch();
+			batch.setId(batchRecords.getId());
+			batch.setBatchName(batchRecords.getBatchName());
+			batchLst.add(batch);
+		}
+		return batchLst;
 	}
 	
 	//@Override
@@ -42,15 +62,15 @@ public class BatchSvr extends BatchDao{
 		return !fetchById(title).isEmpty();
 	}
 
-	public models.util.Page<Batch> pageBatch(int page, int pageSize, String value) {
+	public models.util.Page<BatchDTO> pageBatch(int page, int pageSize, String value) {
 		int from_index = (page < 1 ? 0 : page - 1) * pageSize;
-		final List<Batch> batch = findAll().stream()
+		final List<BatchDTO> batch = batchDTOSvr.batchDTOList().stream()
 				.filter(c -> c.getId().toString().contains(value) || c.getBatchName().contains(value))
 				.collect(Collectors.toList());
 		batch.sort((o1, o2) -> (o1.getId().compareTo(o2.getId())));
-		final List<Batch> result = batch.stream().skip(from_index).limit(pageSize)
+		final List<BatchDTO> result = batch.stream().skip(from_index).limit(pageSize)
 				.collect(Collectors.toList());
-		return new models.util.Page<Batch>(result, batch.size(), page, pageSize);
+		return new models.util.Page<BatchDTO>(result, batch.size(), page, pageSize);
 	}
 
 }

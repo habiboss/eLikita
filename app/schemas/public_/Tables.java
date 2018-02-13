@@ -14,6 +14,7 @@ import schemas.public_.tables.AddressDetail;
 import schemas.public_.tables.Annoucement;
 import schemas.public_.tables.Application;
 import schemas.public_.tables.ApplicationDetail;
+import schemas.public_.tables.Assignment;
 import schemas.public_.tables.BankAccount;
 import schemas.public_.tables.Batch;
 import schemas.public_.tables.Classe;
@@ -99,6 +100,11 @@ public class Tables {
      * The table <code>public.application_detail</code>.
      */
     public static final ApplicationDetail APPLICATION_DETAIL = schemas.public_.tables.ApplicationDetail.APPLICATION_DETAIL;
+
+    /**
+     * The table <code>public.assignment</code>.
+     */
+    public static final Assignment ASSIGNMENT = schemas.public_.tables.Assignment.ASSIGNMENT;
 
     /**
      * The table <code>public.bank_account</code>.

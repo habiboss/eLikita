@@ -5,6 +5,7 @@ package schemas.public_.tables.pojos;
 
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 import javax.annotation.Generated;
 import javax.validation.constraints.Size;
@@ -23,18 +24,25 @@ import javax.validation.constraints.Size;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Course implements Serializable {
 
-    private static final long serialVersionUID = 1815110327;
+    private static final long serialVersionUID = -429733160;
 
-    private String code;
-    private String department;
-    private String title;
-    private String status;
-    private Long   id;
-    private String description;
-    private Long   syllabusFk;
-    private Long   attendanceTypeFk;
-    private Long   minAttendancePercentage;
-    private Long   totalWorkingDays;
+    private String    code;
+    private String    department;
+    private String    title;
+    private String    status;
+    private Long      id;
+    private String    description;
+    private Long      syllabusFk;
+    private Long      attendanceTypeFk;
+    private Long      minAttendancePercentage;
+    private Long      totalWorkingDays;
+    private String    academicYear;
+    private String    faculty;
+    private String    location;
+    private String    modeOfAttendance;
+    private Timestamp startDate;
+    private String    tutor;
+    private String    yearOfStudy;
 
     public Course() {}
 
@@ -49,19 +57,33 @@ public class Course implements Serializable {
         this.attendanceTypeFk = value.attendanceTypeFk;
         this.minAttendancePercentage = value.minAttendancePercentage;
         this.totalWorkingDays = value.totalWorkingDays;
+        this.academicYear = value.academicYear;
+        this.faculty = value.faculty;
+        this.location = value.location;
+        this.modeOfAttendance = value.modeOfAttendance;
+        this.startDate = value.startDate;
+        this.tutor = value.tutor;
+        this.yearOfStudy = value.yearOfStudy;
     }
 
     public Course(
-        String code,
-        String department,
-        String title,
-        String status,
-        Long   id,
-        String description,
-        Long   syllabusFk,
-        Long   attendanceTypeFk,
-        Long   minAttendancePercentage,
-        Long   totalWorkingDays
+        String    code,
+        String    department,
+        String    title,
+        String    status,
+        Long      id,
+        String    description,
+        Long      syllabusFk,
+        Long      attendanceTypeFk,
+        Long      minAttendancePercentage,
+        Long      totalWorkingDays,
+        String    academicYear,
+        String    faculty,
+        String    location,
+        String    modeOfAttendance,
+        Timestamp startDate,
+        String    tutor,
+        String    yearOfStudy
     ) {
         this.code = code;
         this.department = department;
@@ -73,6 +95,13 @@ public class Course implements Serializable {
         this.attendanceTypeFk = attendanceTypeFk;
         this.minAttendancePercentage = minAttendancePercentage;
         this.totalWorkingDays = totalWorkingDays;
+        this.academicYear = academicYear;
+        this.faculty = faculty;
+        this.location = location;
+        this.modeOfAttendance = modeOfAttendance;
+        this.startDate = startDate;
+        this.tutor = tutor;
+        this.yearOfStudy = yearOfStudy;
     }
 
     @Size(max = 255)
@@ -160,6 +189,68 @@ public class Course implements Serializable {
         this.totalWorkingDays = totalWorkingDays;
     }
 
+    @Size(max = 255)
+    public String getAcademicYear() {
+        return this.academicYear;
+    }
+
+    public void setAcademicYear(String academicYear) {
+        this.academicYear = academicYear;
+    }
+
+    @Size(max = 255)
+    public String getFaculty() {
+        return this.faculty;
+    }
+
+    public void setFaculty(String faculty) {
+        this.faculty = faculty;
+    }
+
+    @Size(max = 255)
+    public String getLocation() {
+        return this.location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    @Size(max = 255)
+    public String getModeOfAttendance() {
+        return this.modeOfAttendance;
+    }
+
+    public void setModeOfAttendance(String modeOfAttendance) {
+        this.modeOfAttendance = modeOfAttendance;
+    }
+
+    public Timestamp getStartDate() {
+        return this.startDate;
+    }
+
+    public void setStartDate(Timestamp startDate) {
+        this.startDate = startDate;
+    }
+
+    @Size(max = 255)
+    public String getTutor() {
+        return this.tutor;
+    }
+
+    public void setTutor(String tutor) {
+        this.tutor = tutor;
+    }
+
+    @Size(max = 255)
+    public String getYearOfStudy() {
+        return this.yearOfStudy;
+    }
+
+    public void setYearOfStudy(String yearOfStudy) {
+        this.yearOfStudy = yearOfStudy;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("Course (");
@@ -174,6 +265,13 @@ public class Course implements Serializable {
         sb.append(", ").append(attendanceTypeFk);
         sb.append(", ").append(minAttendancePercentage);
         sb.append(", ").append(totalWorkingDays);
+        sb.append(", ").append(academicYear);
+        sb.append(", ").append(faculty);
+        sb.append(", ").append(location);
+        sb.append(", ").append(modeOfAttendance);
+        sb.append(", ").append(startDate);
+        sb.append(", ").append(tutor);
+        sb.append(", ").append(yearOfStudy);
 
         sb.append(")");
         return sb.toString();

@@ -52,20 +52,6 @@ public class BatchDao extends DAOImpl<BatchRecord, schemas.public_.tables.pojos.
     }
 
     /**
-     * Fetch records that have <code>id IN (values)</code>
-     */
-    public List<schemas.public_.tables.pojos.Batch> fetchById(Long... values) {
-        return fetch(Batch.BATCH.ID, values);
-    }
-
-    /**
-     * Fetch a unique record that has <code>id = value</code>
-     */
-    public schemas.public_.tables.pojos.Batch fetchOneById(Long value) {
-        return fetchOne(Batch.BATCH.ID, value);
-    }
-
-    /**
      * Fetch records that have <code>batch_name IN (values)</code>
      */
     public List<schemas.public_.tables.pojos.Batch> fetchByBatchName(String... values) {
@@ -94,9 +80,23 @@ public class BatchDao extends DAOImpl<BatchRecord, schemas.public_.tables.pojos.
     }
 
     /**
-     * Fetch records that have <code>course_id IN (values)</code>
+     * Fetch records that have <code>course_fk IN (values)</code>
      */
-    public List<schemas.public_.tables.pojos.Batch> fetchByCourseId(Long... values) {
-        return fetch(Batch.BATCH.COURSE_ID, values);
+    public List<schemas.public_.tables.pojos.Batch> fetchByCourseFk(Long... values) {
+        return fetch(Batch.BATCH.COURSE_FK, values);
+    }
+
+    /**
+     * Fetch records that have <code>id IN (values)</code>
+     */
+    public List<schemas.public_.tables.pojos.Batch> fetchById(Long... values) {
+        return fetch(Batch.BATCH.ID, values);
+    }
+
+    /**
+     * Fetch a unique record that has <code>id = value</code>
+     */
+    public schemas.public_.tables.pojos.Batch fetchOneById(Long value) {
+        return fetchOne(Batch.BATCH.ID, value);
     }
 }

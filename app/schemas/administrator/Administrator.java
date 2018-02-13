@@ -16,6 +16,7 @@ import org.jooq.Table;
 import org.jooq.impl.SchemaImpl;
 
 import schemas.DefaultCatalog;
+import schemas.administrator.tables.AcademicYear;
 import schemas.administrator.tables.Attendance;
 import schemas.administrator.tables.ClassSchedule;
 import schemas.administrator.tables.ContactPersonStudent;
@@ -40,12 +41,17 @@ import schemas.administrator.tables.Transaction;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Administrator extends SchemaImpl {
 
-    private static final long serialVersionUID = -1199127036;
+    private static final long serialVersionUID = -910934471;
 
     /**
      * The reference instance of <code>administrator</code>
      */
     public static final Administrator ADMINISTRATOR = new Administrator();
+
+    /**
+     * The table <code>administrator.academic_year</code>.
+     */
+    public final AcademicYear ACADEMIC_YEAR = schemas.administrator.tables.AcademicYear.ACADEMIC_YEAR;
 
     /**
      * The table <code>administrator.attendance</code>.
@@ -117,6 +123,7 @@ public class Administrator extends SchemaImpl {
 
     private final List<Sequence<?>> getSequences0() {
         return Arrays.<Sequence<?>>asList(
+            Sequences.ACADEMIC_YEAR_ID_SEQ,
             Sequences.ATTENDANCE_ID_SEQ,
             Sequences.CLASS_SCHEDULE_ID_SEQ,
             Sequences.CONTACT_PERSON_STUDENT_ID_SEQ,
@@ -137,6 +144,7 @@ public class Administrator extends SchemaImpl {
 
     private final List<Table<?>> getTables0() {
         return Arrays.<Table<?>>asList(
+            AcademicYear.ACADEMIC_YEAR,
             Attendance.ATTENDANCE,
             ClassSchedule.CLASS_SCHEDULE,
             ContactPersonStudent.CONTACT_PERSON_STUDENT,

@@ -28,10 +28,18 @@ POST         /saveEvent                                                         
 GET /display																				 controllers.EventCtrl.display()
 
 #Course
+GET         /Course/                   controllers.CourseCtrl.getCourseJson(q: String)
 GET         /course/:page/             controllers.CourseCtrl.list(page: Int, filter: String ?="")                                                                    
 POST        /saveCourse                controllers.CourseCtrl.save()
 GET         /deleteCourse              controllers.CourseCtrl.delete(coursePK: Long)
 GET         /Course/show/:subaction/   controllers.CourseCtrl.show(subaction: String, coursePK: Long)
+
+#Assignment
+GET         /Assignment/                   controllers.AssignmentCtrl.getAssignmentJson(q: String)
+GET         /Assignment/:page/             controllers.AssignmentCtrl.list(page: Int, filter: String ?="")                                                                    
+POST        /saveAssignment                controllers.AssignmentCtrl.save()
+GET         /deleteAssignment              controllers.AssignmentCtrl.delete(assignmentPK: Long)
+GET         /Assignment/show/:subaction/   controllers.AssignmentCtrl.show(subaction: String, assignmentPK: Long)
 
 #Classe
 GET         /classe/:page/             controllers.ClasseCtrl.list(page: Int, filter: String ?="")                                                                    
@@ -41,8 +49,11 @@ GET         /Classe/show/:subaction/   controllers.ClasseCtrl.show(subaction: St
 
 
 #Batch
-GET          /readBatch                                                                      controllers.BatchCtrl.read()
-POST        /saveBatch                                                                       controllers.BatchCtrl.save()
+GET         /Batch/                   controllers.BatchCtrl.getBatchJson(q: String)
+GET         /batch/:page/             controllers.BatchCtrl.list(page: Int, filter: String ?="")                                                                    
+POST        /saveBatch                controllers.BatchCtrl.save()
+GET         /deleteBatch              controllers.BatchCtrl.delete(batchPK: Long)
+GET         /Batch/show/:subaction/   controllers.BatchCtrl.show(subaction: String, batchPK: Long)
 
 #Department
 GET         /readDepartment                                                                  controllers.DepartmentCtrl.read()
@@ -145,6 +156,13 @@ POST        /saveRCountry                controllers.referentiels.RCountryCtrl.s
 GET         /deleteRCountry              controllers.referentiels.RCountryCtrl.delete(rCountryPK: Long)
 GET         /RCountry/show/:subaction/   controllers.referentiels.RCountryCtrl.show(subaction: String, rCountryPK: Long)
 GET         /RCountry/                   controllers.referentiels.RCountryCtrl.getRCountryJson(q: String)
+
+#RSyllabus 
+GET         /RSyllabus/                  controllers.referentiels.RSyllabusCtrl.getRSyllabusNameJson(q: String)
+
+#RAttendanceType
+GET         /RAttendanceType/            controllers.referentiels.RAttendanceTypeCtrl.getRAttendanceTypeJson(q: String)
+
 
 #RProfile
 GET         /Profile/:page/             controllers.referentiels.RProfilCtrl.list(page: Int, filter: String ?="")                                                                    
