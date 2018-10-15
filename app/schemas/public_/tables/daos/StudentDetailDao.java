@@ -108,6 +108,13 @@ public class StudentDetailDao extends DAOImpl<StudentDetailRecord, schemas.publi
     }
 
     /**
+     * Fetch a unique record that has <code>code_ui = value</code>
+     */
+    public schemas.public_.tables.pojos.StudentDetail fetchOneByCodeUi(String value) {
+        return fetchOne(StudentDetail.STUDENT_DETAIL.CODE_UI, value);
+    }
+
+    /**
      * Fetch records that have <code>status IN (values)</code>
      */
     public List<schemas.public_.tables.pojos.StudentDetail> fetchByStatus(String... values) {

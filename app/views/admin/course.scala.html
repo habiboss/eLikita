@@ -1,4 +1,4 @@
-@(currentPage: models.util.Page[models.dto.CourseDTO], currentFilter: String, course: schemas.public_.tables.pojos.Course, viewMode: String)
+@(currentPage: models.util.Page[models.dto.CourseDTO], currentFilter: String, course: models.dto.CourseDTO, viewMode: String)
 
 @link(newPage:Int) = @{
     // Generate the link
@@ -89,7 +89,7 @@
 													    <select class="form-control r_attendancetypefk"
 															@isDisabled("attendanceTypeFk") name="attendanceTypeFk"
 															id="attendanceTypeFk" @isDisabled("attendanceTypeFk")>
-															<option>course.getrAttendanceTypeName_()</option>
+															<option id="@course.getrAttendanceTypeId()" value="@course.getrAttendanceTypeId">@course.getrAttendanceTypeName_()</option>
 														</select>
 													</div>
 												</div>
@@ -117,7 +117,7 @@
 														<select class="form-control r_syllabusfk"
 															@isDisabled("syllabusFk") name="syllabusFk"
 															id="syllabusFk" @isDisabled("syllabusFk")>
-															<option>course.getrSyllabusName_()</option>
+															<option id="@course.getrSyllabusId()" value="@course.getrSyllabusId()">@course.getrSyllabusName_()</option>
 														</select>
 													</div>
 												</div>

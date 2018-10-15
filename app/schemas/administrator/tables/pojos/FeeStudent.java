@@ -7,6 +7,7 @@ package schemas.administrator.tables.pojos;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Time;
+import java.sql.Timestamp;
 
 import javax.annotation.Generated;
 import javax.validation.constraints.Size;
@@ -25,43 +26,51 @@ import javax.validation.constraints.Size;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class FeeStudent implements Serializable {
 
-    private static final long serialVersionUID = -1045945619;
+    private static final long serialVersionUID = -266476449;
 
     private Long       id;
-    private String     feeFk;
     private String     studentFk;
     private Time       effectiveFrom;
     private BigDecimal amount;
     private String     discountFk;
-    private String     statusFk;
+    private Timestamp  dueDate;
+    private Timestamp  lastDate;
+    private Long       feeFk;
+    private Long       statusFk;
 
     public FeeStudent() {}
 
     public FeeStudent(FeeStudent value) {
         this.id = value.id;
-        this.feeFk = value.feeFk;
         this.studentFk = value.studentFk;
         this.effectiveFrom = value.effectiveFrom;
         this.amount = value.amount;
         this.discountFk = value.discountFk;
+        this.dueDate = value.dueDate;
+        this.lastDate = value.lastDate;
+        this.feeFk = value.feeFk;
         this.statusFk = value.statusFk;
     }
 
     public FeeStudent(
         Long       id,
-        String     feeFk,
         String     studentFk,
         Time       effectiveFrom,
         BigDecimal amount,
         String     discountFk,
-        String     statusFk
+        Timestamp  dueDate,
+        Timestamp  lastDate,
+        Long       feeFk,
+        Long       statusFk
     ) {
         this.id = id;
-        this.feeFk = feeFk;
         this.studentFk = studentFk;
         this.effectiveFrom = effectiveFrom;
         this.amount = amount;
         this.discountFk = discountFk;
+        this.dueDate = dueDate;
+        this.lastDate = lastDate;
+        this.feeFk = feeFk;
         this.statusFk = statusFk;
     }
 
@@ -71,15 +80,6 @@ public class FeeStudent implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    @Size(max = 10)
-    public String getFeeFk() {
-        return this.feeFk;
-    }
-
-    public void setFeeFk(String feeFk) {
-        this.feeFk = feeFk;
     }
 
     @Size(max = 30)
@@ -107,7 +107,6 @@ public class FeeStudent implements Serializable {
         this.amount = amount;
     }
 
-    @Size(max = 10)
     public String getDiscountFk() {
         return this.discountFk;
     }
@@ -116,12 +115,35 @@ public class FeeStudent implements Serializable {
         this.discountFk = discountFk;
     }
 
-    @Size(max = 10)
-    public String getStatusFk() {
+    public Timestamp getDueDate() {
+        return this.dueDate;
+    }
+
+    public void setDueDate(Timestamp dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public Timestamp getLastDate() {
+        return this.lastDate;
+    }
+
+    public void setLastDate(Timestamp lastDate) {
+        this.lastDate = lastDate;
+    }
+
+    public Long getFeeFk() {
+        return this.feeFk;
+    }
+
+    public void setFeeFk(Long feeFk) {
+        this.feeFk = feeFk;
+    }
+
+    public Long getStatusFk() {
         return this.statusFk;
     }
 
-    public void setStatusFk(String statusFk) {
+    public void setStatusFk(Long statusFk) {
         this.statusFk = statusFk;
     }
 
@@ -130,11 +152,13 @@ public class FeeStudent implements Serializable {
         StringBuilder sb = new StringBuilder("FeeStudent (");
 
         sb.append(id);
-        sb.append(", ").append(feeFk);
         sb.append(", ").append(studentFk);
         sb.append(", ").append(effectiveFrom);
         sb.append(", ").append(amount);
         sb.append(", ").append(discountFk);
+        sb.append(", ").append(dueDate);
+        sb.append(", ").append(lastDate);
+        sb.append(", ").append(feeFk);
         sb.append(", ").append(statusFk);
 
         sb.append(")");

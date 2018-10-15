@@ -1,4 +1,4 @@
-@(currentPage: models.util.Page[schemas.public_.tables.pojos.StudentDetail], currentFilter: String, studentDetail: schemas.public_.tables.pojos.StudentDetail, viewMode: String, uicode: String)
+@(currentPage: models.util.Page[schemas.public_.tables.pojos.StudentDetail], currentFilter: String, studentDetail: models.dto.StudentInfoDTO, viewMode: String, uicode: String, academicYear: List[models.dto.AcademicYearDTO], mainMenuPaneDTO: models.dto.MainMenuPaneDTO)
 
 @link(newPage:Int) = @{
     // Generate the link
@@ -16,140 +16,128 @@
 
     }
 }
-<!DOCTYPE html>
-<html>
-@head("ActivitÃ©s")
 
-<body class="fixed-left">
+@layout("index", "", mainMenuPaneDTO) {
+<form method="post"
+	action="@controllers.admins.routes.ApplicationDetailCtrl.save()">
 
-	@universityDirectoryTopbar()
-	<div id="welcome-container">
-		<div id="welcome-name" class="container-460">
-			<span id="ctl00_PortalWelcomeBar_LabelUserName"> &nbsp;</span>
-		</div>
-		<div id="welcome-date" class="container-460">
-			<span id="ctl00_PortalWelcomeBar_LabelDateToday">Tuesday 22
-				November</span>
-		</div>
-	</div>
-	<div class="mainwrap">
-		@mainMenuPane()
+	<table>
+		<thead>
+			<tr>
+				<th>OFFICIAL DETAILS:-</th>
 
-		<div id="contentpane">
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><input type="hidden" name="viewMode" value="@viewMode">
+					<input type="hidden" name="applicationDetailPK-key"
+					value=" course.getId()"> <input type="hidden"
+					name="coursePK-code" value=" course.getCode()"> <input
+					type="hidden" class="form-control" value=" course.getId()" id=""
+					autocomplete="off">
 
-			<div id="crumbsbar">
-				<a href="https://my.anglia.ac.uk/">My.Anglia</a> &gt; My.Anglia
-				login
-			</div>
-
-
-			<div id="contentstart">
-				<div id="maincontentblockdept">
-				<!-- <table>
-				<thead>
-				<tr><th>OFFICIAL DETAILS:-</th></tr>
-				
-				</thead>
-				<tbody>
-				<tr>
-				<td>xxx</td>
-				</tr>
-				<tr>
-				<td>xxx</td>
-				</tr>
-				</tbody>
-				</table> -->
-
-					<p>
-						<b>OFFICIAL DETAILS:-</b>
-					</p>
-					<hr>
 					<div class="col-md-3">
 						<div class="form-group">
-							<label for="reg_input" class="req">Academic Year</label> <select
+							<label for="reg_input" class="req">Année académique</label> <select
 								class="form-control" name="Student[academicid]"
-								id="Student_academicid">
-								<option value="">Select Academic Year</option>
-								<option value="1">2018 - 2019</option>
-								<option value="2">2025 - 2026</option>
-								<option value="3">2027 - 2028</option>
-								<option value="4">2015 - 2017</option>
+								id="Student_academicid" @isDisabled("courseFk")>
+								@for(academicYears <- academicYear) {
+								<option value="">Sélectionner Année académique</option>
+								<option value="1">@academicYears.getStartYearFk() -
+									@academicYears.getEndYearFk()</option> }
 							</select>
 							<div class="school_val_error" id="Student_academicid_em_"
 								style="display: none;">Academic Year cannot be blank.</div>
 						</div>
-						</div>
-						<div class="col-md-3">
-							<div class="form-group">
-								<label for="reg_input_name" class="req">Register Number</label>
-								<input class="form-control" name="Student[student_admissionno]"
-									id="Student_student_admissionno" type="text" maxlength="45">
-								<div class="school_val_error"
-									id="Student_student_admissionno_em_" style="display: none"></div>
-							</div>
-
-						</div>
-						<div class="col-md-3">
+					</div>
+					<div class="col-md-3">
 						<div class="form-group">
-							<label for="reg_input" class="req">Joining Date</label> <select
-								class="form-control" name="Student[academicid]"
-								id="Student_academicid">
-								<option value="">Select Academic Year</option>
-								<option value="1">2018 - 2019</option>
-								<option value="2">2025 - 2026</option>
-								<option value="3">2027 - 2028</option>
-								<option value="4">2015 - 2017</option>
-							</select>
-							<div class="school_val_error" id="Student_academicid_em_"
-								style="display: none;">Academic Year cannot be blank.</div>
+							<label for="reg_input_name" class="req">Numéro
+								d'enregistrement</label> <input class="form-control" name="code"
+								id="code" type="text" maxlength="45" value=@if(viewMode
+								== "EDIT" || viewMode==
+								"VIEW" ) {@studentDetail.getCode()} else {@uicode} @isDisabled("courseFk")>
+							<div class="school_val_error"
+								id="Student_student_admissionno_em_" style="display: none"></div>
 						</div>
-						</div>
-						<div class="col-md-3">
-							<div class="form-group">
-								<label for="reg_input_name" class="req">Course</label>
-								<input class="form-control" name="Student[student_admissionno]"
-									id="Student_student_admissionno" type="text" maxlength="45">
-								<div class="school_val_error"
-									id="Student_student_admissionno_em_" style="display: none"></div>
-							</div>
 
-						</div>
-						<div class="col-md-3">
+					</div>
+					<div class="col-md-3">
 						<div class="form-group">
-							<label for="reg_input" class="req">Batch</label> <select
-								class="form-control" name="Student[academicid]"
-								id="Student_academicid">
-								<option value="">Select Academic Year</option>
-								<option value="1">2018 - 2019</option>
-								<option value="2">2025 - 2026</option>
-								<option value="3">2027 - 2028</option>
-								<option value="4">2015 - 2017</option>
+							<label for="reg_input_name" class="req">Catégorie</label> <select
+								class="form-control r_level" @isDisabled("courseFk")
+								name="courseFk" id="courseFk">
 							</select>
-							<div class="school_val_error" id="Student_academicid_em_"
-								style="display: none;">Academic Year cannot be blank.</div>
-						</div>
-						</div>
-						<div class="col-md-3">
-							<div class="form-group">
-								<label for="reg_input_name" class="req">Register Number</label>
-								<input class="form-control" name="Student[student_admissionno]"
-									id="Student_student_admissionno" type="text" maxlength="45">
-								<div class="school_val_error"
-									id="Student_student_admissionno_em_" style="display: none"></div>
-							</div>
 
 						</div>
-				 
-				 
-								 
-  					 
-      @if(viewMode == "STD_PERSONAL_DETAIL" || viewMode == "VIEW" ) {
+
+					</div>
+					<div class="col-md-3">
+						<div class="form-group">
+							<label for="reg_input_name" class="req">Course</label> <select
+								class="form-control course_fk" @isDisabled("courseFk")
+								name="courseFk" id="courseFk">
+								<option value="@studentDetail.getCourseFk()">@studentDetail.getCourseFk()</option>
+							</select>
+
+						</div>
+					</div></td>
+			</tr>
+			<tr>
+				<td><div class="col-md-3">
+						<div class="form-group">
+							<label for=" " class="req">Batch</label> <select
+								class="form-control batchByCourse" name="batchFk" id="batchFk"
+								@isDisabled("batchFk")>
+								<option value="@studentDetail.getBatchFk()">@studentDetail.getBatchFk()</option>
+							</select>
+
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-group">
+							<label for=" " class="req">Campus</label><select
+								class="form-control r_campus" @isDisabled("campusFk")
+								name="campusFk" id="campusFk">
+								<!-- <option value=" studentDetail.getCourseFk()"> studentDetail.getCourseFk()</option> -->
+							</select>
+
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-group">
+							<label for=" " class="req">Mode d'étude</label> <select
+								class="form-control r_campus" @isDisabled("campusFk")
+								name="campusFk" id="campusFk">
+								<!-- <option value=" studentDetail.getCourseFk()"> studentDetail.getCourseFk()</option> -->
+							</select>
+
+						</div>
+					</div>
+
+					<div class="col-md-3">
+						<div class="form-group">
+							<button type="submit" class='btn btn-success' title="Enregistrer">
+								<i class="fa fa-save" style="color: white"></i> Enregistrer
+							</button>
+
+						</div>
+					</div></td>
+			</tr>
+		</tbody>
+
+	</table>
+
+</form>
+
+@if(viewMode == "STD_PERSONAL_DETAIL" || viewMode == "VIEW" ) {
 					<div class="row">
-					
+
 						<div class="col-sm-12">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h4 class="panel-title">Add Note</h4>
+									<h4 class="panel-title">Personal Details</h4>
 								</div>
 								<form method="post" action="@routes.StudentCtrl.save()">
 									<div class="panel-body">
@@ -164,8 +152,7 @@
 
 																	<fieldset id="personal_details">
 
-																		<legend class="">Personal Details</legend>
-
+ 
 																		<!-- ########################## Title ############################# -->
 
 																		<div class="row">
@@ -175,10 +162,11 @@
 																			<!-- <div class="col-md-3">
 																				<div class="form-group">
 																					<label for="studentFk" class="displayedHelp">UI
-																						Code *</label>  --><input type="hidden" id="codeui"
-																						class="compulsoryFieldBg" name="codeui"
-																						value="" maxlength="40">
-																					<!-- <ul class="parsley-errors-list"
+																						Code *</label>  -->
+																			<input type="hidden" id="codeUi"
+																				class="compulsoryFieldBg" name="codeUi"
+																				value="@uicode" maxlength="40">
+																			<!-- <ul class="parsley-errors-list"
 																						id="parsley-id-0476"></ul>
 																					<em class="displayedHelp">.</em>
 																				</div>
@@ -186,22 +174,10 @@
 																			<div class="col-md-3">
 																				<div class="form-group">
 																					<label for="title">Title *</label> <select
-																						id="title" name="title" @isDisabled("courseTitle")>
-																						<option value="">Please select</option>
-																						<option value="MISS">Miss</option>
-																						<option value="MR" selected="selected">Mr</option>
-																						<option value="MRS">Mrs</option>
-																						<option value="MS">Ms</option>
-																						<option value="MX">Mx</option>
-																						<option value="CANON">Canon</option>
-																						<option value="DR">Dr</option>
-																						<option value="LADY">Lady</option>
-																						<option value="LORD">Lord</option>
-																						<option value="PASTOR">Pastor</option>
-																						<option value="PRINCE">Prince</option>
-																						<option value="PROFESSOR">Professor</option>
-																						<option value="REVEREND">Reverend</option>
-																						<option value="SISTER">Sister</option>
+																						id="title" name="title" @isDisabled("title")>
+																						<option>@studentDetail.getTitle()</option>
+																						<option>Mr</option>
+																						<option>Miss</option>
 																						<!--Dropdown menu populated from TTL table BT6 27/05/2014-->
 																					</select>
 																					<ul class="parsley-errors-list"
@@ -215,8 +191,8 @@
 
 																					<label for="familyName" class="displayedHelp">Last
 																						name(s) *</label> <input type="text" id="lastName"
-																						class="compulsoryFieldBg" name="lastName" value="@studentDetail.getLastName"
-																						maxlength="40">
+																						class="compulsoryFieldBg" name="lastName"
+																						value="@studentDetail.getLastName" maxlength="40" @isDisabled("courseFk")>
 																					<ul class="parsley-errors-list"
 																						id="parsley-id-0476"></ul>
 																					<em class="displayedHelp">.</em>
@@ -229,7 +205,7 @@
 																				<div class="form-group">
 																					<label for="firstName">First Name(s)*</label> <input
 																						type="text" id="firstName" name="firstName"
-																						value="@studentDetail.getFirstName" maxlength="30">
+																						value="@studentDetail.getFirstName" maxlength="30" @isDisabled("courseFk")>
 																					<ul class="parsley-errors-list"
 																						id="parsley-id-0125"></ul>
 																				</div>
@@ -241,14 +217,10 @@
 																				<div class="form-group">
 																					<label for="gender">Gender *</label> <select
 																						id="gender" class="compulsoryFieldBg"
-																						name="gender">
-																						<option value="" selected="selected">Please
-																							select</option>
-																						<option value="male">Male</option>
-																						<option value="female">Female</option>
-																						<option value="other">Other</option>
-																						<option value="prefer_not_to_say">Prefer
-																							not to say</option>
+																						name="gender" @isDisabled("courseFk")>
+																						<option value="" selected="selected">@studentDetail.getGender</option>
+																						 <option value="" selected="selected">Male</option>
+																						 <option value="" selected="selected">Female</option>
 																						<!--Dropdown menu populated from all in use records in GEN table BT6 27/05/2014-->
 																					</select>
 																					<ul class="parsley-errors-list"
@@ -260,7 +232,7 @@
 																				<div class="form-group">
 																					<label for="dateOfBirth">Date of birth
 																						(dd/mm/yyyy) * </label> <input type="text"
-																						id="dateOfBirth" name="dateOfBirth">
+																						id="dateOfBirth" name="dateOfBirth" value="@studentDetail.getDateOfBirth()" @isDisabled("courseFk")>
 																					<ul class="parsley-errors-list"
 																						id="parsley-id-6524"></ul>
 																					<em class="hiddenHelpText ">.</em>
@@ -270,29 +242,28 @@
 																		</div>
 
 
-																		
-																		
 
 
-																
-																		@if(viewMode == "EDIT" || viewMode == "CREATE" ) {
-																			<div class="form-group" align="">
-																				<button type="submit" class='btn btn-success'
-																					title="Enregistrer">
-																					<i class="fa fa-save" style="color: white"></i>
-																					Enregistrer
-																				</button>
-																			</div>
-																			} else { @if(viewMode == "DELETE"){
 
-																			<div class="form-group" align="">
-																				<a
-																					href=" "
-																					title="Supprimer" class="btn btn-danger"> <i
-																					class="fa fa-times-circle"></i> Supprimer
-																				</a>
-																			</div>
-																			}}
+
+
+																		@if(viewMode == "EDIT" || viewMode == "CREATE" ||
+																		viewMode == "STD_PERSONAL_DETAIL") {
+																		<div class="form-group">
+																			<button type="submit" class='btn btn-success'
+																				title="Enregistrer">
+																				<i class="fa fa-save" style="color: white"></i>
+																				Enregistrer
+																			</button>
+																		</div>
+																		} else { @if(viewMode == "DELETE"){
+
+																		<div class="form-group" align="">
+																			<a href=" " title="Supprimer" class="btn btn-danger" @isDisabled("courseFk")>
+																				<i class="fa fa-times-circle"></i> Supprimer
+																			</a>
+																		</div>
+																		}}
 																</div>
 															</div>
 														</div>
@@ -303,12 +274,11 @@
 											</div>
 										</div>
 									</div>
-									</form>
+								</form>
 							</div>
 						</div>
 					</div>
-					}
-					@if(viewMode == "STD_CONTACT_DETAIL" || viewMode == "VIEW" ) {
+					} @if(viewMode == "STD_CONTACT_DETAIL" || viewMode == "VIEW" ) {
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="panel panel-default">
@@ -316,7 +286,7 @@
 									<h4 class="panel-title">Contact</h4>
 								</div>
 								<form method="post" action="@routes.StudentCtrl.save()">
-									
+
 									<div class="panel-body">
 										<div class="panel-body">
 											<div class="row">
@@ -328,10 +298,8 @@
 																<div class="tab-pane active" id="tab_default_1">
 
 																	<fieldset id="personal_details">
-  																		<input type="hidden" name="viewMode"
-																				value="@viewMode">
-																				<input type="hidden" name="studentFk"
-																				value="@uicode">
+																		<input type="hidden" name="viewMode" value="@viewMode">
+																		<input type="text" name="studentFk" value="@uicode">
 																		<div class="row">
 																			<!-- #################### COUNTRY ######################## -->
 
@@ -340,7 +308,7 @@
 																					<label for="" class="control-label">Country</label>
 																					<select class="form-control r_country"
 																						@isDisabled("country") name="countryFk"
-																						id="countryFk">
+																						id="countryFk">@studentDetail.getCountry()
 
 																					</select>
 																				</div>
@@ -349,7 +317,7 @@
 																			<div class="col-md-3">
 																				<div class="form-group">
 																					<label for="region">Region</label> <input
-																						type="text" id="region" name="region" value="">
+																						type="text" id="region" name="region" value="@studentDetail.getRegion()" @isDisabled("courseFk")>
 																					<ul class="parsley-errors-list"
 																						id="parsley-id-1281"></ul>
 																					<em class="displayedHelp"> .</em>
@@ -361,12 +329,7 @@
 																			<div class="col-md-3">
 																				<div class="form-group">
 																					<label for="city">City *</label> <input type="text"
-																						id="city" name="city" value="" maxlength="35"
-																						data-parsley-maxlength="35"
-																						=""
-																						data-parsley-="true"
-																						data-parsley-trigger="focusout"
-																						data-parsley-id="9084">
+																						id="city" name="city" value="@studentDetail.getCity()" maxlength="35" @isDisabled("courseFk")>
 																					<ul class="parsley-errors-list"
 																						id="parsley-id-9084"></ul>
 																					<em class="displayedHelp"> .</em>
@@ -380,10 +343,7 @@
 																			<div class="col-md-3">
 																				<div class="form-group">
 																					<label for="postcode">Post/Zip code</label> <input
-																						type="text" id="postcode" name="postcode" value=""
-																						maxlength="12" data-parsley-maxlength="12"
-																						data-parsley-trigger="focusout"
-																						data-parsley-id="2876">
+																						type="text" id="postcode" name="postcode" value="@studentDetail.getPostcode()" @isDisabled("courseFk")>
 																					<ul class="parsley-errors-list"
 																						id="parsley-id-2876"></ul>
 																					<input type="button" id="PCOD_HA" name="PCOD_HA"
@@ -397,7 +357,7 @@
 																				<div class="form-group">
 																					<label for="address">Address *</label>
 																					<textarea class="form-control" rows="4" cols="7"
-																						id="permanentAddress" name="permanentAddress"></textarea>
+																						id="permanentAddress" name="permanentAddress" @isDisabled("courseFk")>@studentDetail.getAddress()</textarea>
 																					<ul class="parsley-errors-list"
 																						id="parsley-id-2562"></ul>
 																				</div>
@@ -411,7 +371,7 @@
 																				<div class="form-group">
 																					<label for="primaryPhoneNo">Primary number*</label>
 																					<input type="text" id="primaryNumber"
-																						name="primaryNumber" value="">
+																						name="primaryNumber" value="@studentDetail.getPrimaryNumber()" @isDisabled("courseFk")>
 																					<ul class="parsley-errors-list"
 																						id="parsley-id-9084"></ul>
 																					<em class="displayedHelp"> .</em>
@@ -421,7 +381,7 @@
 																				<div class="form-group">
 																					<label for="secondaryPhoneNo">Home
 																						telephone</label> <input type="text" id="homeNumber"
-																						name="homeNumber">
+																						name="homeNumber" value="@studentDetail.getHomeNumber()" @isDisabled("courseFk")>
 																					<ul class="parsley-errors-list"
 																						id="parsley-id-1281"></ul>
 																					<em class="displayedHelp"> .</em>
@@ -429,39 +389,32 @@
 																			</div>
 																			<div class="col-md-6">
 																				<div class="form-group">
-																					<label for="email">Email address * </label> <input
-																						type="text" id="email" name="email" value="">
+																					<label for="email">Email address * </label> <input 
+																						type="text" id="email" name="email" value="@studentDetail.getEmail()" @isDisabled("courseFk")>
 																					<ul class="parsley-errors-list"
 																						id="parsley-id-6306"></ul>
 																					<em class="hiddenHelpText "> .</em>
 																				</div>
 																			</div>
 																		</div>
-																		
-																		<button type="submit" class='btn btn-success'
-																					title="Enregistrer">
-																					<i class="fa fa-save" style="color: white"></i>
-																					Enregistrer
-																				</button>
+ 
 
-																		@if(viewMode == "EDIT" || viewMode == "CREATE" ) {
-																			<div class="form-group" align="">
-																				<button type="submit" class='btn btn-success'
-																					title="Enregistrer">
-																					<i class="fa fa-save" style="color: white"></i>
-																					Enregistrer
-																				</button>
-																			</div>
-																			} else { @if(viewMode == "DELETE"){
+																		@if(viewMode == "EDIT" || viewMode == "CREATE" || viewMode =="STD_CONTACT_DETAIL") {
+																		<div class="form-group" >
+																			<button type="submit" class='btn btn-success'
+																				title="Enregistrer">
+																				<i class="fa fa-save" style="color: white"></i>
+																				Enregistrer
+																			</button>
+																		</div>
+																		} else { @if(viewMode == "DELETE"){
 
-																			<div class="form-group" align="">
-																				<a
-																					href=" "
-																					title="Supprimer" class="btn btn-danger"> <i
-																					class="fa fa-times-circle"></i> Supprimer
-																				</a>
-																			</div>
-																			}}
+																		<div class="form-group" align="">
+																			<a href=" " title="Supprimer" class="btn btn-danger">
+																				<i class="fa fa-times-circle"></i> Supprimer
+																			</a>
+																		</div>
+																		}}
 																	</fieldset>
 																</div>
 															</div>
@@ -478,8 +431,7 @@
 
 						</div>
 					</div>
-					}
-					@if(viewMode == "STD_NATIONALITY_DETAIL" ) {
+					} @if(viewMode == "STD_NATIONALITY_DETAIL" ) {
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="panel panel-default">
@@ -498,116 +450,125 @@
 																<div class="tab-pane active" id="tab_default_1">
 
 																	<fieldset id="personal_details">
-																	<input type="hidden" name="viewMode"
-																				value="@viewMode">
-																				<input type="hidden" name="studentFk"
-																				value="@uicode">
+																		<input type="hidden" name="viewMode" value="@viewMode">
+																		<input type="hidden" name="studentFk" value="@uicode">
 
- 
+
 																		<!-- ########################## Title ############################# -->
 
 																		<div class="row">
-																		
-																	<div class="tab-pane" id="tab_default_6">
-															<!-- 	############################################################################
+
+																			<div class="tab-pane" id="tab_default_6">
+																				<!-- 	############################################################################
                          #                                                                          #
                          #                               Nationality                                #
                          #                (NEEDS CONFIRMATION FROM INTERNATIONAL)                   #
                          #                                                                          #
                          ############################################################################ -->
 
-																<fieldset id="nationality">
-																	<legend>Nationality Details</legend>
-																	<p>Please enter your nationality details below.</p>
-																	
-																	<div class="row">
-																					<div class="col-md-3">
-																				<div class="form-group">
-																					<label for="" class="control-label">ID Type? *</label>
-																					<select class="form-control r_country"
-																						@isDisabled("nationalityFk") name="nationalityFk"
-																						id="nationalityFk">
+																				<fieldset id="nationality">
+																					<legend>Nationality Details</legend>
+																					<p>Please enter your nationality details below.</p>
 
-																					</select>
-																				</div>
-																			</div>
-																			</div>
+																					<div class="row">
+																						<div class="col-md-3">
+																							<div class="form-group">
+																								<label for="" class="control-label">ID
+																									Type? *</label> <select class="form-control identificationTypeFk"
+																									@isDisabled("identificationTypeFk")
+																									name="identificationTypeFk" id="identificationTypeFk">
+																									<option>@studentDetail.getIdentificationTypeFk()</option>
+
+																								</select>
+																							</div>
+																						</div>
+																					</div>
 
 
-																	<!-- ######################### COUNTRY OF NATIONALITY ###################### -->
+																					<!-- ######################### COUNTRY OF NATIONALITY ###################### -->
 
 
 																					<div class="row">
-																					<div class="col-md-3">
-																				<div class="form-group">
-																					<label for="" class="control-label">What is your
-																								Nationality? *</label>
-																					<select class="form-control r_country"
-																						@isDisabled("nationalityFk") name="nationalityFk"
-																						id="nationalityFk">
+																						<div class="col-md-3">
+																							<div class="form-group">
+																								<label for="" class="control-label">What
+																									is your Nationality? *</label> <select
+																									class="form-control r_country"
+																									@isDisabled("nationalityFk")
+																									name="nationalityFk" id="nationalityFk">
 
-																					</select>
-																				</div>
-																			</div>
-																
-
-																					<!-- ######################### COUNTRY OF PERMANENT RESIDENCE ###################### -->
-
-																	<div class="col-md-6">
-																				<div class="form-group">
-																					<label for="" class="control-label">Country of
-																			permanent residence *</label>
-																					<select class="form-control r_country"
-																						@isDisabled("permanentResidenceFk") name="permanentResidenceFk"
-																						id="permanentResidenceFk">
-
-																					</select>
-																					<ul class="parsley-errors-list" id="parsley-id-5000"></ul>
-																		<em class="displayedHelp">xx.</em>
-																				</div>
-																			</div>
-																	
-																	</div>
+																								</select>
+																							</div>
+																						</div>
 
 
-																<!-- 	######################### RESIDENTIAL STATUS ###################### -->
+																						<!-- ######################### COUNTRY OF PERMANENT RESIDENCE ###################### -->
 
-																	<div>
-																		<label for="IPQ_ADAPF01RUK01">Please select
-																			one category below that represents your residential
-																			status *</label> <select id="residentialStatusFk"
-																			name="residentialStatusFk" =""
+																						<div class="col-md-6">
+																							<div class="form-group">
+																								<label for="" class="control-label">Country
+																									of permanent residence *</label> <select
+																									class="form-control r_country"
+																									@isDisabled("permanentResidenceFk")
+																									name="permanentResidenceFk"
+																									id="permanentResidenceFk">
+																									<option>@studentDetail.getPermanentResidenceFk()</option>
+
+																								</select>
+																								<ul class="parsley-errors-list"
+																									id="parsley-id-5000"></ul>
+																								<em class="displayedHelp">xx.</em>
+																							</div>
+																						</div>
+
+																					</div>
+
+
+																					<!-- 	######################### RESIDENTIAL STATUS ###################### -->
+
+																					<div>
+																						<label for="IPQ_ADAPF01RUK01">Please
+																							select one category below that represents your
+																							residential status *</label> <select
+																							id="residentialStatusFk"
+																							name="residentialStatusFk"
+																							 
 																			data-parsley-="true"
-																			data-parsley-trigger="change" data-parsley-id="3890">
-																			<option value="" selected="selected">Please
-																				select</option>
-																			<option value="2">EEA or Swiss national</option>
-																			<option value="3">Child of a Turkish Worker</option>
-																			<option value="4">Refugee</option>
-																			<option value="5">Humanitarian Protection</option>
-																			<option value="6">Settled in the UK</option>
-																			<option value="9">Other</option>
-																			<option value="P">UK Citizen - England</option>
-																			<option value="Q">UK Citizen - Scotland</option>
-																			<option value="R">UK Citizen - Wales</option>
-																			<option value="S">UK Citizen - Northern
-																				Ireland</option>
-																			<option value="T">British Citizen - Channel
-																				Islands and Isle of Man</option>
-																			<option value="U">British Citizen - British
-																				Overseas Territories</option>
-																			<option value="V">EU National (non-UK
-																				Citizen)</option>
-																			A drop down menu created from all in use entries with a URC_CODE in the URC table BT6 27/05/2014
-																		</select>
-																		<ul class="parsley-errors-list" id="parsley-id-3890"></ul>
-																	</div>
+																							data-parsley-trigger="change"
+																							data-parsley-id="3890" @isDisabled("courseFk")>
+																							<option value="" selected="selected">Please
+																								select</option>
+																							<option value="2">EEA or Swiss national</option>
+																							<option value="3">Child of a Turkish
+																								Worker</option>
+																							<option value="4">Refugee</option>
+																							<option value="5">Humanitarian
+																								Protection</option>
+																							<option value="6">Settled in the UK</option>
+																							<option value="9">Other</option>
+																							<option value="P">UK Citizen - England</option>
+																							<option value="Q">UK Citizen - Scotland</option>
+																							<option value="R">UK Citizen - Wales</option>
+																							<option value="S">UK Citizen - Northern
+																								Ireland</option>
+																							<option value="T">British Citizen -
+																								Channel Islands and Isle of Man</option>
+																							<option value="U">British Citizen -
+																								British Overseas Territories</option>
+																							<option value="V">EU National (non-UK
+																								Citizen)</option> A drop down menu created from all in
+																							use entries with a URC_CODE in the URC table BT6
+																							27/05/2014
+																						</select>
+																						<ul class="parsley-errors-list"
+																							id="parsley-id-3890"></ul>
+																					</div>
 
 
-																</fieldset>
-															</div>
-															<div class="tab-pane" id="tab_default_7">
-																<!-- ############################################################################
+																				</fieldset>
+																			</div>
+																			<div class="tab-pane" id="tab_default_7">
+																				<!-- ############################################################################
                          #                                                                          #
                          #                          VISA DETAILS                            #
                          #                                                                          #
@@ -615,127 +576,118 @@
 
 
 
-																<fieldset id="visa">
-																	<legend>Passport and Visa Details</legend>
-																	<p>Please complete the passport and visa details
-																		sections below.</p>
+																				<fieldset id="visa">
+																					<legend>Passport and Visa Details</legend>
+																					<p>Please complete the passport and visa
+																						details sections below.</p>
 
 
-																	
-																	
-
-																	<!-- ######################### PASSPORT NUMBER1 ###################### -->
-
-																	<div>
-																		<label for="passportNumber">Passport Number</label> <input
-																			type="text" id="passportNo" name="passportNo"
-																			value="" maxlength="35" data-parsley-maxlength="35"
-																			data-parsley-trigger="focusout"
-																			data-initvalueundefined="" data-parsley-id="5251">
-																		<ul class="parsley-errors-list" id="parsley-id-5251"></ul>
-																		<em class="displayedHelp">Please list your
-																			primary passport details first. If you have dual
-																			nationality you can add details of a second passport
-																			below. Please upload a scanned copy of your primary
-																			passport in Supporting Documents at the end of this
-																			section. </em>
-																	</div>
 
 
-<!-- 																	######################### NAME ON PASSPORT1 ######################
+
+																					<!-- ######################### PASSPORT NUMBER1 ###################### -->
+
+																					<div>
+																						<label for="passportNumber">Passport
+																							Number</label> <input type="text" id="passportNo"
+																							name="passportNo" value="@studentDetail.getPassportNo()" maxlength="35" @isDisabled("courseFk")>
+																						<ul class="parsley-errors-list"
+																							id="parsley-id-5251"></ul>
+																						<em class="displayedHelp">Please list your
+																							primary passport details first. If you have dual
+																							nationality you can add details of a second
+																							passport below. Please upload a scanned copy of
+																							your primary passport in Supporting Documents at
+																							the end of this section. </em>
+																					</div>
+
+
+																					<!-- 																	######################### NAME ON PASSPORT1 ######################
  -->
-																	<div>
-																		<label for="nameOnPassport">Name on Passport</label> <input
-																			type="text" id="nameOnPassport" name="nameOnPassport"
-																			value="" maxlength="100" data-parsley-maxlength="100"
-																			data-parsley-trigger="focusout"
-																			data-initvalueundefined="" data-parsley-id="9971">
-																		<ul class="parsley-errors-list" id="parsley-id-9971"></ul>
-																		<em class="displayedHelp">Please list your full
-																			name exactly as shown on your passport. This will be
-																			used when creating your CAS (Confirmation of
-																			Acceptance) and if it does not match the name printed
-																			on your passport your VISA could be declined. </em>
-																	</div>
+																					<div>
+																						<label for="nameOnPassport">Name on
+																							Passport</label> <input type="text" id="nameOnPassport"
+																							name="nameOnPassport" value="@studentDetail.getNameOnPassport()" maxlength="100"
+																							data-parsley-maxlength="100"
+																							data-parsley-trigger="focusout"
+																							data-initvalueundefined="" data-parsley-id="9971" @isDisabled("courseFk")>
+																						<ul class="parsley-errors-list"
+																							id="parsley-id-9971"></ul>
+																						<em class="displayedHelp">Please list your
+																							full name exactly as shown on your passport. This
+																							will be used when creating your CAS (Confirmation
+																							of Acceptance) and if it does not match the name
+																							printed on your passport your VISA could be
+																							declined. </em>
+																					</div>
 
 
-<!-- 																	######################### PLACE OF ISSUE1 ######################
+																					<!-- 																	######################### PLACE OF ISSUE1 ######################
  -->
-																	<div>
-																		<label for="placeOfIssue">Place of Issue</label> <input
-																			type="text" id="issuePlace" name="issuePlace"
-																			value="" maxlength="30" data-parsley-maxlength="30"
-																			data-parsley-trigger="focusout"
-																			data-initvalueundefined="" data-parsley-id="9029">
-																		<ul class="parsley-errors-list" id="parsley-id-9029"></ul>
-																	</div>
+																					<div>
+																						<label for="placeOfIssue">Place of Issue</label> <input
+																							type="text" id="issuePlace" name="issuePlace"
+																							value="@studentDetail.getIssuePlace()" maxlength="30"
+																							data-parsley-maxlength="30"
+																							data-parsley-trigger="focusout"
+																							data-initvalueundefined="" data-parsley-id="9029" @isDisabled("courseFk")>
+																						<ul class="parsley-errors-list"
+																							id="parsley-id-9029"></ul>
+																					</div>
 
 
-<!-- 																	######################### PASSPORT ISSUE DATE AND EXPIRY DATE1 ######################
+																					<!-- 																	######################### PASSPORT ISSUE DATE AND EXPIRY DATE1 ######################
  -->
-																	<div>
-																		<label for="issueDate">Passport Issue Date
-																			(dd/mm/yyyy)</label> <input type="text" id="issueDate"
-																			class="hasDatePkr hasDatepicker" name="issueDate"
-																			value="" data-parsley-datepkr=""
-																			data-parsley-beforeenddate="IPQ_ADAPF01PSE01"
-																			data-parsley-trigger="change blur"
-																			data-initvalueundefined="" data-parsley-id="9105">
-																		<ul class="parsley-errors-list" id="parsley-id-9105"></ul>
-																		<img class="ui-datepicker-trigger"
-																			src="../images/si_calendar.gif" alt="Select date">
-																	</div>
+																					<div>
+																						<label for="issueDate">Passport Issue Date
+																							(dd/mm/yyyy)</label> <input type="text" id="issueDate"
+																							class="hasDatePkr hasDatepicker" name="issueDate"
+																							value="@studentDetail.getIssueDate()" data-parsley-datepkr=""
+																							data-parsley-beforeenddate="IPQ_ADAPF01PSE01"
+																							data-parsley-trigger="change blur"
+																							data-initvalueundefined="" data-parsley-id="9105" @isDisabled("courseFk")>
+																						<ul class="parsley-errors-list"
+																							id="parsley-id-9105"></ul>
+																						<img class="ui-datepicker-trigger"
+																							src="../images/si_calendar.gif" alt="Select date">
+																					</div>
 
-																	<div>
-																		<label for="expiryDate">Passport Expiry Date
-																			(dd/mm/yyyy)</label> <input type="text" id="expiryDate"
-																			class="hasDatePkr hasDatepicker" name="expiryDate"
-																			value="" data-parsley-datepkr=""
-																			data-parsley-afterstartdate="IPQ_ADAPF01PSD01"
-																			data-parsley-trigger="change blur"
-																			data-initvalueundefined="" data-parsley-id="6726">
-																		<ul class="parsley-errors-list" id="parsley-id-6726"></ul>
-																		<img class="ui-datepicker-trigger"
-																			src="../images/si_calendar.gif" alt="Select date">
-																	</div>
+																					<div>
+																						<label for="expiryDate">Passport Expiry
+																							Date (dd/mm/yyyy)</label> <input type="text"
+																							id="expiryDate" class="hasDatePkr hasDatepicker"
+																							name="expiryDate" value="@studentDetail.getExpiryDate()"
+																							data-parsley-datepkr=""
+																							data-parsley-afterstartdate="IPQ_ADAPF01PSD01"
+																							data-parsley-trigger="change blur"
+																							data-initvalueundefined="" data-parsley-id="6726" @isDisabled("courseFk")>
+																						<ul class="parsley-errors-list"
+																							id="parsley-id-6726"></ul>
+																						<img class="ui-datepicker-trigger"
+																							src="../images/si_calendar.gif" alt="Select date">
+																					</div>
+																			</div>
 
 
-																	 
-																	
-
-
- 
-																
-
-															</div>
-																		
-																			 
 
 																		</div>
-																		<button type="submit" class='btn btn-success'
-																					title="Enregistrer">
-																					<i class="fa fa-save" style="color: white"></i>
-																					Enregistrer
-																				</button>
+																		 
+ 																		@if(viewMode == "EDIT" || viewMode == "CREATE" || viewMode == "STD_NATIONALITY_DETAIL") {
+																		<div class="form-group" align="">
+																			<button type="submit" class='btn btn-success'
+																				title="Enregistrer">
+																				<i class="fa fa-save" style="color: white"></i>
+																				Enregistrer
+																			</button>
+																		</div>
+																		} else { @if(viewMode == "DELETE"){
 
-																		@if(viewMode == "EDIT" || viewMode == "CREATE" ) {
-																			<div class="form-group" align="">
-																				<button type="submit" class='btn btn-success'
-																					title="Enregistrer">
-																					<i class="fa fa-save" style="color: white"></i>
-																					Enregistrer
-																				</button>
-																			</div>
-																			} else { @if(viewMode == "DELETE"){
-
-																			<div class="form-group" align="">
-																				<a
-																					href=" "
-																					title="Supprimer" class="btn btn-danger"> <i
-																					class="fa fa-times-circle"></i> Supprimer
-																				</a>
-																			</div>
-																			}}
+																		<div class="form-group" align="">
+																			<a href=" " title="Supprimer" class="btn btn-danger">
+																				<i class="fa fa-times-circle"></i> Supprimer
+																			</a>
+																		</div>
+																		}}
 																	</fieldset>
 																</div>
 															</div>
@@ -752,8 +704,7 @@
 
 						</div>
 					</div>
-					}
-					@if(viewMode == "STD_ADDITIONAL_DETAIL" || viewMode == "VIEW" ) {
+					} @if(viewMode == "STD_ADDITIONAL_DETAIL" || viewMode == "VIEW" ) {
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="panel panel-default">
@@ -770,178 +721,151 @@
 
 															<div class="tab-content">
 																<div class="tab-pane active" id="tab_default_1">
-																			<input type="hidden" name="viewMode"
-																				value="@viewMode">
-																				<input type="hidden" name="studentFk"
-																				value="@uicode">
-																			<div class="row">
-																				<!-- ######################### MOTHER TONGUE AND RELIGION ###################### -->
-																				<div class="col-md-3">
-																					<div class="form-group">
-																						<label for="gender">Mother Tongue *</label> <select
-																							id=" " class="compulsoryFieldBg"
-																							name="">
-																							<option value="" selected="selected">Please
-																								select</option>
-																							<option value="M">Male</option>
-																							<option value="F">Female</option>
-																							<option value="N">Other</option>
-																							<option value="X">Prefer not to say</option>
-																				
-																						</select>
-																						<ul class="parsley-errors-list"
-																							id="parsley-id-8720"></ul>
-																					</div>
-																				</div>
-
-																				<div class="col-md-3">
-																					<div class="form-group">
-																						<label for="dateOfBirth">Religion *<a
-																							href="#"
-																							class="hiddenHelpIcon fa fa-question-circle"><span
-																								class="positionHide">Field help.</span></a>
-																						</label> <input type="text" id=" "
-																							name=" " value=" "
-																							=""
-																						data-parsley-="true"
-																							data-parsley-datepkr="IPR_DOB"
-																							data-parsley-trigger="change"
-																							class="hasDatepicker" data-parsley-id="6524">
-																						<ul class="parsley-errors-list"
-																							id="parsley-id-6524"></ul>
-
-																					</div>
-																				</div>
-
+																	<input type="hidden" name="viewMode" value="@viewMode">
+																	<input type="hidden" name="studentFk" value="@uicode">
+																	<div class="row">
+																		<!-- ######################### MOTHER TONGUE AND RELIGION ###################### -->
+																		<div class="col-md-3">
+																			<div class="form-group">
+																				<label for="gender">Mother Tongue *</label> <select
+																					id=" " class="compulsoryFieldBg" name="" @isDisabled("courseFk")><option>@studentDetail.getMotherTongueFk()</option>
+																					 							</select>
+																				<ul class="parsley-errors-list" id="parsley-id-8720"></ul>
 																			</div>
-
-
 																		</div>
 
-																		<fieldset id="AdditionalInformation">
-																			<legend>Additional Details</legend>
-
-
-																			<!-- #################### DISABILITY ######################## -->
-
-																			<div>
-																				<label for="disability">If you have a
-																					learning support need arising from a disability,
-																					medical condition or mental health difficulty
-																					please choose a category from the list that most
-																					relates to you. *<a href="#"
+																		<div class="col-md-3">
+																			<div class="form-group">
+																				<label for="dateOfBirth">Religion *<a
+																					href="#"
 																					class="hiddenHelpIcon fa fa-question-circle"><span
 																						class="positionHide">Field help.</span></a>
-																				</label> <select id="disability" name="disability"
-																					=""
-																			data-parsley-="true"
-																					data-parsley-trigger="change"
-																					data-parsley-id="7612">
-																					<option value="" selected="selected">Please
-																						select</option>
-																					<option value="A">No known disability</option>
-																					<option value="B">Autistic disorder</option>
-																					<option value="C">Blind/ partial sight</option>
-																					<option value="D">Deaf/ partial hearing</option>
-																					<option value="E">Long standing illness</option>
-																					<option value="F">Mental health</option>
-																					<option value="G">Learning difficulty
-																						(e.g. dyslexia or dyspraxia)</option>
-																					<option value="H">Wheelchair/ mobility</option>
-																					<option value="I">Other disability</option>
-																					<option value="J">Multiple disabilities</option>
-																					Dropdown menu of all in use options from DSB table
-																					BT6 27/05/2014
-																				</select>
-																				<ul class="parsley-errors-list" id="parsley-id-7612"></ul>
-																				<em class="displayedHelp"> .</em>
+																				</label> <input type="text" id=" " name=" " value="@studentDetail.getReligionFk()"
+																					 
+																						data-parsley-="true"
+																					data-parsley-datepkr="IPR_DOB"
+																					data-parsley-trigger="change" class="hasDatepicker"
+																					data-parsley-id="6524" @isDisabled("courseFk")>
+																				<ul class="parsley-errors-list" id="parsley-id-6524"></ul>
+
 																			</div>
+																		</div>
+
+																	</div>
 
 
-
-
-
-																			<!-- #################### ETHNICITY ######################## -->
-
-																			<div>
-																				<label for="etchnicity">Ethnicity *</label> <select
-																					id="etchnicity" name="etchnicity"
-																					=""
-																			data-parsley-="true"
-																					data-parsley-trigger="change"
-																					data-parsley-id="8083">
-																					<option value="" selected="selected">Please
-																						select</option>
-																					<option value="50">Arab</option>
-																					<option value="33">Asian - Bangladeshi</option>
-																					<option value="31">Asian - Indian</option>
-																					<option value="39">Asian - other</option>
-																					<option value="32">Asian - Pakistani</option>
-																					<option value="22">Black - African</option>
-																					<option value="21">Black - Caribbean</option>
-																					<option value="29">Black - other</option>
-																					<option value="34">Chinese</option>
-																					<option value="16">Gypsy or Traveller</option>
-																					<option value="49">Mixed - other</option>
-																					<option value="43">Mixed - White &amp;
-																						Asian</option>
-																					<option value="42">Mixed - White &amp;
-																						Black African</option>
-																					<option value="41">Mixed - White &amp;
-																						Black Caribbean</option>
-																					<option value="90">Not known</option>
-																					<option value="80">Other ethnic background</option>
-																					<option value="98">Prefer not to say</option>
-																					<option value="11">White</option> A drop down menu
-																					created from all in use entries in the ETH table
-																					BT6 27/05/2014
-																				</select>
-																				<ul class="parsley-errors-list" id="parsley-id-8083"></ul>
-																			</div>
 																</div>
-																
-																<button type="submit" class='btn btn-success'
-																					title="Enregistrer">
-																					<i class="fa fa-save" style="color: white"></i>
-																					Enregistrer
-																				</button>
 
-																@if(viewMode == "EDIT" || viewMode == "CREATE" ) {
-																			<div class="form-group" align="">
-																				<button type="submit" class='btn btn-success'
-																					title="Enregistrer">
-																					<i class="fa fa-save" style="color: white"></i>
-																					Enregistrer
-																				</button>
-																			</div>
-																			} else { @if(viewMode == "DELETE"){
+																<fieldset id="AdditionalInformation">
+																	<legend>Additional Details</legend>
 
-																			<div class="form-group" align="">
-																				<a
-																					href=" "
-																					title="Supprimer" class="btn btn-danger"> <i
-																					class="fa fa-times-circle"></i> Supprimer
-																				</a>
-																			</div>
-																			}}
-																</fieldset>
+
+																	<!-- #################### DISABILITY ######################## -->
+
+																	<div>
+																		<label for="disability">If you have a learning
+																			support need arising from a disability, medical
+																			condition or mental health difficulty please choose a
+																			category from the list that most relates to you. *<a
+																			href="#" class="hiddenHelpIcon fa fa-question-circle"><span
+																				class="positionHide">Field help.</span></a>
+																		</label> <select id="disability" name="disability"
+																			 
+																			data-parsley-="true"
+																			data-parsley-trigger="change" data-parsley-id="7612" @isDisabled("courseFk")>
+																			<option value="" selected="selected">Please
+																				select</option>
+																			<option value="A">No known disability</option>
+																			<option value="B">Autistic disorder</option>
+																			<option value="C">Blind/ partial sight</option>
+																			<option value="D">Deaf/ partial hearing</option>
+																			<option value="E">Long standing illness</option>
+																			<option value="F">Mental health</option>
+																			<option value="G">Learning difficulty (e.g.
+																				dyslexia or dyspraxia)</option>
+																			<option value="H">Wheelchair/ mobility</option>
+																			<option value="I">Other disability</option>
+																			<option value="J">Multiple disabilities</option>
+																			Dropdown menu of all in use options from DSB table
+																			BT6 27/05/2014
+																		</select>
+																		<ul class="parsley-errors-list" id="parsley-id-7612"></ul>
+																		<em class="displayedHelp"> .</em>
+																	</div>
+
+
+
+
+
+																	<!-- #################### ETHNICITY ######################## -->
+
+																	<div>
+																		<label for="etchnicity">Ethnicity *</label> <select
+																			id="etchnicity" name="etchnicity"
+																			=""
+																			data-parsley-="true"
+																			data-parsley-trigger="change" data-parsley-id="8083" @isDisabled("courseFk")>
+																			<option value="" selected="selected">Please
+																				select</option>
+																			<option value="50">Arab</option>
+																			<option value="33">Asian - Bangladeshi</option>
+																			<option value="31">Asian - Indian</option>
+																			<option value="39">Asian - other</option>
+																			<option value="32">Asian - Pakistani</option>
+																			<option value="22">Black - African</option>
+																			<option value="21">Black - Caribbean</option>
+																			<option value="29">Black - other</option>
+																			<option value="34">Chinese</option>
+																			<option value="16">Gypsy or Traveller</option>
+																			<option value="49">Mixed - other</option>
+																			<option value="43">Mixed - White &amp; Asian</option>
+																			<option value="42">Mixed - White &amp; Black
+																				African</option>
+																			<option value="41">Mixed - White &amp; Black
+																				Caribbean</option>
+																			<option value="90">Not known</option>
+																			<option value="80">Other ethnic background</option>
+																			<option value="98">Prefer not to say</option>
+																			<option value="11">White</option> A drop down menu
+																			created from all in use entries in the ETH table BT6
+																			27/05/2014
+																		</select>
+																		<ul class="parsley-errors-list" id="parsley-id-8083"></ul>
+																	</div>
 															</div>
+ 
+															@if(viewMode == "EDIT" || viewMode == "CREATE" || viewMode == "STD_ADDITIONAL_DETAIL") {
+															<div class="form-group" align="">
+																<button type="submit" class='btn btn-success'
+																	title="Enregistrer">
+																	<i class="fa fa-save" style="color: white"></i>
+																	Enregistrer
+																</button>
+															</div>
+															} else { @if(viewMode == "DELETE"){
+
+															<div class="form-group">
+																<a href=" " title="Supprimer" class="btn btn-danger">
+																	<i class="fa fa-times-circle"></i> Supprimer
+																</a>
+															</div>
+															}}
+															</fieldset>
 														</div>
 													</div>
-													<div class="tab-pane" id="tab_default_8"></div>
-													<div class="tab-pane" id="tab_default_9"></div>
 												</div>
-												</div>
+												<div class="tab-pane" id="tab_default_8"></div>
+												<div class="tab-pane" id="tab_default_9"></div>
 											</div>
-											</form>
 										</div>
-										
 									</div>
-								
+								</form>
 							</div>
-                           }
-					
-					@if(viewMode == "SEMERGCY" || viewMode == "VIEW" ) {
+
+						</div>
+
+					</div>
+					} @if(viewMode == "SEMERGCY" || viewMode == "VIEW" ) {
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="panel panel-default">
@@ -949,7 +873,7 @@
 									<h4 class="panel-title">Emergency</h4>
 								</div>
 								<form method="post" action="@routes.StudentCtrl.save()">
-									
+
 									<div class="panel-body">
 										<div class="panel-body">
 											<div class="row">
@@ -963,10 +887,8 @@
 																	<fieldset id="personal_details">
 
 																		<legend class="positionHide">Personal Details</legend>
-																		<input type="hidden" name="viewMode"
-																				value="@viewMode">
-																				<input type="hidden" name="studentFk"
-																				value="@uicode">
+																		<input type="hidden" name="viewMode" value="@viewMode">
+																		<input type="hidden" name="studentFk" value="@uicode">
 
 																		<div class="row">
 																			<!-- ########################## FULL NAME ############################# -->
@@ -974,9 +896,8 @@
 																			<div class="col-md-6">
 																				<div class="form-group">
 																					<label for="" class="control-label">Nom:</label> <input
-																						type="text" class="form-control" placeholder=""
-																						name="fullName" id="fullName" autocomplete="off" @isDisabled("")
-																						value=" ">
+																						type="text" class="form-control" name="fullName" id="fullName" autocomplete="off"
+																						@isDisabled("") value=" ">
 																				</div>
 																			</div>
 																			<!-- ########################## RELATIONSHIP ############################# -->
@@ -984,16 +905,16 @@
 																			<div class="col-md-3">
 																				<div class="form-group">
 																					<label for=" " class="control-label ">Relation</label>
-																					<select class="form-control r_emergency_contact_type"
+																					<select
+																						class="form-control r_emergency_contact_type"
 																						name="relationship" id="relationship"
-																						@isDisabled("relationship")
-																						required="required"><option id=" "
-																							value=" "></option></select>
+																						@isDisabled("relationship") required="required"><option
+																							id=" " value=" ">@studentDetail.getRelationship()</option></select>
 																				</div>
 																			</div>
-										 
+
 																		</div>
-				 														<div class="row">
+																		<div class="row">
 																			<!-- #################### COUNTRY ######################## -->
 
 																			<div class="col-md-3">
@@ -1001,14 +922,14 @@
 																					<label for="" class="control-label">Country</label>
 																					<select class="form-control r_country"
 																						@isDisabled("country") name="country" id="country">
-																						<option id="" value=""></option>
+																						<option id="" value="">@studentDetail.getCountry()</option>
 																					</select>
 																				</div>
 																			</div>
 
 
-																		</div> 
-																	
+																		</div>
+
 
 
 
@@ -1018,8 +939,8 @@
 																			<div class="col-md-3">
 																				<div class="form-group">
 																					<label for="primaryPhoneNo">Primary number*</label>
-																					<input type="text" id="mobile"
-																						name="mobile" value="">
+																					<input type="text" id="mobile" name="mobile"
+																						value="@studentDetail.getPrimaryNumber()" @isDisabled("courseFk")>
 																					<ul class="parsley-errors-list"
 																						id="parsley-id-9084"></ul>
 																					<em class="displayedHelp"> .</em>
@@ -1029,7 +950,7 @@
 																				<div class="form-group">
 																					<label for="secondaryPhoneNo">Home
 																						telephone</label> <input type="text" id="phone"
-																						name="phone">
+																						name="phone" value="@studentDetail.getHomeNumber()" @isDisabled("courseFk")>
 																					<ul class="parsley-errors-list"
 																						id="parsley-id-1281"></ul>
 																					<em class="displayedHelp"> .</em>
@@ -1038,7 +959,7 @@
 																			<div class="col-md-6">
 																				<div class="form-group">
 																					<label for="email">Email address * </label> <input
-																						type="text" id="email" name="email" value="">
+																						type="text" id="email" name="email" value="@studentDetail.getEmergency_email()" @isDisabled("courseFk")>
 																					<ul class="parsley-errors-list"
 																						id="parsley-id-6306"></ul>
 																					<em class="hiddenHelpText hide"> .</em>
@@ -1047,16 +968,375 @@
 																			<div class="col-md-6">
 																				<div class="form-group">
 																					<label for="numActivite" class="control-label">Address:</label>
-																					<textarea class="form-control" @isDisabled("address")
-																						name="address" id="address" required="required" rows="4" cols="4">
+																					<textarea class="form-control"
+																						@isDisabled("address") name="address" id="address"
+																						required="required" rows="4" cols="4">@studentDetail.getEmergency_address()
 											                                    </textarea>
 
 																				</div>
 
 																			</div>
 																		</div>
+																	 
 
-																		@if(viewMode == "EDIT" || viewMode == "CREATE" ) {
+																		@if(viewMode == "EDIT" || viewMode == "CREATE" || viewMode == "SEMERGCY") {
+																		<div class="form-group" align="">
+																			<button type="submit" class='btn btn-success'
+																				title="Enregistrer">
+																				<i class="fa fa-save" style="color: white"></i>
+																				Enregistrer
+																			</button>
+																		</div>
+																		} else { @if(viewMode == "DELETE"){
+
+																		<div class="form-group" align="">
+																			<a href=" " title="Supprimer" class="btn btn-danger">
+																				<i class="fa fa-times-circle"></i> Supprimer
+																			</a>
+																		</div>
+																		}}
+																	</fieldset>
+																</div>
+															</div>
+														</div>
+														<div class="tab-pane" id="tab_default_8"></div>
+														<div class="tab-pane" id="tab_default_9"></div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+
+						</div>
+					</div>
+					} @if(viewMode == "STD_BCKGRD_EDUCATION_DETAIL" || viewMode ==
+					"VIEW" ) {
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									<h4 class="panel-title">EDUCATION</h4>
+								</div>
+								<form method="post" action="@routes.StudentCtrl.save()">
+
+									<div class="panel-body">
+										<div class="panel-body">
+											<div class="row">
+												<div class="col-md-12">
+													<div class="tabbable-panel">
+														<div class="tabbable-line">
+
+															<div class="tab-content">
+																<div class="tab-pane active" id="tab_default_1">
+
+																	<fieldset id="personal_details">
+
+																		<legend class="positionHide">Personal Details</legend>
+																		<input type="hidden" name="viewMode" value="@viewMode">
+																		<input type="hidden" name="studentFk" value="@uicode">
+
+																		<div class="row">
+																			This whole section is only shown on selecting 'Yes'
+																			in question IPQ_ADAPF01PUK01 above BT6 11/07/2014
+																			<fieldset id="qualifications_1"
+																				class="qualifications">
+																				<div>
+																					<label for="IPQ_ADAPF01SBJ01">Qualification
+																						*</label> <select id="IPQ_ADAPF01SBJ01"
+																						class="qualificationSelect"
+																						name="IPQ_ADAPF01SBJ01" data-parsley-="true"
+																						data-parsley-trigger="change"
+																						data-initvalueundefined="" data-parsley-id="7120" @isDisabled("courseFk")>
+																						<option value="" selected="selected">Please
+																							select</option>
+																						<option value="ALEV003">A Level (GCE)</option>
+																						<option value="ALEV004">A Level Double
+																							Award (GCE)</option>
+																						<option value="AATL001">AAT Level 3
+																							Diploma Accounting</option>
+																						<option value="AATL002">AAT NVQ Level 3
+																							in Accounting</option>
+																						<option value="ACCS016">Access to HE
+																							Diploma</option>
+																						<option value="SCOT001">Advanced Scottish
+																							Higher Tariff</option>
+																						<option value="ASLV004">AS Level (Double)
+																							(GCE)</option>
+																						<option value="ASLV003">AS Level (GCE)</option>
+																						<option value="CACH001">CACHE Award in
+																							Childcare and Education</option>
+																						<option value="CACH002">CACHE Certificate
+																							in Childcare and Education</option>
+																						<option value="CACH003">CACHE Diploma in
+																							Childcare and Education</option>
+																						<option value="DEGR001">Degree</option>
+																						<option value="DIPF001">Diploma in
+																							Foundation Studies (Art)</option>
+																						<option value="DIPH001">Diploma in Higher
+																							Education</option>
+																						<option value="EXTE002">Extended Project</option>
+																						<option value="ALEV007">GCE 9 Unit Award</option>
+																						<option value="GCSE001">GCSE</option>
+																						<option value="NVQL002">GNVQ Advanced</option>
+																						<option value="IBAC003">International
+																							Baccalaureate Higher</option>
+																						<option value="IBAC005">International
+																							Baccalaureate Standard</option>
+																						<option value="IBAC007">International
+																							Baccalaureate Theory of Knowledge</option>
+																						<option value="IBAC008">International
+																							Baccalaureate Total Points</option>
+																						<option value="IRSH002">Irish Leaving
+																							Certificate (Higher) Tariff</option>
+																						<option value="IRSH004">Irish Leaving
+																							Certificate (Ordinary) Tariff</option>
+																						<option value="KEYS001">Key skills 1</option>
+																						<option value="KEYS002">Key skills 2</option>
+																						<option value="KEYS003">Key skills 3</option>
+																						<option value="KEYS004">Key skills 4</option>
+																						<option value="LITR001">Literacy Level 2</option>
+																						<option value="NFQL001">No formal
+																							qualification</option>
+																						<option value="NUMR001">Numeracy Level 2</option>
+																						<option value="GCSE003">O Level</option>
+																						<option value="OCRS007">OCR National
+																							Certificate</option>
+																						<option value="OCRS009">OCR National
+																							Diploma</option>
+																						<option value="OCRS011">OCR National
+																							Extended Diploma</option>
+																						<option value="OPEN002">Open University
+																							Credits</option>
+																						<option value="OTHR001">Other</option>
+																						<option value="OVER002">Overseas Degree</option>
+																						<option value="BTEC032">Pearson (BTEC)
+																							Diploma (was National Certificate 120+)</option>
+																						<option value="BTEC041">Pearson (BTEC)
+																							Extended Dip (was Nat Dip 180+)</option>
+																						<option value="BTEC048">Pearson (BTEC)
+																							Higher National Certificate</option>
+																						<option value="BTEC049">Pearson (BTEC)
+																							Higher National Diploma</option>
+																						<option value="BTEC070">Pearson (BTEC)
+																							Subsidiary Dip (was Nat Award 60+)</option>
+																						<option value="POST001">Postgraduate
+																							Research Degree</option>
+																						<option value="POST002">Postgraduate
+																							Taught Degree (MA/MSc etc)</option>
+																						<option value="SCOT002">Scottish
+																							Baccalaureate</option>
+																						<option value="SCOT011">Scottish Higher
+																							Tariff</option>
+																						<option value="NVQL004">Vocational
+																							qualifications Level 3 (NVQ)</option> A drop down menu
+																						created from all in use entries in the EQE table.
+																						One of five for each qualification option on this
+																						tab BT6 27/05/2014
+																					</select>
+																					<ul class="parsley-errors-list"
+																						id="parsley-id-7120"></ul>
+																				</div>
+
+																				<div class="" style="display: none;">
+																					<label for="IPQ_ADAPF01OQU01">If Other
+																						please enter the name of your qualification here</label> <input
+																						type="text" id="IPQ_ADAPF01OQU01"
+																						name="IPQ_ADAPF01OQU01" value="" maxlength="50"
+																						data-parsley-maxlength="50"
+																						data-parsley-trigger="focusout"
+																						data-initvalueundefined="" data-parsley-id="4150" @isDisabled("courseFk")>
+																					<ul class="parsley-errors-list"
+																						id="parsley-id-4150"></ul>
+																				</div>
+
+																				<div>
+																					<label for="IPQ_ADAPF01QLF01">Subject *</label> <select
+																						id="IPQ_ADAPF01QLF01" name="IPQ_ADAPF01QLF01"
+																						="" data-parsley-="true"
+																						data-parsley-trigger="change"
+																						data-initvalueundefined="" data-parsley-id="2146" @isDisabled("courseFk")>
+																						  A drop down
+																						menu created from all in use entries with an
+																						External Subject (ESB) code in the ESU table. One
+																						of five for each qualification option on this tab
+																						BT6 27/05/2014
+																					</select>
+																					<ul class="parsley-errors-list"
+																						id="parsley-id-2146"></ul>
+																					<em class="displayedHelp">Enter your
+																						qualification subject here. If your qualification
+																						doesn�t show please select "Other". </em>
+																				</div>
+
+																				<div class="" style="display: none;">
+																					<label for="IPQ_ADAPF01QLO01">If your
+																						subject is not included the list above please
+																						enter it here</label> <input type="text"
+																						id="IPQ_ADAPF01QLO01" name="IPQ_ADAPF01QLO01"
+																						value="" maxlength="50"
+																						data-parsley-maxlength="50"
+																						data-parsley-trigger="focusout"
+																						data-initvalueundefined="" data-parsley-id="1322" @isDisabled("courseFk")>
+																					<ul class="parsley-errors-list"
+																						id="parsley-id-1322"></ul>
+																				</div>
+
+
+
+																				<div>
+																					<label for="IPQ_ADAPF01QLB01">Date
+																						Qualification Started (dd/mm/yyyy) *</label> <input
+																						type="text" id="IPQ_ADAPF01QLB01"
+																						class="hasDatePkr hasDatepicker"
+																						name="IPQ_ADAPF01QLB01" value=""
+																						=""
+																				data-parsley-="true"
+																						data-parsley-datepkr="IPQ_ADAPF01QLB01"
+																						data-parsley-beforeenddate="IPQ_ADAPF01QLE01"
+																						data-parsley-trigger="change blur"
+																						data-initvalueundefined="" data-parsley-id="5982" @isDisabled("courseFk")>
+																					<ul class="parsley-errors-list"
+																						id="parsley-id-5982"></ul>
+																					<img class="ui-datepicker-trigger"
+																						src="../images/si_calendar.gif" alt="Select date">
+																					<em class="displayedHelp">If you do not
+																						remember the precise date please enter the first
+																						of the month.</em>
+																				</div>
+
+																				<div>
+																					<label for="IPQ_ADAPF01QLE01">Date
+																						Qualification Finished (dd/mm/yyyy) *</label> <input
+																						type="text" id="IPQ_ADAPF01QLE01"
+																						class="hasDatePkr hasDatepicker"
+																						name="IPQ_ADAPF01QLE01" value=""
+																						=""
+																				data-parsley-="true"
+																						data-parsley-datepkr=""
+																						data-parsley-afterstartdate="IPQ_ADAPF01QLB01"
+																						data-parsley-trigger="change blur"
+																						data-initvalueundefined="" data-parsley-id="4386" @isDisabled("courseFk")>
+																					<ul class="parsley-errors-list"
+																						id="parsley-id-4386"></ul>
+																					<img class="ui-datepicker-trigger"
+																						src="../images/si_calendar.gif" alt="Select date">
+																					<em class="displayedHelp">This date may be in
+																						the future. If you do not remember the precise
+																						date please enter the first of the month.</em>
+																				</div>
+
+																				<div>
+																					<label for="IPQ_ADAPF01FGU01">Final
+																						Grade/Predicted Grade *</label> <select
+																						id="IPQ_ADAPF01FGD01" class="finalPredictedGrade"
+																						name="IPQ_ADAPF01FGD01"
+																						 
+																				data-parsley-="true"
+																						data-parsley-trigger="change"
+																						data-initvalueundefined="" data-initvalue=""
+																						style="display: none;" data-parsley-id="9544" @isDisabled("courseFk")></select>
+																					<ul class="parsley-errors-list"
+																						id="parsley-id-9544"></ul>
+																					<input type="text" id="IPQ_ADAPF01FGU01" class=""
+																						name="IPQ_ADAPF01FGU01" data-initvalueundefined=""
+																						maxlength="15" data-parsley-maxlength="15"
+																						="" data-parsley-="true"
+																						data-parsley-trigger="focusout"
+																						style="display: inline-block;"
+																						data-parsley-id="3483">
+																					<ul class="parsley-errors-list"
+																						id="parsley-id-3483"></ul>
+																				</div>
+
+																				<div>
+																					<label for="IPQ_ADAPF01COM01">Have you
+																						completed this qualification? *</label> <select
+																						id="IPQ_ADAPF01COM01" name="IPQ_ADAPF01COM01"
+																						="" data-parsley-="true"
+																						data-parsley-trigger="change"
+																						data-initvalueundefined="" data-parsley-id="4577" @isDisabled("courseFk")>
+																						<option value="" selected="selected">Please
+																							select</option>
+																						<option value="A">Yes</option>
+																						<option value="P">No</option>
+																					</select>
+																					<ul class="parsley-errors-list"
+																						id="parsley-id-4577"></ul>
+																				</div>
+
+
+
+																			</fieldset>
+
+
+
+
+																			<div>
+																				<label for="IPQ_ADAPF01SBJ05">Qualification/Level
+																					of Study 5 *</label> <select id="IPQ_ADAPF01SBJ05"
+																					class="qualificationSelect" name="IPQ_ADAPF01SBJ05"
+																					data-parsley-="true" data-parsley-trigger="change"
+																					data-initvalueundefined="" data-parsley-id="0916" @isDisabled("courseFk")>
+																				</select>
+																				<ul class="parsley-errors-list" id="parsley-id-0916"></ul>
+																			</div>
+
+																			<div class="" style="display: none;">
+																				<label for="IPQ_ADAPF01OQU05">If Other
+																					please enter the name of your qualification here</label> <input
+																					type="text" id="IPQ_ADAPF01OQU05"
+																					name="IPQ_ADAPF01OQU05" value="" maxlength="50"
+																					data-parsley-maxlength="50"
+																					data-parsley-trigger="focusout"
+																					data-initvalueundefined="" data-parsley-id="2032" @isDisabled("courseFk")>
+																				<ul class="parsley-errors-list" id="parsley-id-2032"></ul>
+																			</div>
+
+																			<div>
+																				<label for="IPQ_ADAPF01QLF05">Subject *</label> <select
+																					id="IPQ_ADAPF01QLF05" name="IPQ_ADAPF01QLF05"
+																					="" data-parsley-="true"
+																					data-parsley-trigger="change"
+																					data-initvalueundefined="" data-parsley-id="7716" @isDisabled("courseFk")>
+																				</select>
+																				<ul class="parsley-errors-list" id="parsley-id-7716"></ul>
+																				<em class="displayedHelp">Enter your
+																					qualification subject here. If your qualification
+																					doesn�t show please select "Other".</em>
+																			</div>
+
+																			<div class="" style="display: none;">
+																				<label for="IPQ_ADAPF01QLO05">If your
+																					subject is not included the list above please enter
+																					it here</label> <input type="text" id="IPQ_ADAPF01QLO05"
+																					name="IPQ_ADAPF01QLO05" value="" maxlength="50"
+																					data-parsley-maxlength="50" data-parsley-="true"
+																					data-parsley-trigger="focusout"
+																					data-initvalueundefined="" data-parsley-id="6602" @isDisabled("courseFk")>
+																				<ul class="parsley-errors-list" id="parsley-id-6602"></ul>
+																			</div>
+
+																			<div>
+																				<label for="IPQ_ADAPF01QSN05">Name of UK
+																					institution *</label> <input type="text"
+																					id="IPQ_ADAPF01QSN05" name="IPQ_ADAPF01QSN05"
+																					value="" maxlength="100"
+																					data-parsley-maxlength="100" data-parsley-="true"
+																					data-parsley-trigger="focusout"
+																					data-initvalueundefined="" data-parsley-id="5166" @isDisabled("courseFk")>
+																				<ul class="parsley-errors-list" id="parsley-id-5166"></ul>
+																			</div>
+
+																			<div id="cloneBtns">
+																				<input id="cloneQualificationFieldset" type="button"
+																					value="Add another qualification"> <input
+																					id="removeQualificationFieldset" type="button"
+																					disabled="disabled" value="Remove">
+																			</div>
+ 
+ 																			@if(viewMode == "EDIT" || viewMode == "CREATE" || viewMode == "STD_BCKGRD_EDUCATION_DETAIL") {
 																			<div class="form-group" align="">
 																				<button type="submit" class='btn btn-success'
 																					title="Enregistrer">
@@ -1067,10 +1347,8 @@
 																			} else { @if(viewMode == "DELETE"){
 
 																			<div class="form-group" align="">
-																				<a
-																					href=" "
-																					title="Supprimer" class="btn btn-danger"> <i
-																					class="fa fa-times-circle"></i> Supprimer
+																				<a href=" " title="Supprimer" class="btn btn-danger">
+																					<i class="fa fa-times-circle"></i> Supprimer
 																				</a>
 																			</div>
 																			}}
@@ -1090,1217 +1368,7 @@
 
 						</div>
 					</div>
-					}
-					
-											@if(viewMode == "STD_BCKGRD_EDUCATION_DETAIL" || viewMode == "VIEW" ) {
-					<div class="row">
-						<div class="col-sm-12">
-							<div class="panel panel-default">
-								<div class="panel-heading">
-									<h4 class="panel-title">EDUCATION</h4>
-								</div>
-								<form method="post" action="@routes.StudentCtrl.save()">
-									
-									<div class="panel-body">
-										<div class="panel-body">
-											<div class="row">
-												<div class="col-md-12">
-													<div class="tabbable-panel">
-														<div class="tabbable-line">
-
-															<div class="tab-content">
-																<div class="tab-pane active" id="tab_default_1">
-
-																	<fieldset id="personal_details">
-
-																		<legend class="positionHide">Personal Details</legend>
-																		<input type="hidden" name="viewMode"
-																				value="@viewMode">
-																				<input type="hidden" name="studentFk"
-																				value="@uicode">
-
-																		<div class="row">
- 																	This whole section is only shown on selecting 'Yes' in question IPQ_ADAPF01PUK01 above BT6 11/07/2014
-																	<fieldset id="qualifications_1" class="qualifications">
-																		<div>
-																			<label for="IPQ_ADAPF01SBJ01">Qualification *</label>
-																			<select id="IPQ_ADAPF01SBJ01"
-																				class="qualificationSelect" name="IPQ_ADAPF01SBJ01"
-																				="" data-parsley-="true"
-																				data-parsley-trigger="change"
-																				data-initvalueundefined="" data-parsley-id="7120">
-																				<option value="" selected="selected">Please
-																					select</option>
-																				<option value="ALEV003">A Level (GCE)</option>
-																				<option value="ALEV004">A Level Double
-																					Award (GCE)</option>
-																				<option value="AATL001">AAT Level 3 Diploma
-																					Accounting</option>
-																				<option value="AATL002">AAT NVQ Level 3 in
-																					Accounting</option>
-																				<option value="ACCS016">Access to HE
-																					Diploma</option>
-																				<option value="SCOT001">Advanced Scottish
-																					Higher Tariff</option>
-																				<option value="ASLV004">AS Level (Double)
-																					(GCE)</option>
-																				<option value="ASLV003">AS Level (GCE)</option>
-																				<option value="CACH001">CACHE Award in
-																					Childcare and Education</option>
-																				<option value="CACH002">CACHE Certificate
-																					in Childcare and Education</option>
-																				<option value="CACH003">CACHE Diploma in
-																					Childcare and Education</option>
-																				<option value="DEGR001">Degree</option>
-																				<option value="DIPF001">Diploma in
-																					Foundation Studies (Art)</option>
-																				<option value="DIPH001">Diploma in Higher
-																					Education</option>
-																				<option value="EXTE002">Extended Project</option>
-																				<option value="ALEV007">GCE 9 Unit Award</option>
-																				<option value="GCSE001">GCSE</option>
-																				<option value="NVQL002">GNVQ Advanced</option>
-																				<option value="IBAC003">International
-																					Baccalaureate Higher</option>
-																				<option value="IBAC005">International
-																					Baccalaureate Standard</option>
-																				<option value="IBAC007">International
-																					Baccalaureate Theory of Knowledge</option>
-																				<option value="IBAC008">International
-																					Baccalaureate Total Points</option>
-																				<option value="IRSH002">Irish Leaving
-																					Certificate (Higher) Tariff</option>
-																				<option value="IRSH004">Irish Leaving
-																					Certificate (Ordinary) Tariff</option>
-																				<option value="KEYS001">Key skills 1</option>
-																				<option value="KEYS002">Key skills 2</option>
-																				<option value="KEYS003">Key skills 3</option>
-																				<option value="KEYS004">Key skills 4</option>
-																				<option value="LITR001">Literacy Level 2</option>
-																				<option value="NFQL001">No formal
-																					qualification</option>
-																				<option value="NUMR001">Numeracy Level 2</option>
-																				<option value="GCSE003">O Level</option>
-																				<option value="OCRS007">OCR National
-																					Certificate</option>
-																				<option value="OCRS009">OCR National
-																					Diploma</option>
-																				<option value="OCRS011">OCR National
-																					Extended Diploma</option>
-																				<option value="OPEN002">Open University
-																					Credits</option>
-																				<option value="OTHR001">Other</option>
-																				<option value="OVER002">Overseas Degree</option>
-																				<option value="BTEC032">Pearson (BTEC)
-																					Diploma (was National Certificate 120+)</option>
-																				<option value="BTEC041">Pearson (BTEC)
-																					Extended Dip (was Nat Dip 180+)</option>
-																				<option value="BTEC048">Pearson (BTEC)
-																					Higher National Certificate</option>
-																				<option value="BTEC049">Pearson (BTEC)
-																					Higher National Diploma</option>
-																				<option value="BTEC070">Pearson (BTEC)
-																					Subsidiary Dip (was Nat Award 60+)</option>
-																				<option value="POST001">Postgraduate
-																					Research Degree</option>
-																				<option value="POST002">Postgraduate Taught
-																					Degree (MA/MSc etc)</option>
-																				<option value="SCOT002">Scottish
-																					Baccalaureate</option>
-																				<option value="SCOT011">Scottish Higher
-																					Tariff</option>
-																				<option value="NVQL004">Vocational
-																					qualifications Level 3 (NVQ)</option>
-																				A drop down menu created from all in use entries in the EQE table. One of five for each qualification option on this tab BT6 27/05/2014
-																			</select>
-																			<ul class="parsley-errors-list" id="parsley-id-7120"></ul>
-																		</div>
-
-																		<div class="" style="display: none;">
-																			<label for="IPQ_ADAPF01OQU01">If Other please
-																				enter the name of your qualification here</label> <input
-																				type="text" id="IPQ_ADAPF01OQU01"
-																				name="IPQ_ADAPF01OQU01" value="" maxlength="50"
-																				data-parsley-maxlength="50"
-																				data-parsley-trigger="focusout"
-																				data-initvalueundefined="" data-parsley-id="4150">
-																			<ul class="parsley-errors-list" id="parsley-id-4150"></ul>
-																		</div>
-
-																		<div>
-																			<label for="IPQ_ADAPF01QLF01">Subject *</label> <select
-																				id="IPQ_ADAPF01QLF01" name="IPQ_ADAPF01QLF01"
-																				="" data-parsley-="true"
-																				data-parsley-trigger="change"
-																				data-initvalueundefined="" data-parsley-id="2146">
-																				<option value="" selected="selected">Please
-																					select</option>
-																				<option value="3D-ANI">3D Animation</option>
-																				<option value="3DTHEA">3D Design (Theatre
-																					Costume)</option>
-																				<option value="3DCRAF">3D Design Craft</option>
-																				<option value="3D-SPA">3D Spatial Design</option>
-																				<option value="ACCECO">Accountancy and
-																					Economics</option>
-																				<option value="ACCNT">Accounting</option>
-																				<option value="ACC-FI">Accounting and
-																					Finance</option>
-																				<option value="MA-ADD">Additional
-																					Mathematics</option>
-																				<option value="ADMIN">Administration</option>
-																				<option value="ADMKT">Advertising and
-																					Marketing Communications</option>
-																				<option value="EN-AER">Aeronautical
-																					Engineering</option>
-																				<option value="EN-AES">Aerospace
-																					Engineering</option>
-																				<option value="AFRIKN">Afrikaans</option>
-																				<option value="AGRENG">Agricultural
-																					Engineering</option>
-																				<option value="AGR-SC">Agricultural Science</option>
-																				<option value="AGRIC">Agriculture</option>
-																				<option value="AIRMNT">Air Travel
-																					Management</option>
-																				<option value="AIRC-M">Aircraft Maintenance</option>
-																				<option value="ALGE">Algebra</option>
-																				<option value="HEA-AP">Allied Health
-																					Professions</option>
-																				<option value="ELECAN">Analogue Electronics</option>
-																				<option value="ANFOSC">Analytical and
-																					Forensic Science</option>
-																				<option value="CHE-AN">Analytical Chemistry</option>
-																				<option value="AN-SCI">Analytical Science</option>
-																				<option value="HIS-AN">Ancient History</option>
-																				<option value="AN-CR">Animal Care</option>
-																				<option value="ANIM">Animation</option>
-																				<option value="ANTH">Anthropology</option>
-																				<option value="AP-NUM">Application of
-																					Number</option>
-																				<option value="APP-AD">Applied Art and
-																					Design</option>
-																				<option value="BIO-AP">Applied Biology</option>
-																				<option value="AP-BUS">Applied Business</option>
-																				<option value="APCHEM">Applied Chemistry</option>
-																				<option value="A-ICT">Applied ICT</option>
-																				<option value="APLAW">Applied Law</option>
-																				<option value="MA-AP">Applied Mathematics</option>
-																				<option value="MECH-A">Applied Mechanics</option>
-																				<option value="AP-MUS">Applied Music</option>
-																				<option value="APP-PH">Applied Physics</option>
-																				<option value="SCI-AP">Applied Science</option>
-																				<option value="APTECH">Applied Technology</option>
-																				<option value="BACC-A">AQA Baccalaureate</option>
-																				<option value="AQA-E">AQA Enrichment</option>
-																				<option value="ARABIC">Arabic</option>
-																				<option value="AB-CUL">Arboriculture/
-																					Horticulture</option>
-																				<option value="ARCH">Archaeology</option>
-																				<option value="ARCHT">Architecture</option>
-																				<option value="ARME">Armenian</option>
-																				<option value="ART">Art</option>
-																				<option value="ART-GC">Art &amp; Design
-																					(Graphic Comm) (P</option>
-																				<option value="ART-CR">Art and Crafts</option>
-																				<option value="ART-DS">Art and Design</option>
-																				<option value="AD-3D">Art and Design: 3D
-																					Studies</option>
-																				<option value="ART-CH">Art and Design:
-																					Critical/ History Studies</option>
-																				<option value="AD-FAC">Art and Design:
-																					Fashion and Clothing</option>
-																				<option value="AD-FAS">Art and Design:
-																					Fashion and textile</option>
-																				<option value="AD-FV">Art and Design: Film
-																					and Video</option>
-																				<option value="ART-FA">Art and Design: Fine
-																					Art</option>
-																				<option value="AD-GRA">Art and Design:
-																					Graphics</option>
-																				<option value="AD-PHO">Art and Design:
-																					Photography</option>
-																				<option value="AD-TEX">Art and Design:
-																					Textiles</option>
-																				<option value="ART-HI">Art History</option>
-																				<option value="AS-CVA">ASDAN Community
-																					Volunteering Award</option>
-																				<option value="AS-CVC">ASDAN Community
-																					Volunteering Certificate</option>
-																				<option value="ASTRO">Astronomy</option>
-																				<option value="AUTENG">Auto Engineering</option>
-																				<option value="AV-SC">Aviation Science</option>
-																				<option value="AOPE">Award of Personal
-																					Effectiveness</option>
-																				<option value="BAKTC">Baking Technology</option>
-																				<option value="BEA-TH">Beauty Therapy</option>
-																				<option value="BENGAL">Bengali</option>
-																				<option value="BIOCHE">Biochemical Sciences</option>
-																				<option value="BI-CHE">Biochemistry</option>
-																				<option value="BCBMSC">Biochemistry and
-																					Biomedical Science</option>
-																				<option value="BIO-ES">Biological and
-																					Environmental Science</option>
-																				<option value="BIOLHS">Biological and
-																					Health Science</option>
-																				<option value="BIOL-S">Biological Sciences</option>
-																				<option value="BIOL">Biology</option>
-																				<option value="BIO-BS">Biology and
-																					Biomedical Science</option>
-																				<option value="BIMESC">Biomedical Science</option>
-																				<option value="BIO-PS">Biophysical Sciences</option>
-																				<option value="BIOSCI">Biosciences</option>
-																				<option value="BIO-TE">Bio-technology</option>
-																				<option value="BL-MET">Blacksmithing and
-																					Metalworking</option>
-																				<option value="BOTANY">Botany</option>
-																				<option value="GOV-BR">British Government
-																					and Politics</option>
-																				<option value="BC-MED">Broadcasting and
-																					Media</option>
-																				<option value="BUILD">Building Construction</option>
-																				<option value="BLD-ST">Building Studies</option>
-																				<option value="BLD-TE">Building Technology</option>
-																				<option value="BLT-EN">Built Environment</option>
-																				<option value="BULGRN">Bulgarian</option>
-																				<option value="BURMES">Burmese</option>
-																				<option value="BUSN">Business</option>
-																				<option value="BU-ADM">Business
-																					Administration</option>
-																				<option value="BU-ACC">Business and
-																					Accounting</option>
-																				<option value="BUS-EN">Business and
-																					Enterprise</option>
-																				<option value="BUS-FI">Business and Finance</option>
-																				<option value="BUS-LW">Business and Law</option>
-																				<option value="BUSMKT">Business and
-																					Marketing</option>
-																				<option value="BU-TRV">Business and Travel</option>
-																				<option value="BU-EC">Business Economics</option>
-																				<option value="BU-ENV">Business Environment</option>
-																				<option value="LAW-BU">Business Law</option>
-																				<option value="BU-MN">Business Management</option>
-																				<option value="BU-ORG">Business
-																					Organisation</option>
-																				<option value="BU-ST">Business Studies</option>
-																				<option value="BU-TEC">Business Technology</option>
-																				<option value="BU-ENG">Business with
-																					English</option>
-																				<option value="BUS-MA">Business with
-																					Mathematics</option>
-																				<option value="CA-PR">Cache practical</option>
-																				<option value="CA-TH">Cache theory</option>
-																				<option value="CALC">Calculus</option>
-																				<option value="CANT">Cantonese</option>
-																				<option value="CARE">Care</option>
-																				<option value="BIO-CE">Cell Biology</option>
-																				<option value="CERAM">Ceramics</option>
-																				<option value="IFS-FS">Certificate in
-																					Financial Studies</option>
-																				<option value="CA-CAE">Certificate of
-																					Advanced English (CAE)</option>
-																				<option value="COPE">Certificate of
-																					Personal Effectiveness</option>
-																				<option value="CA-CPE">Certificate of
-																					Proficiency English (CPE)</option>
-																				<option value="CHEMEN">Chemical Engineering</option>
-																				<option value="CHEM">Chemistry</option>
-																				<option value="CHILCE">Child Care and
-																					Education</option>
-																				<option value="CHILDC">Childcare</option>
-																				<option value="CHLDST">Childhood Studies</option>
-																				<option value="CHI-YP">Children and Young
-																					People</option>
-																				<option value="CCLDEV">Childrens Care,
-																					Learning and Development</option>
-																				<option value="CHINES">Chinese</option>
-																				<option value="CHI-HS">Chinese History</option>
-																				<option value="CH-THE">Christian Theology</option>
-																				<option value="ENGINC">Civil Engineering</option>
-																				<option value="ARAB-C">Classical Arabic</option>
-																				<option value="CHI-C">Classical Chinese</option>
-																				<option value="CL-CIV">Classical
-																					Civilisation</option>
-																				<option value="GREK-C">Classical Greek</option>
-																				<option value="HEBW-C">Classical Hebrew</option>
-																				<option value="PER-CL">Classical Persian</option>
-																				<option value="CL-ST">Classical Studies</option>
-																				<option value="CLA-AH">Classics Ancient
-																					History</option>
-																				<option value="CLA-LA">Classics Latin</option>
-																				<option value="COA-SP">Coach Education and
-																					Sports Performance</option>
-																				<option value="COACH">Coaching</option>
-																				<option value="CO-MAR">Coastal and Marine
-																					Studies</option>
-																				<option value="COMM">Commerce</option>
-																				<option value="COMM-S">Commercial Studies</option>
-																				<option value="COMMUN">Communication</option>
-																				<option value="EN-COM">Communication
-																					Engineering</option>
-																				<option value="COM-SK">Communication Skills</option>
-																				<option value="CO-SYS">Communication
-																					Systems</option>
-																				<option value="COMT">Community</option>
-																				<option value="CO-HEA">Complementary Health</option>
-																				<option value="CO-THE">Complementary
-																					Therapy</option>
-																				<option value="CAD">Computer Aided Design</option>
-																				<option value="CAE">Computer Aided
-																					Engineering</option>
-																				<option value="CO-DIG">Computer and Digital
-																					Product Technology</option>
-																				<option value="CO-EL">Computer and
-																					Electronic Engineering</option>
-																				<option value="CN-ENG">Computer and Network
-																					Engineering</option>
-																				<option value="CO-AP">Computer Applications</option>
-																				<option value="CA-ANI">Computer Arts and
-																					Animation</option>
-																				<option value="COM-NE">Computer Networks</option>
-																				<option value="CO-PR">Computer Programming</option>
-																				<option value="CO-SC">Computer Science</option>
-																				<option value="COMP">Computing</option>
-																				<option value="COM-BS">Computing and
-																					Business</option>
-																				<option value="COM-MA">Computing and
-																					Mathematics</option>
-																				<option value="COM-EN">Computing
-																					Engineering</option>
-																				<option value="CONSVT">Conservation</option>
-																				<option value="COVMGT">Conservation
-																					Management</option>
-																				<option value="CON">Construction</option>
-																				<option value="CT-ENG">Construction
-																					Engineering</option>
-																				<option value="CONMGT">Construction
-																					Management</option>
-																				<option value="CON-T">Construction
-																					Technology</option>
-																				<option value="EN-CTL">Control Engineering</option>
-																				<option value="COUN">Counselling</option>
-																				<option value="CO-MAN">Countryside
-																					Management</option>
-																				<option value="CRAFT">Craft</option>
-																				<option value="CR-DES">Craft and Design</option>
-																				<option value="CDT">Craft Design and
-																					Technology</option>
-																				<option value="CR-MED">Creative &amp; Media</option>
-																				<option value="MG-DEV">Creative Media
-																					Production: Games Development</option>
-																				<option value="CRM-TF">Creative Media
-																					Production: TV and Film</option>
-																				<option value="WR-CRE">Creative Writing</option>
-																				<option value="CR-JUS">Criminal Justice</option>
-																				<option value="CRIM">Criminology</option>
-																				<option value="CR-SOC">Criminology and
-																					Sociology</option>
-																				<option value="CR-TH">Critical Thinking</option>
-																				<option value="CZECH">Czech</option>
-																				<option value="DANCE">Dance</option>
-																				<option value="DANISH">Danish</option>
-																				<option value="DENTST">Dentistry</option>
-																				<option value="DESIGN">Design</option>
-																				<option value="DES-3D">Design &amp; Tech.
-																					3D Design</option>
-																				<option value="DES-TX">Design &amp; Tech.
-																					Textiles</option>
-																				<option value="DES-TE">Design and
-																					Technology</option>
-																				<option value="DES-FT">Design and
-																					Technology: Food Technology</option>
-																				<option value="PROD-D">Design and
-																					Technology: Product Design</option>
-																				<option value="PRO-GR">Design and
-																					Technology: Products Graphics</option>
-																				<option value="RES-MA">Design and
-																					Technology: Resistant Materials</option>
-																				<option value="DES-SC">Design and
-																					Technology: Systems Technology</option>
-																				<option value="ELEC-D">Digital Electronics</option>
-																				<option value="DIG-MD">Digital Media</option>
-																				<option value="IFS-DS">Diploma in Financial
-																					Studies</option>
-																				<option value="DF-ADM">Diploma in
-																					Foundation Studies (Art and Design and Media)</option>
-																				<option value="DF-AD">Diploma in Foundation
-																					Studies (Art and Design)</option>
-																				<option value="DRAMA">Drama</option>
-																				<option value="DRA-TH">Drama and Theatre
-																					Studies</option>
-																				<option value="DUTCH">Dutch</option>
-																				<option value="EA-CLD">Early Childhood
-																					Studies</option>
-																				<option value="EARYRS">Early Years</option>
-																				<option value="ECOL">Ecology</option>
-																				<option value="ECO-ES">Ecology and
-																					Environmental Studies</option>
-																				<option value="E-COMM">E-Commerce</option>
-																				<option value="EC-PO">Economic and
-																					Political Studies</option>
-																				<option value="GEO-EC">Economic Geography</option>
-																				<option value="HIS-EC">Economic History</option>
-																				<option value="ECON">Economics</option>
-																				<option value="ECON-B">Economics and
-																					Business</option>
-																				<option value="CERT-A">EDI Level 3
-																					Certificate in Accounting</option>
-																				<option value="IAS-AC">EDI Level 3
-																					Certificate in Accounting (IAS)</option>
-																				<option value="EDUC">Education</option>
-																				<option value="ED-SWK">Education and Social
-																					Work</option>
-																				<option value="EE-ENG">Electrical and
-																					Electronic Engineering</option>
-																				<option value="EMENG">Electrical and
-																					Mechanical Engineering</option>
-																				<option value="EL-ENG">Electrical
-																					Engineering</option>
-																				<option value="ELEC-A">Electronic
-																					Applications</option>
-																				<option value="EL-DES">Electronic Design</option>
-																				<option value="E-ENG">Electronic
-																					Engineering</option>
-																				<option value="ELECTR">Electronics</option>
-																				<option value="ENGIN">Engineering</option>
-																				<option value="ENG-TE">Engineering and
-																					Technology</option>
-																				<option value="EN-D">Engineering Design</option>
-																				<option value="DR-ENG">Engineering Drawing</option>
-																				<option value="EN-SC">Engineering Science</option>
-																				<option value="EN-TEC">Engineering
-																					Technology</option>
-																				<option value="ENG">English</option>
-																				<option value="ENG-CO">English and
-																					Communication</option>
-																				<option value="ENG-CW">English and Creative
-																					Writing</option>
-																				<option value="ENG-MD">English and Media</option>
-																				<option value="ENG-LA">English Language</option>
-																				<option value="EN-LIN">English Language
-																					&amp; Linguistics</option>
-																				<option value="ENG-LL">English Language and
-																					Literature</option>
-																				<option value="ENG-LI">English Literature</option>
-																				<option value="ENTE">Enterprise and
-																					Entrepreneurship</option>
-																				<option value="ENV-MN">Environmental
-																					Management</option>
-																				<option value="ENV-SC">Environmental
-																					Science</option>
-																				<option value="EQ-ST">Equine Studies</option>
-																				<option value="ESTON">Estonian</option>
-																				<option value="EU-BUS">European Business
-																					Studies</option>
-																				<option value="EUR-ST">European Studies</option>
-																				<option value="EVENT">Event Management</option>
-																				<option value="EXT-P">Extended Project</option>
-																				<option value="FASH">Fashion</option>
-																				<option value="FA-TEX">Fashion and Textiles</option>
-																				<option value="FA-MKT">Fashion Marketing</option>
-																				<option value="FILIP">Filipino</option>
-																				<option value="FILM">Film Studies</option>
-																				<option value="FI-SVC">Financial Services</option>
-																				<option value="ART-F">Fine Art</option>
-																				<option value="FIN-LA">Finnish Language</option>
-																				<option value="FL-MEC">Fluid Mechanics</option>
-																				<option value="FDOPS">Food Operations</option>
-																				<option value="FDPREP">Food Preparation and
-																					Cooking</option>
-																				<option value="FDSAFE">Food Safety</option>
-																				<option value="TECSCI">Food Technology/
-																					Science</option>
-																				<option value="FO-SCI">Forensic Science</option>
-																				<option value="FOREST">Forestry and
-																					Arboriculture</option>
-																				<option value="FA-MA">Foundation of
-																					Advanced Mathematics</option>
-																				<option value="FRENCH">French</option>
-																				<option value="FURNI">Furniture</option>
-																				<option value="MA-FU">Further Mathematics</option>
-																				<option value="GAELIC">Gaelic</option>
-																				<option value="GAM-DS">Game Design</option>
-																				<option value="GAM-DV">Game Development</option>
-																				<option value="GAR-DS">Garden Design</option>
-																				<option value="GEN-SC">General Science</option>
-																				<option value="GEN-ST">General Studies</option>
-																				<option value="GEOG-S">Geographical Science</option>
-																				<option value="GEOG">Geography</option>
-																				<option value="GEOL">Geology</option>
-																				<option value="GERMAN">German</option>
-																				<option value="GLASS">Glass</option>
-																				<option value="GLO-DV">Global Development</option>
-																				<option value="GOLF">Golf Management</option>
-																				<option value="GOV-PO">Government and
-																					Politics</option>
-																				<option value="GRAP-C">Graphic
-																					Communication</option>
-																				<option value="GRAP-D">Graphic Design</option>
-																				<option value="GRAPH">Graphics</option>
-																				<option value="GREEK">Greek</option>
-																				<option value="HEALTH">Health</option>
-																				<option value="HEA-FT">Health and Fitness</option>
-																				<option value="H-RHP">Health and Related
-																					Health Professions</option>
-																				<option value="H-SAF">Health and Safety</option>
-																				<option value="HEA-SC">Health and Social
-																					Care</option>
-																				<option value="HEASSC">Health and Social
-																					Science</option>
-																				<option value="HEAL-C">Health Care</option>
-																				<option value="HEALSC">Health Science</option>
-																				<option value="HEA-ST">Health Studies</option>
-																				<option value="HEA-TH">Health Therapies</option>
-																				<option value="SA-MGT">Health, Beauty and
-																					Salon Management</option>
-																				<option value="HA-AUD">Hearing Aid
-																					Audiology</option>
-																				<option value="HEBREW">Hebrew</option>
-																				<option value="HMATHS">Higher Mathematics</option>
-																				<option value="HINDI">Hindi</option>
-																				<option value="HIST">History</option>
-																				<option value="HO-EC">Home Economics</option>
-																				<option value="HO-DF">Home Economics: Dress
-																					and Fabrics</option>
-																				<option value="HRS-MT">Horse Management</option>
-																				<option value="HORT">Horticultural Science</option>
-																				<option value="HOSP">Hospitality</option>
-																				<option value="HO-CAT">Hospitality and
-																					Catering</option>
-																				<option value="HOS-LT">Hospitality, Leisure
-																					and Tourism</option>
-																				<option value="HOUSE">Housing</option>
-																				<option value="BIO-HM">Human Biology</option>
-																				<option value="GEO-HM">Human Geography</option>
-																				<option value="HUMRES">Human Resource
-																					Management</option>
-																				<option value="HUMAN">Humanities</option>
-																				<option value="HUNGAR">Hungarian</option>
-																				<option value="ILLU">Illustration</option>
-																				<option value="IMUN">Immunology</option>
-																				<option value="IM-OLP">Improving Own
-																					Learning/ Performance</option>
-																				<option value="DES-IN">Industrial Design</option>
-																				<option value="ICT">Information and
-																					Communication Technology (ICT)</option>
-																				<option value="INF-EN">Information
-																					Engineering</option>
-																				<option value="INF-PR">Information
-																					Processing</option>
-																				<option value="INF-ST">Information Studies</option>
-																				<option value="INF-CT">Information
-																					Technology</option>
-																				<option value="IN-IMD">Interactive Media</option>
-																				<option value="IN-DES">Interior Design</option>
-																				<option value="INT-AF">International
-																					Affairs</option>
-																				<option value="INT-ST">International
-																					Studies</option>
-																				<option value="IRISH">Irish</option>
-																				<option value="ISLAM">Islam</option>
-																				<option value="ITAL">Italian</option>
-																				<option value="JAPAN">Japanese</option>
-																				<option value="JOUR">Journalism</option>
-																				<option value="JO-MED">Journalism and Media</option>
-																				<option value="KURDSH">Kurdish</option>
-																				<option value="LAB-T">Laboratory Techniques</option>
-																				<option value="LB-TEC">Laboratory
-																					Technology</option>
-																				<option value="LAN-BS">Land Based Studies</option>
-																				<option value="LAND-E">Land Economics</option>
-																				<option value="LAN-DS">Landscape Design</option>
-																				<option value="LAN-LI">Language and
-																					Literature</option>
-																				<option value="LATIN">Latin</option>
-																				<option value="LATVIN">Latvian</option>
-																				<option value="LAW">Law</option>
-																				<option value="L-CRIM">Law and Criminology</option>
-																				<option value="LAW-SS">Law and Social
-																					Science</option>
-																				<option value="LDSH">Leadership</option>
-																				<option value="LE-DIS">Learning Disability</option>
-																				<option value="LEG-PR">Legal Professions</option>
-																				<option value="LE-STU">Legal Studies</option>
-																				<option value="LEI-RE">Leisure and
-																					Recreation</option>
-																				<option value="LEI-TO">Leisure and Tourism</option>
-																				<option value="K1-NUM">Level 1 Application
-																					of Number</option>
-																				<option value="K1-COM">Level 1
-																					Communication</option>
-																				<option value="K1-IMP">Level 1 Improving
-																					Learning and Performance</option>
-																				<option value="K1-IT">Level 1 IT</option>
-																				<option value="K1-PRO">Level 1 Problem
-																					Solving</option>
-																				<option value="K1-WOR">Level 1 Working with
-																					Others</option>
-																				<option value="K2-NUM">Level 2 Application
-																					of Number</option>
-																				<option value="K2-COM">Level 2
-																					Communication</option>
-																				<option value="K2-IMP">Level 2 Improving
-																					learning and Performance</option>
-																				<option value="K2-IT">Level 2 IT</option>
-																				<option value="K2-PRO">Level 2 Problem
-																					Solving</option>
-																				<option value="K2-WOR">Level 2 Working with
-																					Others</option>
-																				<option value="K3-NUM">Level 3 Application
-																					of Number</option>
-																				<option value="AWA-CC">Level 3 Award in
-																					Child Care and Education</option>
-																				<option value="HIGH-S">Level 3 Award in HSL</option>
-																				<option value="CERT-C">Level 3 Certificate
-																					in Child Care and education</option>
-																				<option value="K3-COM">Level 3
-																					Communication</option>
-																				<option value="DIP-CC">Level 3 Diploma in
-																					Child Care</option>
-																				<option value="K3-IMP">Level 3 Improving
-																					Learning and Performance</option>
-																				<option value="K3-IT">Level 3 IT</option>
-																				<option value="K3-PRO">Level 3 Problem
-																					Solving</option>
-																				<option value="K3-WOR">Level 3 Working with
-																					Others</option>
-																				<option value="K4-NUM">Level 4 Application
-																					of Number</option>
-																				<option value="K4-COM">Level 4
-																					Communication</option>
-																				<option value="DIP-M">Level 4 Diploma
-																					Foundation Studies (Art and Design and Media)</option>
-																				<option value="K4-IMP">Level 4 Improving
-																					Learning and Performance</option>
-																				<option value="K4-IT">Level 4 IT</option>
-																				<option value="K4-PRO">Level 4 Problem
-																					Solving</option>
-																				<option value="K4WPRO">Level 4 Wider Key
-																					Skills Problem Solving</option>
-																				<option value="SC-LF">Life Science</option>
-																				<option value="LINGUI">Linguistics</option>
-																				<option value="LITH">Lithuanian</option>
-																				<option value="EV-TEC">Live Event
-																					Technology</option>
-																				<option value="TV-PRO">Live Television
-																					Production</option>
-																				<option value="LOGIS">Logistics</option>
-																				<option value="MALAY">Malay</option>
-																				<option value="MALTES">Maltese</option>
-																				<option value="VQ-MNT">Management</option>
-																				<option value="MIN-ST">Management
-																					Information Studies</option>
-																				<option value="MNT-ST">Management Studies</option>
-																				<option value="CHI-MN">Mandarin Chinese</option>
-																				<option value="MANMEC">Manufacture and
-																					Mechanical Engineering</option>
-																				<option value="MANFCT">Manufacturing</option>
-																				<option value="MANENG">Manufacturing
-																					Engineering</option>
-																				<option value="MANTEC">Manufacturing
-																					Technology</option>
-																				<option value="MAR-EN">Marine Engineering</option>
-																				<option value="MAR-ST">Marine Studies</option>
-																				<option value="MARKET">Marketing</option>
-																				<option value="MATRLS">Materials</option>
-																				<option value="MAT-EN">Materials
-																					Engineering</option>
-																				<option value="MATHS">Mathematics</option>
-																				<option value="MA-COM">Mathematics and
-																					Computing</option>
-																				<option value="MASTCO">Mathematics and
-																					Statistics and Computing</option>
-																				<option value="MA-ENG">Mathematics for
-																					Engineering</option>
-																				<option value="MEENG">Measurement and
-																					Control Engineering</option>
-																				<option value="EN-MEC">Mechanical
-																					Engineering</option>
-																				<option value="MA-MEC">Mechanical
-																					Mathematics</option>
-																				<option value="MEC-SC">Mechanical Science</option>
-																				<option value="MECHAN">Mechanics</option>
-																				<option value="MED-CS">Media and Cultural
-																					Studies</option>
-																				<option value="MED-VC">Media and Visual
-																					Communication</option>
-																				<option value="MED-ST">Media Studies</option>
-																				<option value="ELEC-M">Medical Electronics</option>
-																				<option value="MEDCNE">Medicine</option>
-																				<option value="HIS-ME">Medieval History</option>
-																				<option value="MET-TC">Metals Technology</option>
-																				<option value="METAL">Metalwork</option>
-																				<option value="BIO-MI">Microbiology</option>
-																				<option value="MIELEC">Microelectronics</option>
-																				<option value="MIC-SY">Microsystems</option>
-																				<option value="MID-WI">Midwifery</option>
-																				<option value="SUR-MN">Minerals Surveying</option>
-																				<option value="MOB-CO">Mobile Computing</option>
-																				<option value="ARAB-M">Modern Arabic</option>
-																				<option value="CHI-M">Modern Chinese</option>
-																				<option value="GREK-M">Modern Greek</option>
-																				<option value="HEBW-M">Modern Hebrew</option>
-																				<option value="HIS-MO">Modern History</option>
-																				<option value="CHI-MS">Modern Standard
-																					Chinese</option>
-																				<option value="MOT-SP">Motor Sports</option>
-																				<option value="MU-MED">Multimedia</option>
-																				<option value="MUSIC">Music</option>
-																				<option value="MUS-TE">Music Technology</option>
-																				<option value="NMEDP">New Media Production</option>
-																				<option value="NORWEG">Norwegian</option>
-																				<option value="NUC-EN">Nuclear Engineering</option>
-																				<option value="NUMER">Numeracy</option>
-																				<option value="NURSE">Nursing</option>
-																				<option value="NU-ALP">Nursing and Allied
-																					Professions</option>
-																				<option value="N-HEAL">Nursing and Health</option>
-																				<option value="NU-MID">Nursing and
-																					Midwifery</option>
-																				<option value="NU-SOC">Nursing and Social
-																					Care</option>
-																				<option value="NUTRIT">Nutrition</option>
-																				<option value="OCC-TH">Occupational Therapy</option>
-																				<option value="OPTO">Optometry</option>
-																				<option value="HK-OC">Oral Communication</option>
-																				<option value="OSTEOP">Osteopathy</option>
-																				<option value="UNKWN">Other</option>
-																				<option value="SP-ST">P.E. (Sports Studies)</option>
-																				<option value="ART-P">Painting</option>
-																				<option value="PMD-ST">Paramedic Studies</option>
-																				<option value="PERFST">Performance Studies</option>
-																				<option value="PP-ART">Performing and
-																					Production Arts</option>
-																				<option value="PERFRM">Performing Arts</option>
-																				<option value="PA-ACT">Performing Arts
-																					(Acting)</option>
-																				<option value="PA-DAN">Performing Arts
-																					(Dance)</option>
-																				<option value="PA-PER">Performing Arts
-																					(Performance)</option>
-																				<option value="PHTHEA">Performing Arts
-																					(Physical Theatre)</option>
-																				<option value="PAPROD">Performing Arts
-																					(Production)</option>
-																				<option value="SETCON">Performing Arts (Set
-																					Construction)</option>
-																				<option value="STGDES">Performing Arts
-																					(Stage Design)</option>
-																				<option value="STGMGT">Performing Arts
-																					(Stage Management)</option>
-																				<option value="PATECH">Performing Arts
-																					(Technical)</option>
-																				<option value="PERSIA">Persian</option>
-																				<option value="P-SCI">Pharmaceutical
-																					Sciences</option>
-																				<option value="P-SERV">Pharmacy Services</option>
-																				<option value="PHIL">Philosophy</option>
-																				<option value="PHOTO">Photography</option>
-																				<option value="PE">Physical Education</option>
-																				<option value="GEO-PH">Physical Geography</option>
-																				<option value="PH-SC">Physical Science</option>
-																				<option value="PHYS">Physics</option>
-																				<option value="PHY-CH">Physics and
-																					Chemistry</option>
-																				<option value="PHY-MA">Physics and
-																					Mathematics</option>
-																				<option value="PHYSIO">Physiology</option>
-																				<option value="PHY-TE">Physiotherapy</option>
-																				<option value="HK-PO">Planning and
-																					Organising</option>
-																				<option value="BIO-PL">Plant Biology</option>
-																				<option value="SC-PLA">Plant Science</option>
-																				<option value="PLAY">Playwork</option>
-																				<option value="POLICE">Police</option>
-																				<option value="POLISH">Polish</option>
-																				<option value="POL-SC">Political Science</option>
-																				<option value="POL-ST">Political Studies</option>
-																				<option value="POLIT">Politics</option>
-																				<option value="PORTUG">Portuguese</option>
-																				<option value="PRACT">Practical</option>
-																				<option value="PTEACH">Primary Teaching</option>
-																				<option value="TECH-P">Principles of
-																					Technology</option>
-																				<option value="PRI-MK">Print Making</option>
-																				<option value="PRBSLV">Problem Solving</option>
-																				<option value="PD-ART">Production Arts</option>
-																				<option value="PR-MGT">Production
-																					Engineering Management</option>
-																				<option value="PRD-MN">Production
-																					Management</option>
-																				<option value="PSOC-C">Professional Social
-																					Care</option>
-																				<option value="PRO-DA">Programming and Data
-																					Analysis</option>
-																				<option value="PROJ">Project</option>
-																				<option value="PSYCH">Psychology</option>
-																				<option value="PSY-SO">Psychology and
-																					Sociology</option>
-																				<option value="PSY-ST">Psychosocial Studies</option>
-																				<option value="PUB-SV">Public Services</option>
-																				<option value="PCC">Purchasing, Costing and
-																					Control</option>
-																				<option value="MA-PU">Pure Mathematics</option>
-																				<option value="QM">Quality Management</option>
-																				<option value="SURV-Q">Quantity Surveying</option>
-																				<option value="RADIO">Radio</option>
-																				<option value="RAD">Radiography</option>
-																				<option value="RE-EST">Real Estate</option>
-																				<option value="LEI-LA">Recreational Land
-																					Management</option>
-																				<option value="RELIG">Religious Studies</option>
-																				<option value="EM-MT">Rescue and Emergency
-																					Management</option>
-																				<option value="RESLAB">Research and
-																					Laboratory Science</option>
-																				<option value="REST">Restoration</option>
-																				<option value="RE-MAN">Retail Management</option>
-																				<option value="ROBOT">Robotics</option>
-																				<option value="RUMAN">Rumanian</option>
-																				<option value="RURL">Rural Management</option>
-																				<option value="RUSS">Russian</option>
-																				<option value="SCIEN">Science</option>
-																				<option value="SCIFOR">Science and
-																					Forensics</option>
-																				<option value="SCIHST">Science and Health
-																					Studies</option>
-																				<option value="SCI-SS">Science Combined
-																					with Social Sciences</option>
-																				<option value="SCIHES">Science for Health
-																					and Sport</option>
-																				<option value="SCIHPR">Science for Health
-																					Practitioners</option>
-																				<option value="SCIPAM">Science for
-																					Professions Allied to Medicine</option>
-																				<option value="SCI-B">Science: Biology
-																					Route</option>
-																				<option value="SCI-C">Science: Chemistry
-																					Route</option>
-																				<option value="SCI-P">Science: Physics
-																					Route</option>
-																				<option value="SB-LNG">Scottish
-																					Baccalaureate Language</option>
-																				<option value="SB-SCI">Scottish
-																					Baccalaureate Science</option>
-																				<option value="PC-PSS">Scottish National
-																					Progression</option>
-																				<option value="ART-S">Sculpture</option>
-																				<option value="SEC-ST">Secretarial Studies</option>
-																				<option value="SHONA">Shona</option>
-																				<option value="MET-SL">Silver Metalwork</option>
-																				<option value="SURV-S">Site Surveying</option>
-																				<option value="SLOVAK">Slovak</option>
-																				<option value="BU-SBS">Small Business
-																					Systems</option>
-																				<option value="SOC-CS">Social and Community
-																					Studies</option>
-																				<option value="SO-CS">Social and Cultural
-																					Studies</option>
-																				<option value="BIO-SC">Social Biology</option>
-																				<option value="SOC-C">Social Care</option>
-																				<option value="SOCPOL">Social Policy</option>
-																				<option value="SOCSCI">Social Science</option>
-																				<option value="SSC-SW">Social Sciences/
-																					Social Work</option>
-																				<option value="SOCSTU">Social Studies</option>
-																				<option value="SW-POL">Social Welfare and
-																					Policy Studies</option>
-																				<option value="SOC-WK">Social Work</option>
-																				<option value="SOW-RP">Social Work and
-																					Related Professions</option>
-																				<option value="SOC-WC">Social Work/ Care</option>
-																				<option value="SOCIO">Sociology</option>
-																				<option value="SOFTT">Soft Tissue Therapy</option>
-																				<option value="SW-DEV">Software Development</option>
-																				<option value="STECHN">Sound Technology</option>
-																				<option value="SPAN">Spanish</option>
-																				<option value="SPO-HM">Sport &amp;
-																					Hospitality Management</option>
-																				<option value="SPO-PE">Sports and Physical
-																					Education</option>
-																				<option value="SPO-ES">SPORTS EX SCI</option>
-																				<option value="SP-LEA">Sports Leadership</option>
-																				<option value="SPO-SC">Sports Science</option>
-																				<option value="STADEC">Stage Decor</option>
-																				<option value="STA-MT">Statistical Methods</option>
-																				<option value="STATS">Statistics</option>
-																				<option value="ST-MEC">Structural Mechanics</option>
-																				<option value="ART-VS">Study of Visual Art</option>
-																				<option value="SURVEY">Surveying</option>
-																				<option value="SWAHIL">Swahili</option>
-																				<option value="SWED">Swedish</option>
-																				<option value="TEA-ED">Teacher Education</option>
-																				<option value="TEA-TR">Teacher Training</option>
-																				<option value="TT-PRI">Teacher Training:
-																					Primary</option>
-																				<option value="TEACHG">Teaching</option>
-																				<option value="TED-ST">Teaching and
-																					Education Studies</option>
-																				<option value="TEA-LE">Teaching and
-																					Learning</option>
-																				<option value="TEA-FE">Teaching in Further
-																					Education</option>
-																				<option value="TEA-LL">Teaching in the
-																					Lifelong Learning Sector</option>
-																				<option value="TEA-ST">Teaching Studies</option>
-																				<option value="TEA-EY">Teaching: Early
-																					Years</option>
-																				<option value="TEA-HU">Teaching: Humanities</option>
-																				<option value="TEA-SC">Teaching: Science</option>
-																				<option value="DR-TEC">Technical Drawing</option>
-																				<option value="TEC-ST">Technological
-																					Studies</option>
-																				<option value="TECH">Technology</option>
-																				<option value="TEC-DS">Technology and
-																					Design</option>
-																				<option value="TELEC">Telecommunications</option>
-																				<option value="TEX">Textiles</option>
-																				<option value="TEX-DR">Textiles and Dress</option>
-																				<option value="THEATR">Theatre Studies</option>
-																				<option value="THEOL">Theology</option>
-																				<option value="MECH-T">Theoretical
-																					Mechanics</option>
-																				<option value="THEORY">Theory</option>
-																				<option value="THERAP">Therapy</option>
-																				<option value="THERDY">Thermodynamics</option>
-																				<option value="TOURSM">Tourism</option>
-																				<option value="TRV-TO">Travel and Tourism</option>
-																				<option value="TURK">Turkish</option>
-																				<option value="2D-DES">Two Dimensional
-																					Design</option>
-																				<option value="UKRAIN">Ukrainian</option>
-																				<option value="URDU">Urdu</option>
-																				<option value="COMP-U">Use Of Computers</option>
-																				<option value="HK-UN">Using Number</option>
-																				<option value="VEH-TC">Vehicle Technology</option>
-																				<option value="VET-NU">Veterinary Nursing</option>
-																				<option value="VET-ST">Veterinary Studies</option>
-																				<option value="VID-TV">Video and TV
-																					Production</option>
-																				<option value="VIS-PA">Visual and
-																					Performing Arts</option>
-																				<option value="VISUN">Visualisation</option>
-																				<option value="WASTE">Waste Management</option>
-																				<option value="WATER">Water Management</option>
-																				<option value="WD-DGM">Web Design and
-																					Digital Media</option>
-																				<option value="WEL-ST">Welfare Studies</option>
-																				<option value="WELSH">Welsh</option>
-																				<option value="W-BACC">Welsh Baccalaureate
-																					Advanced Diploma</option>
-																				<option value="WOODWK">Woodwork</option>
-																				<option value="WORKWO">Working with Others</option>
-																				<option value="WLD-PO">World Politics</option>
-																				<option value="IK-WC">Written Communication</option>
-																				<option value="YOU-CW">Youth and Community
-																					Work</option>
-																				<option value="ZOOL">Zoology</option>
-																				A drop down menu created from all in use entries with an External Subject (ESB) code in the ESU table. One of five for each qualification option on this tab BT6 27/05/2014
-																			</select>
-																			<ul class="parsley-errors-list" id="parsley-id-2146"></ul>
-																			<em class="displayedHelp">Enter your
-																				qualification subject here. If your qualification
-																				doesn�t show please select "Other". </em>
-																		</div>
-
-																		<div class="" style="display: none;">
-																			<label for="IPQ_ADAPF01QLO01">If your subject
-																				is not included the list above please enter it here</label>
-																			<input type="text" id="IPQ_ADAPF01QLO01"
-																				name="IPQ_ADAPF01QLO01" value="" maxlength="50"
-																				data-parsley-maxlength="50"
-																				data-parsley-trigger="focusout"
-																				data-initvalueundefined="" data-parsley-id="1322">
-																			<ul class="parsley-errors-list" id="parsley-id-1322"></ul>
-																		</div>
-
-																		 
-
-																		<div>
-																			<label for="IPQ_ADAPF01QLB01">Date
-																				Qualification Started (dd/mm/yyyy) *</label> <input
-																				type="text" id="IPQ_ADAPF01QLB01"
-																				class="hasDatePkr hasDatepicker"
-																				name="IPQ_ADAPF01QLB01" value="" =""
-																				data-parsley-="true"
-																				data-parsley-datepkr="IPQ_ADAPF01QLB01"
-																				data-parsley-beforeenddate="IPQ_ADAPF01QLE01"
-																				data-parsley-trigger="change blur"
-																				data-initvalueundefined="" data-parsley-id="5982">
-																			<ul class="parsley-errors-list" id="parsley-id-5982"></ul>
-																			<img class="ui-datepicker-trigger"
-																				src="../images/si_calendar.gif" alt="Select date">
-																			<em class="displayedHelp">If you do not remember
-																				the precise date please enter the first of the
-																				month.</em>
-																		</div>
-
-																		<div>
-																			<label for="IPQ_ADAPF01QLE01">Date
-																				Qualification Finished (dd/mm/yyyy) *</label> <input
-																				type="text" id="IPQ_ADAPF01QLE01"
-																				class="hasDatePkr hasDatepicker"
-																				name="IPQ_ADAPF01QLE01" value="" =""
-																				data-parsley-="true" data-parsley-datepkr=""
-																				data-parsley-afterstartdate="IPQ_ADAPF01QLB01"
-																				data-parsley-trigger="change blur"
-																				data-initvalueundefined="" data-parsley-id="4386">
-																			<ul class="parsley-errors-list" id="parsley-id-4386"></ul>
-																			<img class="ui-datepicker-trigger"
-																				src="../images/si_calendar.gif" alt="Select date">
-																			<em class="displayedHelp">This date may be in
-																				the future. If you do not remember the precise date
-																				please enter the first of the month.</em>
-																		</div>
-
-																		<div>
-																			<label for="IPQ_ADAPF01FGU01">Final
-																				Grade/Predicted Grade *</label> <select
-																				id="IPQ_ADAPF01FGD01" class="finalPredictedGrade"
-																				name="IPQ_ADAPF01FGD01" =""
-																				data-parsley-="true"
-																				data-parsley-trigger="change"
-																				data-initvalueundefined="" data-initvalue=""
-																				style="display: none;" data-parsley-id="9544"></select>
-																			<ul class="parsley-errors-list" id="parsley-id-9544"></ul>
-																			<input type="text" id="IPQ_ADAPF01FGU01" class=""
-																				name="IPQ_ADAPF01FGU01" data-initvalueundefined=""
-																				maxlength="15" data-parsley-maxlength="15"
-																				="" data-parsley-="true"
-																				data-parsley-trigger="focusout"
-																				style="display: inline-block;"
-																				data-parsley-id="3483">
-																			<ul class="parsley-errors-list" id="parsley-id-3483"></ul>
-																		</div>
-
-																		<div>
-																			<label for="IPQ_ADAPF01COM01">Have you
-																				completed this qualification? *</label> <select
-																				id="IPQ_ADAPF01COM01" name="IPQ_ADAPF01COM01"
-																				="" data-parsley-="true"
-																				data-parsley-trigger="change"
-																				data-initvalueundefined="" data-parsley-id="4577">
-																				<option value="" selected="selected">Please
-																					select</option>
-																				<option value="A">Yes</option>
-																				<option value="P">No</option>
-																			</select>
-																			<ul class="parsley-errors-list" id="parsley-id-4577"></ul>
-																		</div>
-
-																		 
-
-																	</fieldset>
-
-																	
- 
-
-																		<div>
-																			<label for="IPQ_ADAPF01SBJ05">Qualification/Level
-																				of Study 5 *</label> <select id="IPQ_ADAPF01SBJ05"
-																				class="qualificationSelect" name="IPQ_ADAPF01SBJ05"
-																				  data-parsley-="true"
-																				data-parsley-trigger="change"
-																				data-initvalueundefined="" data-parsley-id="0916">
-																			</select>
-																			<ul class="parsley-errors-list" id="parsley-id-0916"></ul>
-																		</div>
-
-																		<div class="" style="display: none;">
-																			<label for="IPQ_ADAPF01OQU05">If Other please
-																				enter the name of your qualification here</label> <input
-																				type="text" id="IPQ_ADAPF01OQU05"
-																				name="IPQ_ADAPF01OQU05" value="" maxlength="50"
-																				data-parsley-maxlength="50"
-																				data-parsley-trigger="focusout"
-																				data-initvalueundefined="" data-parsley-id="2032">
-																			<ul class="parsley-errors-list" id="parsley-id-2032"></ul>
-																		</div>
-
-																		<div>
-																			<label for="IPQ_ADAPF01QLF05">Subject *</label> <select
-																				id="IPQ_ADAPF01QLF05" name="IPQ_ADAPF01QLF05"
-																				="" data-parsley-="true"
-																				data-parsley-trigger="change"
-																				data-initvalueundefined="" data-parsley-id="7716">
-																			</select>
-																			<ul class="parsley-errors-list" id="parsley-id-7716"></ul>
-																			<em class="displayedHelp">Enter your
-																				qualification subject here. If your qualification
-																				doesn�t show please select "Other".</em>
-																		</div>
-
-																		<div class="" style="display: none;">
-																			<label for="IPQ_ADAPF01QLO05">If your subject
-																				is not included the list above please enter it here</label>
-																			<input type="text" id="IPQ_ADAPF01QLO05"
-																				name="IPQ_ADAPF01QLO05" value="" maxlength="50"
-																				data-parsley-maxlength="50"  
-																				data-parsley-="true"
-																				data-parsley-trigger="focusout"
-																				data-initvalueundefined="" data-parsley-id="6602">
-																			<ul class="parsley-errors-list" id="parsley-id-6602"></ul>
-																		</div>
-
-																		<div>
-																			<label for="IPQ_ADAPF01QSN05">Name of UK
-																				institution *</label> <input type="text"
-																				id="IPQ_ADAPF01QSN05" name="IPQ_ADAPF01QSN05"
-																				value="" maxlength="100"
-																				data-parsley-maxlength="100"  
-																				data-parsley-="true"
-																				data-parsley-trigger="focusout"
-																				data-initvalueundefined="" data-parsley-id="5166">
-																			<ul class="parsley-errors-list" id="parsley-id-5166"></ul>
-																		</div>
-																		
-																		<div id="cloneBtns">
-																		<input id="cloneQualificationFieldset" type="button"
-																			value="Add another qualification"> <input
-																			id="removeQualificationFieldset" type="button"
-																			disabled="disabled" value="Remove">
-																	</div>
-
-																			<button type="submit" class='btn btn-success'
-																				title="Enregistrer">
-																				<i class="fa fa-save" style="color: white"></i>
-																				Enregistrer
-																			</button>
-
-																			@if(viewMode == "EDIT" || viewMode == "CREATE" ) {
-																			<div class="form-group" align="">
-																				<button type="submit" class='btn btn-success'
-																					title="Enregistrer">
-																					<i class="fa fa-save" style="color: white"></i>
-																					Enregistrer
-																				</button>
-																			</div>
-																			} else { @if(viewMode == "DELETE"){
-
-																			<div class="form-group" align="">
-																				<a
-																					href=" "
-																					title="Supprimer" class="btn btn-danger"> <i
-																					class="fa fa-times-circle"></i> Supprimer
-																				</a>
-																			</div>
-																			}}</fieldset>
-																</div>
-															</div>
-														</div>
-														<div class="tab-pane" id="tab_default_8"></div>
-														<div class="tab-pane" id="tab_default_9"></div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</form>
-							</div>
-
-						</div>
-					</div>
-					}
-					
-					@if(viewMode == "VIEW" ) {
+					} @if(viewMode == "VIEW" ) {
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="panel panel-default">
@@ -2319,6 +1387,8 @@
 																<div class="tab-pane active" id="tab_default_1">
 
 																	<fieldset id="personal_details">
+																	<input type="text" name="viewMode" value="@viewMode">
+																		<input type="text" name="studentFk" value="@uicode">
 
 																		<legend class="">Personal Details</legend>
 
@@ -2326,97 +1396,121 @@
 
 																		<div class="row">
 																			<div class="docUploadContainer">
-																		<em class="displayedHelp">
-																			<p>Please upload any documents that support your
-																				VISA</p>
-																			<p>UPLOAD INSTRUCTIONS</p>
-																			<ol>
-																				<li>Select <strong>Choose File</strong> to
-																					attach the document from your saved location.
-																				</li>
-																				<li>Then select <strong>Upload</strong> to
-																					attach the document to your application.
-																				</li>
-																				<li>The upload has completed when the file is
-																					shown below.</li>
-																				<li>You can remove the document by selecting
-																					the <strong>Delete</strong> button.
-																				</li>
-																			</ol>
+																				<em class="displayedHelp">
+																					<p>Please upload any documents that support
+																						your VISA</p>
+																					<p>UPLOAD INSTRUCTIONS</p>
+																					<ol>
+																						<li>Select <strong>Choose File</strong> to
+																							attach the document from your saved location.
+																						</li>
+																						<li>Then select <strong>Upload</strong> to
+																							attach the document to your application.
+																						</li>
+																						<li>The upload has completed when the file is
+																							shown below.</li>
+																						<li>You can remove the document by selecting
+																							the <strong>Delete</strong> button.
+																						</li>
+																					</ol>
 
 
-																			<p>Do not navigate away from this page while the
-																				upload is happening.</p>
-																			<ul class="bulleted">
-																				<li>Maximum Upload size per document is 10 MB.</li>
-																				<li>You can only upload files in the following
-																					format: BMP, DOC, DOCX, GIF, JPEG, JPG, PDF,
-																					RTF, TIF, TIFF, TXT, XLS, XLSX.</li>
-																				<li>You can upload a maximum of 5 document(s).
-																					If you wish to include any additional documents
-																					these can be added when you reach the declarations
-																					page.</li>
-																			</ul>
+																					<p>Do not navigate away from this page while
+																						the upload is happening.</p>
+																					<ul class="bulleted">
+																						<li>Maximum Upload size per document is 10
+																							MB.</li>
+																						<li>You can only upload files in the
+																							following format: BMP, DOC, DOCX, GIF, JPEG,
+																							JPG, PDF, RTF, TIF, TIFF, TXT, XLS, XLSX.</li>
+																						<li>You can upload a maximum of 5
+																							document(s). If you wish to include any
+																							additional documents these can be added when you
+																							reach the declarations page.</li>
+																					</ul>
 
-																		</em>
+																				</em>
 
-																		<div class="docUpload">
-																			Doc upload info IPQ: ADAPF01DOC01, DTY: VIS_DOCS
-
-
-																			<fieldset id="ADAPF01_01_DOCU">
-																			<div>
-																				<legend>Upload relevant documents to your application.</legend>
-																				
+																				<div class="docUpload">
+																					Doc upload info IPQ: ADAPF01DOC01, DTY: VIS_DOCS
 
 
+																					<fieldset id="ADAPF01_01_DOCU">
+																						<div>
+																							<legend>Upload relevant documents to
+																								your application.</legend>
+
+
+
+
+																						</div>
+
+																						<div id="ADAPF01DOC01_BUT">
+
+
+
+
+																							<input type="file" id="FILEUPLOAD-1" size="50"
+																								data-initvalueundefined=""
+																								data-parsley-id="9634">
+																							<ul class="parsley-errors-list"
+																								id="parsley-id-9634"></ul>
+
+																							<input type="button" class="docUploadBtn"
+																								value="Upload"
+																								onclick="sitsDocUpload(1, 'ADAPF01DOC01');" @isDisabled("courseFk")>
+
+
+																						</div>
+																						<div class="faux-parsley-errors-list ">
+																							<p>
+																								<strong>The upload failed</strong>. <span>Message</span>
+																							</p>
+																						</div>
 
 																				</div>
-
-																				<div id="ADAPF01DOC01_BUT">
-
-
-
-
-																				<input type="file" id="FILEUPLOAD-1" size="50"
-																					data-initvalueundefined="" data-parsley-id="9634">
-																				<ul class="parsley-errors-list" id="parsley-id-9634"></ul>
-
-																				<input type="button" class="docUploadBtn"
-																					value="Upload"
-																					onclick="sitsDocUpload(1, 'ADAPF01DOC01');">
-
-
 																			</div>
-																			<div class="faux-parsley-errors-list ">
-																				<p>
-																					<strong>The upload failed</strong>. <span>Message</span>
-																				</p>
-																			</div>  
-																		</div>
-																</div>
 
 
 																		</div>
 
 																		@if(viewMode == "EDIT" || viewMode == "CREATE" ) {
-																			<div class="form-group" align="">
-																				<button type="submit" class='btn btn-success'
-																					title="Enregistrer">
-																					<i class="fa fa-save" style="color: white"></i>
-																					Enregistrer
-																				</button>
-																			</div>
-																			} else { @if(viewMode == "DELETE"){
+																		<div class="form-group" align="">
+																			<button type="submit" class='btn btn-success'
+																				title="Enregistrer">
+																				<i class="fa fa-save" style="color: white"></i>
+																				Enregistrer
+																			</button>
+																		</div>
+																		} else { @if(viewMode == "DELETE"){
 
-																			<div class="form-group" align="">
+																		<div class="form-group" align="">
+																			<a href=" " title="Supprimer" class="btn btn-danger">
+																				<i class="fa fa-times-circle"></i> Supprimer
+																			</a>
+																		</div>
+																		}
+																	}
+																	@if(viewMode == "VIEW"){
+
+																			<div class="form-group">
 																				<a
-																					href=" "
-																					title="Supprimer" class="btn btn-danger"> <i
-																					class="fa fa-times-circle"></i> Supprimer
+																					href="@controllers.admins.routes.ApplicationDetailCtrl.approved(uicode)"
+																					title="view" class="btn btn-success"> <i
+																					class="fa fa-times-circle"></i>APPROVED
 																				</a>
 																			</div>
-																			}}
+																			}
+																	@if(viewMode == "VIEW"){
+
+																			<div class="form-group">
+																				<a
+																					href=""
+																					title="view" class="btn btn-danger"> <i
+																					class="fa fa-times-circle"></i>REJECT
+																				</a>
+																			</div>
+																			}
 																	</fieldset>
 																</div>
 															</div>
@@ -2429,16 +1523,16 @@
 										</div>
 									</div>
 								</form>
+ 								
 							</div>
 
 						</div>
 					</div>
 					}
-						</div>
-					</div>
-					
-					
-					@if(viewMode == "RCLASS" ) {
+				</div>
+			</div>
+		 
+			@if(viewMode == "RCLASS" ) {
 					<div class="row">
 						<div class="col-sm-12">
 							<div class="panel panel-default">
@@ -2477,6 +1571,7 @@
 
 
 																		</div>
+																		
 
 																		@if(viewMode == "EDIT" || viewMode == "CREATE" ) {
 																			<div class="form-group" align="">
@@ -2486,7 +1581,8 @@
 																					Enregistrer
 																				</button>
 																			</div>
-																			} else { @if(viewMode == "DELETE"){
+																			} else { 
+																			@if(viewMode == "DELETE"){
 
 																			<div class="form-group" align="">
 																				<a
@@ -2495,7 +1591,10 @@
 																					class="fa fa-times-circle"></i> Supprimer
 																				</a>
 																			</div>
-																			}}
+																			}  
+																		}
+																		
+																		
 																	</fieldset>
 																</div>
 															</div>
@@ -2513,28 +1612,4 @@
 						</div>
 					</div>
 					}
-
-				</div>
-			
-				<a class="skiplink" href="#rhs">Go to right hand side links</a> <a
-					class="skiplink" href="#localmenu">go to local menu</a> <a
-					class="skiplink" href="#menu">Go to main menu</a>
-
-			</div>
-			<!--maincontentblockdept-->
-
-		</div>
-		<!--contentstart-->
-	</div>
-	
-
-	<a class="skiplink" href="#rhs">Go to right hand side links</a>
-	<a class="skiplink" href="#localmenu">go to local menu</a>
-	<a class="skiplink" href="#menu">Go to main menu</a>
-
-	<!--maincontentblockdept-->
-
-	<!--contentstart-->
-	@foot()
-</body>
-</html>
+}

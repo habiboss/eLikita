@@ -36,7 +36,7 @@ import schemas.public_.tables.records.BatchRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Batch extends TableImpl<BatchRecord> {
 
-    private static final long serialVersionUID = -54710428;
+    private static final long serialVersionUID = -1675059555;
 
     /**
      * The reference instance of <code>public.batch</code>
@@ -80,6 +80,11 @@ public class Batch extends TableImpl<BatchRecord> {
      * The column <code>public.batch.id</code>.
      */
     public final TableField<BatchRecord, Long> ID = createField("id", org.jooq.impl.SQLDataType.BIGINT.nullable(false).defaultValue(org.jooq.impl.DSL.field("nextval('batch_id_seq'::regclass)", org.jooq.impl.SQLDataType.BIGINT)), this, "");
+
+    /**
+     * The column <code>public.batch.course_id</code>.
+     */
+    public final TableField<BatchRecord, Long> COURSE_ID = createField("course_id", org.jooq.impl.SQLDataType.BIGINT, this, "");
 
     /**
      * Create a <code>public.batch</code> table reference

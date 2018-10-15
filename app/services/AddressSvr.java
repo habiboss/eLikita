@@ -2,8 +2,12 @@ package services;
 
 import org.jooq.DSLContext;
 import com.google.inject.Inject;
+
+import schemas.public_.Tables;
 import schemas.public_.tables.daos.AddressDetailDao;
 import schemas.public_.tables.pojos.AddressDetail;
+import schemas.public_.tables.records.AddressDetailRecord;
+import schemas.public_.tables.records.StudentDetailRecord;
 
 public class AddressSvr extends AddressDetailDao{
 
@@ -38,6 +42,10 @@ public class AddressSvr extends AddressDetailDao{
 		
 		
 		
+	}
+	
+	public AddressDetailRecord findByStudentFk(String studentFk) {
+		return sqlContext.fetchOne(Tables.ADDRESS_DETAIL, Tables.ADDRESS_DETAIL.STUDENT_FK.equal(studentFk));
 	}
 
 

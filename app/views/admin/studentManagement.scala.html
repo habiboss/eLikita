@@ -1,8 +1,8 @@
-@(currentPage: models.util.Page[schemas.public_.tables.pojos.StudentDetail], currentFilter: String, viewMode: String)
+@(currentPage: models.util.Page[models.dto.ApplicationDetailDTO], currentFilter: String, viewMode: String)
 
 @link(newPage:Int) = @{
     // Generate the link
-   routes.StudentCtrl.list(newPage,currentFilter)
+   controllers.admins.routes.ApplicationDetailCtrl.list(newPage,currentFilter)
 }
 @quote(s: String) = @{
     "" + s + ""
@@ -38,7 +38,7 @@
 		<div id="contentpane">
 
 			<div id="crumbsbar">
-				<a href="https://my.anglia.ac.uk/">My.Anglia</a> &gt; My.Anglia
+				<a href=" ">My.Anglia</a> &gt; My.Anglia
 				login
 			</div>
 
@@ -47,29 +47,67 @@
 				<div id="maincontentblockdept">
 
 					<div class="row">
-						<div class="col-sm-12">
+						<!-- <div class="col-sm-12">
 							<div class="panel panel-default">
 								<div class="panel-heading">
 									<h4 class="panel-title">Add Note</h4>
-								</div>
+								</div> -->
 								<form method="post" action="  ">
 								<div class="panel-body">
 									<div class="panel-body">
 										<div class="col-sm-12">
 								<div class="grid-view table-responsive" id="item-grid">
-									<table class="items">
+								
+			<ul class="nav nav-tabs" id="dispatcherTabs">
+				<li class="active"><a href="@controllers.admins.routes.ApplicationDetailCtrl.list(1, "")">TOUT</a></li>
+				<li><a href="@controllers.admins.routes.ApplicationDetailCtrl.list(1, "APPROVED")">APPROUVÉ</a></li>
+				<li class=""><a href="@controllers.admins.routes.ApplicationDetailCtrl.list(1, "REJETE")">REJETÉ</a></li>
+			</ul>
+			<div align="right">
+				<a href=" routes.VersementChequeTier.show("CREATE", 0L)" class="btn btn-dark"> <i class="fa fa-plus"></i>
+					Nouveau Éleve
+				</a> <br>
+				<br>
+				<form action="@link(0)" method="GET" class="form-inline">
+					<div class="form-group">
+						<input type="search" name="filter"
+							value=" currentFilter" placeholder="No V"
+							class="form-control">
+					</div>
+					<button style="margin-bottom: -1px" type="submit" title="Recherche"
+						class="btn btn-dark">
+						<span class="glyphicon glyphicon-search"></span>
+					</button>
+				</form>
+			</div>
+								
+								@if(viewMode == "APPROVE") {
+								
+								<table class="items">
 										<thead>
 											<tr>
 												<th id="item-grid_c0">Sl.No.</th>
+												<th id="item-grid_c1">Code</th>
 												<th id="item-grid_c1">Course</th>
+												<th id="item-grid_c1">Batch</th>
+												<th id="item-grid_c1">Academic Year</th>
+												<th id="item-grid_c1">Start Date</th>
+												<th id="item-grid_c1">End Date</th>
+												<th id="item-grid_c1">Status</th>
 												<th class="button-column" id="item-grid_c5">Manage</th>
 											</tr>
 										</thead>
 										<tbody>
 										@for(student <- currentPage.getList){
-											<tr @if(student.getStatus() == "UNAPPROVED"){class="bg-info"} @if(student.getStatus() == "APPROVED"){class="bg-success"}>
+											<tr @if(student.getStatus() == "REJETE"){class="bg-info"} @if(student.getStatus() == "APPROVED"){class="bg-success"}>
 												<td></td>
-												<td>@student.getFirstName</td>
+												<td>@student.getCode</td>
+												<td>x</td>
+												<td>x</td>
+												<td>x</td>
+												<td>x</td>
+												<td>x</td>
+												<td>x</td>
 												<td><a href="@routes.StudentCtrl.show("EDIT", student.getId(), "")" class="btn btn-primary"
 													data-toggle="tooltip" title="Modifier"> <i
 														class="glyphicon glyphicon-pencil"></i>
@@ -83,6 +121,85 @@
 											}
 										</tbody>
 									</table>
+								} else if(viewMode == "REJETE") {
+								<table class="items">
+										<thead>
+											<tr>
+												<th id="item-grid_c0">Sl.No.</th>
+												<th id="item-grid_c1">Code</th>
+												<th id="item-grid_c1">Course</th>
+												<th id="item-grid_c1">Batch</th>
+												<th id="item-grid_c1">Academic Year</th>
+												<th id="item-grid_c1">Start Date</th>
+												<th id="item-grid_c1">End Date</th>
+												<th id="item-grid_c1">Status</th>
+												<th class="button-column" id="item-grid_c5">Manage</th>
+											</tr>
+										</thead>
+										<tbody>
+										@for(student <- currentPage.getList){
+											<tr @if(student.getStatus() == "REJETE"){class="bg-info"} @if(student.getStatus() == "APPROVED"){class="bg-success"}>
+												<td></td>
+												<td>@student.getCode</td>
+												<td>x</td>
+												<td>x</td>
+												<td>x</td>
+												<td>x</td>
+												<td>x</td>
+												<td>x</td>
+												<td><a href="@routes.StudentCtrl.show("EDIT", student.getId(), "")" class="btn btn-primary"
+													data-toggle="tooltip" title="Modifier"> <i
+														class="glyphicon glyphicon-pencil"></i>
+												</a> <a href="@routes.StudentCtrl.show("VIEW", student.getId(), "")" class="btn btn-default bg-info" title="Afficher"> <i
+														class="glyphicon glyphicon-info-sign"></i>
+												</a> <a href="@routes.StudentCtrl.imprimerStudentInfo(student.getId())" class="btn btn-danger" data-toggle="tooltip"
+													title="Supprimer"> <i class="glyphicon glyphicon-trash"></i>
+												</a></td>
+
+											</tr>
+											}
+										</tbody>
+									</table>
+								} else {							
+								<table class="items">
+										<thead>
+											<tr>
+												<th id="item-grid_c0">Sl.No.</th>
+												<th id="item-grid_c1">Code</th>
+												<th id="item-grid_c1">Course</th>
+												<th id="item-grid_c1">Batch</th>
+												<th id="item-grid_c1">Academic Year</th>
+												<th id="item-grid_c1">Start Date</th>
+												<th id="item-grid_c1">End Date</th>
+												<th id="item-grid_c1">Status</th>
+												<th class="button-column" id="item-grid_c5">Manage</th>
+											</tr>
+										</thead>
+										<tbody>
+										@for(student <- currentPage.getList){
+											<tr @if(student.getStatus() == "UNAPPROVED"){class="bg-info"} @if(student.getStatus() == "APPROVED"){class="bg-success"}>
+												<td>@student.getId</td>
+												<td>@student.getCode</td>
+												<td>@student.getCourseFk</td>
+												<td>@student.getBatchFk</td>
+												<td>@student.getAcademicYear</td>
+												<td>@student.getCode</td>
+												<td>@student.getCode</td>
+												<td>@student.getCode</td>
+												<td><a href="@routes.StudentCtrl.show("EDIT", student.getId(), "")" class="btn btn-primary"
+													data-toggle="tooltip" title="Modifier"> <i
+														class="glyphicon glyphicon-pencil"></i>
+												</a> <a href="@routes.StudentCtrl.show("VIEW", student.getId(), "")" class="btn btn-default bg-info" title="Afficher"> <i
+														class="glyphicon glyphicon-info-sign"></i>
+												</a> <a href="@routes.StudentCtrl.imprimerStudentInfo(student.getId())" class="btn btn-danger" data-toggle="tooltip"
+													title="Supprimer"> <i class="glyphicon glyphicon-trash"></i>
+												</a></td>
+
+											</tr>
+											}
+										</tbody>
+									</table>
+									}
 									<!-- pagination -->
 								<div id="pagination" class="pagination">
 									<ul class="pagination">

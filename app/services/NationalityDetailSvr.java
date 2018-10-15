@@ -4,8 +4,11 @@ import javax.inject.Inject;
 
 import org.jooq.DSLContext;
 
+import schemas.public_.Tables;
 import schemas.public_.tables.daos.NationalityDetailDao;
 import schemas.public_.tables.pojos.NationalityDetail;
+import schemas.public_.tables.records.AddressDetailRecord;
+import schemas.public_.tables.records.NationalityDetailRecord;
 
 public class NationalityDetailSvr extends NationalityDetailDao{
 	@Inject
@@ -25,5 +28,9 @@ public class NationalityDetailSvr extends NationalityDetailDao{
 			super.insert(nationalityDetail);
 		}
 
+	}
+	
+	public NationalityDetailRecord findByStudentFk(String studentFk) {
+		return sqlContext.fetchOne(Tables.NATIONALITY_DETAIL, Tables.NATIONALITY_DETAIL.STUDENT_FK.equal(studentFk));
 	}
 }

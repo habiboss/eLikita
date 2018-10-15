@@ -1,4 +1,4 @@
-@(currentPage: models.util.Page[models.dto.BatchDTO], currentFilter: String, batch: schemas.public_.tables.pojos.Batch, viewMode: String)
+@(currentPage: models.util.Page[models.dto.BatchDTO], currentFilter: String, batch: models.dto.BatchDTO, viewMode: String)
 
 @link(newPage:Int) = @{
     // Generate the link
@@ -67,18 +67,21 @@
 									<div class="panel-body">
 										<div class="panel-body">
 										<div class="row">
+										<input type="hidden" name="viewMode" value="@viewMode"> <input
+												type="hidden" name="batchPK-key"
+												value="@batch.getId()">
 												<div class="col-md-6">
 													<div class="form-group">
 														<label for="" class="control-label">Course *</label> 
 														<select name="courseFk" id="courseFk" class="form-control course_fk">
- 														 
+ 														 <option id="@batch.getCourseFk()" value="@batch.getCourseFk()">@batch.getCourseTitle()</option>
 														</select>
 													</div>
 												</div>
 												<div class="col-md-6">
 													<div class="form-group">
 														<label for="" class="control-label">Batch Name</label> 
-                                                        <input type="text" name="batchName" id="batchName" class="form-control">
+                                                        <input type="text" name="batchName" id="batchName" class="form-control" value="@batch.getBatchName()">
 													</div>
 												</div>
 
@@ -88,13 +91,13 @@
 												<div class="col-md-6">
 													<div class="form-group">
 														<label for="" class="">Start Date</label> 
-														<input type="text" name="startDate" id="startDate" class="form-control">
+														<input type="text" name="startDate" id="startDate" class="form-control" value="@batch.getStartDate()">
 													</div>
 												</div>
 												<div class="col-md-6">
 													<div class="form-group">
 														<label for="" class="">End Date</label> 
-                                                        <input type="text" name="endDate" id="endDate" class="form-control">
+                                                        <input type="text" name="endDate" id="endDate" class="form-control" value="@batch.getEndDate()">
 													</div>
 												</div>
 
@@ -103,7 +106,7 @@
 											<div class="col-md-6">
 													<div class="form-group">
 														<label for="" class="">Maximum Number of Students *</label>
-														<input type="text" name="maxStudent" id="maxStudent" class="form-control"> 
+														<input type="text" name="maxStudent" id="maxStudent" class="form-control" value="@batch.getMaxStudent()"> 
 													</div>
 												</div>
                                             </div>
@@ -153,7 +156,7 @@
 										<tbody>
 										@for(batchs <- currentPage.getList){
 											<tr>
- 														<td>@batchs.getCourseFk</td>
+ 														<td>@batchs.getCourseTitle</td>
 														<td>@batchs.getBatchName</td>
 														<td>@batchs.getMaxStudent</td>
 														<td>@batchs.getStartDate</td>

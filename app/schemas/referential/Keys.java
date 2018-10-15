@@ -12,12 +12,16 @@ import org.jooq.impl.AbstractKeys;
 
 import schemas.referential.tables.RAttendanceOutcome;
 import schemas.referential.tables.RAttendanceType;
+import schemas.referential.tables.RCampus;
 import schemas.referential.tables.RCategory;
 import schemas.referential.tables.RClassType;
 import schemas.referential.tables.RContactPersonType;
 import schemas.referential.tables.RCountry;
+import schemas.referential.tables.RDepartment;
+import schemas.referential.tables.RDesignation;
 import schemas.referential.tables.RDropAttendanceReason;
 import schemas.referential.tables.RDropTeachReason;
+import schemas.referential.tables.REventType;
 import schemas.referential.tables.RFee;
 import schemas.referential.tables.RLevel;
 import schemas.referential.tables.RMonth;
@@ -25,16 +29,20 @@ import schemas.referential.tables.RProfil;
 import schemas.referential.tables.RStatus;
 import schemas.referential.tables.RSyllabus;
 import schemas.referential.tables.RTeachOutcome;
-import schemas.referential.tables.RUser;
+import schemas.referential.tables.RUserType;
 import schemas.referential.tables.RYear;
 import schemas.referential.tables.records.RAttendanceOutcomeRecord;
 import schemas.referential.tables.records.RAttendanceTypeRecord;
+import schemas.referential.tables.records.RCampusRecord;
 import schemas.referential.tables.records.RCategoryRecord;
 import schemas.referential.tables.records.RClassTypeRecord;
 import schemas.referential.tables.records.RContactPersonTypeRecord;
 import schemas.referential.tables.records.RCountryRecord;
+import schemas.referential.tables.records.RDepartmentRecord;
+import schemas.referential.tables.records.RDesignationRecord;
 import schemas.referential.tables.records.RDropAttendanceReasonRecord;
 import schemas.referential.tables.records.RDropTeachReasonRecord;
+import schemas.referential.tables.records.REventTypeRecord;
 import schemas.referential.tables.records.RFeeRecord;
 import schemas.referential.tables.records.RLevelRecord;
 import schemas.referential.tables.records.RMonthRecord;
@@ -42,7 +50,7 @@ import schemas.referential.tables.records.RProfilRecord;
 import schemas.referential.tables.records.RStatusRecord;
 import schemas.referential.tables.records.RSyllabusRecord;
 import schemas.referential.tables.records.RTeachOutcomeRecord;
-import schemas.referential.tables.records.RUserRecord;
+import schemas.referential.tables.records.RUserTypeRecord;
 import schemas.referential.tables.records.RYearRecord;
 
 
@@ -66,12 +74,16 @@ public class Keys {
 
     public static final Identity<RAttendanceOutcomeRecord, Long> IDENTITY_R_ATTENDANCE_OUTCOME = Identities0.IDENTITY_R_ATTENDANCE_OUTCOME;
     public static final Identity<RAttendanceTypeRecord, Long> IDENTITY_R_ATTENDANCE_TYPE = Identities0.IDENTITY_R_ATTENDANCE_TYPE;
+    public static final Identity<RCampusRecord, Long> IDENTITY_R_CAMPUS = Identities0.IDENTITY_R_CAMPUS;
     public static final Identity<RCategoryRecord, Long> IDENTITY_R_CATEGORY = Identities0.IDENTITY_R_CATEGORY;
     public static final Identity<RClassTypeRecord, Long> IDENTITY_R_CLASS_TYPE = Identities0.IDENTITY_R_CLASS_TYPE;
     public static final Identity<RContactPersonTypeRecord, Long> IDENTITY_R_CONTACT_PERSON_TYPE = Identities0.IDENTITY_R_CONTACT_PERSON_TYPE;
     public static final Identity<RCountryRecord, Long> IDENTITY_R_COUNTRY = Identities0.IDENTITY_R_COUNTRY;
+    public static final Identity<RDepartmentRecord, Long> IDENTITY_R_DEPARTMENT = Identities0.IDENTITY_R_DEPARTMENT;
+    public static final Identity<RDesignationRecord, Long> IDENTITY_R_DESIGNATION = Identities0.IDENTITY_R_DESIGNATION;
     public static final Identity<RDropAttendanceReasonRecord, Long> IDENTITY_R_DROP_ATTENDANCE_REASON = Identities0.IDENTITY_R_DROP_ATTENDANCE_REASON;
     public static final Identity<RDropTeachReasonRecord, Long> IDENTITY_R_DROP_TEACH_REASON = Identities0.IDENTITY_R_DROP_TEACH_REASON;
+    public static final Identity<REventTypeRecord, Long> IDENTITY_R_EVENT_TYPE = Identities0.IDENTITY_R_EVENT_TYPE;
     public static final Identity<RFeeRecord, Long> IDENTITY_R_FEE = Identities0.IDENTITY_R_FEE;
     public static final Identity<RLevelRecord, Long> IDENTITY_R_LEVEL = Identities0.IDENTITY_R_LEVEL;
     public static final Identity<RMonthRecord, Long> IDENTITY_R_MONTH = Identities0.IDENTITY_R_MONTH;
@@ -79,7 +91,7 @@ public class Keys {
     public static final Identity<RStatusRecord, Long> IDENTITY_R_STATUS = Identities0.IDENTITY_R_STATUS;
     public static final Identity<RSyllabusRecord, Long> IDENTITY_R_SYLLABUS = Identities0.IDENTITY_R_SYLLABUS;
     public static final Identity<RTeachOutcomeRecord, Long> IDENTITY_R_TEACH_OUTCOME = Identities0.IDENTITY_R_TEACH_OUTCOME;
-    public static final Identity<RUserRecord, Long> IDENTITY_R_USER = Identities0.IDENTITY_R_USER;
+    public static final Identity<RUserTypeRecord, Long> IDENTITY_R_USER_TYPE = Identities0.IDENTITY_R_USER_TYPE;
     public static final Identity<RYearRecord, Long> IDENTITY_R_YEAR = Identities0.IDENTITY_R_YEAR;
 
     // -------------------------------------------------------------------------
@@ -88,12 +100,16 @@ public class Keys {
 
     public static final UniqueKey<RAttendanceOutcomeRecord> R_ATTENDANCE_OUTCOME_PK = UniqueKeys0.R_ATTENDANCE_OUTCOME_PK;
     public static final UniqueKey<RAttendanceTypeRecord> R_ATTENDACE_TYPE_PK = UniqueKeys0.R_ATTENDACE_TYPE_PK;
+    public static final UniqueKey<RCampusRecord> R_CAMPUS_PKEY = UniqueKeys0.R_CAMPUS_PKEY;
     public static final UniqueKey<RCategoryRecord> R_CATEGORY_PK = UniqueKeys0.R_CATEGORY_PK;
     public static final UniqueKey<RClassTypeRecord> R_CLASS_TYPE_PK = UniqueKeys0.R_CLASS_TYPE_PK;
     public static final UniqueKey<RContactPersonTypeRecord> R_CONTACT_PERSON_TYPE_PK = UniqueKeys0.R_CONTACT_PERSON_TYPE_PK;
     public static final UniqueKey<RCountryRecord> R_COUNTRY_PK = UniqueKeys0.R_COUNTRY_PK;
+    public static final UniqueKey<RDepartmentRecord> R_DEPARTMENT_PK = UniqueKeys0.R_DEPARTMENT_PK;
+    public static final UniqueKey<RDesignationRecord> R_DESINGATION_PK = UniqueKeys0.R_DESINGATION_PK;
     public static final UniqueKey<RDropAttendanceReasonRecord> R_DROP_ATTENDANCE_REASON_PK = UniqueKeys0.R_DROP_ATTENDANCE_REASON_PK;
     public static final UniqueKey<RDropTeachReasonRecord> R_DROP_TEACH_REASON_PK = UniqueKeys0.R_DROP_TEACH_REASON_PK;
+    public static final UniqueKey<REventTypeRecord> EVENT_TYPE_PK = UniqueKeys0.EVENT_TYPE_PK;
     public static final UniqueKey<RFeeRecord> R_FEE_PK = UniqueKeys0.R_FEE_PK;
     public static final UniqueKey<RLevelRecord> R_LEVEL_PK = UniqueKeys0.R_LEVEL_PK;
     public static final UniqueKey<RMonthRecord> MONTH_PK = UniqueKeys0.MONTH_PK;
@@ -101,7 +117,7 @@ public class Keys {
     public static final UniqueKey<RStatusRecord> STATUS_PK = UniqueKeys0.STATUS_PK;
     public static final UniqueKey<RSyllabusRecord> R_SYLLABUS_NAME_PK = UniqueKeys0.R_SYLLABUS_NAME_PK;
     public static final UniqueKey<RTeachOutcomeRecord> R_TEACH_OUTCOME_PK = UniqueKeys0.R_TEACH_OUTCOME_PK;
-    public static final UniqueKey<RUserRecord> R_USER_FK = UniqueKeys0.R_USER_FK;
+    public static final UniqueKey<RUserTypeRecord> R_USER_TYPE_PK = UniqueKeys0.R_USER_TYPE_PK;
     public static final UniqueKey<RYearRecord> YEAR_PK = UniqueKeys0.YEAR_PK;
 
     // -------------------------------------------------------------------------
@@ -116,12 +132,16 @@ public class Keys {
     private static class Identities0 extends AbstractKeys {
         public static Identity<RAttendanceOutcomeRecord, Long> IDENTITY_R_ATTENDANCE_OUTCOME = createIdentity(RAttendanceOutcome.R_ATTENDANCE_OUTCOME, RAttendanceOutcome.R_ATTENDANCE_OUTCOME.ID);
         public static Identity<RAttendanceTypeRecord, Long> IDENTITY_R_ATTENDANCE_TYPE = createIdentity(RAttendanceType.R_ATTENDANCE_TYPE, RAttendanceType.R_ATTENDANCE_TYPE.ID);
+        public static Identity<RCampusRecord, Long> IDENTITY_R_CAMPUS = createIdentity(RCampus.R_CAMPUS, RCampus.R_CAMPUS.ID);
         public static Identity<RCategoryRecord, Long> IDENTITY_R_CATEGORY = createIdentity(RCategory.R_CATEGORY, RCategory.R_CATEGORY.ID);
         public static Identity<RClassTypeRecord, Long> IDENTITY_R_CLASS_TYPE = createIdentity(RClassType.R_CLASS_TYPE, RClassType.R_CLASS_TYPE.ID);
         public static Identity<RContactPersonTypeRecord, Long> IDENTITY_R_CONTACT_PERSON_TYPE = createIdentity(RContactPersonType.R_CONTACT_PERSON_TYPE, RContactPersonType.R_CONTACT_PERSON_TYPE.ID);
         public static Identity<RCountryRecord, Long> IDENTITY_R_COUNTRY = createIdentity(RCountry.R_COUNTRY, RCountry.R_COUNTRY.ID);
+        public static Identity<RDepartmentRecord, Long> IDENTITY_R_DEPARTMENT = createIdentity(RDepartment.R_DEPARTMENT, RDepartment.R_DEPARTMENT.ID);
+        public static Identity<RDesignationRecord, Long> IDENTITY_R_DESIGNATION = createIdentity(RDesignation.R_DESIGNATION, RDesignation.R_DESIGNATION.ID);
         public static Identity<RDropAttendanceReasonRecord, Long> IDENTITY_R_DROP_ATTENDANCE_REASON = createIdentity(RDropAttendanceReason.R_DROP_ATTENDANCE_REASON, RDropAttendanceReason.R_DROP_ATTENDANCE_REASON.ID);
         public static Identity<RDropTeachReasonRecord, Long> IDENTITY_R_DROP_TEACH_REASON = createIdentity(RDropTeachReason.R_DROP_TEACH_REASON, RDropTeachReason.R_DROP_TEACH_REASON.ID);
+        public static Identity<REventTypeRecord, Long> IDENTITY_R_EVENT_TYPE = createIdentity(REventType.R_EVENT_TYPE, REventType.R_EVENT_TYPE.ID);
         public static Identity<RFeeRecord, Long> IDENTITY_R_FEE = createIdentity(RFee.R_FEE, RFee.R_FEE.ID);
         public static Identity<RLevelRecord, Long> IDENTITY_R_LEVEL = createIdentity(RLevel.R_LEVEL, RLevel.R_LEVEL.ID);
         public static Identity<RMonthRecord, Long> IDENTITY_R_MONTH = createIdentity(RMonth.R_MONTH, RMonth.R_MONTH.ID);
@@ -129,19 +149,23 @@ public class Keys {
         public static Identity<RStatusRecord, Long> IDENTITY_R_STATUS = createIdentity(RStatus.R_STATUS, RStatus.R_STATUS.ID);
         public static Identity<RSyllabusRecord, Long> IDENTITY_R_SYLLABUS = createIdentity(RSyllabus.R_SYLLABUS, RSyllabus.R_SYLLABUS.ID);
         public static Identity<RTeachOutcomeRecord, Long> IDENTITY_R_TEACH_OUTCOME = createIdentity(RTeachOutcome.R_TEACH_OUTCOME, RTeachOutcome.R_TEACH_OUTCOME.ID);
-        public static Identity<RUserRecord, Long> IDENTITY_R_USER = createIdentity(RUser.R_USER, RUser.R_USER.ID);
+        public static Identity<RUserTypeRecord, Long> IDENTITY_R_USER_TYPE = createIdentity(RUserType.R_USER_TYPE, RUserType.R_USER_TYPE.ID);
         public static Identity<RYearRecord, Long> IDENTITY_R_YEAR = createIdentity(RYear.R_YEAR, RYear.R_YEAR.ID);
     }
 
     private static class UniqueKeys0 extends AbstractKeys {
         public static final UniqueKey<RAttendanceOutcomeRecord> R_ATTENDANCE_OUTCOME_PK = createUniqueKey(RAttendanceOutcome.R_ATTENDANCE_OUTCOME, "r_attendance_outcome_pk", RAttendanceOutcome.R_ATTENDANCE_OUTCOME.ID);
         public static final UniqueKey<RAttendanceTypeRecord> R_ATTENDACE_TYPE_PK = createUniqueKey(RAttendanceType.R_ATTENDANCE_TYPE, "r_attendace_type_pk", RAttendanceType.R_ATTENDANCE_TYPE.ID);
+        public static final UniqueKey<RCampusRecord> R_CAMPUS_PKEY = createUniqueKey(RCampus.R_CAMPUS, "r_campus_pkey", RCampus.R_CAMPUS.ID);
         public static final UniqueKey<RCategoryRecord> R_CATEGORY_PK = createUniqueKey(RCategory.R_CATEGORY, "r_category_pk", RCategory.R_CATEGORY.ID);
         public static final UniqueKey<RClassTypeRecord> R_CLASS_TYPE_PK = createUniqueKey(RClassType.R_CLASS_TYPE, "r_class_type_pk", RClassType.R_CLASS_TYPE.ID);
         public static final UniqueKey<RContactPersonTypeRecord> R_CONTACT_PERSON_TYPE_PK = createUniqueKey(RContactPersonType.R_CONTACT_PERSON_TYPE, "r_contact_person_type_pk", RContactPersonType.R_CONTACT_PERSON_TYPE.ID);
         public static final UniqueKey<RCountryRecord> R_COUNTRY_PK = createUniqueKey(RCountry.R_COUNTRY, "r_country_pk", RCountry.R_COUNTRY.ID);
+        public static final UniqueKey<RDepartmentRecord> R_DEPARTMENT_PK = createUniqueKey(RDepartment.R_DEPARTMENT, "r_department_pk", RDepartment.R_DEPARTMENT.ID);
+        public static final UniqueKey<RDesignationRecord> R_DESINGATION_PK = createUniqueKey(RDesignation.R_DESIGNATION, "r_desingation_pk", RDesignation.R_DESIGNATION.ID);
         public static final UniqueKey<RDropAttendanceReasonRecord> R_DROP_ATTENDANCE_REASON_PK = createUniqueKey(RDropAttendanceReason.R_DROP_ATTENDANCE_REASON, "r_drop_attendance_reason_pk", RDropAttendanceReason.R_DROP_ATTENDANCE_REASON.ID);
         public static final UniqueKey<RDropTeachReasonRecord> R_DROP_TEACH_REASON_PK = createUniqueKey(RDropTeachReason.R_DROP_TEACH_REASON, "r_drop_teach_reason_pk", RDropTeachReason.R_DROP_TEACH_REASON.ID);
+        public static final UniqueKey<REventTypeRecord> EVENT_TYPE_PK = createUniqueKey(REventType.R_EVENT_TYPE, "event_type_pk", REventType.R_EVENT_TYPE.ID);
         public static final UniqueKey<RFeeRecord> R_FEE_PK = createUniqueKey(RFee.R_FEE, "r_fee_pk", RFee.R_FEE.ID);
         public static final UniqueKey<RLevelRecord> R_LEVEL_PK = createUniqueKey(RLevel.R_LEVEL, "r_level_pk", RLevel.R_LEVEL.ID);
         public static final UniqueKey<RMonthRecord> MONTH_PK = createUniqueKey(RMonth.R_MONTH, "month_pk", RMonth.R_MONTH.ID);
@@ -149,7 +173,7 @@ public class Keys {
         public static final UniqueKey<RStatusRecord> STATUS_PK = createUniqueKey(RStatus.R_STATUS, "status_pk", RStatus.R_STATUS.ID);
         public static final UniqueKey<RSyllabusRecord> R_SYLLABUS_NAME_PK = createUniqueKey(RSyllabus.R_SYLLABUS, "r_syllabus_name_pk", RSyllabus.R_SYLLABUS.ID);
         public static final UniqueKey<RTeachOutcomeRecord> R_TEACH_OUTCOME_PK = createUniqueKey(RTeachOutcome.R_TEACH_OUTCOME, "r_teach_outcome_pk", RTeachOutcome.R_TEACH_OUTCOME.ID);
-        public static final UniqueKey<RUserRecord> R_USER_FK = createUniqueKey(RUser.R_USER, "r_user_fk", RUser.R_USER.ID);
+        public static final UniqueKey<RUserTypeRecord> R_USER_TYPE_PK = createUniqueKey(RUserType.R_USER_TYPE, "r_user_type_pk", RUserType.R_USER_TYPE.ID);
         public static final UniqueKey<RYearRecord> YEAR_PK = createUniqueKey(RYear.R_YEAR, "year_pk", RYear.R_YEAR.ID);
     }
 }

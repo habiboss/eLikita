@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import com.google.inject.Inject;
+import models.dto.BatchDTO;
 import models.util.EnvVarbl;
 import play.data.Form;
 import play.data.FormFactory;
@@ -13,8 +14,6 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import schemas.public_.tables.pojos.Batch;
 import services.BatchSvr;
-//import services.BatchDTOSvr;
-import services.BatchSvr;
 import views.html.admin.*;
 
 public class BatchCtrl extends Controller{
@@ -23,31 +22,34 @@ public class BatchCtrl extends Controller{
 	FormFactory formFactory;
 	@Inject
 	BatchSvr batchSvr;
-	//@Inject
-	//BatchDTOSvr BatchDTOSvr;
-	
+ 	
 	public Result getBatchJson(String q) {
 		// TODO Auto-generated method stub
 		return ok(play.libs.Json.toJson(batchSvr.findByBatch(q)));
 	}
 	
+	public Result getBatchByCourse(Long coursePK) {
+		// TODO Auto-generated method stub
+		return ok(play.libs.Json.toJson(batchSvr.getBatchByCourse(coursePK)));
+	}
+	
 	public Result show(String subAction, Long batchPK) {
-		Batch batchs = new Batch();
+		BatchDTO batchs = new BatchDTO();
 		String viewMode = "";
 		int page = 0; String filter = "";
 		if (null == batchPK || batchPK == 0L) {
-			batchs = new Batch();
+			batchs = new BatchDTO();
 			viewMode = EnvVarbl.VIEW_MODE_CREATE;
-			return ok(batch.render(batchSvr.pageBatch(page, EnvVarbl.pageSize, filter), filter, new Batch(), viewMode));
+			return ok(batch.render(batchSvr.pageBatch(page, EnvVarbl.pageSize, filter), filter, new BatchDTO(), viewMode));
 		} else if (EnvVarbl.VIEW_MODE_EDIT.equals(subAction)) {
-			batchs = batchSvr.fetchOneById(batchPK);
+			batchs = batchSvr.fetchOneBatchDTO(batchPK);
 			viewMode = EnvVarbl.VIEW_MODE_EDIT;
 		} else if (EnvVarbl.VIEW_MODE_DELETE.equals(subAction)) {
-			batchs = batchSvr.fetchOneById(batchPK);
+			batchs = batchSvr.fetchOneBatchDTO(batchPK);
 			viewMode = EnvVarbl.VIEW_MODE_DELETE;
 		} else {
 			viewMode = EnvVarbl.VIEW_MODE_VIEW;
-			batchs = batchSvr.fetchOneById(batchPK);
+			batchs = batchSvr.fetchOneBatchDTO(batchPK);
 		}
 		return ok(batch.render(batchSvr.pageBatch(page, EnvVarbl.pageSize, filter), filter, batchs, viewMode));
 	}
@@ -73,7 +75,8 @@ public class BatchCtrl extends Controller{
 		} 
         if (EnvVarbl.VIEW_MODE_CREATE.equals(viewMode)) {
 			//errorMessage = BatchSvr.validate(versementCheque, true);
-		} 
+		
+        } 
 		if (null != errorMessage) {
 			flash("ERROR", errorMessage);
 			//return badRequest(versementChequeTier.render(versementCheque, ViewType.VIEW_MODE_CREATE, generalDTOImpl.getRoIdentifiantInfo(versementCheque.getId(), EnvironmentalVariables.TIER)));
@@ -99,7 +102,7 @@ public class BatchCtrl extends Controller{
 	
 	public Result list(int page, String filter) {
 		String viewMode = "";
- 		return ok(batch.render(batchSvr.pageBatch(page, EnvVarbl.pageSize, filter), filter, new Batch(), viewMode));
+ 		return ok(batch.render(batchSvr.pageBatch(page, EnvVarbl.pageSize, filter), filter, new BatchDTO(), viewMode));
 	}
 
 

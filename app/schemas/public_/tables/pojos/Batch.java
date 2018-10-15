@@ -24,7 +24,7 @@ import javax.validation.constraints.Size;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Batch implements Serializable {
 
-    private static final long serialVersionUID = -70981247;
+    private static final long serialVersionUID = 1002506283;
 
     private String    batchName;
     private Timestamp endDate;
@@ -32,6 +32,7 @@ public class Batch implements Serializable {
     private Timestamp startDate;
     private Long      courseFk;
     private Long      id;
+    private Long      courseId;
 
     public Batch() {}
 
@@ -42,6 +43,7 @@ public class Batch implements Serializable {
         this.startDate = value.startDate;
         this.courseFk = value.courseFk;
         this.id = value.id;
+        this.courseId = value.courseId;
     }
 
     public Batch(
@@ -50,7 +52,8 @@ public class Batch implements Serializable {
         Long      maxStudent,
         Timestamp startDate,
         Long      courseFk,
-        Long      id
+        Long      id,
+        Long      courseId
     ) {
         this.batchName = batchName;
         this.endDate = endDate;
@@ -58,6 +61,7 @@ public class Batch implements Serializable {
         this.startDate = startDate;
         this.courseFk = courseFk;
         this.id = id;
+        this.courseId = courseId;
     }
 
     @Size(max = 255)
@@ -109,6 +113,14 @@ public class Batch implements Serializable {
         this.id = id;
     }
 
+    public Long getCourseId() {
+        return this.courseId;
+    }
+
+    public void setCourseId(Long courseId) {
+        this.courseId = courseId;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("Batch (");
@@ -119,6 +131,7 @@ public class Batch implements Serializable {
         sb.append(", ").append(startDate);
         sb.append(", ").append(courseFk);
         sb.append(", ").append(id);
+        sb.append(", ").append(courseId);
 
         sb.append(")");
         return sb.toString();

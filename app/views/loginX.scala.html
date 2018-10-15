@@ -1,3 +1,4 @@
+@(formlogin:Form[models.util.Login])
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +27,7 @@ Your browser appears to have Javascript disabled. This web application requires 
 </script>
 
 <!-- there was a body javascript need to attach to load using sits_Attach_Event ??? -->
-<form method="POST" action="SIW_LGN" name="f" autocomplete="off" onsubmit="show()" class="siw_lgn--aru">
+<form method="POST" action="@controllers.utils.routes.Authentication.authenticate()" autocomplete="on" class="siw_lgn--aru">
 
   <div class="sv-row">
 <!--    <div class="sv-col-md-12">	-->
@@ -105,7 +106,7 @@ Your browser appears to have Javascript disabled. This web application requires 
                           Username:
                         </label>
 						<div class="sv-col-sm-5">
-                        <input type="text" name="MUA_CODE.DUMMY.MENSYS.1" value="" id="MUA_CODE.DUMMY.MENSYS" class="sv-form-control">
+                        <input type="text" name="email" value="" id="email" class="sv-form-control">
 						</div>
                       </div>
                       <div class="sv-form-group">
@@ -113,7 +114,7 @@ Your browser appears to have Javascript disabled. This web application requires 
                           Password:
                         </label>
 						<div class="sv-col-sm-5">
-                        <input type="password" name="PASSWORD.DUMMY.MENSYS.1" value="" id="PASSWORD.DUMMY.MENSYS" class="sv-form-control"> 
+                        <input type="password" name="password" value="" id="password" class="sv-form-control"> 
 						</div>
                       </div>
                       <div class="sv-row">

@@ -31,7 +31,7 @@ import schemas.referential.Referential;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class DefaultCatalog extends CatalogImpl {
 
-    private static final long serialVersionUID = 157593033;
+    private static final long serialVersionUID = -541503111;
 
     /**
      * The reference instance of <code></code>
@@ -44,14 +44,14 @@ public class DefaultCatalog extends CatalogImpl {
     public final Public PUBLIC = schemas.public_.Public.PUBLIC;
 
     /**
-     * The schema <code>referential</code>.
-     */
-    public final Referential REFERENTIAL = schemas.referential.Referential.REFERENTIAL;
-
-    /**
      * The schema <code>administrator</code>.
      */
     public final Administrator ADMINISTRATOR = schemas.administrator.Administrator.ADMINISTRATOR;
+
+    /**
+     * The schema <code>referential</code>.
+     */
+    public final Referential REFERENTIAL = schemas.referential.Referential.REFERENTIAL;
 
     /**
      * No further instances allowed
@@ -70,7 +70,7 @@ public class DefaultCatalog extends CatalogImpl {
     private final List<Schema> getSchemas0() {
         return Arrays.<Schema>asList(
             Public.PUBLIC,
-            Referential.REFERENTIAL,
-            Administrator.ADMINISTRATOR);
+            Administrator.ADMINISTRATOR,
+            Referential.REFERENTIAL);
     }
 }

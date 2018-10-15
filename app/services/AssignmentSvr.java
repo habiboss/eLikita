@@ -82,7 +82,7 @@ public class AssignmentSvr extends AssignmentDao{
  				assignmentDTO.setBatch_id(batchSvr.fetchOneById(assignment.getBatchFk()).getId());
   				assignmentDTO.setBatchFk(assignment.getBatchFk());
   				assignmentDTO.setBatchName(batchSvr.fetchOneById(assignment.getBatchFk()).getBatchName());
- 				assignmentDTO.setCourse_code(courseSvr.fetchOneById(assignment.getCourseFk()).getCode());
+ 				//assignmentDTO.setCourse_code(courseSvr.fetchOneById(assignment.getCourseFk()).getCode());
  				assignmentDTO.setCourse_id(courseSvr.fetchOneById(assignment.getCourseFk()).getId());
  				assignmentDTO.setCourse_title(courseSvr.fetchOneById(assignment.getCourseFk()).getTitle());
  				assignmentDTO.setSubject_id(rClassTypeSvr.fetchOneById(assignment.getSubjectFk()).getId());

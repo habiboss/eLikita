@@ -1,3 +1,4 @@
+@(formlogin:Form[models.util.Login])
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,12 +27,12 @@
         <h1>New Look</h1>
         <h3>An Advance Login Form With Bootstrap</h3>
         
-        <form action="">
+        <form action="@controllers.utils.routes.Authentication.authenticate()" method="post">
             <lagend>Login to your account</lagend><br>
             <label><span class="glyphicon glyphicon-user"></span></label>
-            <input type="text" placeholder='Username' class="input" /><br>
+            <input type="text" placeholder='email' class="input" name="email" id="email" /><br>
             <label><span class="glyphicon glyphicon-lock"></span></label>
-            <input type="password" placeholder="password" class="input" /><br>
+            <input type="password" placeholder="password" name="password" id="password" class="input" /><br>
             <button type="submit" class="button">Sign in</button>
         </form>
         

@@ -1,163 +1,193 @@
-<!DOCTYPE html>
-<html>
-@head("Activités")
+@(Journee: String, mainMenuPaneDTO: models.dto.MainMenuPaneDTO, aboutInstitution: models.dto.AboutInstitutionDTO, viewMode: String)
+@quote(s: String) = @{
+    "" + s + ""
+}
+@isDisabled(fieldName: String) = @{
+    fieldName match {
+        case "course" => if(null == aboutInstitution.getCode())
+            "name=" + quote(fieldName) else "name=" + quote(fieldName) + " disabled=" + quote("disabled")
+        case _ => if((viewMode != "VIEW") && (viewMode != "DELETE"))
+            "name=" + quote(fieldName) else "name=" + quote(fieldName) + " disabled=" + quote("disabled")
 
-<body class="fixed-left">
+    }
+}
+@layout("index", Journee, mainMenuPaneDTO) {
+					<form method="post" action="@routes.AboutInstitutionCtrl.save()"
+						accept-charset="ISO-8859-1" name="dataform" id="dataform">
 
-	@universityDirectoryTopbar()
-	<div id="welcome-container">
-		<div id="welcome-name" class="container-460">
-			<span id="ctl00_PortalWelcomeBar_LabelUserName"> &nbsp;</span>
+						<div class="row">
+							<div class="col-sm-12">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">Now let's get the details of your
+											business</h4>
+									</div>
+									<div class="panel-body">
+										<div class="panel-body">
+
+											<div class="row">
+													@if(flash.containsKey("SUCCESS")) {
+		<div class="alert alert-success">
+			<strong>Succès!</strong> @flash.get("SUCCESS")
 		</div>
-		<div id="welcome-date" class="container-460">
-			<span id="ctl00_PortalWelcomeBar_LabelDateToday">Tuesday 22
-				November</span>
+		} @if(flash.containsKey("ERROR")) {
+		<div class="alert alert-danger">
+			<strong>Erreur!</strong> @flash.get("ERROR")
 		</div>
-	</div>
-	<div class="mainwrap">
-		@mainMenuPane()
+		}
+		<input type="hidden" name="viewMode" value="@viewMode"> <input
+												type="hidden" name="institutionPK-key"
+												value="@aboutInstitution.getId()"> <input type="hidden"
+												name="institutionPK-code"
+												value="@aboutInstitution.getCode()"> <input
+												type="hidden" class="form-control"
+												value="@aboutInstitution.getId()" id="" autocomplete="off">
+ 												<div class="col-md-12">
+													<div class="form-group">
+														<label for="" class="control-label">Business Code
+															*</label> <div class="input-group"><input type="text" name="code"
+															id="code" class="form-control" value="@aboutInstitution.getCode()" @isDisabled("code")><!-- <span class="input-group-addon" ><i
+														class="glyphicon glyphicon-pencil"></i></span> --></div>
 
-		<div id="contentpane">
+													</div>
+												</div>
+ 												<div class="col-md-12">
+													<div class="form-group">
+														<label for="" class="control-label">Business Name
+															*</label> <div class="input-group"><input type="text" name="InstitutionName"
+															id="InstitutionName" class="form-control" value="@aboutInstitution.getInstitutionName()" @isDisabled("InstitutionName")><!-- <span class="input-group-addon" ><i
+														class="glyphicon glyphicon-pencil"></i></span> --></div>
 
-			<div id="crumbsbar">
-				<a href=" ">My.Anglia</a> &gt; My.Anglia
-				login
-			</div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label for="" class="control-label">Owner's First
+															Name</label> <input type="text" name="ownerFname" id="ownerFname"
+															class="form-control" value="@aboutInstitution.getOwnerFname()" @isDisabled("ownerFname")>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label for="" class="control-label">Owner's Last
+															Name</label> <input type="text" name="ownerLname" id="ownerLname"
+															class="form-control" value="@aboutInstitution.getOwnerLname()" @isDisabled("ownerLname")>
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="form-group">
+														<label for="" class="">Business Email</label> <input
+															type="text" name="email" id="email" class="form-control" value="@aboutInstitution.getEmail()" @isDisabled("email")>
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="form-group">
+														<label for="" class="">Business Category</label> <!-- <input
+															type="text" name="businessCategory" id="businessCategory" class="form-control" value="@aboutInstitution.getBusinessCategory()" @isDisabled("businessCategory")> -->
+															<select class="form-control r_level" @isDisabled("businessCategory")
+																						 name="businessCategory" id="businessCategory">
+																						<option id="@aboutInstitution.getBusinessCategory()" value="@aboutInstitution.getBusinessCategory()">@aboutInstitution.getBusiness_name()</option>
+																					</select>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label for="" class="control-label">Country</label> <select class="form-control r_country" @isDisabled("countryFk")
+																						 name="countryFk" id="countryFk">
+																						<option id="@aboutInstitution.getCountryFk()" value="@aboutInstitution.getCountryFk()">@aboutInstitution.getCountry_name()</option>
+																					</select>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label for="" class="">City*</label> <input type="text"
+															name="city" id="city" class="form-control" value="@aboutInstitution.getCity()" @isDisabled("city")>
+													</div>
+												</div>
 
-			<!-- <div id="centralpane"> -->
-			<div id="contentstart">
-				<div id="maincontentblockdept">
-					<form method="post" action="@routes.AboutInstitutionCtrl.create()" accept-charset="ISO-8859-1">
+											</div>
 
-								<div class="row">
-									<div class="col-sm-6">
-										<div class="panel panel-default">
-											<div class="panel-heading">
-												<h4 class="panel-title">Now let's get the details of
-													your business</h4>
+											<div class="row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label for="" class="">Address*</label> <input type="text"
+															name="address" id="address" class="form-control" value="@aboutInstitution.getAddress()" @isDisabled("address")>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label for="" class="">Region*</label> <input type="text"
+															name="region" id="region" class="form-control" value="@aboutInstitution.getRegion()" @isDisabled("region")>
+													</div>
+												</div>
 											</div>
 											<div class="row">
-												<div class="col-lg-12 temporaire">
-													@if(flash.containsKey("error")) { <strong
-														class="align-center alert-danger">
-														@flash.get("error")</strong> } @if(flash.containsKey("SUCCESS")) {
-													<strong class="align-center alert-success">@flash.get("SUCCESS")</strong>
-													}
-												</div>
-											</div>
-											<div class="panel-body">
-												<div class="panel-body">
 
-													<div class="row">
-														<div class="col-md-6">
-															<div class="form-group">
-																<label for="" class="control-label">Institution
-																	Name *</label> <input type="text" name="InstitutionName"
-																	id="InstitutionName" class="form-control">
-
-															</div>
-														</div>
-														<div class="col-md-6">
-															<div class="form-group">
-																<label for="" class="control-label">Phone Number</label>
-																<input type="text" name="codeId" id="codeId"
-																	class="form-control">
-															</div>
-														</div>
-														<div class="col-md-6">
-															<div class="form-group">
-																<label for="" class="control-label">Country</label> <input
-																	type="text" name="country" id="country"
-																	class="form-control">
-															</div>
-														</div>
-
-													</div>
-
-													<div class="row">
-														<div class="col-md-6">
-															<div class="form-group">
-																<label for="" class="">Business Email</label> <input
-																	type="text" name="email" id="email" class="form-control">
-															</div>
-														</div>
-														<div class="col-md-6">
-															<div class="form-group">
-																<label for="" class="">Web Site</label> <input
-																	type="text" name="website" id="website" class="form-control">
-															</div>
-														</div>
-
-													</div>
-													<div class="row">
-														<div class="col-md-6">
-															<div class="form-group">
-																<label for="" class="">Address*</label> <input
-																	type="text" name="address" id="address"
-																	class="form-control">
-															</div>
-														</div>
-														<div class="col-md-6">
-															<div class="form-group">
-																<label for="" class="">City*</label> <input type="text"
-																	name="city" id="city" class="form-control">
-															</div>
-														</div>
-													</div>
-													<div class="row">
-														<div class="col-md-6">
-															<div class="form-group">
-																<label for="" class="">Region*</label> <input
-																	type="text" name="region" id="region"
-																	class="form-control">
-															</div>
-														</div>
-														<div class="col-md-6">
-															<div class="form-group">
-																<label for="" class="">Post-Code*</label> <input
-																	type="text" name="postcode" id="postcode"
-																	class="form-control">
-															</div>
-														</div>
-													</div>
-													<div class="row">
-														<div class="col-sm-5">
-															<div class="form_sep">
-																<input class="btn btn-info" name="" id="" type="submit"
-																	value="Save">
-															</div>
-														</div>
+												<div class="col-md-12">
+													<div class="form-group">
+														<label for="" class="">Post-Code*</label> <input
+															type="text" name="postcode" id="postcode"
+															class="form-control" value="@aboutInstitution.getPostcode()" @isDisabled("postcode")>
 													</div>
 												</div>
 											</div>
+											<div class="row">
+														<div class="col-md-12">
+													<div class="form-group">
+														<label for="" class="control-label">Phone Number</label><div class="input-group"> <input
+															type="text" name="phoneNo" id="phoneNo"
+															class="form-control" value="@aboutInstitution.getPhoneNo()" @isDisabled("phoneNo")>
+															<span class="input-group-addon" id="r_country_code"><i
+														class="glyphicon" id=""></i></span> 
+														</div>
+													</div>
+												</div>
+											
 
+												<div class="col-md-6">
+													<div class="form-group">
+														<label for="" class="">Web Site</label> <input type="text"
+															name="website" id="website" class="form-control" value="@aboutInstitution.getWebsite()" @isDisabled("website")>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label for="" class="">Year Established</label> <select class="form-control r_year_fk" @isDisabled("yearEstablished")
+																						 name="yearEstablished" id="yearEstablished">
+																						<option id="@aboutInstitution.getYearEstablished()" value="@aboutInstitution.getYearEstablished()">@aboutInstitution.getYear_name()</option>
+																					</select>
+													</div>
+												</div>
+ 
+											</div>
+											
+												<div class="ln_solid"></div>
+											@if(viewMode == "EDIT" || viewMode == "CREATE" ) {
+											<div class="row">
+												<div class="col-sm-5">
+													<div class="form_sep">
+														<input class="btn btn-info" name="" id="" type="submit"
+															value="Enregistre">
+													</div>
+												</div>
+											</div>
+											} else { @if(viewMode == "VIEW"){
+
+											<div class="form-group" align="">
+												 <a
+													href="@routes.AboutInstitutionCtrl.show("EDIT", aboutInstitution.getId())"
+													title=" " class="btn btn-success"> <i
+													class="fa fa-times-circle"></i> Edit
+												</a>
+											</div>
+											}}
+											
+											
 										</div>
 									</div>
+
 								</div>
-							</form>
-
+							</div>
 						</div>
-
-
-					<a class="skiplink" href="#rhs">Go to right hand side links</a> <a
-						class="skiplink" href="#localmenu">go to local menu</a> <a
-						class="skiplink" href="#menu">Go to main menu</a>
-
-				</div>
-				<!--maincontentblockdept-->
-				<div id="maincontentblockdept">
-
-					<a class="skiplink" href="#rhs">Go to right hand side links</a> <a
-						class="skiplink" href="#localmenu">go to local menu</a> <a
-						class="skiplink" href="#menu">Go to main menu</a>
-
-				</div>
-				<!--maincontentblockdept-->
-			</div>
-			<!--contentstart-->
-		</div>
-		<!--centralpane-->
-
-	@foot()
-</body>
-</html>
+					</form>
+				}

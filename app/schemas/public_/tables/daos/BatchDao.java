@@ -99,4 +99,11 @@ public class BatchDao extends DAOImpl<BatchRecord, schemas.public_.tables.pojos.
     public schemas.public_.tables.pojos.Batch fetchOneById(Long value) {
         return fetchOne(Batch.BATCH.ID, value);
     }
+
+    /**
+     * Fetch records that have <code>course_id IN (values)</code>
+     */
+    public List<schemas.public_.tables.pojos.Batch> fetchByCourseId(Long... values) {
+        return fetch(Batch.BATCH.COURSE_ID, values);
+    }
 }

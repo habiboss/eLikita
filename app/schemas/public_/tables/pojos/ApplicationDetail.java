@@ -8,7 +8,6 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 import javax.annotation.Generated;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 
@@ -25,65 +24,68 @@ import javax.validation.constraints.Size;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class ApplicationDetail implements Serializable {
 
-    private static final long serialVersionUID = -1015608381;
+    private static final long serialVersionUID = -180079792;
 
-    private Long      id;
     private String    admissionOfficer;
-    private String    appCode;
-    private String    courseTitle;
+    private String    code;
+    private String    courseFk;
     private String    faculty;
     private Timestamp finishDate;
     private String    location_;
     private String    modeOfAttendance;
     private Timestamp startDate;
     private String    status;
+    private Long      batchFk;
+    private Long      id;
+    private String    academicYear;
+    private Long      campusFk;
 
     public ApplicationDetail() {}
 
     public ApplicationDetail(ApplicationDetail value) {
-        this.id = value.id;
         this.admissionOfficer = value.admissionOfficer;
-        this.appCode = value.appCode;
-        this.courseTitle = value.courseTitle;
+        this.code = value.code;
+        this.courseFk = value.courseFk;
         this.faculty = value.faculty;
         this.finishDate = value.finishDate;
         this.location_ = value.location_;
         this.modeOfAttendance = value.modeOfAttendance;
         this.startDate = value.startDate;
         this.status = value.status;
+        this.batchFk = value.batchFk;
+        this.id = value.id;
+        this.academicYear = value.academicYear;
+        this.campusFk = value.campusFk;
     }
 
     public ApplicationDetail(
-        Long      id,
         String    admissionOfficer,
-        String    appCode,
-        String    courseTitle,
+        String    code,
+        String    courseFk,
         String    faculty,
         Timestamp finishDate,
         String    location_,
         String    modeOfAttendance,
         Timestamp startDate,
-        String    status
+        String    status,
+        Long      batchFk,
+        Long      id,
+        String    academicYear,
+        Long      campusFk
     ) {
-        this.id = id;
         this.admissionOfficer = admissionOfficer;
-        this.appCode = appCode;
-        this.courseTitle = courseTitle;
+        this.code = code;
+        this.courseFk = courseFk;
         this.faculty = faculty;
         this.finishDate = finishDate;
         this.location_ = location_;
         this.modeOfAttendance = modeOfAttendance;
         this.startDate = startDate;
         this.status = status;
-    }
-
-    @NotNull
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id) {
+        this.batchFk = batchFk;
         this.id = id;
+        this.academicYear = academicYear;
+        this.campusFk = campusFk;
     }
 
     @Size(max = 255)
@@ -96,21 +98,21 @@ public class ApplicationDetail implements Serializable {
     }
 
     @Size(max = 255)
-    public String getAppCode() {
-        return this.appCode;
+    public String getCode() {
+        return this.code;
     }
 
-    public void setAppCode(String appCode) {
-        this.appCode = appCode;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     @Size(max = 255)
-    public String getCourseTitle() {
-        return this.courseTitle;
+    public String getCourseFk() {
+        return this.courseFk;
     }
 
-    public void setCourseTitle(String courseTitle) {
-        this.courseTitle = courseTitle;
+    public void setCourseFk(String courseFk) {
+        this.courseFk = courseFk;
     }
 
     @Size(max = 255)
@@ -165,20 +167,56 @@ public class ApplicationDetail implements Serializable {
         this.status = status;
     }
 
+    public Long getBatchFk() {
+        return this.batchFk;
+    }
+
+    public void setBatchFk(Long batchFk) {
+        this.batchFk = batchFk;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Size(max = 20)
+    public String getAcademicYear() {
+        return this.academicYear;
+    }
+
+    public void setAcademicYear(String academicYear) {
+        this.academicYear = academicYear;
+    }
+
+    public Long getCampusFk() {
+        return this.campusFk;
+    }
+
+    public void setCampusFk(Long campusFk) {
+        this.campusFk = campusFk;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("ApplicationDetail (");
 
-        sb.append(id);
-        sb.append(", ").append(admissionOfficer);
-        sb.append(", ").append(appCode);
-        sb.append(", ").append(courseTitle);
+        sb.append(admissionOfficer);
+        sb.append(", ").append(code);
+        sb.append(", ").append(courseFk);
         sb.append(", ").append(faculty);
         sb.append(", ").append(finishDate);
         sb.append(", ").append(location_);
         sb.append(", ").append(modeOfAttendance);
         sb.append(", ").append(startDate);
         sb.append(", ").append(status);
+        sb.append(", ").append(batchFk);
+        sb.append(", ").append(id);
+        sb.append(", ").append(academicYear);
+        sb.append(", ").append(campusFk);
 
         sb.append(")");
         return sb.toString();

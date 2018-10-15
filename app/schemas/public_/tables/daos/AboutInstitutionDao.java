@@ -72,17 +72,10 @@ public class AboutInstitutionDao extends DAOImpl<AboutInstitutionRecord, schemas
     }
 
     /**
-     * Fetch records that have <code>codeid IN (values)</code>
+     * Fetch records that have <code>code IN (values)</code>
      */
-    public List<schemas.public_.tables.pojos.AboutInstitution> fetchByCodeid(String... values) {
-        return fetch(AboutInstitution.ABOUT_INSTITUTION.CODEID, values);
-    }
-
-    /**
-     * Fetch records that have <code>country IN (values)</code>
-     */
-    public List<schemas.public_.tables.pojos.AboutInstitution> fetchByCountry(String... values) {
-        return fetch(AboutInstitution.ABOUT_INSTITUTION.COUNTRY, values);
+    public List<schemas.public_.tables.pojos.AboutInstitution> fetchByCode(String... values) {
+        return fetch(AboutInstitution.ABOUT_INSTITUTION.CODE, values);
     }
 
     /**
@@ -132,5 +125,54 @@ public class AboutInstitutionDao extends DAOImpl<AboutInstitutionRecord, schemas
      */
     public schemas.public_.tables.pojos.AboutInstitution fetchOneById(Long value) {
         return fetchOne(AboutInstitution.ABOUT_INSTITUTION.ID, value);
+    }
+
+    /**
+     * Fetch records that have <code>owner_fname IN (values)</code>
+     */
+    public List<schemas.public_.tables.pojos.AboutInstitution> fetchByOwnerFname(String... values) {
+        return fetch(AboutInstitution.ABOUT_INSTITUTION.OWNER_FNAME, values);
+    }
+
+    /**
+     * Fetch records that have <code>owner_lname IN (values)</code>
+     */
+    public List<schemas.public_.tables.pojos.AboutInstitution> fetchByOwnerLname(String... values) {
+        return fetch(AboutInstitution.ABOUT_INSTITUTION.OWNER_LNAME, values);
+    }
+
+    /**
+     * Fetch records that have <code>business_category IN (values)</code>
+     */
+    public List<schemas.public_.tables.pojos.AboutInstitution> fetchByBusinessCategory(Long... values) {
+        return fetch(AboutInstitution.ABOUT_INSTITUTION.BUSINESS_CATEGORY, values);
+    }
+
+    /**
+     * Fetch records that have <code>country_fk IN (values)</code>
+     */
+    public List<schemas.public_.tables.pojos.AboutInstitution> fetchByCountryFk(Long... values) {
+        return fetch(AboutInstitution.ABOUT_INSTITUTION.COUNTRY_FK, values);
+    }
+
+    /**
+     * Fetch records that have <code>phone_no IN (values)</code>
+     */
+    public List<schemas.public_.tables.pojos.AboutInstitution> fetchByPhoneNo(Long... values) {
+        return fetch(AboutInstitution.ABOUT_INSTITUTION.PHONE_NO, values);
+    }
+
+    /**
+     * Fetch records that have <code>year_established IN (values)</code>
+     */
+    public List<schemas.public_.tables.pojos.AboutInstitution> fetchByYearEstablished(Long... values) {
+        return fetch(AboutInstitution.ABOUT_INSTITUTION.YEAR_ESTABLISHED, values);
+    }
+
+    /**
+     * Fetch records that have <code>campus IN (values)</code>
+     */
+    public List<schemas.public_.tables.pojos.AboutInstitution> fetchByCampus(String... values) {
+        return fetch(AboutInstitution.ABOUT_INSTITUTION.CAMPUS, values);
     }
 }

@@ -5,7 +5,7 @@
     <driver>org.postgresql.Driver</driver>
     <url>jdbc:postgresql://localhost:5432/SchoolManagement</url>
     <user>admin</user>
-    <password>demo</password>
+    <password>admin</password>
   </jdbc>
 
   <generator>

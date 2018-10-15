@@ -12,8 +12,8 @@ import schemas.public_.tables.AccountProfile;
 import schemas.public_.tables.AdditionalInfo;
 import schemas.public_.tables.AddressDetail;
 import schemas.public_.tables.Annoucement;
-import schemas.public_.tables.Application;
 import schemas.public_.tables.ApplicationDetail;
+import schemas.public_.tables.AssignSubject;
 import schemas.public_.tables.Assignment;
 import schemas.public_.tables.BankAccount;
 import schemas.public_.tables.Batch;
@@ -28,13 +28,11 @@ import schemas.public_.tables.EqualityData;
 import schemas.public_.tables.Event;
 import schemas.public_.tables.Experience;
 import schemas.public_.tables.Finance;
-import schemas.public_.tables.HomeAddress;
 import schemas.public_.tables.InformationStatistic;
 import schemas.public_.tables.Institution;
 import schemas.public_.tables.Institutionregistration;
 import schemas.public_.tables.Lecturer;
 import schemas.public_.tables.Module;
-import schemas.public_.tables.Nationality;
 import schemas.public_.tables.NationalityDetail;
 import schemas.public_.tables.Note;
 import schemas.public_.tables.ParentInfo;
@@ -92,14 +90,14 @@ public class Tables {
     public static final Annoucement ANNOUCEMENT = schemas.public_.tables.Annoucement.ANNOUCEMENT;
 
     /**
-     * The table <code>public.application</code>.
-     */
-    public static final Application APPLICATION = schemas.public_.tables.Application.APPLICATION;
-
-    /**
      * The table <code>public.application_detail</code>.
      */
     public static final ApplicationDetail APPLICATION_DETAIL = schemas.public_.tables.ApplicationDetail.APPLICATION_DETAIL;
+
+    /**
+     * The table <code>public.assign_subject</code>.
+     */
+    public static final AssignSubject ASSIGN_SUBJECT = schemas.public_.tables.AssignSubject.ASSIGN_SUBJECT;
 
     /**
      * The table <code>public.assignment</code>.
@@ -172,11 +170,6 @@ public class Tables {
     public static final Finance FINANCE = schemas.public_.tables.Finance.FINANCE;
 
     /**
-     * The table <code>public.home_address</code>.
-     */
-    public static final HomeAddress HOME_ADDRESS = schemas.public_.tables.HomeAddress.HOME_ADDRESS;
-
-    /**
      * The table <code>public.information_statistic</code>.
      */
     public static final InformationStatistic INFORMATION_STATISTIC = schemas.public_.tables.InformationStatistic.INFORMATION_STATISTIC;
@@ -200,11 +193,6 @@ public class Tables {
      * The table <code>public.module</code>.
      */
     public static final Module MODULE = schemas.public_.tables.Module.MODULE;
-
-    /**
-     * The table <code>public.nationality</code>.
-     */
-    public static final Nationality NATIONALITY = schemas.public_.tables.Nationality.NATIONALITY;
 
     /**
      * The table <code>public.nationality_detail</code>.

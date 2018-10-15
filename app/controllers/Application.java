@@ -1,32 +1,50 @@
 package controllers;
 
+import java.util.Date;
 import com.google.inject.Inject;
-
-//import models.Dimensions;
-import play.db.jpa.Transactional;
+import models.util.Roles;
 import play.mvc.Controller;
 import play.mvc.Result;
-import services.EventService;
+import services.AuthenticationService;
+import services.EventSvr;
+import services.MainMenuPaneDTOSvr;
 import views.html.*;
 import views.html.admin.*;
+
 public class Application extends Controller {
-	
-	//@Inject
-	//Dimensions dimensions;
 
-	@Transactional
-	public Result index1() {
+	@Inject
+	AuthenticationService authenticationService;
+	@Inject
+	JourneeCtrl journeeCtrl;
+	@Inject
+	MainMenuPaneDTOSvr mainMenuPaneDTOSvr;
 
-		return ok(index.render());
+	public Result index() {
+
+		//String currentUser = authenticationService.findByEmail(session("email")).getMetaData();
+		//String x = currentUser.substring(12);
+		//String role = x.substring(0, x.length() - 3);
+
+		/*
+		 * if (role.equals(Roles.NUMERAIRE)) { return ok(views.html.menu.render(role));
+		 * } else if (currentUser.equals(Roles.CHEQUE)) { return
+		 * ok(views.html.menu.render(role)); } else if
+		 * (currentUser.equals(Roles.COMPENSATIONRGT)) { return
+		 * ok(views.html.menu.render(role)); }else if
+		 * (currentUser.equals(Roles.SUPPRESSION_QUITTANCE)) { return
+		 * ok(views.html.menu.render(role)); }
+		 */
+		return ok(views.html.index.render(new Date(journeeCtrl.getJournee()).toLocaleString(), mainMenuPaneDTOSvr.mainMenuPane()));
 	}
 
 	public Result index2() {
 
-		return ok(universityDirectory.render());
+		return ok(studentInvoice.render(new Date(journeeCtrl.getJournee()).toLocaleString(), mainMenuPaneDTOSvr.mainMenuPane()));
 	}
 
 	public Result index3() {
-		//return ok(courseDirectory.render());
+		// return ok(courseDirectory.render());
 		return null;
 	}
 
@@ -35,20 +53,11 @@ public class Application extends Controller {
 		return ok(courseManagement.render());
 	}
 
-/*	public Result studentRegistration() {
-
-		return ok(studentRegistration.render());
-	}*/
-
-	public Result login() {
-
-		return ok(login.render());
-	}
-
-	public Result loginX() {
-
-		return ok(loginX.render());
-	}
+	/*
+	 * public Result studentRegistration() {
+	 * 
+	 * return ok(studentRegistration.render()); }
+	 */
 
 	public Result staffRegistration() {
 
@@ -79,74 +88,21 @@ public class Application extends Controller {
 
 		return ok(courseRegistration.render());
 	}
-	
-	@Transactional
-	public Result newEvent() {
-		EventService x = new EventService();
+
+ 	public Result newEvent() {
+		EventSvr x = new EventSvr();
 
 		return ok(event.render(x.findList()));
 	}
-	
+
 	public Result newSubject() {
 
 		return ok(newSubject.render());
 	}
-	
+
 	public Result profileManagement() {
 
 		return ok(profileManagement.render());
 	}
-
-	/**
-	 * Action
-	 *
-	 * @return
-	 */
-	
-	@Transactional
-	public Result chargement() {
-		//loading.save();
-		//sdimensions.save();
-		return TODO;
-	}
-	
-	@Transactional
-	public Result index() {
-		return TODO;
-
-	}
-
-	/**
-	 * Déconnexion d'un utilisateur
-	 *
-	 * @return
-	 */
-	public Result logout() {
-		session().clear();
-		flash("success", "Vous êtes déconnecté");
-		return redirect(controllers.routes.Application.loginAdmin());
-	}
-
-	/**
-	 * Formulaire d'authentification
-	 *
-	 * @return
-	 */
-	public Result loginAdmin() {
-		return ok(login.render());
-	}
-
-	/**
-	 * Authentification
-	 *
-	 * @return
-	 */
-	@Transactional
-	public Result authentification() {
-		return null;
-
-	}
-	
-	
 
 }

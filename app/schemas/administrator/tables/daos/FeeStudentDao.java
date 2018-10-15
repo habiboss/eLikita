@@ -6,6 +6,7 @@ package schemas.administrator.tables.daos;
 
 import java.math.BigDecimal;
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.annotation.Generated;
@@ -67,13 +68,6 @@ public class FeeStudentDao extends DAOImpl<FeeStudentRecord, schemas.administrat
     }
 
     /**
-     * Fetch records that have <code>fee_fk IN (values)</code>
-     */
-    public List<schemas.administrator.tables.pojos.FeeStudent> fetchByFeeFk(String... values) {
-        return fetch(FeeStudent.FEE_STUDENT.FEE_FK, values);
-    }
-
-    /**
      * Fetch records that have <code>student_fk IN (values)</code>
      */
     public List<schemas.administrator.tables.pojos.FeeStudent> fetchByStudentFk(String... values) {
@@ -102,9 +96,30 @@ public class FeeStudentDao extends DAOImpl<FeeStudentRecord, schemas.administrat
     }
 
     /**
+     * Fetch records that have <code>due_date IN (values)</code>
+     */
+    public List<schemas.administrator.tables.pojos.FeeStudent> fetchByDueDate(Timestamp... values) {
+        return fetch(FeeStudent.FEE_STUDENT.DUE_DATE, values);
+    }
+
+    /**
+     * Fetch records that have <code>last_date IN (values)</code>
+     */
+    public List<schemas.administrator.tables.pojos.FeeStudent> fetchByLastDate(Timestamp... values) {
+        return fetch(FeeStudent.FEE_STUDENT.LAST_DATE, values);
+    }
+
+    /**
+     * Fetch records that have <code>fee_fk IN (values)</code>
+     */
+    public List<schemas.administrator.tables.pojos.FeeStudent> fetchByFeeFk(Long... values) {
+        return fetch(FeeStudent.FEE_STUDENT.FEE_FK, values);
+    }
+
+    /**
      * Fetch records that have <code>status_fk IN (values)</code>
      */
-    public List<schemas.administrator.tables.pojos.FeeStudent> fetchByStatusFk(String... values) {
+    public List<schemas.administrator.tables.pojos.FeeStudent> fetchByStatusFk(Long... values) {
         return fetch(FeeStudent.FEE_STUDENT.STATUS_FK, values);
     }
 }

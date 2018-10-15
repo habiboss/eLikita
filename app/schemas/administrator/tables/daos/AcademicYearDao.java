@@ -65,37 +65,37 @@ public class AcademicYearDao extends DAOImpl<AcademicYearRecord, schemas.adminis
     }
 
     /**
-     * Fetch records that have <code>start_year IN (values)</code>
+     * Fetch records that have <code>status_fk IN (values)</code>
      */
-    public List<schemas.administrator.tables.pojos.AcademicYear> fetchByStartYear(String... values) {
-        return fetch(AcademicYear.ACADEMIC_YEAR.START_YEAR, values);
+    public List<schemas.administrator.tables.pojos.AcademicYear> fetchByStatusFk(Long... values) {
+        return fetch(AcademicYear.ACADEMIC_YEAR.STATUS_FK, values);
     }
 
     /**
-     * Fetch records that have <code>end_year IN (values)</code>
+     * Fetch records that have <code>end_month_fk IN (values)</code>
      */
-    public List<schemas.administrator.tables.pojos.AcademicYear> fetchByEndYear(String... values) {
-        return fetch(AcademicYear.ACADEMIC_YEAR.END_YEAR, values);
+    public List<schemas.administrator.tables.pojos.AcademicYear> fetchByEndMonthFk(Long... values) {
+        return fetch(AcademicYear.ACADEMIC_YEAR.END_MONTH_FK, values);
     }
 
     /**
-     * Fetch records that have <code>start_month IN (values)</code>
+     * Fetch records that have <code>start_month_fk IN (values)</code>
      */
-    public List<schemas.administrator.tables.pojos.AcademicYear> fetchByStartMonth(String... values) {
-        return fetch(AcademicYear.ACADEMIC_YEAR.START_MONTH, values);
+    public List<schemas.administrator.tables.pojos.AcademicYear> fetchByStartMonthFk(Long... values) {
+        return fetch(AcademicYear.ACADEMIC_YEAR.START_MONTH_FK, values);
     }
 
     /**
-     * Fetch records that have <code>end_month IN (values)</code>
+     * Fetch records that have <code>end_year_fk IN (values)</code>
      */
-    public List<schemas.administrator.tables.pojos.AcademicYear> fetchByEndMonth(String... values) {
-        return fetch(AcademicYear.ACADEMIC_YEAR.END_MONTH, values);
+    public List<schemas.administrator.tables.pojos.AcademicYear> fetchByEndYearFk(Long... values) {
+        return fetch(AcademicYear.ACADEMIC_YEAR.END_YEAR_FK, values);
     }
 
     /**
-     * Fetch records that have <code>status IN (values)</code>
+     * Fetch records that have <code>start_year_fk IN (values)</code>
      */
-    public List<schemas.administrator.tables.pojos.AcademicYear> fetchByStatus(String... values) {
-        return fetch(AcademicYear.ACADEMIC_YEAR.STATUS, values);
+    public List<schemas.administrator.tables.pojos.AcademicYear> fetchByStartYearFk(Long... values) {
+        return fetch(AcademicYear.ACADEMIC_YEAR.START_YEAR_FK, values);
     }
 }

@@ -36,7 +36,7 @@ import schemas.public_.tables.records.StudentDetailRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class StudentDetail extends TableImpl<StudentDetailRecord> {
 
-    private static final long serialVersionUID = -995438021;
+    private static final long serialVersionUID = -136968397;
 
     /**
      * The reference instance of <code>public.student_detail</code>
@@ -157,7 +157,7 @@ public class StudentDetail extends TableImpl<StudentDetailRecord> {
      */
     @Override
     public List<UniqueKey<StudentDetailRecord>> getKeys() {
-        return Arrays.<UniqueKey<StudentDetailRecord>>asList(Keys.STUDENT_PK);
+        return Arrays.<UniqueKey<StudentDetailRecord>>asList(Keys.STUDENT_PK, Keys.CODE_UQ);
     }
 
     /**

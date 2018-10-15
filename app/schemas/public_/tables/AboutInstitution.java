@@ -35,7 +35,7 @@ import schemas.public_.tables.records.AboutInstitutionRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class AboutInstitution extends TableImpl<AboutInstitutionRecord> {
 
-    private static final long serialVersionUID = 1223148271;
+    private static final long serialVersionUID = 473145171;
 
     /**
      * The reference instance of <code>public.about_institution</code>
@@ -66,14 +66,9 @@ public class AboutInstitution extends TableImpl<AboutInstitutionRecord> {
     public final TableField<AboutInstitutionRecord, String> CITY = createField("city", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
 
     /**
-     * The column <code>public.about_institution.codeid</code>.
+     * The column <code>public.about_institution.code</code>.
      */
-    public final TableField<AboutInstitutionRecord, String> CODEID = createField("codeid", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
-
-    /**
-     * The column <code>public.about_institution.country</code>.
-     */
-    public final TableField<AboutInstitutionRecord, String> COUNTRY = createField("country", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
+    public final TableField<AboutInstitutionRecord, String> CODE = createField("code", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
 
     /**
      * The column <code>public.about_institution.description</code>.
@@ -104,6 +99,41 @@ public class AboutInstitution extends TableImpl<AboutInstitutionRecord> {
      * The column <code>public.about_institution.id</code>.
      */
     public final TableField<AboutInstitutionRecord, Long> ID = createField("id", org.jooq.impl.SQLDataType.BIGINT.nullable(false).defaultValue(org.jooq.impl.DSL.field("nextval('about_institution_id_seq'::regclass)", org.jooq.impl.SQLDataType.BIGINT)), this, "");
+
+    /**
+     * The column <code>public.about_institution.owner_fname</code>.
+     */
+    public final TableField<AboutInstitutionRecord, String> OWNER_FNAME = createField("owner_fname", org.jooq.impl.SQLDataType.VARCHAR.length(50), this, "");
+
+    /**
+     * The column <code>public.about_institution.owner_lname</code>.
+     */
+    public final TableField<AboutInstitutionRecord, String> OWNER_LNAME = createField("owner_lname", org.jooq.impl.SQLDataType.VARCHAR.length(50), this, "");
+
+    /**
+     * The column <code>public.about_institution.business_category</code>.
+     */
+    public final TableField<AboutInstitutionRecord, Long> BUSINESS_CATEGORY = createField("business_category", org.jooq.impl.SQLDataType.BIGINT, this, "\n");
+
+    /**
+     * The column <code>public.about_institution.country_fk</code>.
+     */
+    public final TableField<AboutInstitutionRecord, Long> COUNTRY_FK = createField("country_fk", org.jooq.impl.SQLDataType.BIGINT, this, "");
+
+    /**
+     * The column <code>public.about_institution.phone_no</code>.
+     */
+    public final TableField<AboutInstitutionRecord, Long> PHONE_NO = createField("phone_no", org.jooq.impl.SQLDataType.BIGINT, this, "");
+
+    /**
+     * The column <code>public.about_institution.year_established</code>.
+     */
+    public final TableField<AboutInstitutionRecord, Long> YEAR_ESTABLISHED = createField("year_established", org.jooq.impl.SQLDataType.BIGINT, this, "");
+
+    /**
+     * The column <code>public.about_institution.campus</code>.
+     */
+    public final TableField<AboutInstitutionRecord, String> CAMPUS = createField("campus", org.jooq.impl.SQLDataType.VARCHAR.length(50), this, "");
 
     /**
      * Create a <code>public.about_institution</code> table reference

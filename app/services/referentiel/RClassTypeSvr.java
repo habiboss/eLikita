@@ -69,4 +69,5 @@ public class RClassTypeSvr extends RClassTypeDao{
 		return new models.util.Page<schemas.referential.tables.pojos.RClassType>(result,
 				rClassType.size(), page, pageSize);
 	}
+	
 }

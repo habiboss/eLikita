@@ -1,6 +1,7 @@
 package controllers;
 
 import com.google.inject.Inject;
+import models.dto.CourseDTO;
 import models.util.EnvVarbl;
 import schemas.public_.tables.pojos.Course;
 import play.data.Form;
@@ -8,7 +9,6 @@ import play.data.FormFactory;
 import play.db.jpa.Transactional;
 import play.mvc.Controller;
 import play.mvc.Result;
-import services.CourseDTOSvr;
 import services.CourseSvr;
 import views.html.admin.*;
 
@@ -18,8 +18,6 @@ public class CourseCtrl extends Controller{
 	FormFactory formFactory;
 	@Inject
 	CourseSvr courseSvr;
-	@Inject
-	CourseDTOSvr courseDTOSvr;
 	
 	public Result getCourseJson(String q) {
 		// TODO Auto-generated method stub
@@ -27,22 +25,22 @@ public class CourseCtrl extends Controller{
 	}
 	
 	public Result show(String subAction, Long coursePK) {
-		Course courses = new Course();
+		CourseDTO courses = new CourseDTO();
 		String viewMode = "";
 		int page = 0; String filter = "";
 		if (null == coursePK || coursePK == 0L) {
-			courses = new Course();
+			courses = new CourseDTO();
 			viewMode = EnvVarbl.VIEW_MODE_CREATE;
-			return ok(course.render(courseSvr.pageCourse(page, EnvVarbl.pageSize, filter), filter, new Course(), viewMode));
+			return ok(course.render(courseSvr.pageCourse(page, EnvVarbl.pageSize, filter), filter, new CourseDTO(), viewMode));
 		} else if (EnvVarbl.VIEW_MODE_EDIT.equals(subAction)) {
-			courses = courseSvr.fetchOneById(coursePK);
+			courses = courseSvr.fetchOneCourseDTO(coursePK);
 			viewMode = EnvVarbl.VIEW_MODE_EDIT;
 		} else if (EnvVarbl.VIEW_MODE_DELETE.equals(subAction)) {
-			courses = courseSvr.fetchOneById(coursePK);
+			courses = courseSvr.fetchOneCourseDTO(coursePK);
 			viewMode = EnvVarbl.VIEW_MODE_DELETE;
 		} else {
 			viewMode = EnvVarbl.VIEW_MODE_VIEW;
-			courses = courseSvr.fetchOneById(coursePK);
+			courses = courseSvr.fetchOneCourseDTO(coursePK);
 		}
 		return ok(course.render(courseSvr.pageCourse(page, EnvVarbl.pageSize, filter), filter, courses, viewMode));
 	}
@@ -94,7 +92,7 @@ public class CourseCtrl extends Controller{
 	
 	public Result list(int page, String filter) {
 		String viewMode = "";
- 		return ok(course.render(courseSvr.pageCourse(page, EnvVarbl.pageSize, filter), filter, new Course(), viewMode));
+ 		return ok(course.render(courseSvr.pageCourse(page, EnvVarbl.pageSize, filter), filter, new CourseDTO(), viewMode));
 	}
 
 }

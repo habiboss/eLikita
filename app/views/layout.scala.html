@@ -1,127 +1,162 @@
-@(title: String)(content: Html)
+@(title: String, Journee: String, mainMenuPaneDTO: models.dto.MainMenuPaneDTO)(content: Html)
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta content-type="application/pdf">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta content-type="application/pdf">
+<meta name="description" content="">
+<meta name="author" content="">
 
-    <title>titre</title>
+<title>@title</title>
         <link href="@routes.Assets.versioned("css/bootstrap.min.css")" rel="stylesheet">
         <link href="@routes.Assets.versioned("css/blue.css")" rel="stylesheet">
     	<link href="@routes.Assets.versioned("css/font-awesome.css")" rel="stylesheet">
     	<link href="@routes.Assets.versioned("css/masterpage.css")" rel="stylesheet">
         <link href="@routes.Assets.versioned("css/style.css")" rel="stylesheet">
-        <link href="@routes.Assets.versioned("css/AdminLTE.min.css")" rel="stylesheet">
-     	<link href="@routes.Assets.versioned("css/tiles--full.css")" rel="stylesheet">
-     	<link href="@routes.Assets.versioned("css/docs.min.css")" rel="stylesheet">
-        <link href="@routes.Assets.versioned("css/bootsnav.css")" rel="stylesheet">
     	<link href="@routes.Assets.versioned("css/ruskin.css")" rel="stylesheet">
 	    <link href="@routes.Assets.versioned("css/page.css")" rel="stylesheet">
         <link href="@routes.Assets.versioned("css/lightfooter.css")" rel="stylesheet">
         <link href="@routes.Assets.versioned("css/sidebar.css")" rel="stylesheet">
-        <link href="@routes.Assets.versioned("css/animate.css")" rel="stylesheet">
-        <link href="@routes.Assets.versioned("css/style_.css")" rel="stylesheet">
-        <link href="@routes.Assets.versioned("css/jquery.mmenu.custom.css")" rel="stylesheet">
-        <link href="@routes.Assets.versioned("css/extra.css")" rel="stylesheet">
         <link href="@routes.Assets.versioned("css/select2.css")" rel="stylesheet">
-        
+        <link href="@routes.Assets.versioned("css/datepicker.css")" rel="stylesheet">
+        <link href="@routes.Assets.versioned("css/bootstrap-timepicker.css")" rel="stylesheet">  
+        <link href="@routes.Assets.versioned("css/datepicker.css")" rel="stylesheet" media="screen">
 
 </head>
 <body class="fixed-left">
+	@universityDirectoryTopbar()
 	<!-- Page Content -->
-	<div class="container">
-        topBar()
-		<div class="row"></div>
-		<!-- /.row -->
+	<div id="welcome-container">
+		<div id="welcome-name" class="container-460">
+			<span id="ctl00_PortalWelcomeBar_LabelUserName"> &nbsp;</span>
+		</div>
+		<div id="welcome-date" class="container-460">
+			<span id="ctl00_PortalWelcomeBar_LabelDateToday">@mainMenuPaneDTO.getJournee</span>
+		</div>
+	</div>
+	<div class="mainwrap">
+		<div id="mainmenupane">
+	<div id="menu">
+		<a class="skiplink" id="localmenu">Menu</a>
+		<!--htdig_noindex-->
+		<ul>
+			<li><a href="/anet/login.phtml">Login</a></li>
+			<li><a href="/anet/about.phtml">About My.Anglia</a></li>
+			<li><a href="/anet/novell.phtml">Who can login?</a></li>
+		</ul>
 
-		<div class="row">
-			<div class="col-lg-12">
-				<br> content
+		<a class="skiplink" href="#localmenu">Go back to top of this menu</a>
+		<a class="skiplink" href="#startcontent">Go to content</a>
+	</div>
+	<div id="anetnav">
+		<h2>@mainMenuPaneDTO.getInstitutionName</h2>
+		<form action="/" method="get">
+			<fieldset>
+				<ol>
+					<li class="login-field"><label for="usernamel"><span
+							class="login-field-label">User ID</span></label>@if(mainMenuPaneDTO.getUserConnected() == null) {
+							<input id="email"
+						type="text" onfocus="this.value=''" value=""
+						name="email"> }else{ @mainMenuPaneDTO.getUserConnected() }</li>
+					<li class="login-field"><label for="passwdl"><span
+							class="login-field-label">User Type</span></label>@mainMenuPaneDTO.getUserType</li>
+					<li><input class="anetsubbut" type="submit" value="Deconnecte"
+						name="login"></li>
+				</ol>
+				<input type="hidden" value="" name="Update"> <input
+					type="hidden" value="ldap" name="page">
+ 				<input type="hidden" value="/anet/staff/" name="refer">
+			</fieldset>
+		</form>
+	</div>
+	<!--<div id="anetnav">-->
+</div>
 
+		<div id="contentpane">
+
+			<div id="crumbsbar">
+				<a href="https://my.anglia.ac.uk/">My.Anglia</a> &gt; My.Anglia
+				login
 			</div>
 
-		</div>
 
-
-		<hr>
-
-		<!-- Footer -->
-
-	</div>
-
-
-	<!-- /.container -->
-<div id="footer-container">
-	<div id="footer-content">
-		<div class="container-220">
-			<h4>IT Help and Support</h4>
-            <p><strong>Students</strong> <br>
-            For help and support please contact your University Library Help Desk<br>
-            <br>
-						<a href="http://libanswers.anglia.ac.uk">libanswers.anglia.ac.uk</a>
-						<br>
-						<br>
-							Call: 01245 686600<br>
-							International: +44 1245 686600 (24 hours)<br>
-            </p>
-            <p><strong>Staff</strong> <br>
-            For help and support please contact <span class="nowrap"><acronym title="IT Services">IT Services</acronym> Customer Support</span>.<br>
-
-              Call: 0845 196 4357<br>
-              Email: <a href=" " title="Email IT Services Customer Support - opens in your default email application"> </a><br>
-            </p>
-
-		</div>
-		<div class="container-220">
-			<p>&nbsp;			
-			    
-
-			</p>
-		</div>
-		<div class="container-220">
-			<p>&nbsp;	
-			    						
-			</p>
-		</div>
-		<div id="addresses-and-contacts" class="container-220">					
-			<h4>Addresses and Contacts</h4>
-			<p>
-
-				<strong>Cambridge Campus</strong><br>East Road, Cambridge, CB1 1PT
-			</p>
-			<p>
-				<strong>Chelmsford Campus</strong><br>Bishop Hall Lane, Chelmsford, CM1 1SQ
-			</p>
-			<p>
-				Call: 0845 271 3333<br>
-				International: +44 1245 493131<br>
-
-				Email: <a href=" " title="Email   - opens in your default email application"> </a>				
-			</p>
+			<!-- <div id="centralpane"> -->
+			<div id="contentstart">
+				<div id="maincontentblockdept">@content</div>
+			</div>
 		</div>
 	</div>
-</div>
-<div id="footer-legal-statements-container">
-	<div id="footer-legal-statements-content">
+
+	<!-- FOOTER CONTAINER -->
+	<div id="footer-container">
+		<div id="footer-content">
+			<div class="container-220">
+				<h4>IT Help and Support</h4>
+				<p>
+					<strong>Students</strong> <br> For help and support please
+					contact your University Library Help Desk<br> <br> <a
+						href="http://libanswers.anglia.ac.uk">libanswers.anglia.ac.uk</a>
+					<br> <br> Call: 01245 686600<br> International: +44
+					1245 686600 (24 hours)<br>
+				</p>
+				<p>
+					<strong>Staff</strong> <br> For help and support please
+					contact <span class="nowrap"><acronym title="IT Services">IT
+							Services</acronym> Customer Support</span>.<br> Call: 0845 196 4357<br>
+					Email: <a href=" "
+						title="Email IT Services Customer Support - opens in your default email application">
+					</a><br>
+				</p>
+
+			</div>
+			<div class="container-220">
+				<p>&nbsp;</p>
+			</div>
+			<div class="container-220">
+				<p>&nbsp;</p>
+			</div>
+			<div id="addresses-and-contacts" class="container-220">
+				<h4>Addresses and Contacts</h4>
+				<p>
+
+					<strong>Cambridge Campus</strong><br>East Road, Cambridge, CB1
+					1PT
+				</p>
+				<p>
+					<strong>Chelmsford Campus</strong><br>Bishop Hall Lane,
+					Chelmsford, CM1 1SQ
+				</p>
+				<p>
+					Call: 0845 271 3333<br> International: +44 1245 493131<br>
+
+					Email: <a href=" "
+						title="Email   - opens in your default email application"> </a>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div id="footer-legal-statements-container">
+		<div id="footer-legal-statements-content">
 			<div id="copyright-information">
-				Design and content <abbr title="©: copyright">©</abbr> 2011 Anglia Ruskin University. All rights reserved
+				Design and content <abbr title="©: copyright">©</abbr> 2011 Anglia
+				Ruskin University. All rights reserved
 			</div>
 
 			<div id="legal-information">
-				<a href=" " title="Privacy Policy">Privacy Policy</a>
-				|
-				<a href=" " title="Disclaimer and acceptable use policy">Disclaimer</a>
+				<a href=" " title="Privacy Policy">Privacy Policy</a> | <a href=" "
+					title="Disclaimer and acceptable use policy">Disclaimer</a>
 			</div>
+		</div>
 	</div>
-</div>
-<script src="@routes.Assets.versioned("js/jquery.min.js")"></script>
-<script src="@routes.Assets.versioned("js/bootstrap.min.js")"></script>
-<script src="@routes.Assets.versioned("js/select2.js")"></script>
-<script src="@routes.Assets.versioned("js/studentRegistration.js")"></script>
-<script type="text/javascript">
+	<script src="@routes.Assets.versioned("js/jquery.min.js")"></script>
+	<script src="@routes.Assets.versioned("js/bootstrap.min.js")"></script>
+	<script src="@routes.Assets.versioned("js/select2.js")"></script>
+	<script src="@routes.Assets.versioned("js/studentRegistration.js")"></script>
+	<script src="@routes.Assets.versioned("js/referentiel.js")"></script>
+	<script type="text/javascript" src="@routes.Assets.versioned("js/bootstrap-datepicker.js")"></script>
+	<script type="text/javascript" src="@routes.Assets.versioned("js/bootstrap-datepicker.fr.js")"></script>
+	<script type="text/javascript">
 		$(function() {
 			$('.datepicker').datepicker({
 				language : 'fr'

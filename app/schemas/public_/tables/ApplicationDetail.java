@@ -11,6 +11,7 @@ import java.util.List;
 import javax.annotation.Generated;
 
 import org.jooq.Field;
+import org.jooq.Identity;
 import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
@@ -35,7 +36,7 @@ import schemas.public_.tables.records.ApplicationDetailRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class ApplicationDetail extends TableImpl<ApplicationDetailRecord> {
 
-    private static final long serialVersionUID = 1660802619;
+    private static final long serialVersionUID = 1671326719;
 
     /**
      * The reference instance of <code>public.application_detail</code>
@@ -51,24 +52,19 @@ public class ApplicationDetail extends TableImpl<ApplicationDetailRecord> {
     }
 
     /**
-     * The column <code>public.application_detail.id</code>.
-     */
-    public final TableField<ApplicationDetailRecord, Long> ID = createField("id", org.jooq.impl.SQLDataType.BIGINT.nullable(false), this, "");
-
-    /**
      * The column <code>public.application_detail.admission_officer</code>.
      */
     public final TableField<ApplicationDetailRecord, String> ADMISSION_OFFICER = createField("admission_officer", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
 
     /**
-     * The column <code>public.application_detail.app_code</code>.
+     * The column <code>public.application_detail.code</code>.
      */
-    public final TableField<ApplicationDetailRecord, String> APP_CODE = createField("app_code", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
+    public final TableField<ApplicationDetailRecord, String> CODE = createField("code", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
 
     /**
-     * The column <code>public.application_detail.course_title</code>.
+     * The column <code>public.application_detail.course_fk</code>.
      */
-    public final TableField<ApplicationDetailRecord, String> COURSE_TITLE = createField("course_title", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
+    public final TableField<ApplicationDetailRecord, String> COURSE_FK = createField("course_fk", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
 
     /**
      * The column <code>public.application_detail.faculty</code>.
@@ -99,6 +95,26 @@ public class ApplicationDetail extends TableImpl<ApplicationDetailRecord> {
      * The column <code>public.application_detail.status</code>.
      */
     public final TableField<ApplicationDetailRecord, String> STATUS = createField("status", org.jooq.impl.SQLDataType.VARCHAR.length(255), this, "");
+
+    /**
+     * The column <code>public.application_detail.batch_fk</code>.
+     */
+    public final TableField<ApplicationDetailRecord, Long> BATCH_FK = createField("batch_fk", org.jooq.impl.SQLDataType.BIGINT, this, "");
+
+    /**
+     * The column <code>public.application_detail.id</code>.
+     */
+    public final TableField<ApplicationDetailRecord, Long> ID = createField("id", org.jooq.impl.SQLDataType.BIGINT.nullable(false).defaultValue(org.jooq.impl.DSL.field("nextval('application_detail_id_seq'::regclass)", org.jooq.impl.SQLDataType.BIGINT)), this, "");
+
+    /**
+     * The column <code>public.application_detail.academic_year</code>.
+     */
+    public final TableField<ApplicationDetailRecord, String> ACADEMIC_YEAR = createField("academic_year", org.jooq.impl.SQLDataType.VARCHAR.length(20), this, "");
+
+    /**
+     * The column <code>public.application_detail.campus_fk</code>.
+     */
+    public final TableField<ApplicationDetailRecord, Long> CAMPUS_FK = createField("campus_fk", org.jooq.impl.SQLDataType.BIGINT, this, "");
 
     /**
      * Create a <code>public.application_detail</code> table reference
@@ -134,8 +150,16 @@ public class ApplicationDetail extends TableImpl<ApplicationDetailRecord> {
      * {@inheritDoc}
      */
     @Override
+    public Identity<ApplicationDetailRecord, Long> getIdentity() {
+        return Keys.IDENTITY_APPLICATION_DETAIL;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public UniqueKey<ApplicationDetailRecord> getPrimaryKey() {
-        return Keys.APPLICATION_DETAIL_PKEY;
+        return Keys.APPLICATION_DETAIL_PK;
     }
 
     /**
@@ -143,7 +167,7 @@ public class ApplicationDetail extends TableImpl<ApplicationDetailRecord> {
      */
     @Override
     public List<UniqueKey<ApplicationDetailRecord>> getKeys() {
-        return Arrays.<UniqueKey<ApplicationDetailRecord>>asList(Keys.APPLICATION_DETAIL_PKEY);
+        return Arrays.<UniqueKey<ApplicationDetailRecord>>asList(Keys.APPLICATION_DETAIL_UQ, Keys.APPLICATION_DETAIL_PK);
     }
 
     /**

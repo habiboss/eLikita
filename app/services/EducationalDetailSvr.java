@@ -2,8 +2,12 @@ package services;
 
 import javax.inject.Inject;
 import org.jooq.DSLContext;
+
+import schemas.public_.Tables;
 import schemas.public_.tables.daos.EducationalDetailDao;
 import schemas.public_.tables.pojos.EducationalDetail;
+import schemas.public_.tables.records.ContactDetailRecord;
+import schemas.public_.tables.records.EducationalDetailRecord;
 
 public class EducationalDetailSvr extends EducationalDetailDao{
 	@Inject
@@ -23,5 +27,9 @@ public class EducationalDetailSvr extends EducationalDetailDao{
 			super.insert(educationalDetail);
 		}
 
+	}
+	
+	public EducationalDetailRecord findByStudentFk(String studentFk) {
+		return sqlContext.fetchOne(Tables.EDUCATIONAL_DETAIL, Tables.EDUCATIONAL_DETAIL.STUDENT_FK.equal(studentFk));
 	}
 }

@@ -8,12 +8,16 @@ import javax.annotation.Generated;
 
 import schemas.referential.tables.RAttendanceOutcome;
 import schemas.referential.tables.RAttendanceType;
+import schemas.referential.tables.RCampus;
 import schemas.referential.tables.RCategory;
 import schemas.referential.tables.RClassType;
 import schemas.referential.tables.RContactPersonType;
 import schemas.referential.tables.RCountry;
+import schemas.referential.tables.RDepartment;
+import schemas.referential.tables.RDesignation;
 import schemas.referential.tables.RDropAttendanceReason;
 import schemas.referential.tables.RDropTeachReason;
+import schemas.referential.tables.REventType;
 import schemas.referential.tables.RFee;
 import schemas.referential.tables.RLevel;
 import schemas.referential.tables.RMonth;
@@ -21,7 +25,7 @@ import schemas.referential.tables.RProfil;
 import schemas.referential.tables.RStatus;
 import schemas.referential.tables.RSyllabus;
 import schemas.referential.tables.RTeachOutcome;
-import schemas.referential.tables.RUser;
+import schemas.referential.tables.RUserType;
 import schemas.referential.tables.RYear;
 
 
@@ -49,6 +53,11 @@ public class Tables {
     public static final RAttendanceType R_ATTENDANCE_TYPE = schemas.referential.tables.RAttendanceType.R_ATTENDANCE_TYPE;
 
     /**
+     * The table <code>referential.r_campus</code>.
+     */
+    public static final RCampus R_CAMPUS = schemas.referential.tables.RCampus.R_CAMPUS;
+
+    /**
      * The table <code>referential.r_category</code>.
      */
     public static final RCategory R_CATEGORY = schemas.referential.tables.RCategory.R_CATEGORY;
@@ -69,6 +78,18 @@ public class Tables {
     public static final RCountry R_COUNTRY = schemas.referential.tables.RCountry.R_COUNTRY;
 
     /**
+     * The table <code>referential.r_department</code>.
+     */
+    public static final RDepartment R_DEPARTMENT = schemas.referential.tables.RDepartment.R_DEPARTMENT;
+
+    /**
+     * This table hold information about each and every type of human resources in the institution
+
+Note: Not to mix with the table r_user_type
+     */
+    public static final RDesignation R_DESIGNATION = schemas.referential.tables.RDesignation.R_DESIGNATION;
+
+    /**
      * The table <code>referential.r_drop_attendance_reason</code>.
      */
     public static final RDropAttendanceReason R_DROP_ATTENDANCE_REASON = schemas.referential.tables.RDropAttendanceReason.R_DROP_ATTENDANCE_REASON;
@@ -77,6 +98,11 @@ public class Tables {
      * The table <code>referential.r_drop_teach_reason</code>.
      */
     public static final RDropTeachReason R_DROP_TEACH_REASON = schemas.referential.tables.RDropTeachReason.R_DROP_TEACH_REASON;
+
+    /**
+     * The table <code>referential.r_event_type</code>.
+     */
+    public static final REventType R_EVENT_TYPE = schemas.referential.tables.REventType.R_EVENT_TYPE;
 
     /**
      * The table <code>referential.r_fee</code>.
@@ -114,9 +140,9 @@ public class Tables {
     public static final RTeachOutcome R_TEACH_OUTCOME = schemas.referential.tables.RTeachOutcome.R_TEACH_OUTCOME;
 
     /**
-     * The table <code>referential.r_user</code>.
+     * The table <code>referential.r_user_type</code>.
      */
-    public static final RUser R_USER = schemas.referential.tables.RUser.R_USER;
+    public static final RUserType R_USER_TYPE = schemas.referential.tables.RUserType.R_USER_TYPE;
 
     /**
      * The table <code>referential.r_year</code>.

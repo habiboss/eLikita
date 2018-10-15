@@ -1,17 +1,9 @@
 # Home
 GET         /index                                                                           controllers.Application.index()
-GET         /loginAdmin                                                                      controllers.Application.loginAdmin()
-GET         /logout                                                                          controllers.Application.logout()
-GET         /authentification                                                                controllers.Application.authentification()
-GET         /Chargement                                                                      controllers.Application.chargement()
-
-GET         /index1                                                                          controllers.Application.index()
 GET         /index2                                                                          controllers.Application.index2()
 GET         /readCourseDirectory                                                             controllers.CourseDirectoryCtrl.read()
 GET         /courseManagement                                                                controllers.Application.courseManagement()
 #GET         /studentRegistration                                                             controllers.Application.studentRegistration()
-GET         /login                                                                           controllers.Application.login()
-GET         /loginX                                                                          controllers.Application.loginX()
 GET         /staffRegistration                                                               controllers.Application.staffRegistration()
 GET         /courseInformation                                                               controllers.Application.courseInformation()
 GET         /businessRegistration                                                            controllers.Application.businessRegistration()
@@ -21,6 +13,15 @@ GET         /courseRegistration                                                 
 GET         /newEvent                                                                        controllers.Application.newEvent()
 GET         /newSubject                                                                      controllers.Application.newSubject()
 GET         /profileManagement                                                               controllers.Application.profileManagement()
+###################Authentication
+GET     /accueil                      											controllers.utils.Authentication.index(email:String,password:String)
+GET     /login                      											controllers.utils.Authentication.login()
+POST    /authenticate                      											controllers.utils.Authentication.authenticate()
+GET     /                                                                 controllers.utils.Authentication.logout()
+#####################JOURNEE
+GET     /Journees/index                  controllers.JourneeCtrl.index()
+GET    /Journees/ouverture              controllers.JourneeCtrl.ouvrir()
+GET     /Journees/fermeture              controllers.JourneeCtrl.fermer()
 
 #Event
 POST         /save                                                                           controllers.BusinessCtrl.save()
@@ -41,6 +42,14 @@ POST        /saveAssignment                controllers.AssignmentCtrl.save()
 GET         /deleteAssignment              controllers.AssignmentCtrl.delete(assignmentPK: Long)
 GET         /Assignment/show/:subaction/   controllers.AssignmentCtrl.show(subaction: String, assignmentPK: Long)
 
+#AssignSubject
+GET         /AssignSubject/                   controllers.AssignSubjectCtrl.getAssignSubjectJson()
+GET         /SubjectByBatch/:batchPK          controllers.AssignSubjectCtrl.getSubjectByBatchJson(batchPK: Long)
+GET         /AssignSubject/:page/             controllers.AssignSubjectCtrl.list(page: Int, filter: String ?="")                                                                    
+POST        /saveAssignSubject                controllers.AssignSubjectCtrl.save()
+GET         /deleteAssignSubject              controllers.AssignSubjectCtrl.delete(assignSubject: Long)
+GET         /AssignSubject/show/:subaction/   controllers.AssignSubjectCtrl.show(subaction: String, assignSubject: Long)
+
 #Classe
 GET         /classe/:page/             controllers.ClasseCtrl.list(page: Int, filter: String ?="")                                                                    
 POST        /saveClasse                controllers.ClasseCtrl.save()
@@ -50,10 +59,17 @@ GET         /Classe/show/:subaction/   controllers.ClasseCtrl.show(subaction: St
 
 #Batch
 GET         /Batch/                   controllers.BatchCtrl.getBatchJson(q: String)
+GET         /BatchByCourse/:coursePK  controllers.BatchCtrl.getBatchByCourse(coursePK: Long)
 GET         /batch/:page/             controllers.BatchCtrl.list(page: Int, filter: String ?="")                                                                    
 POST        /saveBatch                controllers.BatchCtrl.save()
 GET         /deleteBatch              controllers.BatchCtrl.delete(batchPK: Long)
 GET         /Batch/show/:subaction/   controllers.BatchCtrl.show(subaction: String, batchPK: Long)
+
+#Academic Year
+GET         /AcademicYear/:page/             controllers.admins.AcademicYearCtrl.list(page: Int, filter: String ?="")                                                                    
+POST        /saveAcademicYear                controllers.admins.AcademicYearCtrl.save()
+GET         /deleteAcademicYear              controllers.admins.AcademicYearCtrl.delete(academicYearPK: Long)
+GET         /AcademicYear/show/:subaction/   controllers.admins.AcademicYearCtrl.show(subaction: String, academicYearPK: Long)
 
 #Department
 GET         /readDepartment                                                                  controllers.DepartmentCtrl.read()
@@ -81,15 +97,24 @@ POST        /createAddress                                                      
 POST        /saveContact                                                                     controllers.ContactCtrl.save()
 
 #AboutInstitution
-GET         /readAboutInstitution                                                            controllers.AboutInstitutionCtrl.read()
-POST        /saveAboutInstitution                                                            controllers.AboutInstitutionCtrl.create()
+POST        /saveAboutInstitution               controllers.AboutInstitutionCtrl.save()
 GET         /institutionLst/:page/              controllers.AboutInstitutionCtrl.list(page: Int, filter: String ?="")
 GET         /institution/                       controllers.AboutInstitutionCtrl.getInstitutionJson(q: String)
 GET         /institutionDetail/:instDetail      controllers.AboutInstitutionCtrl.getInstitutionDetail(instDetail: String)
+GET         /institution/show/:subaction/       controllers.AboutInstitutionCtrl.show(subaction: String, institutionPK: Long)
+
+#Application Detail
+POST        /saveApplicationDetail               controllers.admins.ApplicationDetailCtrl.save()
+GET        /ApprovedStudent                      controllers.admins.ApplicationDetailCtrl.approved(uicode: String)
+GET        /ApplicationDetail/:page/             controllers.admins.ApplicationDetailCtrl.list(page: Int, filter: String ?="")
+
+#Fee Student
+GET        /InitFeeStudent                     controllers.admins.FeeStudentCtrl.initialiseNewApprovedStudent(codeUi: String)
 
 ########################################REFERENTIAL#########################################
 
 #RLevel
+GET         /RLevel/                   controllers.referentiels.RLevelCtrl.getLevelJson(q: String)
 GET         /RLevel/:page/             controllers.referentiels.RLevelCtrl.list(page: Int, filter: String ?="")                                                                    
 POST        /saveRLevel                controllers.referentiels.RLevelCtrl.save()
 GET         /deleteRLevel              controllers.referentiels.RLevelCtrl.delete(rLevelPK: Long)
@@ -156,12 +181,25 @@ POST        /saveRCountry                controllers.referentiels.RCountryCtrl.s
 GET         /deleteRCountry              controllers.referentiels.RCountryCtrl.delete(rCountryPK: Long)
 GET         /RCountry/show/:subaction/   controllers.referentiels.RCountryCtrl.show(subaction: String, rCountryPK: Long)
 GET         /RCountry/                   controllers.referentiels.RCountryCtrl.getRCountryJson(q: String)
+GET         /RCountry/:rCountryPK        controllers.referentiels.RCountryCtrl.getOneRCountryJson(rCountryPK: Long)
 
 #RSyllabus 
 GET         /RSyllabus/                  controllers.referentiels.RSyllabusCtrl.getRSyllabusNameJson(q: String)
 
 #RAttendanceType
 GET         /RAttendanceType/            controllers.referentiels.RAttendanceTypeCtrl.getRAttendanceTypeJson(q: String)
+
+#RMonth
+GET         /RMonth/            controllers.referentiels.RMonthCtrl.getMonthJson(q: String)
+
+#RYear
+GET         /RYear/             controllers.referentiels.RYearCtrl.getYearJson(q: String)
+
+#RStatus
+GET         /RStatus/           controllers.referentiels.RStatusCtrl.getStatusJson(q: String)
+
+#RCampus
+GET         /RCampus/           controllers.referentiels.RCampusCtrl.getRCampusJson(q: String)
 
 
 #RProfile

@@ -19,7 +19,7 @@ public class ModuleCtrl extends Controller{
 	public Result read() {
 		ModuleSvr m = new ModuleSvr();
 		
-		return ok(module.render(m.findList()));
+		return TODO;
 	}
 	
 	@Transactional
@@ -29,7 +29,7 @@ public class ModuleCtrl extends Controller{
 		Module m = form.get();
 		ms.save(m);
 		
-		return redirect(routes.ModuleCtrl.read());
+		return TODO;
 		
 	}
 

@@ -23,19 +23,25 @@ import javax.validation.constraints.Size;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class AboutInstitution implements Serializable {
 
-    private static final long serialVersionUID = -1230726569;
+    private static final long serialVersionUID = 1547539441;
 
     private String institutionName;
     private String address;
     private String city;
-    private String codeid;
-    private String country;
+    private String code;
     private String description;
     private String email;
     private String postcode;
     private String region;
     private String website;
     private Long   id;
+    private String ownerFname;
+    private String ownerLname;
+    private Long   businessCategory;
+    private Long   countryFk;
+    private Long   phoneNo;
+    private Long   yearEstablished;
+    private String campus;
 
     public AboutInstitution() {}
 
@@ -43,40 +49,58 @@ public class AboutInstitution implements Serializable {
         this.institutionName = value.institutionName;
         this.address = value.address;
         this.city = value.city;
-        this.codeid = value.codeid;
-        this.country = value.country;
+        this.code = value.code;
         this.description = value.description;
         this.email = value.email;
         this.postcode = value.postcode;
         this.region = value.region;
         this.website = value.website;
         this.id = value.id;
+        this.ownerFname = value.ownerFname;
+        this.ownerLname = value.ownerLname;
+        this.businessCategory = value.businessCategory;
+        this.countryFk = value.countryFk;
+        this.phoneNo = value.phoneNo;
+        this.yearEstablished = value.yearEstablished;
+        this.campus = value.campus;
     }
 
     public AboutInstitution(
         String institutionName,
         String address,
         String city,
-        String codeid,
-        String country,
+        String code,
         String description,
         String email,
         String postcode,
         String region,
         String website,
-        Long   id
+        Long   id,
+        String ownerFname,
+        String ownerLname,
+        Long   businessCategory,
+        Long   countryFk,
+        Long   phoneNo,
+        Long   yearEstablished,
+        String campus
     ) {
         this.institutionName = institutionName;
         this.address = address;
         this.city = city;
-        this.codeid = codeid;
-        this.country = country;
+        this.code = code;
         this.description = description;
         this.email = email;
         this.postcode = postcode;
         this.region = region;
         this.website = website;
         this.id = id;
+        this.ownerFname = ownerFname;
+        this.ownerLname = ownerLname;
+        this.businessCategory = businessCategory;
+        this.countryFk = countryFk;
+        this.phoneNo = phoneNo;
+        this.yearEstablished = yearEstablished;
+        this.campus = campus;
     }
 
     @Size(max = 255)
@@ -107,21 +131,12 @@ public class AboutInstitution implements Serializable {
     }
 
     @Size(max = 255)
-    public String getCodeid() {
-        return this.codeid;
+    public String getCode() {
+        return this.code;
     }
 
-    public void setCodeid(String codeid) {
-        this.codeid = codeid;
-    }
-
-    @Size(max = 255)
-    public String getCountry() {
-        return this.country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     @Size(max = 255)
@@ -177,6 +192,65 @@ public class AboutInstitution implements Serializable {
         this.id = id;
     }
 
+    @Size(max = 50)
+    public String getOwnerFname() {
+        return this.ownerFname;
+    }
+
+    public void setOwnerFname(String ownerFname) {
+        this.ownerFname = ownerFname;
+    }
+
+    @Size(max = 50)
+    public String getOwnerLname() {
+        return this.ownerLname;
+    }
+
+    public void setOwnerLname(String ownerLname) {
+        this.ownerLname = ownerLname;
+    }
+
+    public Long getBusinessCategory() {
+        return this.businessCategory;
+    }
+
+    public void setBusinessCategory(Long businessCategory) {
+        this.businessCategory = businessCategory;
+    }
+
+    public Long getCountryFk() {
+        return this.countryFk;
+    }
+
+    public void setCountryFk(Long countryFk) {
+        this.countryFk = countryFk;
+    }
+
+    public Long getPhoneNo() {
+        return this.phoneNo;
+    }
+
+    public void setPhoneNo(Long phoneNo) {
+        this.phoneNo = phoneNo;
+    }
+
+    public Long getYearEstablished() {
+        return this.yearEstablished;
+    }
+
+    public void setYearEstablished(Long yearEstablished) {
+        this.yearEstablished = yearEstablished;
+    }
+
+    @Size(max = 50)
+    public String getCampus() {
+        return this.campus;
+    }
+
+    public void setCampus(String campus) {
+        this.campus = campus;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("AboutInstitution (");
@@ -184,14 +258,20 @@ public class AboutInstitution implements Serializable {
         sb.append(institutionName);
         sb.append(", ").append(address);
         sb.append(", ").append(city);
-        sb.append(", ").append(codeid);
-        sb.append(", ").append(country);
+        sb.append(", ").append(code);
         sb.append(", ").append(description);
         sb.append(", ").append(email);
         sb.append(", ").append(postcode);
         sb.append(", ").append(region);
         sb.append(", ").append(website);
         sb.append(", ").append(id);
+        sb.append(", ").append(ownerFname);
+        sb.append(", ").append(ownerLname);
+        sb.append(", ").append(businessCategory);
+        sb.append(", ").append(countryFk);
+        sb.append(", ").append(phoneNo);
+        sb.append(", ").append(yearEstablished);
+        sb.append(", ").append(campus);
 
         sb.append(")");
         return sb.toString();

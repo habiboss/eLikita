@@ -1,5 +1,4 @@
-@import java.util
-@(module: List[Module])
+(module: List[Module])
 <!DOCTYPE html>
 <html>
 @head("Activités")
@@ -115,13 +114,13 @@
 											</tr>
 										</thead>
 										<tbody>
-										@for(modules <- module){
+										for(modules <- module){
 											<tr>
 														<td></td>
-														<td>@modules.getModuleTitle</td>
-														<td>@modules.getModuleCode</td>
-														<td>@modules.getModuleYear</td>
-														<td>@modules.getModulePeriod</td>
+														<td>modules.getModuleTitle</td>
+														<td>modules.getModuleCode</td>
+														<td>modules.getModuleYear</td>
+														<td>modules.getModulePeriod</td>
 
 											</tr>
 										}

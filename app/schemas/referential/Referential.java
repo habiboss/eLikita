@@ -18,12 +18,16 @@ import org.jooq.impl.SchemaImpl;
 import schemas.DefaultCatalog;
 import schemas.referential.tables.RAttendanceOutcome;
 import schemas.referential.tables.RAttendanceType;
+import schemas.referential.tables.RCampus;
 import schemas.referential.tables.RCategory;
 import schemas.referential.tables.RClassType;
 import schemas.referential.tables.RContactPersonType;
 import schemas.referential.tables.RCountry;
+import schemas.referential.tables.RDepartment;
+import schemas.referential.tables.RDesignation;
 import schemas.referential.tables.RDropAttendanceReason;
 import schemas.referential.tables.RDropTeachReason;
+import schemas.referential.tables.REventType;
 import schemas.referential.tables.RFee;
 import schemas.referential.tables.RLevel;
 import schemas.referential.tables.RMonth;
@@ -31,7 +35,7 @@ import schemas.referential.tables.RProfil;
 import schemas.referential.tables.RStatus;
 import schemas.referential.tables.RSyllabus;
 import schemas.referential.tables.RTeachOutcome;
-import schemas.referential.tables.RUser;
+import schemas.referential.tables.RUserType;
 import schemas.referential.tables.RYear;
 
 
@@ -48,7 +52,7 @@ import schemas.referential.tables.RYear;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Referential extends SchemaImpl {
 
-    private static final long serialVersionUID = -445924309;
+    private static final long serialVersionUID = 1161645295;
 
     /**
      * The reference instance of <code>referential</code>
@@ -64,6 +68,11 @@ public class Referential extends SchemaImpl {
      * The table <code>referential.r_attendance_type</code>.
      */
     public final RAttendanceType R_ATTENDANCE_TYPE = schemas.referential.tables.RAttendanceType.R_ATTENDANCE_TYPE;
+
+    /**
+     * The table <code>referential.r_campus</code>.
+     */
+    public final RCampus R_CAMPUS = schemas.referential.tables.RCampus.R_CAMPUS;
 
     /**
      * The table <code>referential.r_category</code>.
@@ -86,6 +95,18 @@ public class Referential extends SchemaImpl {
     public final RCountry R_COUNTRY = schemas.referential.tables.RCountry.R_COUNTRY;
 
     /**
+     * The table <code>referential.r_department</code>.
+     */
+    public final RDepartment R_DEPARTMENT = schemas.referential.tables.RDepartment.R_DEPARTMENT;
+
+    /**
+     * This table hold information about each and every type of human resources in the institution
+
+Note: Not to mix with the table r_user_type
+     */
+    public final RDesignation R_DESIGNATION = schemas.referential.tables.RDesignation.R_DESIGNATION;
+
+    /**
      * The table <code>referential.r_drop_attendance_reason</code>.
      */
     public final RDropAttendanceReason R_DROP_ATTENDANCE_REASON = schemas.referential.tables.RDropAttendanceReason.R_DROP_ATTENDANCE_REASON;
@@ -94,6 +115,11 @@ public class Referential extends SchemaImpl {
      * The table <code>referential.r_drop_teach_reason</code>.
      */
     public final RDropTeachReason R_DROP_TEACH_REASON = schemas.referential.tables.RDropTeachReason.R_DROP_TEACH_REASON;
+
+    /**
+     * The table <code>referential.r_event_type</code>.
+     */
+    public final REventType R_EVENT_TYPE = schemas.referential.tables.REventType.R_EVENT_TYPE;
 
     /**
      * The table <code>referential.r_fee</code>.
@@ -131,9 +157,9 @@ public class Referential extends SchemaImpl {
     public final RTeachOutcome R_TEACH_OUTCOME = schemas.referential.tables.RTeachOutcome.R_TEACH_OUTCOME;
 
     /**
-     * The table <code>referential.r_user</code>.
+     * The table <code>referential.r_user_type</code>.
      */
-    public final RUser R_USER = schemas.referential.tables.RUser.R_USER;
+    public final RUserType R_USER_TYPE = schemas.referential.tables.RUserType.R_USER_TYPE;
 
     /**
      * The table <code>referential.r_year</code>.
@@ -167,12 +193,16 @@ public class Referential extends SchemaImpl {
         return Arrays.<Sequence<?>>asList(
             Sequences.R_ATTENDANCE_OUTCOME_ID_SEQ,
             Sequences.R_ATTENDANCE_TYPE_ID_SEQ,
+            Sequences.R_CAMPUS_ID_SEQ,
             Sequences.R_CATEGORY_ID_SEQ,
             Sequences.R_CLASS_TYPE_ID_SEQ,
             Sequences.R_CONTACT_PERSON_TYPE_ID_SEQ,
             Sequences.R_COUNTRY_ID_SEQ,
+            Sequences.R_DEPARTMENT_ID_SEQ,
+            Sequences.R_DESIGNATION_ID_SEQ,
             Sequences.R_DROP_ATTENDANCE_REASON_ID_SEQ,
             Sequences.R_DROP_TEACH_REASON_ID_SEQ,
+            Sequences.R_EVENT_TYPE_ID_SEQ,
             Sequences.R_FEE_ID_SEQ,
             Sequences.R_LEVEL_ID_SEQ,
             Sequences.R_MONTH_ID_SEQ,
@@ -195,12 +225,16 @@ public class Referential extends SchemaImpl {
         return Arrays.<Table<?>>asList(
             RAttendanceOutcome.R_ATTENDANCE_OUTCOME,
             RAttendanceType.R_ATTENDANCE_TYPE,
+            RCampus.R_CAMPUS,
             RCategory.R_CATEGORY,
             RClassType.R_CLASS_TYPE,
             RContactPersonType.R_CONTACT_PERSON_TYPE,
             RCountry.R_COUNTRY,
+            RDepartment.R_DEPARTMENT,
+            RDesignation.R_DESIGNATION,
             RDropAttendanceReason.R_DROP_ATTENDANCE_REASON,
             RDropTeachReason.R_DROP_TEACH_REASON,
+            REventType.R_EVENT_TYPE,
             RFee.R_FEE,
             RLevel.R_LEVEL,
             RMonth.R_MONTH,
@@ -208,7 +242,7 @@ public class Referential extends SchemaImpl {
             RStatus.R_STATUS,
             RSyllabus.R_SYLLABUS,
             RTeachOutcome.R_TEACH_OUTCOME,
-            RUser.R_USER,
+            RUserType.R_USER_TYPE,
             RYear.R_YEAR);
     }
 }

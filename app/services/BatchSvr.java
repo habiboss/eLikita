@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import javax.inject.Inject;
 import org.jooq.DSLContext;
 import models.dto.BatchDTO;
+import schemas.public_.Tables;
 import schemas.public_.tables.daos.BatchDao;
 import schemas.public_.tables.pojos.Batch;
 import schemas.public_.tables.records.BatchRecord;
@@ -15,7 +16,7 @@ public class BatchSvr extends BatchDao{
 	@Inject
 	DSLContext sqlContext;
 	@Inject
-	BatchDTOSvr batchDTOSvr;
+	CourseSvr courseSvr;
 	
 	@Inject
 	public BatchSvr(DSLContext sqlContext) {
@@ -64,13 +65,59 @@ public class BatchSvr extends BatchDao{
 
 	public models.util.Page<BatchDTO> pageBatch(int page, int pageSize, String value) {
 		int from_index = (page < 1 ? 0 : page - 1) * pageSize;
-		final List<BatchDTO> batch = batchDTOSvr.batchDTOList().stream()
+		final List<BatchDTO> batch = batchDTOList().stream()
 				.filter(c -> c.getId().toString().contains(value) || c.getBatchName().contains(value))
 				.collect(Collectors.toList());
 		batch.sort((o1, o2) -> (o1.getId().compareTo(o2.getId())));
 		final List<BatchDTO> result = batch.stream().skip(from_index).limit(pageSize)
 				.collect(Collectors.toList());
 		return new models.util.Page<BatchDTO>(result, batch.size(), page, pageSize);
+	}
+	
+	public List<BatchDTO> batchDTOList () {
+		List<Batch> batchLst = findAll();
+ 		List<BatchDTO> batchDTOLst = new ArrayList<>();
+ 			for(Batch batch: batchLst) {
+ 				BatchDTO batchDTO = new BatchDTO();
+ 				batchDTO.setId(batch.getId());
+ 				batchDTO.setBatchName(batch.getBatchName());
+ 				batchDTO.setCourseFk(batch.getCourseFk());
+ 				batchDTO.setCourseTitle(courseSvr.fetchOneById(batch.getCourseFk()).getTitle());
+ 				batchDTO.setEndDate(batch.getEndDate());
+ 				batchDTO.setMaxStudent(batch.getMaxStudent());
+  				batchDTO.setStartDate(batch.getStartDate());
+  				batchDTOLst.add(batchDTO);
+ 			}
+		return batchDTOLst;
+	}
+	
+	public BatchDTO fetchOneBatchDTO(Long batchPK) {
+		BatchDTO batchDTO = new BatchDTO();
+			batchDTO.setId(fetchOneById(batchPK).getId());
+			batchDTO.setBatchName(fetchOneById(batchPK).getBatchName());
+			batchDTO.setCourseFk(fetchOneById(batchPK).getCourseFk());
+			batchDTO.setCourseTitle(courseSvr.fetchOneById(fetchOneById(batchPK).getCourseFk()).getTitle());
+			batchDTO.setEndDate(fetchOneById(batchPK).getEndDate());
+			batchDTO.setMaxStudent(fetchOneById(batchPK).getMaxStudent());
+			batchDTO.setStartDate(fetchOneById(batchPK).getStartDate());
+		return batchDTO;
+	}
+	
+	public List<BatchDTO> getBatchByCourse(Long coursePK) {
+		List<Batch> batchLst = sqlContext.selectFrom(Tables.BATCH).where(Tables.BATCH.COURSE_FK.eq(coursePK)).fetchInto(Batch.class);
+		List<BatchDTO> batchDTOLst = new ArrayList<>();
+		for(Batch batch: batchLst) {
+				BatchDTO batchDTO = new BatchDTO();
+				batchDTO.setId(batch.getId());
+				batchDTO.setBatchName(batch.getBatchName());
+				batchDTO.setCourseFk(batch.getCourseFk());
+				batchDTO.setCourseTitle(courseSvr.fetchOneById(batch.getCourseFk()).getTitle());
+				batchDTO.setEndDate(batch.getEndDate());
+				batchDTO.setMaxStudent(batch.getMaxStudent());
+				batchDTO.setStartDate(batch.getStartDate());
+				batchDTOLst.add(batchDTO);
+			}
+		return batchDTOLst;
 	}
 
 }

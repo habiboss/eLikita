@@ -34,6 +34,11 @@ public class Sequences {
     public static final Sequence<Long> R_ATTENDANCE_TYPE_ID_SEQ = new SequenceImpl<Long>("r_attendance_type_id_seq", Referential.REFERENTIAL, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
 
     /**
+     * The sequence <code>referential.r_campus_id_seq</code>
+     */
+    public static final Sequence<Long> R_CAMPUS_ID_SEQ = new SequenceImpl<Long>("r_campus_id_seq", Referential.REFERENTIAL, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+
+    /**
      * The sequence <code>referential.r_category_id_seq</code>
      */
     public static final Sequence<Long> R_CATEGORY_ID_SEQ = new SequenceImpl<Long>("r_category_id_seq", Referential.REFERENTIAL, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
@@ -54,6 +59,16 @@ public class Sequences {
     public static final Sequence<Long> R_COUNTRY_ID_SEQ = new SequenceImpl<Long>("r_country_id_seq", Referential.REFERENTIAL, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
 
     /**
+     * The sequence <code>referential.r_department_id_seq</code>
+     */
+    public static final Sequence<Long> R_DEPARTMENT_ID_SEQ = new SequenceImpl<Long>("r_department_id_seq", Referential.REFERENTIAL, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+
+    /**
+     * The sequence <code>referential.r_designation_id_seq</code>
+     */
+    public static final Sequence<Long> R_DESIGNATION_ID_SEQ = new SequenceImpl<Long>("r_designation_id_seq", Referential.REFERENTIAL, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+
+    /**
      * The sequence <code>referential.r_drop_attendance_reason_id_seq</code>
      */
     public static final Sequence<Long> R_DROP_ATTENDANCE_REASON_ID_SEQ = new SequenceImpl<Long>("r_drop_attendance_reason_id_seq", Referential.REFERENTIAL, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
@@ -62,6 +77,11 @@ public class Sequences {
      * The sequence <code>referential.r_drop_teach_reason_id_seq</code>
      */
     public static final Sequence<Long> R_DROP_TEACH_REASON_ID_SEQ = new SequenceImpl<Long>("r_drop_teach_reason_id_seq", Referential.REFERENTIAL, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+
+    /**
+     * The sequence <code>referential.r_event_type_id_seq</code>
+     */
+    public static final Sequence<Long> R_EVENT_TYPE_ID_SEQ = new SequenceImpl<Long>("r_event_type_id_seq", Referential.REFERENTIAL, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
 
     /**
      * The sequence <code>referential.r_fee_id_seq</code>

@@ -6,6 +6,7 @@ package schemas.administrator.tables;
 
 import java.math.BigDecimal;
 import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,7 +38,7 @@ import schemas.administrator.tables.records.FeeStudentRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class FeeStudent extends TableImpl<FeeStudentRecord> {
 
-    private static final long serialVersionUID = 65401613;
+    private static final long serialVersionUID = 1327688825;
 
     /**
      * The reference instance of <code>administrator.fee_student</code>
@@ -58,11 +59,6 @@ public class FeeStudent extends TableImpl<FeeStudentRecord> {
     public final TableField<FeeStudentRecord, Long> ID = createField("id", org.jooq.impl.SQLDataType.BIGINT.nullable(false).defaultValue(org.jooq.impl.DSL.field("nextval('administrator.fee_student_id_seq'::regclass)", org.jooq.impl.SQLDataType.BIGINT)), this, "");
 
     /**
-     * The column <code>administrator.fee_student.fee_fk</code>.
-     */
-    public final TableField<FeeStudentRecord, String> FEE_FK = createField("fee_fk", org.jooq.impl.SQLDataType.VARCHAR.length(10), this, "");
-
-    /**
      * The column <code>administrator.fee_student.student_fk</code>.
      */
     public final TableField<FeeStudentRecord, String> STUDENT_FK = createField("student_fk", org.jooq.impl.SQLDataType.VARCHAR.length(30), this, "");
@@ -80,12 +76,27 @@ public class FeeStudent extends TableImpl<FeeStudentRecord> {
     /**
      * The column <code>administrator.fee_student.discount_fk</code>.
      */
-    public final TableField<FeeStudentRecord, String> DISCOUNT_FK = createField("discount_fk", org.jooq.impl.SQLDataType.VARCHAR.length(10), this, "");
+    public final TableField<FeeStudentRecord, String> DISCOUNT_FK = createField("discount_fk", org.jooq.impl.SQLDataType.VARCHAR, this, "");
+
+    /**
+     * The column <code>administrator.fee_student.due_date</code>.
+     */
+    public final TableField<FeeStudentRecord, Timestamp> DUE_DATE = createField("due_date", org.jooq.impl.SQLDataType.TIMESTAMP, this, "");
+
+    /**
+     * The column <code>administrator.fee_student.last_date</code>.
+     */
+    public final TableField<FeeStudentRecord, Timestamp> LAST_DATE = createField("last_date", org.jooq.impl.SQLDataType.TIMESTAMP, this, "");
+
+    /**
+     * The column <code>administrator.fee_student.fee_fk</code>.
+     */
+    public final TableField<FeeStudentRecord, Long> FEE_FK = createField("fee_fk", org.jooq.impl.SQLDataType.BIGINT, this, "");
 
     /**
      * The column <code>administrator.fee_student.status_fk</code>.
      */
-    public final TableField<FeeStudentRecord, String> STATUS_FK = createField("status_fk", org.jooq.impl.SQLDataType.VARCHAR.length(10), this, "");
+    public final TableField<FeeStudentRecord, Long> STATUS_FK = createField("status_fk", org.jooq.impl.SQLDataType.BIGINT, this, "");
 
     /**
      * Create a <code>administrator.fee_student</code> table reference

@@ -7,7 +7,7 @@ import play.data.FormFactory;
 import play.db.jpa.Transactional;
 import play.mvc.Controller;
 import play.mvc.Result;
-import services.EventService;
+import services.EventSvr;
 import views.html.admin.*;
 
 public class EventCtrl extends Controller{
@@ -22,7 +22,7 @@ public class EventCtrl extends Controller{
 
 	@Transactional
 	public Result save() {
-        EventService x = new EventService();
+        EventSvr x = new EventSvr();
 		Form<Event> form = formFactory.form(Event.class).bindFromRequest();
 		Event event = form.get();
 		//event.setStartDate(form.field("startDate").value());
@@ -39,7 +39,7 @@ public class EventCtrl extends Controller{
 	
 	@Transactional
 	public Result display() {
-		EventService eventService = new EventService();
+		EventSvr eventService = new EventSvr();
 		
 		return ok(event.render(eventService.findList()));
 		

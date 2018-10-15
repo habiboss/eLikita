@@ -24,9 +24,9 @@ import org.jooq.impl.SequenceImpl;
 public class Sequences {
 
     /**
-     * The sequence <code>administrator.academic_year_id_seq</code>
+     * The sequence <code>administrator.application_user_id_seq</code>
      */
-    public static final Sequence<Long> ACADEMIC_YEAR_ID_SEQ = new SequenceImpl<Long>("academic_year_id_seq", Administrator.ADMINISTRATOR, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+    public static final Sequence<Long> APPLICATION_USER_ID_SEQ = new SequenceImpl<Long>("application_user_id_seq", Administrator.ADMINISTRATOR, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
 
     /**
      * The sequence <code>administrator.attendance_id_seq</code>
@@ -57,6 +57,26 @@ public class Sequences {
      * The sequence <code>administrator.instructor_presence_id_seq</code>
      */
     public static final Sequence<Long> INSTRUCTOR_PRESENCE_ID_SEQ = new SequenceImpl<Long>("instructor_presence_id_seq", Administrator.ADMINISTRATOR, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+
+    /**
+     * The sequence <code>administrator.journee_id_seq</code>
+     */
+    public static final Sequence<Long> JOURNEE_ID_SEQ = new SequenceImpl<Long>("journee_id_seq", Administrator.ADMINISTRATOR, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+
+    /**
+     * The sequence <code>administrator.log_info_id_seq</code>
+     */
+    public static final Sequence<Long> LOG_INFO_ID_SEQ = new SequenceImpl<Long>("log_info_id_seq", Administrator.ADMINISTRATOR, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+
+    /**
+     * The sequence <code>administrator.r_academic_year_id_seq</code>
+     */
+    public static final Sequence<Long> R_ACADEMIC_YEAR_ID_SEQ = new SequenceImpl<Long>("r_academic_year_id_seq", Administrator.ADMINISTRATOR, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
+
+    /**
+     * The sequence <code>administrator.ro_utilisateurs_id_seq</code>
+     */
+    public static final Sequence<Long> RO_UTILISATEURS_ID_SEQ = new SequenceImpl<Long>("ro_utilisateurs_id_seq", Administrator.ADMINISTRATOR, org.jooq.impl.SQLDataType.BIGINT.nullable(false));
 
     /**
      * The sequence <code>administrator.student_presence_id_seq</code>

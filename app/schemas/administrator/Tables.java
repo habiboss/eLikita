@@ -7,12 +7,16 @@ package schemas.administrator;
 import javax.annotation.Generated;
 
 import schemas.administrator.tables.AcademicYear;
+import schemas.administrator.tables.ApplicationUser;
 import schemas.administrator.tables.Attendance;
 import schemas.administrator.tables.ClassSchedule;
 import schemas.administrator.tables.ContactPersonStudent;
 import schemas.administrator.tables.FeeStudent;
 import schemas.administrator.tables.Fees;
 import schemas.administrator.tables.InstructorPresence;
+import schemas.administrator.tables.Journee;
+import schemas.administrator.tables.LogInfo;
+import schemas.administrator.tables.RoUsers;
 import schemas.administrator.tables.StudentPresence;
 import schemas.administrator.tables.Teach;
 import schemas.administrator.tables.Transaction;
@@ -35,6 +39,11 @@ public class Tables {
      * The table <code>administrator.academic_year</code>.
      */
     public static final AcademicYear ACADEMIC_YEAR = schemas.administrator.tables.AcademicYear.ACADEMIC_YEAR;
+
+    /**
+     * The table <code>administrator.application_user</code>.
+     */
+    public static final ApplicationUser APPLICATION_USER = schemas.administrator.tables.ApplicationUser.APPLICATION_USER;
 
     /**
      * The table <code>administrator.attendance</code>.
@@ -65,6 +74,21 @@ public class Tables {
      * The table <code>administrator.instructor_presence</code>.
      */
     public static final InstructorPresence INSTRUCTOR_PRESENCE = schemas.administrator.tables.InstructorPresence.INSTRUCTOR_PRESENCE;
+
+    /**
+     * The table <code>administrator.journee</code>.
+     */
+    public static final Journee JOURNEE = schemas.administrator.tables.Journee.JOURNEE;
+
+    /**
+     * The table <code>administrator.log_info</code>.
+     */
+    public static final LogInfo LOG_INFO = schemas.administrator.tables.LogInfo.LOG_INFO;
+
+    /**
+     * The table <code>administrator.ro_users</code>.
+     */
+    public static final RoUsers RO_USERS = schemas.administrator.tables.RoUsers.RO_USERS;
 
     /**
      * The table <code>administrator.student_presence</code>.

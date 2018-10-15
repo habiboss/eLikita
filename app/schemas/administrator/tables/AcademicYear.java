@@ -35,7 +35,7 @@ import schemas.administrator.tables.records.AcademicYearRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class AcademicYear extends TableImpl<AcademicYearRecord> {
 
-    private static final long serialVersionUID = -1564335917;
+    private static final long serialVersionUID = -662713626;
 
     /**
      * The reference instance of <code>administrator.academic_year</code>
@@ -53,32 +53,32 @@ public class AcademicYear extends TableImpl<AcademicYearRecord> {
     /**
      * The column <code>administrator.academic_year.id</code>.
      */
-    public final TableField<AcademicYearRecord, Long> ID = createField("id", org.jooq.impl.SQLDataType.BIGINT.nullable(false).defaultValue(org.jooq.impl.DSL.field("nextval('administrator.academic_year_id_seq'::regclass)", org.jooq.impl.SQLDataType.BIGINT)), this, "");
+    public final TableField<AcademicYearRecord, Long> ID = createField("id", org.jooq.impl.SQLDataType.BIGINT.nullable(false).defaultValue(org.jooq.impl.DSL.field("nextval('administrator.r_academic_year_id_seq'::regclass)", org.jooq.impl.SQLDataType.BIGINT)), this, "");
 
     /**
-     * The column <code>administrator.academic_year.start_year</code>.
+     * The column <code>administrator.academic_year.status_fk</code>.
      */
-    public final TableField<AcademicYearRecord, String> START_YEAR = createField("start_year", org.jooq.impl.SQLDataType.VARCHAR.length(4), this, "");
+    public final TableField<AcademicYearRecord, Long> STATUS_FK = createField("status_fk", org.jooq.impl.SQLDataType.BIGINT, this, "");
 
     /**
-     * The column <code>administrator.academic_year.end_year</code>.
+     * The column <code>administrator.academic_year.end_month_fk</code>.
      */
-    public final TableField<AcademicYearRecord, String> END_YEAR = createField("end_year", org.jooq.impl.SQLDataType.VARCHAR.length(4), this, "");
+    public final TableField<AcademicYearRecord, Long> END_MONTH_FK = createField("end_month_fk", org.jooq.impl.SQLDataType.BIGINT, this, "");
 
     /**
-     * The column <code>administrator.academic_year.start_month</code>.
+     * The column <code>administrator.academic_year.start_month_fk</code>.
      */
-    public final TableField<AcademicYearRecord, String> START_MONTH = createField("start_month", org.jooq.impl.SQLDataType.VARCHAR.length(10), this, "");
+    public final TableField<AcademicYearRecord, Long> START_MONTH_FK = createField("start_month_fk", org.jooq.impl.SQLDataType.BIGINT, this, "");
 
     /**
-     * The column <code>administrator.academic_year.end_month</code>.
+     * The column <code>administrator.academic_year.end_year_fk</code>.
      */
-    public final TableField<AcademicYearRecord, String> END_MONTH = createField("end_month", org.jooq.impl.SQLDataType.VARCHAR.length(10), this, "");
+    public final TableField<AcademicYearRecord, Long> END_YEAR_FK = createField("end_year_fk", org.jooq.impl.SQLDataType.BIGINT, this, "");
 
     /**
-     * The column <code>administrator.academic_year.status</code>.
+     * The column <code>administrator.academic_year.start_year_fk</code>.
      */
-    public final TableField<AcademicYearRecord, String> STATUS = createField("status", org.jooq.impl.SQLDataType.VARCHAR.length(15), this, "");
+    public final TableField<AcademicYearRecord, Long> START_YEAR_FK = createField("start_year_fk", org.jooq.impl.SQLDataType.BIGINT, this, "");
 
     /**
      * Create a <code>administrator.academic_year</code> table reference

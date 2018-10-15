@@ -52,20 +52,6 @@ public class ApplicationDetailDao extends DAOImpl<ApplicationDetailRecord, schem
     }
 
     /**
-     * Fetch records that have <code>id IN (values)</code>
-     */
-    public List<schemas.public_.tables.pojos.ApplicationDetail> fetchById(Long... values) {
-        return fetch(ApplicationDetail.APPLICATION_DETAIL.ID, values);
-    }
-
-    /**
-     * Fetch a unique record that has <code>id = value</code>
-     */
-    public schemas.public_.tables.pojos.ApplicationDetail fetchOneById(Long value) {
-        return fetchOne(ApplicationDetail.APPLICATION_DETAIL.ID, value);
-    }
-
-    /**
      * Fetch records that have <code>admission_officer IN (values)</code>
      */
     public List<schemas.public_.tables.pojos.ApplicationDetail> fetchByAdmissionOfficer(String... values) {
@@ -73,17 +59,24 @@ public class ApplicationDetailDao extends DAOImpl<ApplicationDetailRecord, schem
     }
 
     /**
-     * Fetch records that have <code>app_code IN (values)</code>
+     * Fetch records that have <code>code IN (values)</code>
      */
-    public List<schemas.public_.tables.pojos.ApplicationDetail> fetchByAppCode(String... values) {
-        return fetch(ApplicationDetail.APPLICATION_DETAIL.APP_CODE, values);
+    public List<schemas.public_.tables.pojos.ApplicationDetail> fetchByCode(String... values) {
+        return fetch(ApplicationDetail.APPLICATION_DETAIL.CODE, values);
     }
 
     /**
-     * Fetch records that have <code>course_title IN (values)</code>
+     * Fetch a unique record that has <code>code = value</code>
      */
-    public List<schemas.public_.tables.pojos.ApplicationDetail> fetchByCourseTitle(String... values) {
-        return fetch(ApplicationDetail.APPLICATION_DETAIL.COURSE_TITLE, values);
+    public schemas.public_.tables.pojos.ApplicationDetail fetchOneByCode(String value) {
+        return fetchOne(ApplicationDetail.APPLICATION_DETAIL.CODE, value);
+    }
+
+    /**
+     * Fetch records that have <code>course_fk IN (values)</code>
+     */
+    public List<schemas.public_.tables.pojos.ApplicationDetail> fetchByCourseFk(String... values) {
+        return fetch(ApplicationDetail.APPLICATION_DETAIL.COURSE_FK, values);
     }
 
     /**
@@ -126,5 +119,40 @@ public class ApplicationDetailDao extends DAOImpl<ApplicationDetailRecord, schem
      */
     public List<schemas.public_.tables.pojos.ApplicationDetail> fetchByStatus(String... values) {
         return fetch(ApplicationDetail.APPLICATION_DETAIL.STATUS, values);
+    }
+
+    /**
+     * Fetch records that have <code>batch_fk IN (values)</code>
+     */
+    public List<schemas.public_.tables.pojos.ApplicationDetail> fetchByBatchFk(Long... values) {
+        return fetch(ApplicationDetail.APPLICATION_DETAIL.BATCH_FK, values);
+    }
+
+    /**
+     * Fetch records that have <code>id IN (values)</code>
+     */
+    public List<schemas.public_.tables.pojos.ApplicationDetail> fetchById(Long... values) {
+        return fetch(ApplicationDetail.APPLICATION_DETAIL.ID, values);
+    }
+
+    /**
+     * Fetch a unique record that has <code>id = value</code>
+     */
+    public schemas.public_.tables.pojos.ApplicationDetail fetchOneById(Long value) {
+        return fetchOne(ApplicationDetail.APPLICATION_DETAIL.ID, value);
+    }
+
+    /**
+     * Fetch records that have <code>academic_year IN (values)</code>
+     */
+    public List<schemas.public_.tables.pojos.ApplicationDetail> fetchByAcademicYear(String... values) {
+        return fetch(ApplicationDetail.APPLICATION_DETAIL.ACADEMIC_YEAR, values);
+    }
+
+    /**
+     * Fetch records that have <code>campus_fk IN (values)</code>
+     */
+    public List<schemas.public_.tables.pojos.ApplicationDetail> fetchByCampusFk(Long... values) {
+        return fetch(ApplicationDetail.APPLICATION_DETAIL.CAMPUS_FK, values);
     }
 }

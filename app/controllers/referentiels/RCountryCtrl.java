@@ -22,6 +22,11 @@ public class RCountryCtrl extends Controller{
 		return ok(play.libs.Json.toJson(rCountrySvr.findByRCountry(q)));
 	}
 	
+	public Result getOneRCountryJson(Long r_countryID) {
+		// TODO Auto-generated method stub
+		return ok(play.libs.Json.toJson(rCountrySvr.findOneByRCountry(r_countryID).getPhonecode()));
+	}
+	
 	public Result show(String subAction, Long rCountryPK) {
 		RCountry rCntry = new RCountry();
 		String viewMode = "";

@@ -17,12 +17,16 @@ import org.jooq.impl.SchemaImpl;
 
 import schemas.DefaultCatalog;
 import schemas.administrator.tables.AcademicYear;
+import schemas.administrator.tables.ApplicationUser;
 import schemas.administrator.tables.Attendance;
 import schemas.administrator.tables.ClassSchedule;
 import schemas.administrator.tables.ContactPersonStudent;
 import schemas.administrator.tables.FeeStudent;
 import schemas.administrator.tables.Fees;
 import schemas.administrator.tables.InstructorPresence;
+import schemas.administrator.tables.Journee;
+import schemas.administrator.tables.LogInfo;
+import schemas.administrator.tables.RoUsers;
 import schemas.administrator.tables.StudentPresence;
 import schemas.administrator.tables.Teach;
 import schemas.administrator.tables.Transaction;
@@ -41,7 +45,7 @@ import schemas.administrator.tables.Transaction;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Administrator extends SchemaImpl {
 
-    private static final long serialVersionUID = -910934471;
+    private static final long serialVersionUID = -1144567411;
 
     /**
      * The reference instance of <code>administrator</code>
@@ -52,6 +56,11 @@ public class Administrator extends SchemaImpl {
      * The table <code>administrator.academic_year</code>.
      */
     public final AcademicYear ACADEMIC_YEAR = schemas.administrator.tables.AcademicYear.ACADEMIC_YEAR;
+
+    /**
+     * The table <code>administrator.application_user</code>.
+     */
+    public final ApplicationUser APPLICATION_USER = schemas.administrator.tables.ApplicationUser.APPLICATION_USER;
 
     /**
      * The table <code>administrator.attendance</code>.
@@ -82,6 +91,21 @@ public class Administrator extends SchemaImpl {
      * The table <code>administrator.instructor_presence</code>.
      */
     public final InstructorPresence INSTRUCTOR_PRESENCE = schemas.administrator.tables.InstructorPresence.INSTRUCTOR_PRESENCE;
+
+    /**
+     * The table <code>administrator.journee</code>.
+     */
+    public final Journee JOURNEE = schemas.administrator.tables.Journee.JOURNEE;
+
+    /**
+     * The table <code>administrator.log_info</code>.
+     */
+    public final LogInfo LOG_INFO = schemas.administrator.tables.LogInfo.LOG_INFO;
+
+    /**
+     * The table <code>administrator.ro_users</code>.
+     */
+    public final RoUsers RO_USERS = schemas.administrator.tables.RoUsers.RO_USERS;
 
     /**
      * The table <code>administrator.student_presence</code>.
@@ -123,13 +147,17 @@ public class Administrator extends SchemaImpl {
 
     private final List<Sequence<?>> getSequences0() {
         return Arrays.<Sequence<?>>asList(
-            Sequences.ACADEMIC_YEAR_ID_SEQ,
+            Sequences.APPLICATION_USER_ID_SEQ,
             Sequences.ATTENDANCE_ID_SEQ,
             Sequences.CLASS_SCHEDULE_ID_SEQ,
             Sequences.CONTACT_PERSON_STUDENT_ID_SEQ,
             Sequences.FEE_STUDENT_ID_SEQ,
             Sequences.FEES_ID_SEQ,
             Sequences.INSTRUCTOR_PRESENCE_ID_SEQ,
+            Sequences.JOURNEE_ID_SEQ,
+            Sequences.LOG_INFO_ID_SEQ,
+            Sequences.R_ACADEMIC_YEAR_ID_SEQ,
+            Sequences.RO_UTILISATEURS_ID_SEQ,
             Sequences.STUDENT_PRESENCE_ID_SEQ,
             Sequences.TEACH_ID_SEQ,
             Sequences.TRANSACTION_ID_SEQ);
@@ -145,12 +173,16 @@ public class Administrator extends SchemaImpl {
     private final List<Table<?>> getTables0() {
         return Arrays.<Table<?>>asList(
             AcademicYear.ACADEMIC_YEAR,
+            ApplicationUser.APPLICATION_USER,
             Attendance.ATTENDANCE,
             ClassSchedule.CLASS_SCHEDULE,
             ContactPersonStudent.CONTACT_PERSON_STUDENT,
             FeeStudent.FEE_STUDENT,
             Fees.FEES,
             InstructorPresence.INSTRUCTOR_PRESENCE,
+            Journee.JOURNEE,
+            LogInfo.LOG_INFO,
+            RoUsers.RO_USERS,
             StudentPresence.STUDENT_PRESENCE,
             Teach.TEACH,
             Transaction.TRANSACTION);

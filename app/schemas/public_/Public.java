@@ -22,8 +22,8 @@ import schemas.public_.tables.AccountProfile;
 import schemas.public_.tables.AdditionalInfo;
 import schemas.public_.tables.AddressDetail;
 import schemas.public_.tables.Annoucement;
-import schemas.public_.tables.Application;
 import schemas.public_.tables.ApplicationDetail;
+import schemas.public_.tables.AssignSubject;
 import schemas.public_.tables.Assignment;
 import schemas.public_.tables.BankAccount;
 import schemas.public_.tables.Batch;
@@ -38,13 +38,11 @@ import schemas.public_.tables.EqualityData;
 import schemas.public_.tables.Event;
 import schemas.public_.tables.Experience;
 import schemas.public_.tables.Finance;
-import schemas.public_.tables.HomeAddress;
 import schemas.public_.tables.InformationStatistic;
 import schemas.public_.tables.Institution;
 import schemas.public_.tables.Institutionregistration;
 import schemas.public_.tables.Lecturer;
 import schemas.public_.tables.Module;
-import schemas.public_.tables.Nationality;
 import schemas.public_.tables.NationalityDetail;
 import schemas.public_.tables.Note;
 import schemas.public_.tables.ParentInfo;
@@ -71,7 +69,7 @@ import schemas.public_.tables.VisaDetail;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Public extends SchemaImpl {
 
-    private static final long serialVersionUID = 1710278816;
+    private static final long serialVersionUID = -906557836;
 
     /**
      * The reference instance of <code>public</code>
@@ -109,14 +107,14 @@ public class Public extends SchemaImpl {
     public final Annoucement ANNOUCEMENT = schemas.public_.tables.Annoucement.ANNOUCEMENT;
 
     /**
-     * The table <code>public.application</code>.
-     */
-    public final Application APPLICATION = schemas.public_.tables.Application.APPLICATION;
-
-    /**
      * The table <code>public.application_detail</code>.
      */
     public final ApplicationDetail APPLICATION_DETAIL = schemas.public_.tables.ApplicationDetail.APPLICATION_DETAIL;
+
+    /**
+     * The table <code>public.assign_subject</code>.
+     */
+    public final AssignSubject ASSIGN_SUBJECT = schemas.public_.tables.AssignSubject.ASSIGN_SUBJECT;
 
     /**
      * The table <code>public.assignment</code>.
@@ -189,11 +187,6 @@ public class Public extends SchemaImpl {
     public final Finance FINANCE = schemas.public_.tables.Finance.FINANCE;
 
     /**
-     * The table <code>public.home_address</code>.
-     */
-    public final HomeAddress HOME_ADDRESS = schemas.public_.tables.HomeAddress.HOME_ADDRESS;
-
-    /**
      * The table <code>public.information_statistic</code>.
      */
     public final InformationStatistic INFORMATION_STATISTIC = schemas.public_.tables.InformationStatistic.INFORMATION_STATISTIC;
@@ -217,11 +210,6 @@ public class Public extends SchemaImpl {
      * The table <code>public.module</code>.
      */
     public final Module MODULE = schemas.public_.tables.Module.MODULE;
-
-    /**
-     * The table <code>public.nationality</code>.
-     */
-    public final Nationality NATIONALITY = schemas.public_.tables.Nationality.NATIONALITY;
 
     /**
      * The table <code>public.nationality_detail</code>.
@@ -306,6 +294,8 @@ public class Public extends SchemaImpl {
             Sequences.ABOUT_INSTITUTION_ID_SEQ,
             Sequences.ADDITIONAL_INFO_ID_SEQ,
             Sequences.ADDRESS_DETAIL_ID_SEQ,
+            Sequences.APPLICATION_DETAIL_ID_SEQ,
+            Sequences.ASSIGN_SUBJECT_ID_SEQ,
             Sequences.ASSIGNMENT_ID_SEQ,
             Sequences.BATCH_ID_SEQ,
             Sequences.CLASSE_ID_SEQ,
@@ -335,8 +325,8 @@ public class Public extends SchemaImpl {
             AdditionalInfo.ADDITIONAL_INFO,
             AddressDetail.ADDRESS_DETAIL,
             Annoucement.ANNOUCEMENT,
-            Application.APPLICATION,
             ApplicationDetail.APPLICATION_DETAIL,
+            AssignSubject.ASSIGN_SUBJECT,
             Assignment.ASSIGNMENT,
             BankAccount.BANK_ACCOUNT,
             Batch.BATCH,
@@ -351,13 +341,11 @@ public class Public extends SchemaImpl {
             Event.EVENT,
             Experience.EXPERIENCE,
             Finance.FINANCE,
-            HomeAddress.HOME_ADDRESS,
             InformationStatistic.INFORMATION_STATISTIC,
             Institution.INSTITUTION,
             Institutionregistration.INSTITUTIONREGISTRATION,
             Lecturer.LECTURER,
             Module.MODULE,
-            Nationality.NATIONALITY,
             NationalityDetail.NATIONALITY_DETAIL,
             Note.NOTE,
             ParentInfo.PARENT_INFO,

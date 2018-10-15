@@ -7,7 +7,6 @@ package schemas.administrator.tables.pojos;
 import java.io.Serializable;
 
 import javax.annotation.Generated;
-import javax.validation.constraints.Size;
 
 
 /**
@@ -23,40 +22,40 @@ import javax.validation.constraints.Size;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class AcademicYear implements Serializable {
 
-    private static final long serialVersionUID = -1908320549;
+    private static final long serialVersionUID = -588041995;
 
-    private Long   id;
-    private String startYear;
-    private String endYear;
-    private String startMonth;
-    private String endMonth;
-    private String status;
+    private Long id;
+    private Long statusFk;
+    private Long endMonthFk;
+    private Long startMonthFk;
+    private Long endYearFk;
+    private Long startYearFk;
 
     public AcademicYear() {}
 
     public AcademicYear(AcademicYear value) {
         this.id = value.id;
-        this.startYear = value.startYear;
-        this.endYear = value.endYear;
-        this.startMonth = value.startMonth;
-        this.endMonth = value.endMonth;
-        this.status = value.status;
+        this.statusFk = value.statusFk;
+        this.endMonthFk = value.endMonthFk;
+        this.startMonthFk = value.startMonthFk;
+        this.endYearFk = value.endYearFk;
+        this.startYearFk = value.startYearFk;
     }
 
     public AcademicYear(
-        Long   id,
-        String startYear,
-        String endYear,
-        String startMonth,
-        String endMonth,
-        String status
+        Long id,
+        Long statusFk,
+        Long endMonthFk,
+        Long startMonthFk,
+        Long endYearFk,
+        Long startYearFk
     ) {
         this.id = id;
-        this.startYear = startYear;
-        this.endYear = endYear;
-        this.startMonth = startMonth;
-        this.endMonth = endMonth;
-        this.status = status;
+        this.statusFk = statusFk;
+        this.endMonthFk = endMonthFk;
+        this.startMonthFk = startMonthFk;
+        this.endYearFk = endYearFk;
+        this.startYearFk = startYearFk;
     }
 
     public Long getId() {
@@ -67,49 +66,44 @@ public class AcademicYear implements Serializable {
         this.id = id;
     }
 
-    @Size(max = 4)
-    public String getStartYear() {
-        return this.startYear;
+    public Long getStatusFk() {
+        return this.statusFk;
     }
 
-    public void setStartYear(String startYear) {
-        this.startYear = startYear;
+    public void setStatusFk(Long statusFk) {
+        this.statusFk = statusFk;
     }
 
-    @Size(max = 4)
-    public String getEndYear() {
-        return this.endYear;
+    public Long getEndMonthFk() {
+        return this.endMonthFk;
     }
 
-    public void setEndYear(String endYear) {
-        this.endYear = endYear;
+    public void setEndMonthFk(Long endMonthFk) {
+        this.endMonthFk = endMonthFk;
     }
 
-    @Size(max = 10)
-    public String getStartMonth() {
-        return this.startMonth;
+    public Long getStartMonthFk() {
+        return this.startMonthFk;
     }
 
-    public void setStartMonth(String startMonth) {
-        this.startMonth = startMonth;
+    public void setStartMonthFk(Long startMonthFk) {
+        this.startMonthFk = startMonthFk;
     }
 
-    @Size(max = 10)
-    public String getEndMonth() {
-        return this.endMonth;
+    public Long getEndYearFk() {
+        return this.endYearFk;
     }
 
-    public void setEndMonth(String endMonth) {
-        this.endMonth = endMonth;
+    public void setEndYearFk(Long endYearFk) {
+        this.endYearFk = endYearFk;
     }
 
-    @Size(max = 15)
-    public String getStatus() {
-        return this.status;
+    public Long getStartYearFk() {
+        return this.startYearFk;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setStartYearFk(Long startYearFk) {
+        this.startYearFk = startYearFk;
     }
 
     @Override
@@ -117,11 +111,11 @@ public class AcademicYear implements Serializable {
         StringBuilder sb = new StringBuilder("AcademicYear (");
 
         sb.append(id);
-        sb.append(", ").append(startYear);
-        sb.append(", ").append(endYear);
-        sb.append(", ").append(startMonth);
-        sb.append(", ").append(endMonth);
-        sb.append(", ").append(status);
+        sb.append(", ").append(statusFk);
+        sb.append(", ").append(endMonthFk);
+        sb.append(", ").append(startMonthFk);
+        sb.append(", ").append(endYearFk);
+        sb.append(", ").append(startYearFk);
 
         sb.append(")");
         return sb.toString();

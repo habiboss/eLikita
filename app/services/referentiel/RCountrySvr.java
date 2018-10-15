@@ -36,6 +36,14 @@ public class RCountrySvr extends RCountryDao{
 		}
 		return rCountryLst;
 	}
+	
+	public RCountryRecord findOneByRCountry(Long r_countryID) {
+		// TODO Auto-generated method stub
+ 		RCountryRecord rCountryRecord = sqlContext.fetchOne(Tables.R_COUNTRY, Tables.R_COUNTRY.ID.eq(r_countryID));
+ 		
+ 
+		return rCountryRecord;
+	}
 
 	public void save(schemas.referential.tables.pojos.RCountry rCountry) {
 		// TODO Auto-generated method stub

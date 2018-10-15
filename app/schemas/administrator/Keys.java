@@ -11,22 +11,30 @@ import org.jooq.UniqueKey;
 import org.jooq.impl.AbstractKeys;
 
 import schemas.administrator.tables.AcademicYear;
+import schemas.administrator.tables.ApplicationUser;
 import schemas.administrator.tables.Attendance;
 import schemas.administrator.tables.ClassSchedule;
 import schemas.administrator.tables.ContactPersonStudent;
 import schemas.administrator.tables.FeeStudent;
 import schemas.administrator.tables.Fees;
 import schemas.administrator.tables.InstructorPresence;
+import schemas.administrator.tables.Journee;
+import schemas.administrator.tables.LogInfo;
+import schemas.administrator.tables.RoUsers;
 import schemas.administrator.tables.StudentPresence;
 import schemas.administrator.tables.Teach;
 import schemas.administrator.tables.Transaction;
 import schemas.administrator.tables.records.AcademicYearRecord;
+import schemas.administrator.tables.records.ApplicationUserRecord;
 import schemas.administrator.tables.records.AttendanceRecord;
 import schemas.administrator.tables.records.ClassScheduleRecord;
 import schemas.administrator.tables.records.ContactPersonStudentRecord;
 import schemas.administrator.tables.records.FeeStudentRecord;
 import schemas.administrator.tables.records.FeesRecord;
 import schemas.administrator.tables.records.InstructorPresenceRecord;
+import schemas.administrator.tables.records.JourneeRecord;
+import schemas.administrator.tables.records.LogInfoRecord;
+import schemas.administrator.tables.records.RoUsersRecord;
 import schemas.administrator.tables.records.StudentPresenceRecord;
 import schemas.administrator.tables.records.TeachRecord;
 import schemas.administrator.tables.records.TransactionRecord;
@@ -51,12 +59,16 @@ public class Keys {
     // -------------------------------------------------------------------------
 
     public static final Identity<AcademicYearRecord, Long> IDENTITY_ACADEMIC_YEAR = Identities0.IDENTITY_ACADEMIC_YEAR;
+    public static final Identity<ApplicationUserRecord, Long> IDENTITY_APPLICATION_USER = Identities0.IDENTITY_APPLICATION_USER;
     public static final Identity<AttendanceRecord, Long> IDENTITY_ATTENDANCE = Identities0.IDENTITY_ATTENDANCE;
     public static final Identity<ClassScheduleRecord, Long> IDENTITY_CLASS_SCHEDULE = Identities0.IDENTITY_CLASS_SCHEDULE;
     public static final Identity<ContactPersonStudentRecord, Long> IDENTITY_CONTACT_PERSON_STUDENT = Identities0.IDENTITY_CONTACT_PERSON_STUDENT;
     public static final Identity<FeeStudentRecord, Long> IDENTITY_FEE_STUDENT = Identities0.IDENTITY_FEE_STUDENT;
     public static final Identity<FeesRecord, Long> IDENTITY_FEES = Identities0.IDENTITY_FEES;
     public static final Identity<InstructorPresenceRecord, Long> IDENTITY_INSTRUCTOR_PRESENCE = Identities0.IDENTITY_INSTRUCTOR_PRESENCE;
+    public static final Identity<JourneeRecord, Long> IDENTITY_JOURNEE = Identities0.IDENTITY_JOURNEE;
+    public static final Identity<LogInfoRecord, Long> IDENTITY_LOG_INFO = Identities0.IDENTITY_LOG_INFO;
+    public static final Identity<RoUsersRecord, Long> IDENTITY_RO_USERS = Identities0.IDENTITY_RO_USERS;
     public static final Identity<StudentPresenceRecord, Long> IDENTITY_STUDENT_PRESENCE = Identities0.IDENTITY_STUDENT_PRESENCE;
     public static final Identity<TeachRecord, Long> IDENTITY_TEACH = Identities0.IDENTITY_TEACH;
     public static final Identity<TransactionRecord, Long> IDENTITY_TRANSACTION = Identities0.IDENTITY_TRANSACTION;
@@ -66,12 +78,17 @@ public class Keys {
     // -------------------------------------------------------------------------
 
     public static final UniqueKey<AcademicYearRecord> ACADEMIC_YEAR_PK = UniqueKeys0.ACADEMIC_YEAR_PK;
+    public static final UniqueKey<ApplicationUserRecord> APPLICATION_USER_PK = UniqueKeys0.APPLICATION_USER_PK;
+    public static final UniqueKey<ApplicationUserRecord> APPLICATION_USER_UQ = UniqueKeys0.APPLICATION_USER_UQ;
     public static final UniqueKey<AttendanceRecord> ATTENDANCE_PK = UniqueKeys0.ATTENDANCE_PK;
     public static final UniqueKey<ClassScheduleRecord> CLASS_SCHEDULE_PK = UniqueKeys0.CLASS_SCHEDULE_PK;
     public static final UniqueKey<ContactPersonStudentRecord> CONTACT_PERSON_STUDENT_PK = UniqueKeys0.CONTACT_PERSON_STUDENT_PK;
     public static final UniqueKey<FeeStudentRecord> FEE_STUDENT_PK = UniqueKeys0.FEE_STUDENT_PK;
     public static final UniqueKey<FeesRecord> FEES_PK = UniqueKeys0.FEES_PK;
     public static final UniqueKey<InstructorPresenceRecord> INSTRUCTOR_PRESENCE_PK = UniqueKeys0.INSTRUCTOR_PRESENCE_PK;
+    public static final UniqueKey<JourneeRecord> JOURNEE_PK = UniqueKeys0.JOURNEE_PK;
+    public static final UniqueKey<LogInfoRecord> LOG_PK = UniqueKeys0.LOG_PK;
+    public static final UniqueKey<RoUsersRecord> RO_USERS_PK = UniqueKeys0.RO_USERS_PK;
     public static final UniqueKey<StudentPresenceRecord> STUDENT_PRESENCE_PK = UniqueKeys0.STUDENT_PRESENCE_PK;
     public static final UniqueKey<TeachRecord> TEACH_PK = UniqueKeys0.TEACH_PK;
     public static final UniqueKey<TransactionRecord> TRANSACTION_PK = UniqueKeys0.TRANSACTION_PK;
@@ -87,12 +104,16 @@ public class Keys {
 
     private static class Identities0 extends AbstractKeys {
         public static Identity<AcademicYearRecord, Long> IDENTITY_ACADEMIC_YEAR = createIdentity(AcademicYear.ACADEMIC_YEAR, AcademicYear.ACADEMIC_YEAR.ID);
+        public static Identity<ApplicationUserRecord, Long> IDENTITY_APPLICATION_USER = createIdentity(ApplicationUser.APPLICATION_USER, ApplicationUser.APPLICATION_USER.ID);
         public static Identity<AttendanceRecord, Long> IDENTITY_ATTENDANCE = createIdentity(Attendance.ATTENDANCE, Attendance.ATTENDANCE.ID);
         public static Identity<ClassScheduleRecord, Long> IDENTITY_CLASS_SCHEDULE = createIdentity(ClassSchedule.CLASS_SCHEDULE, ClassSchedule.CLASS_SCHEDULE.ID);
         public static Identity<ContactPersonStudentRecord, Long> IDENTITY_CONTACT_PERSON_STUDENT = createIdentity(ContactPersonStudent.CONTACT_PERSON_STUDENT, ContactPersonStudent.CONTACT_PERSON_STUDENT.ID);
         public static Identity<FeeStudentRecord, Long> IDENTITY_FEE_STUDENT = createIdentity(FeeStudent.FEE_STUDENT, FeeStudent.FEE_STUDENT.ID);
         public static Identity<FeesRecord, Long> IDENTITY_FEES = createIdentity(Fees.FEES, Fees.FEES.ID);
         public static Identity<InstructorPresenceRecord, Long> IDENTITY_INSTRUCTOR_PRESENCE = createIdentity(InstructorPresence.INSTRUCTOR_PRESENCE, InstructorPresence.INSTRUCTOR_PRESENCE.ID);
+        public static Identity<JourneeRecord, Long> IDENTITY_JOURNEE = createIdentity(Journee.JOURNEE, Journee.JOURNEE.ID);
+        public static Identity<LogInfoRecord, Long> IDENTITY_LOG_INFO = createIdentity(LogInfo.LOG_INFO, LogInfo.LOG_INFO.ID);
+        public static Identity<RoUsersRecord, Long> IDENTITY_RO_USERS = createIdentity(RoUsers.RO_USERS, RoUsers.RO_USERS.ID);
         public static Identity<StudentPresenceRecord, Long> IDENTITY_STUDENT_PRESENCE = createIdentity(StudentPresence.STUDENT_PRESENCE, StudentPresence.STUDENT_PRESENCE.ID);
         public static Identity<TeachRecord, Long> IDENTITY_TEACH = createIdentity(Teach.TEACH, Teach.TEACH.ID);
         public static Identity<TransactionRecord, Long> IDENTITY_TRANSACTION = createIdentity(Transaction.TRANSACTION, Transaction.TRANSACTION.ID);
@@ -100,12 +121,17 @@ public class Keys {
 
     private static class UniqueKeys0 extends AbstractKeys {
         public static final UniqueKey<AcademicYearRecord> ACADEMIC_YEAR_PK = createUniqueKey(AcademicYear.ACADEMIC_YEAR, "academic_year_pk", AcademicYear.ACADEMIC_YEAR.ID);
+        public static final UniqueKey<ApplicationUserRecord> APPLICATION_USER_PK = createUniqueKey(ApplicationUser.APPLICATION_USER, "application_user_pk", ApplicationUser.APPLICATION_USER.ID);
+        public static final UniqueKey<ApplicationUserRecord> APPLICATION_USER_UQ = createUniqueKey(ApplicationUser.APPLICATION_USER, "application_user_uq", ApplicationUser.APPLICATION_USER.EMAIL);
         public static final UniqueKey<AttendanceRecord> ATTENDANCE_PK = createUniqueKey(Attendance.ATTENDANCE, "attendance_pk", Attendance.ATTENDANCE.ID);
         public static final UniqueKey<ClassScheduleRecord> CLASS_SCHEDULE_PK = createUniqueKey(ClassSchedule.CLASS_SCHEDULE, "class_schedule_pk", ClassSchedule.CLASS_SCHEDULE.ID);
         public static final UniqueKey<ContactPersonStudentRecord> CONTACT_PERSON_STUDENT_PK = createUniqueKey(ContactPersonStudent.CONTACT_PERSON_STUDENT, "contact_person_student_pk", ContactPersonStudent.CONTACT_PERSON_STUDENT.ID);
         public static final UniqueKey<FeeStudentRecord> FEE_STUDENT_PK = createUniqueKey(FeeStudent.FEE_STUDENT, "fee_student_pk", FeeStudent.FEE_STUDENT.ID);
         public static final UniqueKey<FeesRecord> FEES_PK = createUniqueKey(Fees.FEES, "fees_pk", Fees.FEES.ID);
         public static final UniqueKey<InstructorPresenceRecord> INSTRUCTOR_PRESENCE_PK = createUniqueKey(InstructorPresence.INSTRUCTOR_PRESENCE, "instructor_presence_pk", InstructorPresence.INSTRUCTOR_PRESENCE.ID);
+        public static final UniqueKey<JourneeRecord> JOURNEE_PK = createUniqueKey(Journee.JOURNEE, "journee_pk", Journee.JOURNEE.ID);
+        public static final UniqueKey<LogInfoRecord> LOG_PK = createUniqueKey(LogInfo.LOG_INFO, "log_pk", LogInfo.LOG_INFO.ID);
+        public static final UniqueKey<RoUsersRecord> RO_USERS_PK = createUniqueKey(RoUsers.RO_USERS, "ro_users_pk", RoUsers.RO_USERS.ID);
         public static final UniqueKey<StudentPresenceRecord> STUDENT_PRESENCE_PK = createUniqueKey(StudentPresence.STUDENT_PRESENCE, "student_presence_pk", StudentPresence.STUDENT_PRESENCE.ID);
         public static final UniqueKey<TeachRecord> TEACH_PK = createUniqueKey(Teach.TEACH, "teach_pk", Teach.TEACH.ID);
         public static final UniqueKey<TransactionRecord> TRANSACTION_PK = createUniqueKey(Transaction.TRANSACTION, "transaction_pk", Transaction.TRANSACTION.ID);

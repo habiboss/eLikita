@@ -8,7 +8,8 @@ import org.jooq.DSLContext;
 import models.dto.CourseDTO;
 import schemas.public_.tables.pojos.Course;
 import schemas.public_.tables.records.CourseRecord;
-import schemas.public_.Tables;
+import services.referentiel.RAttendanceTypeSvr;
+import services.referentiel.RSyllabusSvr;
 import schemas.public_.tables.daos.CourseDao;
 
 public class CourseSvr extends CourseDao {
@@ -16,8 +17,9 @@ public class CourseSvr extends CourseDao {
 	@Inject
 	DSLContext sqlContext;
 	@Inject
-	CourseDTOSvr courseDTOSvr;
-	
+	RAttendanceTypeSvr 	rAttendanceTypeSvr;
+	@Inject
+	RSyllabusSvr rSyllabusSvr;
 	@Inject
 	public CourseSvr(DSLContext sqlContext) {
 		super();
@@ -76,13 +78,56 @@ public class CourseSvr extends CourseDao {
 
 	public models.util.Page<CourseDTO> pageCourse(int page, int pageSize, String value) {
 		int from_index = (page < 1 ? 0 : page - 1) * pageSize;
-		final List<CourseDTO> course = courseDTOSvr.courseDTOList().stream()
+		final List<CourseDTO> course = courseDTOList().stream()
 				.filter(c -> c.getId().toString().contains(value) || c.getTitle().contains(value))
 				.collect(Collectors.toList());
 		course.sort((o1, o2) -> (o1.getId().compareTo(o2.getId())));
 		final List<CourseDTO> result = course.stream().skip(from_index).limit(pageSize)
 				.collect(Collectors.toList());
 		return new models.util.Page<CourseDTO>(result, course.size(), page, pageSize);
+	}
+	
+	public List<CourseDTO> courseDTOList () {
+		List<Course> courseLst = findAll();
+ 		List<CourseDTO> courseDTOLst = new ArrayList<>();
+ 			for(Course course: courseLst) {
+ 				CourseDTO courseDTO = new CourseDTO();
+ 				courseDTO.setId(course.getId());
+ 				courseDTO.setrAttendanceTypeName_(rAttendanceTypeSvr.fetchOneById(course.getAttendanceTypeFk()).getName_());
+ 				courseDTO.setCode(course.getCode());
+ 				courseDTO.setDepartment(course.getDepartment());
+ 				courseDTO.setDescription(course.getDescription());
+ 				courseDTO.setMinAttendancePercentage(course.getMinAttendancePercentage());
+ 				//courseDTO.setrAttendanceTypeDescription(rAttendanceTypeSvr.fetchOneById(course.getAttendanceTypeFk()).getDescription());
+ 				courseDTO.setrAttendanceTypeId(rAttendanceTypeSvr.fetchOneById(course.getAttendanceTypeFk()).getId());
+ 				//courseDTO.setrSyllabusDescription(rSyllabusSvr.fetchOneById(course.getSyllabusFk()).getDescription());
+ 				courseDTO.setrSyllabusId(rSyllabusSvr.fetchOneById(course.getSyllabusFk()).getId());
+ 				courseDTO.setrSyllabusName_(rSyllabusSvr.fetchOneById(course.getSyllabusFk()).getName_());
+ 				courseDTO.setStatus(course.getStatus());
+ 				courseDTO.setTitle(course.getTitle());
+ 				courseDTO.setTotalWorkingDays(course.getTotalWorkingDays());
+ 				courseDTOLst.add(courseDTO);
+ 			}
+		return courseDTOLst;
+	}
+	
+	public CourseDTO fetchOneCourseDTO(Long coursePK) {
+		CourseDTO courseDTO = new CourseDTO();
+		courseDTO.setId(fetchOneById(coursePK).getId());
+		courseDTO.setrAttendanceTypeName_(rAttendanceTypeSvr.fetchOneById(fetchOneById(coursePK).getAttendanceTypeFk()).getName_());
+		courseDTO.setCode(fetchOneById(coursePK).getCode());
+		courseDTO.setDepartment(fetchOneById(coursePK).getDepartment());
+		courseDTO.setDescription(fetchOneById(coursePK).getDescription());
+		courseDTO.setMinAttendancePercentage(coursePK);
+		// courseDTO.setrAttendanceTypeDescription(rAttendanceTypeSvr.fetchOneById(course.getAttendanceTypeFk()).getDescription());
+		courseDTO.setrAttendanceTypeId(rAttendanceTypeSvr.fetchOneById(fetchOneById(coursePK).getAttendanceTypeFk()).getId());
+		// courseDTO.setrSyllabusDescription(rSyllabusSvr.fetchOneById(course.getSyllabusFk()).getDescription());
+		courseDTO.setrSyllabusId(rSyllabusSvr.fetchOneById(fetchOneById(coursePK).getSyllabusFk()).getId());
+		courseDTO.setrSyllabusName_(rSyllabusSvr.fetchOneById(fetchOneById(coursePK).getSyllabusFk()).getName_());
+		courseDTO.setStatus(fetchOneById(coursePK).getStatus());
+		courseDTO.setTitle(fetchOneById(coursePK).getTitle());
+		courseDTO.setTotalWorkingDays(fetchOneById(coursePK).getTotalWorkingDays());
+		return courseDTO;
 	}
 	
 

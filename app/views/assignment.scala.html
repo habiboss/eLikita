@@ -83,22 +83,24 @@
 											</div>
 
 											<div class="row">
-												<div class="col-md-6">
+												<div class="col-md-12">
 													<div class="form-group">
 														<label for="" class="control-label">Course *</label>
 													    <select class="form-control course_fk"
-															@isDisabled("assignmentDTOFk") name="assignmentDTOFk"
-															id="assignmentDTOFk" @isDisabled("assignmentDTOFk")>
+															@isDisabled("courseFk") name="courseFk"
+															id="courseFk">
 															<option>@assignmentDTO.getCourse_title()</option>
 														</select>
 													</div>
 												</div>
-												<div class="col-md-6">
+												</div>
+												<div class="row">
+												<div class="col-md-12">
 													<div class="form-group">
 														<label for="" class="control-label">Batch</label> 
- 													    <select class="form-control batch_fk"
+ 													    <select class="form-control batchByCourse"
 															@isDisabled("batchFk") name="batchFk"
-															id="batchFk" @isDisabled("batchFk")>
+															id="batchFk">
 															<option>@assignmentDTO.getBatchName()</option>
 														</select>
 													</div>
@@ -109,9 +111,9 @@
 												<div class="col-md-6">
 													<div class="form-group">
 														<label for="" class="control-label">Subject</label> 
-															<select class="form-control r_attendancetypefk"
-															@isDisabled("batchFk") name="subjectFk"
-															id="subjectFk" @isDisabled("subjectFk")>
+															<select class="form-control subjectByBatch"
+															@isDisabled("subjectFk") name="subjectFk"
+															id="subjectFk">
 															<option>@assignmentDTO.getSubject_name()</option>
 														</select>
 													</div>

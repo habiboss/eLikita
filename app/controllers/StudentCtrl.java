@@ -2,7 +2,9 @@ package controllers;
 
 import org.eclipse.birt.core.exception.BirtException;
 import com.google.inject.Inject;
+import models.dto.StudentInfoDTO;
 import models.util.EnvVarbl;
+import schemas.administrator.tables.pojos.FeeStudent;
 import schemas.public_.tables.pojos.AdditionalInfo;
 import schemas.public_.tables.pojos.AddressDetail;
 import schemas.public_.tables.pojos.ContactDetail;
@@ -22,8 +24,13 @@ import services.AddressSvr;
 import services.ContactSvr;
 import services.EducationalDetailSvr;
 import services.EmergencyContactSvr;
+import services.MainMenuPaneDTOSvr;
 import services.NationalityDetailSvr;
 import services.StudentSrv;
+import services.admin.AcademicYearSvr;
+import services.admin.ApplicationDetailSvr;
+import services.admin.FeeStudentSvr;
+import services.utils.GenerateCode;
 import views.html.admin.*;
 
 public class StudentCtrl extends Controller {
@@ -44,9 +51,20 @@ public class StudentCtrl extends Controller {
 	EducationalDetailSvr educationalDetailSvr;
 	@Inject
 	NationalityDetailSvr nationalityDetailSvr;
-
-	public Result show(String subAction, Long studentPK, String ui_code) {
+	@Inject 
+	AcademicYearSvr academicYearSvr;
+	@Inject
+	GenerateCode generateCode;
+	@Inject
+	JourneeCtrl journeeCtrl;
+	@Inject
+	MainMenuPaneDTOSvr mainMenuPaneDTOSvr;
+	@Inject
+	ApplicationDetailSvr applicationDetailSvr;
+ 
+ 	public Result show(String subAction, Long studentPK, String ui_code) {
 		StudentDetail studentDetail = new StudentDetail();
+		StudentInfoDTO studentInfoDTO = new StudentInfoDTO();
 		String viewMode = "";
 		int page = 0;
 		String filter = "";
@@ -54,7 +72,7 @@ public class StudentCtrl extends Controller {
 			studentDetail = new StudentDetail();
 			viewMode = subAction;// EnvVarbl.VIEW_MODE_R_CLASS;
 			return ok(studentRegistration.render(studentSrv.pageStudentDetail(page, EnvVarbl.pageSize, filter), filter,
-					new StudentDetail(), viewMode, ui_code));
+					new StudentInfoDTO(), viewMode, generateCode.getCodeApplicationDetail(), academicYearSvr.academicYearDTOList(), mainMenuPaneDTOSvr.mainMenuPane()));
 		} else if (EnvVarbl.VIEW_MODE_EDIT.equals(subAction)) {
 			studentDetail = studentSrv.fetchOneById(studentPK);
 			viewMode = EnvVarbl.VIEW_MODE_EDIT;
@@ -63,10 +81,14 @@ public class StudentCtrl extends Controller {
 			viewMode = EnvVarbl.VIEW_MODE_DELETE;
 		} else {
 			viewMode = EnvVarbl.VIEW_MODE_VIEW;
-			studentDetail = studentSrv.fetchOneById(studentPK);
+			//studentDetail = studentSrv.fetchOneById(studentPK);
+		    studentInfoDTO = studentSrv.studentInfo(studentSrv.fetchOneById(studentPK).getCodeUi());
+		    //String code = studentSrv.studentInfo(studentSrv.fetchOneById(studentPK).getCodeUi());
+		    return ok(studentRegistration.render(studentSrv.pageStudentDetail(page, EnvVarbl.pageSize, filter), filter,
+					studentInfoDTO, viewMode, studentInfoDTO.getCode(), academicYearSvr.academicYearDTOList(), mainMenuPaneDTOSvr.mainMenuPane()));
 		}
 		return ok(studentRegistration.render(studentSrv.pageStudentDetail(page, EnvVarbl.pageSize, filter), filter,
-				studentDetail, viewMode, ui_code));
+				studentInfoDTO, viewMode, generateCode.getCodeApplicationDetail(), academicYearSvr.academicYearDTOList(), mainMenuPaneDTOSvr.mainMenuPane()));
 	}
 
 	public Result save() {
@@ -126,20 +148,23 @@ public class StudentCtrl extends Controller {
 		if (EnvVarbl.VIEW_MODE_STD_ADDITIONAL_DETAIL.equals(viewMode)) {
 			// errorMessage = courseSvr.validate(versementCheque, true);
 		    additionalInfoSvr.save(additionalInfo);
-		    return redirect(routes.StudentCtrl.show(EnvVarbl.VIEW_MODE_STD_BCKGRD_EDUCATION_DETAIL, EnvVarbl.pageInit, additionalInfo.getStudentFk()));
+		    return redirect(routes.StudentCtrl.show(EnvVarbl.VIEW_MODE_S_EMERGCY, EnvVarbl.pageInit, additionalInfo.getStudentFk()));
 		}
 		//////////////EMERGENCY CONTACT/////////////////////////////////////
+		/*if (EnvVarbl.VIEW_MODE_STD_NATIONALITY_DETAIL.equals(viewMode)) {
+			// errorMessage = courseSvr.validate(versementCheque, true);
+		    //emergencyContactSvr.save(emergencyContact);
+		    nationalityDetailSvr.save(nationalityDetail);
+			return redirect(routes.StudentCtrl.show(EnvVarbl.VIEW_MODE_S_EMERGCY, EnvVarbl.pageInit, emergencyContact.getStudentFk()));
+		}*/
+		//////////////EDUCATIONAL BACKGROUND////////////////////////////////
 		if (EnvVarbl.VIEW_MODE_S_EMERGCY.equals(viewMode)) {
 			// errorMessage = courseSvr.validate(versementCheque, true);
+		    //educationalDetailSvr.save(educationalDetail);
 		    emergencyContactSvr.save(emergencyContact);
-		    return redirect(routes.StudentCtrl.show(EnvVarbl.VIEW_MODE_STD_ADDITIONAL_DETAIL, EnvVarbl.pageInit, emergencyContact.getStudentFk()));
-		}
-		//////////////EDUCATIONAL BACKGROUND////////////////////////////////
-		if (EnvVarbl.VIEW_MODE_STD_BCKGRD_EDUCATION_DETAIL.equals(viewMode)) {
-			// errorMessage = courseSvr.validate(versementCheque, true);
-		    educationalDetailSvr.save(educationalDetail);
-		    return redirect(routes.StudentCtrl.show(EnvVarbl.VIEW_MODE_STD_NATIONALITY_DETAIL, EnvVarbl.pageInit, educationalDetail.getStudentFk()));
-		}
+
+		    return redirect(routes.StudentCtrl.show(EnvVarbl.VIEW_MODE_VIEW, EnvVarbl.pageInit, additionalInfo.getStudentFk()));
+		    }
 		
 		if (null != errorMessage) {
 			flash("ERROR", errorMessage);
@@ -149,6 +174,7 @@ public class StudentCtrl extends Controller {
 			// EnvironmentalVariables.TIER)));
 		}
 		studentSrv.save(studentDetail);
+		//feeStudentSvr.save(new FeeStudent(), studentDetail.getCodeUi());
 		// addressSvr.save(addressDetail);
 		// contactSvr.save(contactDetail);
 
@@ -164,9 +190,8 @@ public class StudentCtrl extends Controller {
 	}
 
 	public Result list(int page, String filter) {
-		String viewMode = "";
-		return ok(studentManagement.render(studentSrv.pageStudentDetail(page, EnvVarbl.pageSize, filter), filter,
-				viewMode));
+		String viewMode = filter;
+		return ok(studentManagement.render(applicationDetailSvr.pageApplicationDetail(page, EnvVarbl.pageSize, filter), filter, viewMode));
 	}
 	
 	public Result imprimerStudentInfo(Long studentId){
