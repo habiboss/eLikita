@@ -3,7 +3,7 @@
   <!-- Configure the database connection here -->
   <jdbc>
     <driver>org.postgresql.Driver</driver>
-    <url>jdbc:postgresql://localhost:5432/SchoolManagement</url>
+    <url>jdbc:postgresql://localhost:5432/eLikita</url>
     <user>admin</user>
     <password>admin</password>
   </jdbc>
@@ -28,9 +28,6 @@
       <schemata>
 		  			<schema>
 		    			<inputSchema>public</inputSchema>
-		  			</schema>
-					<schema>
-		    			<inputSchema>administrator</inputSchema>
 		  			</schema>
 		            <schema>
 		    			<inputSchema>referential</inputSchema>

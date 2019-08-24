@@ -33,7 +33,7 @@ h3 {font-size: 16px}
 h4 {font-size: 14px}
 h5 {font-size: 12px}
 p {line-height: 18px; margin: 10px 0;}
-ul {margin: 8px 0 0 35px}
+/* ul {margin: 8px 0 0 35px} */
 ol {margin: 8px 0 0 45px}
 ul li, ol li {margin: 0 0 4px 0}
 a:hover {text-decoration: none;}

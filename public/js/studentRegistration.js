@@ -34,6 +34,14 @@ $(document).ready(function() {
 		}
 
 	});
+	
+	$(".autoFormatDate").keyup(function(){
+        if ($(this).val().length == 2){
+            $(this).val($(this).val() + "/");
+        }else if ($(this).val().length == 5){
+            $(this).val($(this).val() + "/");
+        }
+    });
 
 //////////////////////////////////////////////////////
 /*	$(".institution").select2({

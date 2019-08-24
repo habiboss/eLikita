@@ -1,4 +1,4 @@
-name := """E School Management"""
+name := """e-Likita"""
 
 version := "1.0-SNAPSHOT"
 
