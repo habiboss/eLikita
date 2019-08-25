@@ -4,7 +4,7 @@
   <jdbc>
     <driver>org.postgresql.Driver</driver>
     <url>jdbc:postgresql://localhost:5432/eLikita</url>
-    <user>admin</user>
+    <user>postgres</user>
     <password>admin</password>
   </jdbc>
 
@@ -52,7 +52,7 @@
       <packageName>schemas</packageName>
 
       <!-- The destination directory of your generated classes. Using Maven directory layout here -->
-      <directory>C:/Users/GHOST/Documents/Java-PlayProjects/schoolManagement/app/</directory>
+      <directory>C:/Users/GHOST/Documents/Java-PlayProjects/e-LiKITA/app/</directory>
     </target>
     
     <generate>

@@ -4,8 +4,8 @@ import java.util.Date;
 import com.google.inject.Inject;
 import play.mvc.Controller;
 import play.mvc.Result;
-
-
+import views.html.*;
+ 
 public class Application extends Controller {
 
 	public Result index() {
@@ -22,7 +22,7 @@ public class Application extends Controller {
 		 * (currentUser.equals(Roles.SUPPRESSION_QUITTANCE)) { return
 		 * ok(views.html.menu.render(role)); }
 		 */
-		return null;
+		return ok(index.render());
 	}
 
 
