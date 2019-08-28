@@ -67,11 +67,7 @@ public class Authentication extends Controller {
 		Login login = loginForm.get();
 		String email = login.getEmail();
 		String password = login.getPassword();
-		 
-		/*if(validatePosteComptable(email)!= null){
-			flash("error", validatePosteComptable(email));
-			return badRequest(views.html.login.render(loginForm));
-		}*/
+		 		
 		ApplicationUser au = authService.authenticate(email, password);
 		
 		if (loginForm.hasErrors()) {

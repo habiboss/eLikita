@@ -22,7 +22,7 @@ public class Application extends Controller {
 		 * (currentUser.equals(Roles.SUPPRESSION_QUITTANCE)) { return
 		 * ok(views.html.menu.render(role)); }
 		 */
-		return ok(index.render());
+		return TODO;
 	}
 
 
