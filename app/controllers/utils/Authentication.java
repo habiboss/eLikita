@@ -33,10 +33,13 @@ public class Authentication extends Controller {
 		String message1 = null;
 		System.out.println(email + "____has___" + password);
 
-		if(authService.findByEmail(email) != null && password.equals(authService.findByEmail(email).getPassword_())) {
+		//if(authService.findByEmail(email) != null && password.equals(authService.findByEmail(email).getPassword_())) {
+		if(authService.fetchOneByEmail(email) != null && authService.fetchOneByEmail(email).getPassword_().equals(password)) {
 			result =  message1;
+			System.out.println("xxxxxxxxxxx");
 		} else {
 			result =   message;
+			System.out.println("wwwwwwwwwwww");
 		}
 		return result;
 	}
@@ -53,25 +56,26 @@ public class Authentication extends Controller {
 	 * Login page.
 	 */
 	public Result login() {
-		Form<models.util.Login> loginForm = formFactory.form(models.util.Login.class);
- 		return ok(views.html.login.render(loginForm));
+		//Form<models.util.Login> loginForm = formFactory.form(models.util.Login.class);
+ 		return ok(views.html.login.render());
 	}
 
 	/**
 	 * Handle login form submission.
 	 */
 	public Result authenticate() {
-		Form<Login> loginForm = formFactory.form(Login.class).bindFromRequest();
+		//Form<Login> loginForm = formFactory.form(Login.class).bindFromRequest();
+		Form<ApplicationUser> loginForm = formFactory.form(ApplicationUser.class).bindFromRequest();
 		System.out.println("form" + loginForm.get());
-		Login login = loginForm.get();
-		String email = login.getEmail();
-		String password = login.getPassword();
+		ApplicationUser applicationUser = loginForm.get();
+		String email = applicationUser.getEmail();
+		String password = applicationUser.getPassword_();
 		 		
-		ApplicationUser au = authService.authenticate(email, password);
+		//ApplicationUser au = authService.authenticate(email, password);
 		
 		if (loginForm.hasErrors()) {
 			flash("error", "erreur de saisie");
-			return badRequest(views.html.login.render(loginForm));
+			return badRequest(views.html.login.render());
 		} else {
 			session().clear();
 			session("email", loginForm.get().getEmail());
