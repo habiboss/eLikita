@@ -11,6 +11,7 @@ import java.util.List;
 import javax.annotation.Generated;
 
 import org.jooq.Field;
+import org.jooq.Identity;
 import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
@@ -35,7 +36,7 @@ import schemas.public_.tables.records.ApplicationUserRecord;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class ApplicationUser extends TableImpl<ApplicationUserRecord> {
 
-    private static final long serialVersionUID = 1593620096;
+    private static final long serialVersionUID = 1266376583;
 
     /**
      * The reference instance of <code>public.application_user</code>
@@ -49,11 +50,6 @@ public class ApplicationUser extends TableImpl<ApplicationUserRecord> {
     public Class<ApplicationUserRecord> getRecordType() {
         return ApplicationUserRecord.class;
     }
-
-    /**
-     * The column <code>public.application_user.id</code>.
-     */
-    public final TableField<ApplicationUserRecord, Long> ID = createField("id", org.jooq.impl.SQLDataType.BIGINT.nullable(false), this, "");
 
     /**
      * The column <code>public.application_user.email</code>.
@@ -96,6 +92,16 @@ public class ApplicationUser extends TableImpl<ApplicationUserRecord> {
     public final TableField<ApplicationUserRecord, String> NAME_ = createField("name_", org.jooq.impl.SQLDataType.VARCHAR.length(50), this, "");
 
     /**
+     * The column <code>public.application_user.username</code>.
+     */
+    public final TableField<ApplicationUserRecord, String> USERNAME = createField("username", org.jooq.impl.SQLDataType.VARCHAR.length(100), this, "");
+
+    /**
+     * The column <code>public.application_user.id</code>.
+     */
+    public final TableField<ApplicationUserRecord, Long> ID = createField("id", org.jooq.impl.SQLDataType.BIGINT.nullable(false).defaultValue(org.jooq.impl.DSL.field("nextval('application_user_id_seq'::regclass)", org.jooq.impl.SQLDataType.BIGINT)), this, "");
+
+    /**
      * Create a <code>public.application_user</code> table reference
      */
     public ApplicationUser() {
@@ -129,8 +135,16 @@ public class ApplicationUser extends TableImpl<ApplicationUserRecord> {
      * {@inheritDoc}
      */
     @Override
+    public Identity<ApplicationUserRecord, Long> getIdentity() {
+        return Keys.IDENTITY_APPLICATION_USER;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public UniqueKey<ApplicationUserRecord> getPrimaryKey() {
-        return Keys.APPLICATION_USER_PK;
+        return Keys.APPLICATION_USER_ID_PK;
     }
 
     /**
@@ -138,7 +152,7 @@ public class ApplicationUser extends TableImpl<ApplicationUserRecord> {
      */
     @Override
     public List<UniqueKey<ApplicationUserRecord>> getKeys() {
-        return Arrays.<UniqueKey<ApplicationUserRecord>>asList(Keys.APPLICATION_USER_PK, Keys.APPLICATION_USER_UQ);
+        return Arrays.<UniqueKey<ApplicationUserRecord>>asList(Keys.APPLICATION_USER_UQ, Keys.APPLICATION_USER_ID_PK);
     }
 
     /**

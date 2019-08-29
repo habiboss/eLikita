@@ -25,9 +25,8 @@ import javax.validation.constraints.Size;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class ApplicationUser implements Serializable {
 
-    private static final long serialVersionUID = 1935935811;
+    private static final long serialVersionUID = -168811609;
 
-    private Long      id;
     private String    email;
     private String    password_;
     private Boolean   isActive;
@@ -36,11 +35,12 @@ public class ApplicationUser implements Serializable {
     private Boolean   isAdmin;
     private Long      patientFk;
     private String    name_;
+    private String    username;
+    private Long      id;
 
     public ApplicationUser() {}
 
     public ApplicationUser(ApplicationUser value) {
-        this.id = value.id;
         this.email = value.email;
         this.password_ = value.password_;
         this.isActive = value.isActive;
@@ -49,10 +49,11 @@ public class ApplicationUser implements Serializable {
         this.isAdmin = value.isAdmin;
         this.patientFk = value.patientFk;
         this.name_ = value.name_;
+        this.username = value.username;
+        this.id = value.id;
     }
 
     public ApplicationUser(
-        Long      id,
         String    email,
         String    password_,
         Boolean   isActive,
@@ -60,9 +61,10 @@ public class ApplicationUser implements Serializable {
         Timestamp lastUpdate,
         Boolean   isAdmin,
         Long      patientFk,
-        String    name_
+        String    name_,
+        String    username,
+        Long      id
     ) {
-        this.id = id;
         this.email = email;
         this.password_ = password_;
         this.isActive = isActive;
@@ -71,14 +73,7 @@ public class ApplicationUser implements Serializable {
         this.isAdmin = isAdmin;
         this.patientFk = patientFk;
         this.name_ = name_;
-    }
-
-    @NotNull
-    public Long getId() {
-        return this.id;
-    }
-
-    public void setId(Long id) {
+        this.username = username;
         this.id = id;
     }
 
@@ -151,12 +146,28 @@ public class ApplicationUser implements Serializable {
         this.name_ = name_;
     }
 
+    @Size(max = 100)
+    public String getUsername() {
+        return this.username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("ApplicationUser (");
 
-        sb.append(id);
-        sb.append(", ").append(email);
+        sb.append(email);
         sb.append(", ").append(password_);
         sb.append(", ").append(isActive);
         sb.append(", ").append(metaData);
@@ -164,6 +175,8 @@ public class ApplicationUser implements Serializable {
         sb.append(", ").append(isAdmin);
         sb.append(", ").append(patientFk);
         sb.append(", ").append(name_);
+        sb.append(", ").append(username);
+        sb.append(", ").append(id);
 
         sb.append(")");
         return sb.toString();

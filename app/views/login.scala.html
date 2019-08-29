@@ -1,4 +1,5 @@
 @(formlogin:Form[models.util.Login])
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +15,17 @@
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="https://colorlib.com/etc/lf/Login_v1/images/img-01.png" alt="IMG">
 				</div>
+				<div class="row">
+                            <div class="col-lg-12 temporaire">
+                                @if(flash.containsKey("error")) {
+                                    <strong class="align-center alert-danger"> @flash.get("error")</strong>
+                                }
+
+                                @if(flash.containsKey("success")) {
+                                    <strong class="align-center alert-success">@flash.get("success")</strong>
+                                }
+                            </div>
+                        </div>
 
 				<form class="login100-form validate-form" method="POST" action="@controllers.utils.routes.Authentication.authenticate()">
 					<div class="text-center p-t-12">

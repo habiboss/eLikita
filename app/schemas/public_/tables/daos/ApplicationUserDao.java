@@ -52,20 +52,6 @@ public class ApplicationUserDao extends DAOImpl<ApplicationUserRecord, schemas.p
     }
 
     /**
-     * Fetch records that have <code>id IN (values)</code>
-     */
-    public List<schemas.public_.tables.pojos.ApplicationUser> fetchById(Long... values) {
-        return fetch(ApplicationUser.APPLICATION_USER.ID, values);
-    }
-
-    /**
-     * Fetch a unique record that has <code>id = value</code>
-     */
-    public schemas.public_.tables.pojos.ApplicationUser fetchOneById(Long value) {
-        return fetchOne(ApplicationUser.APPLICATION_USER.ID, value);
-    }
-
-    /**
      * Fetch records that have <code>email IN (values)</code>
      */
     public List<schemas.public_.tables.pojos.ApplicationUser> fetchByEmail(String... values) {
@@ -126,5 +112,26 @@ public class ApplicationUserDao extends DAOImpl<ApplicationUserRecord, schemas.p
      */
     public List<schemas.public_.tables.pojos.ApplicationUser> fetchByName_(String... values) {
         return fetch(ApplicationUser.APPLICATION_USER.NAME_, values);
+    }
+
+    /**
+     * Fetch records that have <code>username IN (values)</code>
+     */
+    public List<schemas.public_.tables.pojos.ApplicationUser> fetchByUsername(String... values) {
+        return fetch(ApplicationUser.APPLICATION_USER.USERNAME, values);
+    }
+
+    /**
+     * Fetch records that have <code>id IN (values)</code>
+     */
+    public List<schemas.public_.tables.pojos.ApplicationUser> fetchById(Long... values) {
+        return fetch(ApplicationUser.APPLICATION_USER.ID, values);
+    }
+
+    /**
+     * Fetch a unique record that has <code>id = value</code>
+     */
+    public schemas.public_.tables.pojos.ApplicationUser fetchOneById(Long value) {
+        return fetchOne(ApplicationUser.APPLICATION_USER.ID, value);
     }
 }

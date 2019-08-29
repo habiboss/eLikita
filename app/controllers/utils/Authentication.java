@@ -35,7 +35,6 @@ public class Authentication extends Controller {
 
 		if(authService.findByEmail(email) != null && password.equals(authService.findByEmail(email).getPassword_())) {
 			result =  message1;
-
 		} else {
 			result =   message;
 		}
@@ -55,7 +54,7 @@ public class Authentication extends Controller {
 	 */
 	public Result login() {
 		Form<models.util.Login> loginForm = formFactory.form(models.util.Login.class);
- 		return ok(views.html.loginX.render(loginForm));
+ 		return ok(views.html.login.render(loginForm));
 	}
 
 	/**
@@ -71,8 +70,8 @@ public class Authentication extends Controller {
 		ApplicationUser au = authService.authenticate(email, password);
 		
 		if (loginForm.hasErrors()) {
-			flash("error", "XXX");
-			return badRequest(views.html.loginX.render(loginForm));
+			flash("error", "erreur de saisie");
+			return badRequest(views.html.login.render(loginForm));
 		} else {
 			session().clear();
 			session("email", loginForm.get().getEmail());

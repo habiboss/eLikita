@@ -39,7 +39,7 @@ import schemas.public_.tables.RoUsers;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Public extends SchemaImpl {
 
-    private static final long serialVersionUID = 1359046199;
+    private static final long serialVersionUID = -494708765;
 
     /**
      * The reference instance of <code>public</code>
@@ -112,6 +112,7 @@ public class Public extends SchemaImpl {
     private final List<Sequence<?>> getSequences0() {
         return Arrays.<Sequence<?>>asList(
             Sequences.ADDRESS__ID_SEQ,
+            Sequences.APPLICATION_USER_ID_SEQ,
             Sequences.DOCTOR__ID_SEQ,
             Sequences.MEDICAL_CENTER__ID_SEQ,
             Sequences.PATIENT__ID_SEQ);
